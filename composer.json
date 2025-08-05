@@ -1,0 +1,37 @@
+{
+    "name": "numaxlab/trafikrak",
+    "type": "library",
+    "version": "1.0.0-beta.1",
+    "license": "MIT",
+    "require": {
+        "php": "^8.2",
+        "numaxlab/lunar-geslib": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Trafikrak\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Trafikrak\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Trafikrak\\TrafikrakServiceProvider"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "Adrián Pardellas Blunier",
+            "email": "adrian@numax.org"
+        }
+    ],
+    "minimum-stability": "dev"
+}

@@ -16,94 +16,104 @@
             >
                 <div class="lg:flex lg:w-full lg:justify-between">
                     <ul class="site-header-main-menu">
-                        <li x-data="{ expanded: false }">
-                            <button @click="expanded = !expanded">
+                        <li x-data="{ expanded: false }" class="relative">
+                            <button @click="expanded = !expanded" class="text-primary">
                                 {{ __('Librería') }}
                             </button>
 
-                            <div x-cloak x-show="expanded">
-                                <ul>
+                            <div x-cloak x-show="expanded"
+                                 class="absolute top-13 z-10 flex gap-5 bg-white border-1 border-primary p-5 -ml-5">
+                                <ul class="w-50">
                                     <li>
-                                        <a href="{{ route('trafikrak.storefront.bookshop.homepage') }}" wire:navigate>
+                                        <a
+                                                href="{{ route('trafikrak.storefront.bookshop.homepage') }}"
+                                                wire:navigate
+                                        >
                                             {{ __('Librería') }}
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="" wire:navigate>
+                                        <a>
                                             {{ __('Dónde estamos') }}
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="" wire:navigate>
+                                        <a
+                                                href="{{ route('trafikrak.storefront.bookshop.itineraries.index') }}"
+                                                wire:navigate
+                                        >
                                             {{ __('Itinerarios') }}
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="" wire:navigate>
+                                        <a>
                                             {{ __('El proyecto') }}
                                         </a>
                                     </li>
                                 </ul>
 
-                                <div>
-                                    <h3>{{ __('Secciones') }}</h3>
+                                @if ($sectionCollections->isNotEmpty())
+                                    <div class="w-122">
+                                        <h3>{{ __('Secciones') }}</h3>
 
-                                    <ul>
-                                        <li>
-                                            <a href="" wire:navigate>
-                                                Sección 1
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="" wire:navigate>
-                                                Sección 2
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                        <ul class="grid grid-cols-2">
+                                            @foreach($sectionCollections as $collection)
+                                                <li>
+                                                    <a
+                                                            href="{{ route('trafikrak.storefront.bookshop.sections.show', $collection->defaultUrl->slug) }}"
+                                                            wire:navigate
+                                                    >
+                                                        {{ $collection->translateAttribute('name') }}
+                                                    </a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                             </div>
                         </li>
 
-                        <li x-data="{ expanded: false }">
-                            <button @click="expanded = !expanded">
+                        <li x-data="{ expanded: false }" class="relative">
+                            <button @click="expanded = !expanded" class="text-primary">
                                 {{ __('Editorial') }}
                             </button>
 
-                            <div x-cloak x-show="expanded">
-                                <ul>
+                            <div x-cloak x-show="expanded"
+                                 class="absolute top-13 z-10 flex gap-5 bg-white border-1 border-primary p-5 -ml-5">
+                                <ul class="w-50">
                                     <li>
                                         <a href="{{ route('trafikrak.storefront.editorial.homepage') }}" wire:navigate>
                                             {{ __('Editorial') }}
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="" wire:navigate>
+                                        <a>
                                             {{ __('Autoras') }}
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="" wire:navigate>
+                                        <a>
                                             {{ __('Especial (NLR)') }}
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="" wire:navigate>
+                                        <a>
                                             {{ __('El proyecto') }}
                                         </a>
                                     </li>
                                 </ul>
 
-                                <div>
+                                <div class="w-50">
                                     <h3>{{ __('Colecciones') }}</h3>
 
                                     <ul>
                                         <li>
-                                            <a href="" wire:navigate>
+                                            <a>
                                                 Colección 1
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="" wire:navigate>
+                                            <a>
                                                 Colección 2
                                             </a>
                                         </li>
@@ -112,63 +122,65 @@
                             </div>
                         </li>
 
-                        <li x-data="{ expanded: false }">
-                            <button @click="expanded = !expanded">
+                        <li x-data="{ expanded: false }" class="relative">
+                            <button @click="expanded = !expanded" class="text-primary">
                                 {{ __('Formación') }}
                             </button>
 
-                            <ul x-cloak x-show="expanded">
+                            <ul x-cloak x-show="expanded"
+                                class="absolute top-13 z-10 bg-white border-1 border-primary p-5 -ml-5">
                                 <li>
                                     <a href="{{ route('trafikrak.storefront.education.homepage') }}" wire:navigate>
                                         {{ __('Formación') }}
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="" wire:navigate>
+                                    <a>
                                         {{ __('Temas') }}
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="" wire:navigate>
+                                    <a>
                                         {{ __('Cursos') }}
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="" wire:navigate>
+                                    <a>
                                         {{ __('Subscríbete') }}
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="" wire:navigate>
+                                    <a>
                                         {{ __('Mis cursos') }}
                                     </a>
                                 </li>
                             </ul>
                         </li>
 
-                        <li x-data="{ expanded: false }">
-                            <button @click="expanded = !expanded">
+                        <li x-data="{ expanded: false }" class="relative">
+                            <button @click="expanded = !expanded" class="text-primary">
                                 {{ __('Mediateca') }}
                             </button>
 
-                            <ul x-cloak x-show="expanded">
+                            <ul x-cloak x-show="expanded"
+                                class="absolute top-13 z-10 bg-white border-1 border-primary p-5 -ml-5">
                                 <li>
                                     <a href="{{ route('trafikrak.storefront.media.homepage') }}" wire:navigate>
                                         {{ __('Mediateca') }}
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="" wire:navigate>
+                                    <a>
                                         {{ __('Vídeos') }}
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="" wire:navigate>
+                                    <a>
                                         {{ __('Audios') }}
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="" wire:navigate>
+                                    <a>
                                         {{ __('Documentos') }}
                                     </a>
                                 </li>
@@ -176,7 +188,7 @@
                         </li>
 
                         <li>
-                            <a href="" wire:navigate>
+                            <a>
                                 {{ __('Actividades') }}
                             </a>
                         </li>
@@ -188,13 +200,14 @@
                 </div>
 
                 <ul class="mb-5">
-                    <li><a href="#">Menú de utilidades</a></li>
+                    <li><a>Menú de utilidades</a></li>
                 </ul>
             </nav>
         </header>
     </div>
 
     <div class="-mt-10 mb-10 hidden" :class="{ 'hidden': !searchExpanded, 'block': searchExpanded }">
-        <livewire:numax-lab.lunar.geslib.storefront.livewire.components.search/>
+        Buscador...
+        {{--<livewire:numax-lab.lunar.geslib.storefront.livewire.components.search/>--}}
     </div>
 </div>

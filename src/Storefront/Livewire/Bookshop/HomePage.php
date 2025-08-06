@@ -17,24 +17,7 @@ class HomePage extends Page
         })->channel(StorefrontSession::getChannel())
             ->customerGroup(StorefrontSession::getCustomerGroups())
             ->orderBy('_lft', 'ASC')
-            ->with([
-                'products' => function ($query) {
-                    $query
-                        ->channel(StorefrontSession::getChannel())
-                        ->customerGroup(StorefrontSession::getCustomerGroups())
-                        ->status('published')
-                        ->whereHas('productType', function ($query) {
-                            $query->where('id', config('lunar.geslib.product_type_id'));
-                        });
-                },
-                'products.variant',
-                'products.variant.taxClass',
-                'products.defaultUrl',
-                'products.urls',
-                'products.thumbnail',
-                'products.authors',
-                'products.prices',
-            ])->get();
+            ->get();
 
         $sectionsCollections = Collection::whereHas('group', function ($query) {
             $query->where('handle', Handle::COLLECTION_GROUP_TAXONOMIES);
@@ -42,53 +25,12 @@ class HomePage extends Page
             ->customerGroup(StorefrontSession::getCustomerGroups())
             ->where('attribute_data->in-homepage->value', true)
             ->orderBy('_lft', 'ASC')
-            ->with([
-                'products' => function ($query) {
-                    $query
-                        ->channel(StorefrontSession::getChannel())
-                        ->customerGroup(StorefrontSession::getCustomerGroups())
-                        ->status('published')
-                        ->whereHas('productType', function ($query) {
-                            $query->where('id', config('lunar.geslib.product_type_id'));
-                        });
-                },
-                'products.variant',
-                'products.variant.taxClass',
-                'products.defaultUrl',
-                'products.urls',
-                'products.thumbnail',
-                'products.authors',
-                'products.prices',
-            ])->get();
-
-        $itinerariesCollections = Collection::whereHas('group', function ($query) {
-            $query->where('handle', Handle::COLLECTION_GROUP_ITINERARIES);
-        })->channel(StorefrontSession::getChannel())
-            ->customerGroup(StorefrontSession::getCustomerGroups())
-            ->where('attribute_data->in-homepage->value', true)
-            ->orderBy('_lft', 'ASC')
-            ->with([
-                'products' => function ($query) {
-                    $query
-                        ->channel(StorefrontSession::getChannel())
-                        ->customerGroup(StorefrontSession::getCustomerGroups())
-                        ->status('published')
-                        ->whereHas('productType', function ($query) {
-                            $query->where('id', config('lunar.geslib.product_type_id'));
-                        });
-                },
-                'products.variant',
-                'products.variant.taxClass',
-                'products.defaultUrl',
-                'products.urls',
-                'products.thumbnail',
-                'products.authors',
-                'products.prices',
-            ])->get();
+            ->with(['defaultUrl'])
+            ->get();
 
         return view(
             'trafikrak::storefront.livewire.bookshop.homepage',
-            compact('featuredCollections', 'sectionsCollections', 'itinerariesCollections'),
-        );
+            compact('featuredCollections', 'sectionsCollections'),
+        )->title(__('Librería'));
     }
 }

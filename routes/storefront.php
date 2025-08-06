@@ -10,6 +10,10 @@ use NumaxLab\Lunar\Geslib\Storefront\Livewire\Auth\RegisterPage;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Auth\ResetPasswordPage;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Auth\VerifyEmailPage;
 use Trafikrak\Storefront\Livewire\Bookshop\HomePage as BookshopHomePage;
+use Trafikrak\Storefront\Livewire\Bookshop\ItinerariesListPage;
+use Trafikrak\Storefront\Livewire\Bookshop\ItineraryPage;
+use Trafikrak\Storefront\Livewire\Bookshop\ProductPage;
+use Trafikrak\Storefront\Livewire\Bookshop\SectionPage;
 use Trafikrak\Storefront\Livewire\Editorial\HomePage as EditorialHomePage;
 use Trafikrak\Storefront\Livewire\Education\HomePage as EducationHomePage;
 use Trafikrak\Storefront\Livewire\HomePage;
@@ -21,6 +25,21 @@ Route::get('/', HomePage::class)
 Route::prefix('/libreria')->group(function () {
     Route::get('/', BookshopHomePage::class)
         ->name('trafikrak.storefront.bookshop.homepage');
+
+    Route::get('/secciones/{slug}', SectionPage::class)
+        ->name('trafikrak.storefront.bookshop.sections.show');
+
+    Route::get('/itinerarios', ItinerariesListPage::class)
+        ->name('trafikrak.storefront.bookshop.itineraries.index');
+
+    Route::get('/itinerarios/{slug}', ItineraryPage::class)
+        ->name('trafikrak.storefront.bookshop.itineraries.show');
+
+    Route::get('/productos/{slug}', ProductPage::class)
+        ->name('trafikrak.storefront.bookshop.products.show');
+
+    Route::get('/buscar', \NumaxLab\Lunar\Geslib\Storefront\Livewire\SearchPage::class)
+        ->name('trafikrak.storefront.bookshop.search');
 });
 
 Route::prefix('/editorial')->group(function () {

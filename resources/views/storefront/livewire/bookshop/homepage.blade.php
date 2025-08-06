@@ -22,19 +22,19 @@
         @endforeach
     </div>
 
-    <div class="container mx-auto px-4">
-        <article class="bg-secondary pt-5 pb-50 px-5 mb-10">
+    <article class="bg-secondary pt-5 pb-50 px-5 mb-10">
+        <div class="container mx-auto px-4">
             <h2>Báner 1</h2>
-        </article>
-    </div>
+        </div>
+    </article>
 
     <div class="container mx-auto px-4">
         <livewire:trafikrak.storefront.livewire.components.bookshop.featured-itineraries lazy/>
     </div>
 
-    <article class="bg-secondary pt-5 pb-50 px-5 mb-10">
-        <div class="container mx-auto px-4">
+    <div class="container mx-auto px-4">
+        <article class="bg-secondary pt-5 pb-50 px-5 mb-10">
             <h2>Báner 2</h2>
-        </div>
-    </article>
+        </article>
+    </div>
 </article>

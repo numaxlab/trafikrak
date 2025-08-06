@@ -1,4 +1,7 @@
-<div x-data="{ menuExpanded: false, searchExpanded: {{ request()->routeIs('trafikrak.storefront.search') ? 'true' : 'false' }} }">
+<div
+        class="relative"
+        x-data="{ menuExpanded: false, searchExpanded: false }"
+>
     <div class="container mx-auto px-4">
         <header class="org-site-header lg:gap-10">
             <a class="text-xl font-bold" href="{{ route('trafikrak.storefront.homepage') }}" wire:navigate>
@@ -206,8 +209,10 @@
         </header>
     </div>
 
-    <div class="-mt-10 mb-10 hidden" :class="{ 'hidden': !searchExpanded, 'block': searchExpanded }">
-        Buscador...
-        {{--<livewire:numax-lab.lunar.geslib.storefront.livewire.components.search/>--}}
+    <div
+            class="absolute inset-0 hidden"
+            :class="{ 'hidden': !searchExpanded, 'block': searchExpanded }"
+    >
+        <livewire:trafikrak.storefront.livewire.components.search/>
     </div>
 </div>

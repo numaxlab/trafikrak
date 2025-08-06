@@ -13,6 +13,7 @@ use Trafikrak\Storefront\Livewire\Bookshop\HomePage as BookshopHomePage;
 use Trafikrak\Storefront\Livewire\Bookshop\ItinerariesListPage;
 use Trafikrak\Storefront\Livewire\Bookshop\ItineraryPage;
 use Trafikrak\Storefront\Livewire\Bookshop\ProductPage;
+use Trafikrak\Storefront\Livewire\Bookshop\SearchPage;
 use Trafikrak\Storefront\Livewire\Bookshop\SectionPage;
 use Trafikrak\Storefront\Livewire\Editorial\HomePage as EditorialHomePage;
 use Trafikrak\Storefront\Livewire\Education\HomePage as EducationHomePage;
@@ -38,7 +39,7 @@ Route::prefix('/libreria')->group(function () {
     Route::get('/productos/{slug}', ProductPage::class)
         ->name('trafikrak.storefront.bookshop.products.show');
 
-    Route::get('/buscar', \NumaxLab\Lunar\Geslib\Storefront\Livewire\SearchPage::class)
+    Route::get('/buscar', SearchPage::class)
         ->name('trafikrak.storefront.bookshop.search');
 });
 

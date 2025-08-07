@@ -9,7 +9,7 @@
             </a>
 
             <div class="lg:hidden">
-                <x-lunar-geslib::header.actions/>
+                <x-trafikrak::header.actions/>
             </div>
 
             <nav
@@ -206,7 +206,7 @@
                     </ul>
 
                     <div class="hidden lg:block lg:relative">
-                        <x-lunar-geslib::header.actions/>
+                        <x-trafikrak::header.actions/>
                     </div>
                 </div>
 

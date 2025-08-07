@@ -2,21 +2,23 @@
 
 use Illuminate\Support\Facades\Route;
 use NumaxLab\Lunar\Geslib\Storefront\Http\Controllers\Auth\VerifyEmailController;
-use NumaxLab\Lunar\Geslib\Storefront\Livewire\Account\DashboardPage;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Actions\Logout;
-use NumaxLab\Lunar\Geslib\Storefront\Livewire\Auth\ConfirmPasswordPage;
-use NumaxLab\Lunar\Geslib\Storefront\Livewire\Auth\ForgotPasswordPage;
-use NumaxLab\Lunar\Geslib\Storefront\Livewire\Auth\LoginPage;
-use NumaxLab\Lunar\Geslib\Storefront\Livewire\Auth\RegisterPage;
-use NumaxLab\Lunar\Geslib\Storefront\Livewire\Auth\ResetPasswordPage;
-use NumaxLab\Lunar\Geslib\Storefront\Livewire\Auth\VerifyEmailPage;
-use NumaxLab\Lunar\Geslib\Storefront\Livewire\Checkout\SummaryPage;
+use Trafikrak\Storefront\Livewire\Account\DashboardPage;
+use Trafikrak\Storefront\Livewire\Auth\ConfirmPasswordPage;
+use Trafikrak\Storefront\Livewire\Auth\ForgotPasswordPage;
+use Trafikrak\Storefront\Livewire\Auth\LoginPage;
+use Trafikrak\Storefront\Livewire\Auth\RegisterPage;
+use Trafikrak\Storefront\Livewire\Auth\ResetPasswordPage;
+use Trafikrak\Storefront\Livewire\Auth\VerifyEmailPage;
 use Trafikrak\Storefront\Livewire\Bookshop\HomePage as BookshopHomePage;
 use Trafikrak\Storefront\Livewire\Bookshop\ItinerariesListPage;
 use Trafikrak\Storefront\Livewire\Bookshop\ItineraryPage;
 use Trafikrak\Storefront\Livewire\Bookshop\ProductPage;
 use Trafikrak\Storefront\Livewire\Bookshop\SearchPage;
 use Trafikrak\Storefront\Livewire\Bookshop\SectionPage;
+use Trafikrak\Storefront\Livewire\Checkout\ShippingAndPaymentPage;
+use Trafikrak\Storefront\Livewire\Checkout\SuccessPage;
+use Trafikrak\Storefront\Livewire\Checkout\SummaryPage;
 use Trafikrak\Storefront\Livewire\Editorial\AuthorPage;
 use Trafikrak\Storefront\Livewire\Editorial\AuthorsListPage;
 use Trafikrak\Storefront\Livewire\Editorial\CollectionPage;
@@ -102,4 +104,12 @@ Route::post('logout', Logout::class)->name('logout');
 Route::prefix('/checkout')->group(function () {
     Route::get('/', SummaryPage::class)
         ->name('trafikrak.storefront.checkout.summary');
+
+    Route::middleware(['auth', 'verified'])->group(function () {
+        Route::get('/envio-y-pago', ShippingAndPaymentPage::class)
+            ->name('trafikrak.storefront.checkout.shipping-and-payment');
+
+        Route::get('/finalizado/{fingerprint}', SuccessPage::class)
+            ->name('trafikrak.storefront.checkout.success');
+    });
 });

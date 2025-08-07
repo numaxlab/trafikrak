@@ -29,8 +29,6 @@ class SectionPage extends Page
             type: (new Collection)->getMorphClass(),
             firstOrFail: true,
             eagerLoad: [
-                'element.products.variants.basePrices',
-                'element.products.defaultUrl',
                 'element.children',
             ],
         );

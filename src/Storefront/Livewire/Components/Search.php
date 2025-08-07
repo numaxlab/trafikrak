@@ -13,13 +13,14 @@ class Search extends Component
     public ?string $query;
 
     public array $contentTypes = [
+        'all' => 'Mejores resultados',
         'book' => 'Libros',
         'audio' => 'Audios',
         'video' => 'Vídeos',
         'course' => 'Cursos',
     ];
 
-    public ?string $contentTypeFilter = null;
+    public ?string $contentTypeFilter = 'all';
 
     public Collection $results;
 
@@ -41,12 +42,14 @@ class Search extends Component
 
     public function updatedQuery(): void
     {
-        if (empty($this->query)) {
+        $search = trim($this->query);
+
+        if (blank($search)) {
             $this->results = collect();
             return;
         }
 
-        $this->results = Product::search($this->query)
+        $this->results = Product::search($search)
             ->query(fn(Builder $query) => $query->with([
                 'defaultUrl',
                 'urls',
@@ -56,13 +59,11 @@ class Search extends Component
 
     public function search(): void
     {
-        $redirectRoute = null;
-
         match ($this->contentTypeFilter) {
             'book' => $redirectRoute = 'trafikrak.storefront.bookshop.search',
             'audio', 'video' => $redirectRoute = 'trafikrak.storefront.media.search',
             'course' => $redirectRoute = 'trafikrak.storefront.education.search',
-            default => $this->query,
+            default => $redirectRoute = null,
         };
 
         if ($redirectRoute !== null) {

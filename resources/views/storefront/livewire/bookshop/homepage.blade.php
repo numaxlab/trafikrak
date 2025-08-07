@@ -3,24 +3,28 @@
         <h1 class="at-heading is-1 mb-10">{{ __('Librería') }}</h1>
     </div>
 
-    <div class="container mx-auto px-4">
-        @foreach ($featuredCollections as $collection)
-            <livewire:trafikrak.storefront.livewire.components.bookshop.featured
-                    :collection="$collection"
-                    :key="$collection->defaultUrl->slug"
-            />
-        @endforeach
-    </div>
+    @if ($featuredCollections->isNotEmpty())
+        <div class="container mx-auto px-4">
+            @foreach ($featuredCollections as $collection)
+                <livewire:trafikrak.storefront.livewire.components.bookshop.featured
+                        :collection="$collection"
+                        :key="$collection->defaultUrl->slug"
+                />
+            @endforeach
+        </div>
+    @endif
 
-    <div class="container mx-auto px-4">
-        @foreach($sectionsCollections as $collection)
-            <livewire:trafikrak.storefront.livewire.components.bookshop.taxonomy-summary
-                    lazy
-                    :collection="$collection"
-                    :key="$collection->defaultUrl->slug"
-            />
-        @endforeach
-    </div>
+    @if ($sectionsCollections->isNotEmpty())
+        <div class="container mx-auto px-4">
+            @foreach($sectionsCollections as $collection)
+                <livewire:trafikrak.storefront.livewire.components.bookshop.taxonomy-summary
+                        lazy
+                        :collection="$collection"
+                        :key="$collection->defaultUrl->slug"
+                />
+            @endforeach
+        </div>
+    @endif
 
     <article class="bg-secondary pt-5 pb-50 px-5 mb-10">
         <div class="container mx-auto px-4">

@@ -8,6 +8,9 @@
                             {{ __('Librería') }}
                         </a>
                     </li>
+                    <li>
+                        {{ __('Secciones') }}
+                    </li>
                 </ol>
             </nav>
 

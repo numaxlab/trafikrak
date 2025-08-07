@@ -7,6 +7,8 @@ use Lunar\FieldTypes\Toggle;
 use Lunar\Models\Attribute;
 use Lunar\Models\AttributeGroup;
 use Lunar\Models\Brand;
+use Lunar\Models\CollectionGroup;
+use Trafikrak\Handle;
 
 class Install extends Command
 {
@@ -19,6 +21,10 @@ class Install extends Command
         $this->components->info('Setting up attributes.');
 
         $this->setupBrandAttributes();
+
+        $this->components->info('Setting up collection groups.');
+
+        $this->setupCollectionGroups();
     }
 
     private function setupBrandAttributes(): void
@@ -52,6 +58,14 @@ class Install extends Command
             ],
             'system' => false,
             'searchable' => false,
+        ]);
+    }
+
+    private function setupCollectionGroups(): void
+    {
+        CollectionGroup::create([
+            'name' => 'Destacados editorial',
+            'handle' => Handle::COLLECTION_GROUP_EDITORIAL_FEATURED,
         ]);
     }
 }

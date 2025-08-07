@@ -83,7 +83,7 @@
                 <ul class="flex flex-col gap-4 md:flex-row md:gap-6">
                     @for($i=0; $i<2; $i++)
                         <li class="pr-10">
-                            <x-trafikrak::review.summary/>
+                            <x-trafikrak::reviews.summary/>
                         </li>
                     @endfor
                 </ul>

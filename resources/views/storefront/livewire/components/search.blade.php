@@ -60,7 +60,7 @@
                             @endforeach
                         </ul>
 
-                        @if ($contentTypeFilter)
+                        @if ($contentTypeFilter !== 'all')
                             <button class="mt-8 text-3xl" wire:click="search">
                                 {{ __('Ver más') }}
                             </button>

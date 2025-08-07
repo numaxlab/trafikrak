@@ -7,6 +7,7 @@ use Illuminate\View\Component;
 use Lunar\Facades\StorefrontSession;
 use Lunar\Models\Collection;
 use NumaxLab\Lunar\Geslib\Handle;
+use NumaxLab\Lunar\Geslib\InterCommands\CollectionCommand;
 
 class Header extends Component
 {
@@ -14,7 +15,7 @@ class Header extends Component
 
     public function render(): View
     {
-        $sectionCollections = Collection::whereHas('group', function ($query) {
+        $sections = Collection::whereHas('group', function ($query) {
             $query->where('handle', Handle::COLLECTION_GROUP_TAXONOMIES);
         })->whereNull('parent_id')
             ->where('attribute_data->is-section->value', true)
@@ -24,6 +25,16 @@ class Header extends Component
             ->orderBy('_lft', 'ASC')
             ->with(['defaultUrl'])->get();
 
-        return view('trafikrak::storefront.components.header', compact('sectionCollections'));
+        $editorialCollections = Collection::whereHas('group', function ($query) {
+            $query->where('handle', CollectionCommand::HANDLE);
+        })->whereNull('parent_id')
+            ->where('attribute_data->is-section->value', true)
+            ->channel(StorefrontSession::getChannel())
+            ->customerGroup(StorefrontSession::getCustomerGroups())
+            ->orderBy('_lft', 'ASC')
+            ->get();
+
+        return view('trafikrak::storefront.components.header', compact('sections', 'editorialCollections'))
+            ->title(__('Trafikrak'));
     }
 }

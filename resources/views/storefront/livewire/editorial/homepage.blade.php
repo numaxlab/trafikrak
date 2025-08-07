@@ -1,42 +1,48 @@
 <div>
-    <h1 class="at-heading is-1 mb-10">{{ __('Editorial') }}</h1>
+    <article class="bg-secondary px-5 pt-10 pb-40 -mt-10 mb-10">
+        <div class="container mx-auto px-4">
+            <h1 class="at-heading is-1 mb-10">{{ __('Editorial') }}</h1>
 
-    <x-numaxlab-atomic::organisms.tier>
-        <x-numaxlab-atomic::organisms.tier.header>
-            <h2 class="at-heading is-2">
-                Destacados
-            </h2>
-        </x-numaxlab-atomic::organisms.tier.header>
+            <p class="mt-4 md:max-w-[70%] lg:max-w-[50%]">
+                Proin pharetra fringilla urna nec porttitor. Suspendisse tempor ut massa fringilla aliquet. Nulla
+                pharetra lectus vel turpis hendrerit, ac pharetra mauris venenatis. Cras dictum lobortis dignissim. Orci
+                varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+            </p>
+        </div>
+    </article>
 
-        <ul class="grid gap-6 grid-cols-2 mb-9 md:grid-cols-4 lg:grid-cols-6">
-            <li>
-                Libros
-            </li>
-        </ul>
-    </x-numaxlab-atomic::organisms.tier>
+    @if ($featured->isNotEmpty())
+        <div class="container mx-auto px-4">
+            @foreach ($featured as $collection)
+                <livewire:trafikrak.storefront.livewire.components.bookshop.featured
+                        :collection="$collection"
+                        :key="$collection->defaultUrl->slug"
+                />
+            @endforeach
+        </div>
+    @endif
 
-    <h2>Báner 1</h2>
+    <div class="container mx-auto px-4">
+        <article class="bg-secondary pt-5 pb-50 px-5 mb-10">
+            <h2>Báner 1</h2>
+        </article>
+    </div>
 
-    <x-numaxlab-atomic::organisms.tier>
-        <x-numaxlab-atomic::organisms.tier.header>
-            <h2 class="at-heading is-2">
-                Colección
-            </h2>
+    @if ($collections->isNotEmpty())
+        <div class="container mx-auto px-4">
+            @foreach($collections as $collection)
+                <livewire:trafikrak.storefront.livewire.components.editorial.collection-summary
+                        lazy
+                        :collection="$collection"
+                        :key="$collection->defaultUrl->slug"
+                />
+            @endforeach
+        </div>
+    @endif
 
-            <a href=""
-               wire:navigate
-               class="at-small"
-            >
-                {{ __('Ver máis') }}
-            </a>
-        </x-numaxlab-atomic::organisms.tier.header>
-
-        <ul class="grid gap-6 grid-cols-2 mb-9 md:grid-cols-4 lg:grid-cols-6">
-            <li>
-                Libros
-            </li>
-        </ul>
-    </x-numaxlab-atomic::organisms.tier>
-
-    <h2>Báner 1</h2>
+    <article class="bg-secondary pt-5 pb-50 px-5 mb-10">
+        <div class="container mx-auto px-4">
+            <h2>Báner 2</h2>
+        </div>
+    </article>
 </div>

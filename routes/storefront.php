@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use NumaxLab\Lunar\Geslib\Storefront\Http\Controllers\Auth\VerifyEmailController;
+use NumaxLab\Lunar\Geslib\Storefront\Livewire\Account\DashboardPage;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Actions\Logout;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Auth\ConfirmPasswordPage;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Auth\ForgotPasswordPage;
@@ -9,12 +10,16 @@ use NumaxLab\Lunar\Geslib\Storefront\Livewire\Auth\LoginPage;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Auth\RegisterPage;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Auth\ResetPasswordPage;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Auth\VerifyEmailPage;
+use NumaxLab\Lunar\Geslib\Storefront\Livewire\Checkout\SummaryPage;
 use Trafikrak\Storefront\Livewire\Bookshop\HomePage as BookshopHomePage;
 use Trafikrak\Storefront\Livewire\Bookshop\ItinerariesListPage;
 use Trafikrak\Storefront\Livewire\Bookshop\ItineraryPage;
 use Trafikrak\Storefront\Livewire\Bookshop\ProductPage;
 use Trafikrak\Storefront\Livewire\Bookshop\SearchPage;
 use Trafikrak\Storefront\Livewire\Bookshop\SectionPage;
+use Trafikrak\Storefront\Livewire\Editorial\AuthorPage;
+use Trafikrak\Storefront\Livewire\Editorial\AuthorsListPage;
+use Trafikrak\Storefront\Livewire\Editorial\CollectionPage;
 use Trafikrak\Storefront\Livewire\Editorial\HomePage as EditorialHomePage;
 use Trafikrak\Storefront\Livewire\Education\HomePage as EducationHomePage;
 use Trafikrak\Storefront\Livewire\HomePage;
@@ -46,6 +51,15 @@ Route::prefix('/libreria')->group(function () {
 Route::prefix('/editorial')->group(function () {
     Route::get('/', EditorialHomePage::class)
         ->name('trafikrak.storefront.editorial.homepage');
+
+    Route::get('/autoras', AuthorsListPage::class)
+        ->name('trafikrak.storefront.editorial.authors.index');
+
+    Route::get('/autoras/{slug}', AuthorPage::class)
+        ->name('trafikrak.storefront.editorial.authors.show');
+
+    Route::get('/colecciones/{slug}', CollectionPage::class)
+        ->name('trafikrak.storefront.editorial.collections.show');
 });
 
 Route::prefix('/formacion')->group(function () {
@@ -79,4 +93,13 @@ Route::middleware('auth')->group(function () {
     Route::get('confirmar-contrasenha', ConfirmPasswordPage::class)->name('password.confirm');
 });
 
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('dashboard', DashboardPage::class)->name('dashboard');
+});
+
 Route::post('logout', Logout::class)->name('logout');
+
+Route::prefix('/checkout')->group(function () {
+    Route::get('/', SummaryPage::class)
+        ->name('trafikrak.storefront.checkout.summary');
+});

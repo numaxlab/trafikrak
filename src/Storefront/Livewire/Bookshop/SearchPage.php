@@ -42,7 +42,9 @@ class SearchPage extends Page
 
     public function mount(): void
     {
-        if (empty($this->q)) {
+        $search = trim($this->q);
+
+        if (blank($search)) {
             $this->redirect(route('trafikrak.storefront.bookshop.homepage'));
             return;
         }
@@ -64,7 +66,7 @@ class SearchPage extends Page
 
     public function search(): void
     {
-        $this->results = Product::search($this->q)
+        $this->results = Product::search(trim($this->q))
             ->query(fn(Builder $query) => $query->with([
                 'variant',
                 'variant.taxClass',

@@ -12,7 +12,7 @@
             </nav>
 
             <h1 class="at-heading is-1 mb-6">
-                {{ __('Buscador de la librería') }}
+                {{ __('Buscador de libros') }}
             </h1>
 
             <form wire:submit.prevent="search">

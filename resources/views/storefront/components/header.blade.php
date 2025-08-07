@@ -55,12 +55,12 @@
                                     </li>
                                 </ul>
 
-                                @if ($sectionCollections->isNotEmpty())
+                                @if ($sections->isNotEmpty())
                                     <div class="w-122">
                                         <h3>{{ __('Secciones') }}</h3>
 
                                         <ul class="grid grid-cols-2">
-                                            @foreach($sectionCollections as $collection)
+                                            @foreach($sections as $collection)
                                                 <li>
                                                     <a
                                                             href="{{ route('trafikrak.storefront.bookshop.sections.show', $collection->defaultUrl->slug) }}"
@@ -85,12 +85,18 @@
                                  class="absolute top-13 z-10 flex gap-5 bg-white border-1 border-primary p-5 -ml-5">
                                 <ul class="w-50">
                                     <li>
-                                        <a href="{{ route('trafikrak.storefront.editorial.homepage') }}" wire:navigate>
+                                        <a
+                                                href="{{ route('trafikrak.storefront.editorial.homepage') }}"
+                                                wire:navigate
+                                        >
                                             {{ __('Editorial') }}
                                         </a>
                                     </li>
                                     <li>
-                                        <a>
+                                        <a
+                                                href="{{ route('trafikrak.storefront.editorial.authors.index') }}"
+                                                wire:navigate
+                                        >
                                             {{ __('Autoras') }}
                                         </a>
                                     </li>
@@ -106,22 +112,24 @@
                                     </li>
                                 </ul>
 
-                                <div class="w-50">
-                                    <h3>{{ __('Colecciones') }}</h3>
+                                @if ($editorialCollections->isNotEmpty())
+                                    <div class="w-122">
+                                        <h3>{{ __('Colecciones') }}</h3>
 
-                                    <ul>
-                                        <li>
-                                            <a>
-                                                Colección 1
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a>
-                                                Colección 2
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                        <ul class="grid grid-cols-2">
+                                            @foreach($editorialCollections as $collection)
+                                                <li>
+                                                    <a
+                                                            href="{{ route('trafikrak.storefront.editorial.collections.show', $collection->defaultUrl->slug) }}"
+                                                            wire:navigate
+                                                    >
+                                                        {{ $collection->translateAttribute('name') }}
+                                                    </a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                             </div>
                         </li>
 

@@ -1,4 +1,16 @@
-<div>
+<article class="container mx-auto px-4 lg:max-w-4xl">
+    <header class="mb-10">
+        <nav class="ml-breadcrumb" aria-label="{{ __('Miga de pan') }}">
+            <ol>
+                <li>
+                    <a href="{{ route('dashboard') }}">
+                        {{ __('Mi cuenta') }}
+                    </a>
+                </li>
+            </ol>
+        </nav>
+        <h1 class="at-heading is-1">{{ __('Gestionar cuenta') }}</h1>
+    </header>
     <form wire:submit="updateProfileInformation" class="flex flex-col gap-6">
         <x-numaxlab-atomic::atoms.input
                 wire:model="first_name"
@@ -30,18 +42,18 @@
                 type="email"
                 name="email"
                 id="email"
-                placeholder="email@example.com"
+                placeholder="email@ejemplo.com"
                 required
                 autocomplete="email"
         >
-            {{ __('Email address') }}
+            {{ __('Correo electrónico') }}
         </x-numaxlab-atomic::atoms.input>
 
         <x-numaxlab-atomic::atoms.input
-                wire:model="vat_no"
+                wire:model="tax_identifier"
                 type="text"
-                name="vat_no"
-                id="vat_no"
+                name="tax_identifier"
+                id="tax_identifier"
                 placeholder="{{ __('NIF') }}"
         >
             {{ __('NIF') }}
@@ -60,50 +72,50 @@
         @if (auth()->user() instanceof \Illuminate\Contracts\Auth\MustVerifyEmail &&! auth()->user()->hasVerifiedEmail())
             <div>
                 <p class="mt-4">
-                    {{ __('Your email address is unverified.') }}
+                    {{ __('Tu cuenta de correo electrónico no está verificado.') }}
 
                     <a class="text-sm cursor-pointer" wire:click.prevent="resendVerificationNotification">
-                        {{ __('Click here to re-send the verification email.') }}
+                        {{ __('Haz clic aquí para reenviar el email de verificación.') }}
                     </a>
                 </p>
 
                 @if (session('status') === 'verification-link-sent')
                     <p class="mt-2 font-medium !dark:text-green-400 !text-green-600">
-                        {{ __('A new verification link has been sent to your email address.') }}
+                        {{ __('Un nuevo email de verificación ha sido enviado, revisa tu buzón de correo electrónico.') }}
                     </p>
                 @endif
             </div>
         @endif
 
         <x-numaxlab-atomic::atoms.button type="submit" class="is-primary w-full">
-            {{ __('Save') }}
+            {{ __('Guardar') }}
         </x-numaxlab-atomic::atoms.button>
 
         <x-lunar-geslib::action-message class="me-3" on="profile-updated">
-            {{ __('Saved.') }}
+            {{ __('Guardado correctamente') }}
         </x-lunar-geslib::action-message>
     </form>
 
-    <form wire:submit="deleteUser" class="space-y-6 mt-9">
-        <h2 class="at-heading is-2">{{ __('Delete your account and all of its resources') }}</h2>
+    <form wire:submit="deleteUser" class="space-y-6 mt-10">
+        <h2 class="at-heading is-2">{{ __('Eliminar mi cuenta') }}</h2>
 
-        <p>{{ __('Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.') }}</p>
+        <p>{{ __('Si eliminas tu cuenta todos los recursos y datos que tienes guardados serán eliminados de forma permanente. Por favor, introduce tu contraseña para confirmar que quieres borrar tus datos de forma permanente.') }}</p>
 
         <x-numaxlab-atomic::atoms.input
                 wire:model="password"
                 type="password"
                 name="password"
                 id="password"
-                placeholder="{{ __('Password') }}"
+                placeholder="{{ __('Contraseña') }}"
                 required
         >
-            {{ __('Password') }}
+            {{ __('Contraseña') }}
         </x-numaxlab-atomic::atoms.input>
 
         <div class="flex justify-end space-x-2 rtl:space-x-reverse">
-            <x-numaxlab-atomic::atoms.button variant="danger" type="submit">
-                {{ __('Delete account') }}
+            <x-numaxlab-atomic::atoms.button class="bg-danger text-white" type="submit">
+                {{ __('Eliminar cuenta') }}
             </x-numaxlab-atomic::atoms.button>
         </div>
     </form>
-</div>
+</article>

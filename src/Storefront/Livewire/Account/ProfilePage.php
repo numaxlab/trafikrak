@@ -18,7 +18,7 @@ class ProfilePage extends Page
 
     public string $email = '';
 
-    public ?string $vat_no;
+    public ?string $tax_identifier;
 
     public ?string $company_name;
 
@@ -35,7 +35,7 @@ class ProfilePage extends Page
         $this->first_name = $user->name;
         $this->last_name = $user->last_name;
         $this->email = $user->email;
-        $this->vat_no = $user->latestCustomer()?->vat_no;
+        $this->tax_identifier = $user->latestCustomer()?->tax_identifier;
         $this->company_name = $user->latestCustomer()?->company_name;
     }
 
@@ -57,7 +57,7 @@ class ProfilePage extends Page
                 Rule::unique(config('auth.providers.users.model'))->ignore($user->id),
             ],
 
-            'vat_no' => ['nullable', 'string', 'max:255'],
+            'tax_identifier' => ['nullable', 'string', 'max:255'],
 
             'company_name' => ['nullable', 'string', 'max:255'],
         ]);
@@ -69,7 +69,7 @@ class ProfilePage extends Page
         $user->latestCustomer()->update([
             'first_name' => $validated['first_name'],
             'last_name' => $validated['last_name'],
-            'vat_no' => $validated['vat_no'],
+            'tax_identifier' => $validated['tax_identifier'],
             'company_name' => $validated['company_name'],
         ]);
 

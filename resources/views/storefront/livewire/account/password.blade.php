@@ -1,4 +1,16 @@
-<div>
+<article class="container mx-auto px-4 lg:max-w-4xl">
+    <header class="mb-10">
+        <nav class="ml-breadcrumb" aria-label="{{ __('Miga de pan') }}">
+            <ol>
+                <li>
+                    <a href="{{ route('dashboard') }}">
+                        {{ __('Mi cuenta') }}
+                    </a>
+                </li>
+            </ol>
+        </nav>
+        <h1 class="at-heading is-1">{{ __('Modificar contraseña') }}</h1>
+    </header>
     <form wire:submit="updatePassword" class="flex flex-col gap-6">
         <x-numaxlab-atomic::atoms.input
                 wire:model="current_password"
@@ -6,10 +18,10 @@
                 name="current_password"
                 id="password"
                 autocomplete="current-password"
-                placeholder="{{ __('Current password') }}"
+                placeholder="{{ __('Contraseña actual') }}"
                 required
         >
-            {{ __('Current password') }}
+            {{ __('Contraseña actual') }}
         </x-numaxlab-atomic::atoms.input>
 
         <x-numaxlab-atomic::atoms.input
@@ -17,11 +29,11 @@
                 type="password"
                 name="password"
                 id="password"
-                placeholder="{{ __('New password') }}"
+                placeholder="{{ __('Nueva contraseña') }}"
                 required
                 autocomplete="new-password"
         >
-            {{ __('New password') }}
+            {{ __('Nueva contraseña') }}
         </x-numaxlab-atomic::atoms.input>
 
         <x-numaxlab-atomic::atoms.input
@@ -29,19 +41,19 @@
                 type="password"
                 name="password_confirmation"
                 id="password-confirmation"
-                placeholder="{{ __('Confirm password') }}"
+                placeholder="{{ __('Confirmar nueva contraseña') }}"
                 required
                 autocomplete="new-password"
         >
-            {{ __('Confirm password') }}
+            {{ __('Confirmar nueva contraseña') }}
         </x-numaxlab-atomic::atoms.input>
 
         <x-numaxlab-atomic::atoms.button type="submit" class="is-primary w-full">
-            {{ __('Save') }}
+            {{ __('Guardar') }}
         </x-numaxlab-atomic::atoms.button>
 
         <x-lunar-geslib::action-message class="me-3" on="password-updated">
-            {{ __('Saved.') }}
+            {{ __('Contraseña modificada correctamente.') }}
         </x-lunar-geslib::action-message>
     </form>
-</div>
+</article>

@@ -1,11 +1,23 @@
-<article>
-    <h1 class="at-heading is-1">
-        @if (request()->routeIs('settings.edit-address'))
-            {{ __('Editar dirección') }}
-        @else
-            {{ __('Añadir dirección') }}
-        @endif
-    </h1>
+<article class="container mx-auto px-4 lg:max-w-4xl">
+    <header class="mb-10">
+        <nav class="ml-breadcrumb" aria-label="{{ __('Miga de pan') }}">
+            <ol>
+                <li>
+                    <a href="{{ route('dashboard') }}">
+                        {{ __('Mi cuenta') }}
+                    </a>
+                </li>
+            </ol>
+        </nav>
+
+        <h1 class="at-heading is-1">
+            @if (request()->routeIs('settings.edit-address'))
+                {{ __('Editar dirección') }}
+            @else
+                {{ __('Añadir dirección') }}
+            @endif
+        </h1>
+    </header>
 
     <form wire:submit="save" class="flex flex-col gap-6 mt-10">
         <x-numaxlab-atomic::atoms.input
@@ -38,59 +50,67 @@
                 type="text"
                 name="form.company_name"
                 id="form.company_name"
-                placeholder="{{ __('Nombre de empresa') }}"
+                placeholder="{{ __('Nombre de la empresa') }}"
         >
-            {{ __('Nombre de empresa') }}
+            {{ __('Nombre de la empresa') }}
         </x-numaxlab-atomic::atoms.input>
 
-        <x-numaxlab-atomic::atoms.select
-                wire:model.live="form.country_id"
-                name="form.country_id"
-                id="form.country_id"
-                label="{{ __('País') }}"
-        >
-            <option value="">Selecciona un país</option>
-            @foreach ($form->countries as $country)
-                <option value="{{ $country->id }}">{{ $country->name }}</option>
-            @endforeach
-        </x-numaxlab-atomic::atoms.select>
+        <div class="flex flex-col gap-6 md:flex-row">
+            <div class="md:w-1/2">
+                <x-numaxlab-atomic::atoms.select
+                        wire:model.live="form.country_id"
+                        name="form.country_id"
+                        id="form.country_id"
+                        label="{{ __('País') }}"
+                >
+                    <option value="">{{ __('Selecciona un país') }}</option>
+                    @foreach ($form->countries as $country)
+                        <option value="{{ $country->id }}">{{ $country->native }}</option>
+                    @endforeach
+                </x-numaxlab-atomic::atoms.select>
+            </div>
 
-        @if ($form->states->isNotEmpty())
-            <x-numaxlab-atomic::atoms.select
-                    wire:model="form.state"
-                    name="form.state"
-                    id="form.state"
-                    label="{{ __('Provincia') }}"
-            >
-                <option value="">Selecciona una provincia</option>
-                @foreach($form->states as $state)
-                    <option value="{{ $state->id }}">{{ $state->name }}</option>
-                @endforeach
-            </x-numaxlab-atomic::atoms.select>
-        @endif
+            <div class="md:w-1/2">
+                <x-numaxlab-atomic::atoms.select
+                        wire:model="form.state"
+                        name="form.state"
+                        id="form.state"
+                        label="{{ __('Provincia') }}"
+                >
+                    <option value="">{{ __('Selecciona una provincia') }}</option>
+                    @foreach($form->states as $state)
+                        <option value="{{ $state->id }}">{{ $state->name }}</option>
+                    @endforeach
+                </x-numaxlab-atomic::atoms.select>
+            </div>
+        </div>
 
-        <div class="flex flex-col gap-6 md:flex-row md:gap-2">
-            <x-numaxlab-atomic::atoms.input
-                    wire:model="form.postcode"
-                    type="text"
-                    name="form.postcode"
-                    id="form.postcode"
-                    required
-                    placeholder="{{ __('Código postal') }}"
-            >
-                {{ __('Código postal') }}
-            </x-numaxlab-atomic::atoms.input>
+        <div class="flex flex-col gap-6 md:flex-row">
+            <div class="md:w-1/2">
+                <x-numaxlab-atomic::atoms.input
+                        wire:model="form.postcode"
+                        type="text"
+                        name="form.postcode"
+                        id="form.postcode"
+                        required
+                        placeholder="{{ __('Código postal') }}"
+                >
+                    {{ __('Código postal') }}
+                </x-numaxlab-atomic::atoms.input>
+            </div>
 
-            <x-numaxlab-atomic::atoms.input
-                    wire:model="form.city"
-                    type="text"
-                    name="form.city"
-                    id="form.city"
-                    required
-                    placeholder="{{ __('Ciudad') }}"
-            >
-                {{ __('Ciudad') }}
-            </x-numaxlab-atomic::atoms.input>
+            <div class="md:w-1/2">
+                <x-numaxlab-atomic::atoms.input
+                        wire:model="form.city"
+                        type="text"
+                        name="form.city"
+                        id="form.city"
+                        required
+                        placeholder="{{ __('Ciudad') }}"
+                >
+                    {{ __('Ciudad') }}
+                </x-numaxlab-atomic::atoms.input>
+            </div>
         </div>
 
         <x-numaxlab-atomic::atoms.input
@@ -120,7 +140,16 @@
                 name="form.shipping_default"
                 id="form.shipping_default"
         >
-            {{ __('Es mi dirección principal') }}
+            {{ __('Es mi dirección principal de envío') }}
+        </x-numaxlab-atomic::atoms.forms.checkbox>
+
+        <x-numaxlab-atomic::atoms.forms.checkbox
+                wire:model="form.billing_default"
+                value="1"
+                name="form.billing_default"
+                id="form.billing_default"
+        >
+            {{ __('Es mi dirección principal de facturación') }}
         </x-numaxlab-atomic::atoms.forms.checkbox>
 
         <x-numaxlab-atomic::atoms.button type="submit" class="is-primary w-full">

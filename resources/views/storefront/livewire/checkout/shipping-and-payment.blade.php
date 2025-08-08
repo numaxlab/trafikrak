@@ -1,7 +1,20 @@
-<article class="lg:mx-auto lg:max-w-300">
-    <h1 class="at-heading is-1">
-        ¿Cómo quieres recibir tu pedido?
-    </h1>
+<article class="container mx-auto px-4 lg:max-w-4xl">
+    <header class="mb-10">
+        <nav class="ml-breadcrumb" aria-label="{{ __('Miga de pan') }}">
+            <ol>
+                <li>
+                    <a href="{{ route('trafikrak.storefront.checkout.summary') }}">
+                        {{ __('Volver al carrito') }}
+                    </a>
+                </li>
+            </ol>
+        </nav>
+
+        <h1 class="at-heading is-1">
+            {{ __('¿Cómo quieres recibir tu pedido?') }}
+        </h1>
+    </header>
+
 
     <div class="lg:flex lg:gap-6">
         <div class="lg:w-1/2">

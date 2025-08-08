@@ -32,12 +32,12 @@ class SearchPage extends Page
     public Collection $statuses;
 
     public array $priceRanges = [
-        '0-10',
-        '10-20',
-        '20-30',
-        '30-40',
-        '40-50',
-        '50-1000',
+        '0-10' => '0 - 10 €',
+        '10-20' => '10 - 20 €',
+        '20-30' => '20 - 30 €',
+        '30-40' => '30 - 40 €',
+        '40-50' => '40 - 50 €',
+        '50-1000' => '50 - 1.000 €',
     ];
 
     public function mount(): void

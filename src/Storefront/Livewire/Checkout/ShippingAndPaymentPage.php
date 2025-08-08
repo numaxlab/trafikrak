@@ -240,9 +240,9 @@ class ShippingAndPaymentPage extends Page
         if ($payment->success) {
             $order = Order::findOrFail($payment->orderId);
 
-            return redirect()->route('lunar.geslib.storefront.checkout.success', $order->fingerprint);
+            return redirect()->route('trafikrak.storefront.checkout.success', $order->fingerprint);
         }
 
-        return redirect()->route('lunar.geslib.storefront.shipping-and-payment');
+        return redirect()->route('trafikrak.storefront.checkout.shipping-and-payment');
     }
 }

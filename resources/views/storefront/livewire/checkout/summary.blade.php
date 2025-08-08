@@ -1,7 +1,7 @@
-<article class="lg:mx-auto lg:max-w-300">
+<article class="container mx-auto px-4 lg:max-w-4xl">
     <h1 class="at-heading is-1">Carrito</h1>
 
-    <ul class="lg:grid lg:grid-cols-2 lg:gap-4">
+    <ul class="border-y border-black divide-y divide-black mt-10">
         @foreach ($lines as $key => $line)
             <li>
                 <x-lunar-geslib::product.in-cart
@@ -44,21 +44,39 @@
         @endforeach
     </ul>
 
-    <div class="border-t border-black">
-        <h3 class="at-heading is-4 py-2">Resumen</h3>
-        <ul class="flex flex-col divide-y divide-black border-t border-b border-black">
+    <div class="mt-10">
+        <ul class="divide-y divide-black border-y border-black">
             <li class="at-small py-2">
                 <i class="fa-solid fa-shopping-bag" aria-hidden="true"></i>
-                Subtotal pedido: {{ $this->cart->subTotal->formatted() }}
+                {{ __('Total pedido') }}: {{ $this->cart->subTotal->formatted() }}
             </li>
         </ul>
     </div>
 
+    <div class="mt-10 pt-4 border-t border-black">
+        <h2 class="at-heading is-2 mb-5">{{ __('Eres socia?') }}</h2>
+
+        @auth
+            <x-numaxlab-atomic::atoms.forms.checkbox
+                    value="1"
+                    name="use_credit"
+                    id="use_credit"
+            >
+                {{ __('Comprar a crédito') }}
+            </x-numaxlab-atomic::atoms.forms.checkbox>
+        @else
+            <p>
+                {{ __('Por ser socia, puedes comprar a crédito.') }}
+                <a href="{{ route('login') }}" wire:navigate>{{ __('Entra en tu cuenta') }}</a>
+            </p>
+        @endauth
+    </div>
+
     <a
-            class="at-button is-primary mt-4"
+            class="at-button is-primary mt-10"
             href="{{ route('trafikrak.storefront.checkout.shipping-and-payment') }}"
             wire:navigate
     >
-        Finalizar pedido
+        {{ __('Finalizar pedido') }}
     </a>
 </article>

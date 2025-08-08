@@ -83,9 +83,9 @@
                                 aria-label="{{ __('Filtrar por precio') }}"
                         >
                             <option value="">Todos los precios</option>
-                            @foreach($this->priceRanges as $priceRange)
-                                <option value="{{ $priceRange }}">
-                                    {{ $priceRange }}
+                            @foreach($this->priceRanges as $value => $tag)
+                                <option value="{{ $value }}">
+                                    {{ $tag }}
                                 </option>
                             @endforeach
                         </x-numaxlab-atomic::atoms.forms.select>

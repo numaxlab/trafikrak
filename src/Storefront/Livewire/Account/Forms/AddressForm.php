@@ -11,7 +11,7 @@ use Lunar\Models\State;
 
 class AddressForm extends Form
 {
-    public ?Address $address;
+    public ?Address $address = null;
 
     public Collection $countries;
 
@@ -47,9 +47,12 @@ class AddressForm extends Form
     #[Validate('boolean')]
     public bool $shipping_default = false;
 
+    #[Validate('boolean')]
+    public bool $billing_default = false;
+
     public function loadCountries(): void
     {
-        $this->countries = Country::orderBy('name')->get();
+        $this->countries = Country::orderBy('native')->get();
         $this->states = collect();
     }
 
@@ -67,6 +70,7 @@ class AddressForm extends Form
         $this->line_one = $this->address->line_one;
         $this->line_two = $this->address->line_two;
         $this->shipping_default = $this->address->shipping_default;
+        $this->billing_default = $this->address->billing_default;
 
         if ($this->country_id !== null) {
             $this->updateStates($this->country_id);

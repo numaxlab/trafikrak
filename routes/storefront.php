@@ -26,7 +26,11 @@ use Trafikrak\Storefront\Livewire\Editorial\AuthorPage;
 use Trafikrak\Storefront\Livewire\Editorial\AuthorsListPage;
 use Trafikrak\Storefront\Livewire\Editorial\CollectionPage;
 use Trafikrak\Storefront\Livewire\Editorial\HomePage as EditorialHomePage;
+use Trafikrak\Storefront\Livewire\Education\CoursePage;
+use Trafikrak\Storefront\Livewire\Education\CoursesListPage;
 use Trafikrak\Storefront\Livewire\Education\HomePage as EducationHomePage;
+use Trafikrak\Storefront\Livewire\Education\TopicPage;
+use Trafikrak\Storefront\Livewire\Education\TopicsListPage;
 use Trafikrak\Storefront\Livewire\HomePage;
 use Trafikrak\Storefront\Livewire\Media\HomePage as MediaHomePage;
 
@@ -70,6 +74,18 @@ Route::prefix('/editorial')->group(function () {
 Route::prefix('/formacion')->group(function () {
     Route::get('/', EducationHomePage::class)
         ->name('trafikrak.storefront.education.homepage');
+
+    Route::get('/temas', TopicsListPage::class)
+        ->name('trafikrak.storefront.education.topics.index');
+
+    Route::get('/temas/{slug}', TopicPage::class)
+        ->name('trafikrak.storefront.education.topics.show');
+
+    Route::get('/cursos', CoursesListPage::class)
+        ->name('trafikrak.storefront.education.courses.index');
+
+    Route::get('/cursos/{slug}', CoursePage::class)
+        ->name('trafikrak.storefront.education.courses.show');
 });
 
 Route::prefix('/mediateca')->group(function () {

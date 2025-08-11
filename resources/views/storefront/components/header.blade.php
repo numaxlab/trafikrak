@@ -146,12 +146,12 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a>
+                                    <a href="{{ route('trafikrak.storefront.education.topics.index') }}" wire:navigate>
                                         {{ __('Temas') }}
                                     </a>
                                 </li>
                                 <li>
-                                    <a>
+                                    <a href="{{ route('trafikrak.storefront.education.courses.index') }}" wire:navigate>
                                         {{ __('Cursos') }}
                                     </a>
                                 </li>

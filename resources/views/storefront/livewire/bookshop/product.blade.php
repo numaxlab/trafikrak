@@ -1,15 +1,13 @@
 <article class="container mx-auto px-4">
     <div class="lg:flex lg:flex-wrap lg:gap-10">
         <header class="lg:w-8/12">
-            <nav class="ml-breadcrumb" aria-label="{{ __('Miga de pan') }}">
-                <ol>
-                    <li>
-                        <a href="{{ route('trafikrak.storefront.bookshop.homepage') }}">
-                            {{ __('Librería') }}
-                        </a>
-                    </li>
-                </ol>
-            </nav>
+            <x-numaxlab-atomic::molecules.breadcrumb :label="__('Miga de pan')">
+                <li>
+                    <a href="{{ route('trafikrak.storefront.bookshop.homepage') }}">
+                        {{ __('Librería') }}
+                    </a>
+                </li>
+            </x-numaxlab-atomic::molecules.breadcrumb>
 
             <h1 class="at-heading is-1">{{ $product->recordTitle }}</h1>
 

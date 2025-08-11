@@ -1,14 +1,12 @@
 <article class="container mx-auto px-4 lg:max-w-4xl">
     <header class="mb-10">
-        <nav class="ml-breadcrumb" aria-label="{{ __('Miga de pan') }}">
-            <ol>
-                <li>
-                    <a href="{{ route('trafikrak.storefront.checkout.summary') }}">
-                        {{ __('Volver al carrito') }}
-                    </a>
-                </li>
-            </ol>
-        </nav>
+        <x-numaxlab-atomic::molecules.breadcrumb :label="__('Miga de pan')">
+            <li>
+                <a href="{{ route('trafikrak.storefront.checkout.summary') }}">
+                    {{ __('Volver al carrito') }}
+                </a>
+            </li>
+        </x-numaxlab-atomic::molecules.breadcrumb>
 
         <h1 class="at-heading is-1">
             {{ __('¿Cómo quieres recibir tu pedido?') }}

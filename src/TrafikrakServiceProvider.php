@@ -21,7 +21,8 @@ class TrafikrakServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'trafikrak');
         $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'trafikrak');
 
-        Route::middleware('web')->group(fn() => $this->loadRoutesFrom(__DIR__ . '/../routes/storefront.php'));
+        Route::middleware('web')
+            ->group(fn() => $this->loadRoutesFrom(__DIR__ . '/../routes/storefront.php'));
 
         Blade::componentNamespace('Trafikrak\\Storefront\\Views\\Components', 'trafikrak');
         Blade::anonymousComponentPath(__DIR__ . '/../resources/views/storefront/components', 'trafikrak');

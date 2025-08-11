@@ -1,14 +1,13 @@
 <article class="container mx-auto px-4 lg:max-w-4xl">
     <header class="mb-10">
-        <nav class="ml-breadcrumb" aria-label="{{ __('Miga de pan') }}">
-            <ol>
-                <li>
-                    <a href="{{ route('dashboard') }}">
-                        {{ __('Mi cuenta') }}
-                    </a>
-                </li>
-            </ol>
-        </nav>
+        <x-numaxlab-atomic::molecules.breadcrumb :label="__('Miga de pan')">
+            <li>
+                <a href="{{ route('dashboard') }}">
+                    {{ __('Mi cuenta') }}
+                </a>
+            </li>
+        </x-numaxlab-atomic::molecules.breadcrumb>
+
         <h1 class="at-heading is-1">{{ __('Gestionar cuenta') }}</h1>
     </header>
     <form wire:submit="updateProfileInformation" class="flex flex-col gap-6">

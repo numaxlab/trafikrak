@@ -1,14 +1,13 @@
 <article class="container mx-auto px-4">
     <header>
-        <nav class="ml-breadcrumb" aria-label="{{ __('Miga de pan') }}">
-            <ol>
-                <li>
-                    <a href="{{ route('trafikrak.storefront.editorial.homepage') }}">
-                        {{ __('Editorial') }}
-                    </a>
-                </li>
-            </ol>
-        </nav>
+        <x-numaxlab-atomic::molecules.breadcrumb :label="__('Miga de pan')">
+            <li>
+                <a href="{{ route('trafikrak.storefront.editorial.homepage') }}">
+                    {{ __('Editorial') }}
+                </a>
+            </li>
+        </x-numaxlab-atomic::molecules.breadcrumb>
+
         <h1 class="at-heading is-1 mb-10">{{ __('Autoras') }}</h1>
     </header>
 

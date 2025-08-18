@@ -3,7 +3,36 @@
 return [
     'label' => 'Sesión',
     'plural_label' => 'Sesiones',
+    'pages' => [
+        'edit' => [
+            'title' => 'Información básica',
+        ],
+        'instructors' => [
+            'label' => 'Instructoras',
+            'actions' => [
+                'attach' => [
+                    'label' => 'Asociar',
+                    'form' => [
+                        'record_id' => [
+                            'label' => 'Instructora',
+                        ],
+                    ],
+                    'notificaton' => [
+                        'success' => 'Instructora asociada correctamente',
+                    ],
+                ],
+                'detach' => [
+                    'notificaton' => [
+                        'success' => 'Instructora desasociada correctamente',
+                    ],
+                ],
+            ],
+        ],
+    ],
     'table' => [
+        'course_name' => [
+            'label' => 'Curso',
+        ],
         'name' => [
             'label' => 'Título',
         ],
@@ -11,10 +40,13 @@ return [
             'label' => 'Fecha y hora',
         ],
         'is_published' => [
-            'label' => 'Público',
+            'label' => 'Pública',
         ],
     ],
     'form' => [
+        'course_id' => [
+            'label' => 'Curso',
+        ],
         'name' => [
             'label' => 'Título',
         ],
@@ -28,7 +60,7 @@ return [
             'label' => 'Fecha y hora',
         ],
         'is_published' => [
-            'label' => 'Público',
+            'label' => 'Pública',
         ],
     ],
 ];

@@ -4,6 +4,7 @@ namespace Trafikrak\Models\Education;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Lunar\Base\Traits\HasUrls;
 use Lunar\Base\Traits\LogsActivity;
 use Spatie\Translatable\HasTranslations;
@@ -27,5 +28,13 @@ class CourseModule extends Model
     public function course(): BelongsTo
     {
         return $this->belongsTo(Course::class);
+    }
+
+    public function instructors(): BelongsToMany
+    {
+        return $this
+            ->belongsToMany(Instructor::class)
+            ->withPivot(['position'])
+            ->orderByPivot('position');
     }
 }

@@ -50,7 +50,6 @@ class CourseResource extends BaseResource
             CourseResource\Pages\EditCourse::class,
             CourseResource\Pages\ManageCourseMedia::class,
             CourseResource\Pages\ManageCourseUrls::class,
-            CourseResource\Pages\ManageCourseModules::class,
             CourseResource\Pages\ManageCourseProducts::class,
         ];
     }
@@ -146,7 +145,6 @@ class CourseResource extends BaseResource
             'edit' => CourseResource\Pages\EditCourse::route('/{record}/edit'),
             'media' => CourseResource\Pages\ManageCourseMedia::route('/{record}/media'),
             'urls' => CourseResource\Pages\ManageCourseUrls::route('/{record}/urls'),
-            'modules' => CourseResource\Pages\ManageCourseModules::route('/{record}/modules'),
             'products' => CourseResource\Pages\ManageCourseProducts::route('/{record}/products'),
         ];
     }

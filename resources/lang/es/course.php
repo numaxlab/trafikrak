@@ -28,9 +28,6 @@ return [
                 ],
             ],
         ],
-        'modules' => [
-            'label' => 'Sesiones',
-        ],
     ],
     'table' => [
         'name' => [

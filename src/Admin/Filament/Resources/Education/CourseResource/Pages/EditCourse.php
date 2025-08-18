@@ -30,7 +30,7 @@ class EditCourse extends BaseEditRecord
             Actions\LocaleSwitcher::make(),
             Actions\DeleteAction::make()
                 ->before(function ($record, Actions\DeleteAction $action) {
-                    if ($record->products->count() > 0) {
+                    if ($record->modules->count() > 0) {
                         Notification::make()
                             ->warning()
                             ->body(__('trafikrak::course.action.delete.notification.error_protected'))

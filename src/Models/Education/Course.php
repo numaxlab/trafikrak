@@ -2,6 +2,7 @@
 
 namespace Trafikrak\Models\Education;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -14,10 +15,12 @@ use Lunar\Base\Traits\Searchable;
 use Lunar\Models\Product;
 use Spatie\MediaLibrary\HasMedia as SpatieHasMedia;
 use Spatie\Translatable\HasTranslations;
+use Trafikrak\Database\Factories\Education\CourseFactory;
 use Trafikrak\Models\Attachment;
 
 class Course extends Model implements SpatieHasMedia
 {
+    use HasFactory;
     use HasUrls;
     use HasMedia;
     use HasTranslations;
@@ -35,6 +38,12 @@ class Course extends Model implements SpatieHasMedia
         'delivery_method' => CourseDeliveryMethod::class,
     ];
     protected $guarded = [];
+
+    protected static function newFactory()
+    {
+        return CourseFactory::new();
+    }
+
 
     public function modules(): HasMany
     {

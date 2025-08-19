@@ -7,6 +7,7 @@ use Illuminate\View\View;
 use Livewire\Component;
 use Lunar\Models\Product;
 use Trafikrak\Models\Education\Course;
+use Trafikrak\Models\Media\Audio;
 use Trafikrak\Storefront\GlobalSearch\GlobalSearch;
 
 class Search extends Component
@@ -27,6 +28,7 @@ class Search extends Component
             'all' => __('Todos los resultados'),
             (new Product)->searchableAs() => __('Libros'),
             (new Course)->searchableAs() => __('Cursos'),
+            (new Audio)->searchableAs() => __('Audios'),
         ];
 
         $this->results = collect();
@@ -37,13 +39,13 @@ class Search extends Component
         return view('trafikrak::storefront.livewire.components.search');
     }
 
-    public function setContentTypeFilter($contentType): void
+    public function setContentTypeFilter(GlobalSearch $globalSearch, $contentType): void
     {
         $this->contentTypeFilter = $contentType;
-        $this->updatedQuery();
+        $this->updatedQuery($globalSearch);
     }
 
-    public function updatedQuery(): void
+    public function updatedQuery(GlobalSearch $globalSearch): void
     {
         $search = trim($this->query);
 
@@ -51,8 +53,6 @@ class Search extends Component
             $this->results = collect();
             return;
         }
-
-        $globalSearch = app(GlobalSearch::class);
 
         if ($this->contentTypeFilter !== 'all') {
             $globalSearch->setContentType($this->contentTypeFilter);

@@ -62,16 +62,11 @@
                 <h2>Báner 1</h2>
             </article>
 
-            <x-numaxlab-atomic::organisms.tier class="mt-10">
-                <x-numaxlab-atomic::organisms.tier.header>
-                    <h2 class="at-heading is-2">
-                        {{ __('Sesiones') }}
-                    </h2>
-
-                </x-numaxlab-atomic::organisms.tier.header>
-
-                Lista de sesiones...
-            </x-numaxlab-atomic::organisms.tier>
+            <livewire:trafikrak.storefront.livewire.components.education.modules-list
+                    lazy
+                    :course="$course"
+                    :title="__('Sesiones')"
+            />
 
             <x-numaxlab-atomic::organisms.tier class="mt-10">
                 <x-numaxlab-atomic::organisms.tier.header>

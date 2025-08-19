@@ -18,6 +18,8 @@ readonly class SearchResult implements Wireable
         $this->icon = match ($this->type) {
             'products' => 'fa-book-open',
             'courses' => 'fa-calendar-days',
+            'audios' => 'fa-headphones',
+            'videos' => 'fa-video',
             default => 'fa-magnifying-glass',
         };
     }

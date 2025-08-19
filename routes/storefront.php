@@ -29,6 +29,7 @@ use Trafikrak\Storefront\Livewire\Editorial\HomePage as EditorialHomePage;
 use Trafikrak\Storefront\Livewire\Education\CoursePage;
 use Trafikrak\Storefront\Livewire\Education\CoursesListPage;
 use Trafikrak\Storefront\Livewire\Education\HomePage as EducationHomePage;
+use Trafikrak\Storefront\Livewire\Education\ModulePage;
 use Trafikrak\Storefront\Livewire\Education\TopicPage;
 use Trafikrak\Storefront\Livewire\Education\TopicsListPage;
 use Trafikrak\Storefront\Livewire\HomePage;
@@ -86,11 +87,23 @@ Route::prefix('/formacion')->group(function () {
 
     Route::get('/cursos/{slug}', CoursePage::class)
         ->name('trafikrak.storefront.education.courses.show');
+
+    Route::get('/cursos/{courseSlug}/sesiones/{moduleSlug}', ModulePage::class)
+        ->name('trafikrak.storefront.education.courses.modules.show');
 });
 
 Route::prefix('/mediateca')->group(function () {
     Route::get('/', MediaHomePage::class)
         ->name('trafikrak.storefront.media.homepage');
+
+    Route::get('/audios', MediaHomePage::class)
+        ->name('trafikrak.storefront.media.audios.index');
+
+    Route::get('/audios/{slug}', MediaHomePage::class)
+        ->name('trafikrak.storefront.media.audios.show');
+
+    Route::get('/videos', MediaHomePage::class)
+        ->name('trafikrak.storefront.media.videos.index');
 });
 
 Route::prefix('/actualidad')->group(function () {

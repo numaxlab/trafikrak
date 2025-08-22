@@ -17,12 +17,12 @@ return [
                             'label' => 'Producto',
                         ],
                     ],
-                    'notificaton' => [
+                    'notification' => [
                         'success' => 'Producto asociado correctamente',
                     ],
                 ],
                 'detach' => [
-                    'notificaton' => [
+                    'notification' => [
                         'success' => 'Producto desasociado correctamente',
                     ],
                 ],
@@ -52,17 +52,6 @@ return [
         ],
         'ends_at' => [
             'label' => 'Fecha de fin',
-        ],
-        'delivery_method' => [
-            'label' => 'Modalidad',
-            'options' => [
-                'in_person' => 'Presencial',
-                'online' => 'En línea',
-                'hybrid' => 'Híbrido',
-            ],
-        ],
-        'location' => [
-            'label' => 'Lugar',
         ],
         'topic_id' => [
             'label' => 'Tema',

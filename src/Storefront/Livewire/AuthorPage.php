@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Editorial;
+namespace Trafikrak\Storefront\Livewire;
 
 use Illuminate\View\View;
 use Livewire\WithPagination;
@@ -35,7 +35,7 @@ class AuthorPage extends Page
                 $query->where('id', config('lunar.geslib.product_type_id'));
             })
             ->whereHas('authors', function ($query) {
-                $query->where((new Author())->getTable().'.id', $this->author->id);
+                $query->where((new Author)->getTable().'.id', $this->author->id);
             })
             ->with([
                 'variant',
@@ -48,9 +48,9 @@ class AuthorPage extends Page
                 'defaultUrl',
                 'authors',
             ])
-            ->paginate(18);
+            ->paginate(12);
 
-        return view('trafikrak::storefront.livewire.editorial.author', compact('products'))
+        return view('trafikrak::storefront.livewire.author', compact('products'))
             ->title($this->author->name);
     }
 }

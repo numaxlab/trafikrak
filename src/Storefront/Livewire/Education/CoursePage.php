@@ -19,6 +19,9 @@ class CoursePage extends Page
             eagerLoad: [
                 'element.topic',
                 'element.media',
+                'element.products',
+                'element.products.media',
+                'element.products.defaultUrl',
             ],
         );
 

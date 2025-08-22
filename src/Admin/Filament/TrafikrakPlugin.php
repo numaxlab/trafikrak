@@ -35,7 +35,6 @@ class TrafikrakPlugin implements Plugin
             CourseResource::class,
             CourseModuleResource::class,
             TopicResource::class,
-            InstructorResource::class,
             AudioResource::class,
             DocumentResource::class,
             VideoResource::class,

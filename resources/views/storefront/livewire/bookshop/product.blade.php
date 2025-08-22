@@ -18,7 +18,7 @@
             @if ($product->authors->isNotEmpty())
                 <p class="at-heading is-3 font-normal mt-3">
                     @foreach ($product->authors as $author)
-                        <a href="{{ route('trafikrak.storefront.bookshop.search', ['q' => $author->name]) }}">{{ $author->name }}</a>{{ $loop->last ? '' : '; ' }}
+                        <a href="{{ route('trafikrak.storefront.authors.show', $author->defaultUrl->slug) }}">{{ $author->name }}</a>{{ $loop->last ? '' : '; ' }}
                     @endforeach
                 </p>
             @endif

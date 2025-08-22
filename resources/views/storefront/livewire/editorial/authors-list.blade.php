@@ -14,7 +14,7 @@
     <ul class="grid gap-6 mb-10 md:grid-cols-2 lg:grid-cols-4">
         @foreach ($authors as $author)
             <li>
-                <x-trafikrak::authors.summary :author="$author"/>
+                <x-trafikrak::authors.summary :author="$author" :editorial="true"/>
             </li>
         @endforeach
     </ul>

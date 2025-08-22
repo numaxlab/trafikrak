@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Lunar\Base\Traits\HasUrls;
 use Lunar\Base\Traits\LogsActivity;
+use Lunar\Models\Product;
+use NumaxLab\Lunar\Geslib\Models\Author;
 use Spatie\Translatable\HasTranslations;
 use Trafikrak\Models\Attachment;
 
@@ -24,6 +26,7 @@ class CourseModule extends Model
     ];
     protected $casts = [
         'starts_at' => 'datetime',
+        'delivery_method' => CourseDeliveryMethod::class,
     ];
     protected $guarded = [];
 
@@ -35,9 +38,17 @@ class CourseModule extends Model
     public function instructors(): BelongsToMany
     {
         return $this
-            ->belongsToMany(Instructor::class)
+            ->belongsToMany(Author::class, 'course_module_'.config('lunar.database.table_prefix').'geslib_author')
             ->withPivot(['position'])
             ->orderByPivot('position');
+    }
+
+    public function products(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            Product::modelClass(),
+            'course_module_'.config('lunar.database.table_prefix').'product',
+        )->withPivot(['position'])->orderByPivot('position');
     }
 
     public function attachments(): MorphMany

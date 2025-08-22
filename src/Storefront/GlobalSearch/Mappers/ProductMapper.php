@@ -10,12 +10,8 @@ class ProductMapper extends AbstractMapper
     {
         $title = $this->model->translateAttribute('name');
 
-        if ($this->model->translateAttribute('subtitle')) {
-            $title .= ' ' . $this->model->translateAttribute('subtitle');
-        }
-
         if ($this->model->authors->isNotEmpty()) {
-            $title .= ' | ' . $this->model->authors->pluck('name')->implode(', ');
+            $title .= ' | '.$this->model->authors->pluck('name')->implode(', ');
         }
 
         return new SearchResult(

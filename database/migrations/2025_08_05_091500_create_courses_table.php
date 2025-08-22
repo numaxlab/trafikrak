@@ -15,8 +15,6 @@ return new class extends Migration {
             $table->json('description')->nullable();
             $table->date('starts_at')->nullable();
             $table->date('ends_at')->nullable();
-            $table->string('delivery_method', 20);
-            $table->string('location')->nullable();
             $table->boolean('is_published')->default(false);
 
             $table->foreignId('topic_id')->constrained('education_topics');
@@ -24,11 +22,11 @@ return new class extends Migration {
             $table->timestamps();
         });
 
-        Schema::create('course_' . config('lunar.database.table_prefix') . 'product', function (Blueprint $table) {
+        Schema::create('course_'.config('lunar.database.table_prefix').'product', function (Blueprint $table) {
             $table->foreignId('course_id')->constrained('courses')->cascadeOnDelete();
             $table
                 ->foreignId('product_id')
-                ->constrained(config('lunar.database.table_prefix') . 'products')
+                ->constrained(config('lunar.database.table_prefix').'products')
                 ->cascadeOnDelete();
             $table->integer('position');
         });
@@ -36,7 +34,7 @@ return new class extends Migration {
 
     public function down(): void
     {
-        Schema::dropIfExists('course_' . config('lunar.database.table_prefix') . 'product');
+        Schema::dropIfExists('course_'.config('lunar.database.table_prefix').'product');
         Schema::dropIfExists('courses');
     }
 };

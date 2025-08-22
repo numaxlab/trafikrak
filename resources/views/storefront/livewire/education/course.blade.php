@@ -35,17 +35,10 @@
                             -
                             <time datetime="{{ $course->ends_at->format('Y-m-d') }}">{{ $course->ends_at->format('d/m/Y') }}</time>
                         </li>
-                        @if ($course->location)
-                            <li>
-                                {{ $course->location }}
-                            </li>
-                        @endif
                     </ul>
                     <div class="flex gap-2 border-b border-black py-2">
                         <i class="fa-solid fa-info text-2xl w-5 text-center mr-2" aria-hidden="true"></i>
                         <p class="at-small">
-                            {{ __('trafikrak::course.form.delivery_method.options.'.$course->delivery_method->value) }}
-                            <br>
                             Tarifas: 100€ / 50€ (socias)<br>
                             Aviso para la inscripción: Aut adis providi caborepudam, eat ex ea sim in pos dolor aut
                             doluptatem
@@ -68,16 +61,27 @@
                     :title="__('Sesiones')"
             />
 
-            <x-numaxlab-atomic::organisms.tier class="mt-10">
-                <x-numaxlab-atomic::organisms.tier.header>
-                    <h2 class="at-heading is-2">
-                        {{ __('Relacionados') }}
-                    </h2>
+            @if ($course->products->isNotEmpty())
+                <x-numaxlab-atomic::organisms.tier class="mt-10">
+                    <x-numaxlab-atomic::organisms.tier.header>
+                        <h2 class="at-heading is-2">
+                            {{ __('Relacionados') }}
+                        </h2>
 
-                </x-numaxlab-atomic::organisms.tier.header>
+                    </x-numaxlab-atomic::organisms.tier.header>
 
-                Lista de libros relacionados...
-            </x-numaxlab-atomic::organisms.tier>
+                    <ul class="grid gap-6 grid-cols-2 mb-9 md:grid-cols-4">
+                        @foreach ($course->products as $product)
+                            <li>
+                                <x-lunar-geslib::product.summary
+                                        :product="$product"
+                                        :href="route('trafikrak.storefront.bookshop.products.show', $product->defaultUrl->slug)"
+                                />
+                            </li>
+                        @endforeach
+                    </ul>
+                </x-numaxlab-atomic::organisms.tier>
+            @endif
         </div>
     </div>
 </article>

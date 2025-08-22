@@ -11,30 +11,31 @@ use Filament\Tables\Actions\DetachAction;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Lunar\Admin\Filament\Resources\ProductResource;
 use Lunar\Admin\Support\Pages\BaseManageRelatedRecords;
-use NumaxLab\Lunar\Geslib\Admin\Filament\Resources\AuthorResource;
-use NumaxLab\Lunar\Geslib\Models\Author;
+use Lunar\Models\Contracts\Product as ProductContract;
+use Lunar\Models\Product;
 use Trafikrak\Admin\Filament\Resources\Education\CourseModuleResource;
 
-class ManageCourseModuleInstructors extends BaseManageRelatedRecords
+class ManageCourseModuleProducts extends BaseManageRelatedRecords
 {
     protected static string $resource = CourseModuleResource::class;
 
-    protected static string $relationship = 'instructors';
+    protected static string $relationship = 'products';
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::customers');
+        return FilamentIcon::resolve('lunar::products');
     }
 
     public static function getNavigationLabel(): string
     {
-        return __('trafikrak::coursemodule.pages.instructors.label');
+        return __('trafikrak::course.pages.products.label');
     }
 
     public function getTitle(): string
     {
-        return __('trafikrak::coursemodule.pages.instructors.label');
+        return __('trafikrak::course.pages.products.label');
     }
 
     public function table(Table $table): Table
@@ -43,12 +44,13 @@ class ManageCourseModuleInstructors extends BaseManageRelatedRecords
             ->recordTitleAttribute('name')
             ->reorderable('position')
             ->columns([
-                AuthorResource::getNameTableColumn()->searchable()
+                ProductResource::getNameTableColumn()->searchable()
                     ->url(function (Model $record) {
-                        return AuthorResource::getUrl('edit', [
+                        return ProductResource::getUrl('edit', [
                             'record' => $record->getKey(),
                         ]);
                     }),
+                ProductResource::getSkuTableColumn(),
             ])->actions([
                 DetachAction::make()
                     ->action(function (Model $record, Table $table) {
@@ -58,7 +60,7 @@ class ManageCourseModuleInstructors extends BaseManageRelatedRecords
 
                         Notification::make()
                             ->success()
-                            ->body(__('trafikrak::coursemodule.pages.instructors.actions.detach.notification.success'))
+                            ->body(__('trafikrak::course.pages.products.actions.detach.notification.success'))
                             ->send();
                     }),
             ])->headerActions([
@@ -69,18 +71,18 @@ class ManageCourseModuleInstructors extends BaseManageRelatedRecords
                     ->form([
                         Forms\Components\Select::make('recordId')
                             ->label(
-                                __('trafikrak::coursemodule.pages.instructors.actions.attach.form.record_id.label'),
+                                __('trafikrak::course.pages.products.actions.attach.form.record_id.label'),
                             )
                             ->required()
                             ->searchable()
                             ->getSearchResultsUsing(
                                 static function (Forms\Components\Select $component, string $search): array {
-                                    return Author::search($search)
+                                    return Product::search($search)
                                         ->get()
                                         ->mapWithKeys(
-                                            fn(Author $record): array
+                                            fn(ProductContract $record): array
                                                 => [
-                                                $record->getKey() => $record->name,
+                                                $record->getKey() => $record->translateAttribute('name'),
                                             ],
                                         )
                                         ->all();
@@ -90,15 +92,15 @@ class ManageCourseModuleInstructors extends BaseManageRelatedRecords
                     ->action(function (array $arguments, array $data, Form $form, Table $table) {
                         $relationship = Relation::noConstraints(fn() => $table->getRelationship());
 
-                        $instructor = Author::find($data['recordId']);
+                        $product = Product::find($data['recordId']);
 
-                        $relationship->attach($instructor, [
+                        $relationship->attach($product, [
                             'position' => $relationship->count() + 1,
                         ]);
 
                         Notification::make()
                             ->success()
-                            ->body(__('trafikrak::coursemodule.pages.instructors.actions.attach.notification.success'))
+                            ->body(__('trafikrak::course.pages.products.actions.attach.notification.success'))
                             ->send();
                     }),
             ]);

@@ -14,16 +14,16 @@ return [
                     'label' => 'Asociar',
                     'form' => [
                         'record_id' => [
-                            'label' => 'Instructora',
+                            'label' => 'Autora',
                         ],
                     ],
-                    'notificaton' => [
-                        'success' => 'Instructora asociada correctamente',
+                    'notification' => [
+                        'success' => 'Autora asociada correctamente',
                     ],
                 ],
                 'detach' => [
-                    'notificaton' => [
-                        'success' => 'Instructora desasociada correctamente',
+                    'notification' => [
+                        'success' => 'Autora desasociada correctamente',
                     ],
                 ],
             ],
@@ -58,6 +58,17 @@ return [
         ],
         'starts_at' => [
             'label' => 'Fecha y hora',
+        ],
+        'delivery_method' => [
+            'label' => 'Modalidad',
+            'options' => [
+                'in_person' => 'Presencial',
+                'online' => 'En línea',
+                'hybrid' => 'Híbrido',
+            ],
+        ],
+        'location' => [
+            'label' => 'Lugar',
         ],
         'is_published' => [
             'label' => 'Pública',

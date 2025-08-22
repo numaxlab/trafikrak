@@ -9,9 +9,11 @@ use Meilisearch\Contracts\MultiSearchFederation;
 use Meilisearch\Contracts\SearchQuery;
 use Trafikrak\Models\Education\Course;
 use Trafikrak\Models\Media\Audio;
+use Trafikrak\Models\Media\Video;
 use Trafikrak\Storefront\GlobalSearch\Mappers\AudioMapper;
 use Trafikrak\Storefront\GlobalSearch\Mappers\CourseMapper;
 use Trafikrak\Storefront\GlobalSearch\Mappers\ProductMapper;
+use Trafikrak\Storefront\GlobalSearch\Mappers\VideoMapper;
 
 class GlobalSearch
 {
@@ -21,6 +23,7 @@ class GlobalSearch
         Product::class => ProductMapper::class,
         Course::class => CourseMapper::class,
         Audio::class => AudioMapper::class,
+        Video::class => VideoMapper::class,
     ];
     private array $indexes = [];
 
@@ -56,6 +59,9 @@ class GlobalSearch
                     ->setQuery($query),
                 (new SearchQuery())
                     ->setIndexUid((new Audio)->searchableAs())
+                    ->setQuery($query),
+                (new SearchQuery())
+                    ->setIndexUid((new Video)->searchableAs())
                     ->setQuery($query),
             ];
         }

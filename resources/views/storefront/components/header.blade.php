@@ -181,17 +181,17 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a>
+                                    <a href="{{ route('trafikrak.storefront.media.videos.index') }}">
                                         {{ __('Vídeos') }}
                                     </a>
                                 </li>
                                 <li>
-                                    <a>
+                                    <a href="{{ route('trafikrak.storefront.media.audios.index') }}">
                                         {{ __('Audios') }}
                                     </a>
                                 </li>
                                 <li>
-                                    <a>
+                                    <a href="{{ route('trafikrak.storefront.media.documents.index') }}">
                                         {{ __('Documentos') }}
                                     </a>
                                 </li>

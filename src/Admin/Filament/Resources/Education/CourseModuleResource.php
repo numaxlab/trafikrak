@@ -11,6 +11,7 @@ use Filament\Tables;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Lunar\Admin\Support\Resources\BaseResource;
+use Trafikrak\Models\Education\CourseDeliveryMethod;
 use Trafikrak\Models\Education\CourseModule;
 
 class CourseModuleResource extends BaseResource
@@ -54,6 +55,7 @@ class CourseModuleResource extends BaseResource
             CourseModuleResource\Pages\EditCourseModule::class,
             CourseModuleResource\Pages\ManageCourseModuleUrls::class,
             CourseModuleResource\Pages\ManageCourseModuleInstructors::class,
+            CourseModuleResource\Pages\ManageCourseModuleProducts::class,
             CourseModuleResource\Pages\ManageCourseModuleAttachments::class,
         ];
     }
@@ -112,6 +114,23 @@ class CourseModuleResource extends BaseResource
                         Forms\Components\DateTimePicker::make('starts_at')
                             ->label(__('trafikrak::coursemodule.form.starts_at.label'))
                             ->required(),
+                        Forms\Components\Select::make('delivery_method')
+                            ->label(__('trafikrak::coursemodule.form.delivery_method.label'))
+                            ->required()
+                            ->options([
+                                CourseDeliveryMethod::IN_PERSON->value => __(
+                                    'trafikrak::coursemodule.form.delivery_method.options.in_person',
+                                ),
+                                CourseDeliveryMethod::ONLINE->value => __(
+                                    'trafikrak::coursemodule.form.delivery_method.options.online',
+                                ),
+                                CourseDeliveryMethod::HYBRID->value => __(
+                                    'trafikrak::coursemodule.form.delivery_method.options.hybrid',
+                                ),
+                            ]),
+                        Forms\Components\TextInput::make('location')
+                            ->label(__('trafikrak::coursemodule.form.location.label'))
+                            ->maxLength(255),
                         Forms\Components\Toggle::make('is_published')
                             ->label(__('trafikrak::coursemodule.form.is_published.label')),
                     ]),
@@ -127,6 +146,7 @@ class CourseModuleResource extends BaseResource
             'edit' => CourseModuleResource\Pages\EditCourseModule::route('/{record}/edit'),
             'urls' => CourseModuleResource\Pages\ManageCourseModuleUrls::route('/{record}/urls'),
             'instructors' => CourseModuleResource\Pages\ManageCourseModuleInstructors::route('/{record}/instructors'),
+            'products' => CourseModuleResource\Pages\ManageCourseModuleProducts::route('/{record}/products'),
             'attachments' => CourseModuleResource\Pages\ManageCourseModuleAttachments::route('/{record}/attachments'),
         ];
     }

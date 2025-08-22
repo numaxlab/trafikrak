@@ -33,10 +33,19 @@ use Trafikrak\Storefront\Livewire\Education\ModulePage;
 use Trafikrak\Storefront\Livewire\Education\TopicPage;
 use Trafikrak\Storefront\Livewire\Education\TopicsListPage;
 use Trafikrak\Storefront\Livewire\HomePage;
+use Trafikrak\Storefront\Livewire\Media\AudioPage;
+use Trafikrak\Storefront\Livewire\Media\AudiosListPage;
+use Trafikrak\Storefront\Livewire\Media\DocumentPage;
+use Trafikrak\Storefront\Livewire\Media\DocumentsListPage;
 use Trafikrak\Storefront\Livewire\Media\HomePage as MediaHomePage;
+use Trafikrak\Storefront\Livewire\Media\VideoPage;
+use Trafikrak\Storefront\Livewire\Media\VideosListPage;
 
 Route::get('/', HomePage::class)
     ->name('trafikrak.storefront.homepage');
+
+Route::get('/persona/{slug}', \Trafikrak\Storefront\Livewire\AuthorPage::class)
+    ->name('trafikrak.storefront.authors.show');
 
 Route::prefix('/libreria')->group(function () {
     Route::get('/', BookshopHomePage::class)
@@ -96,14 +105,23 @@ Route::prefix('/mediateca')->group(function () {
     Route::get('/', MediaHomePage::class)
         ->name('trafikrak.storefront.media.homepage');
 
-    Route::get('/audios', MediaHomePage::class)
+    Route::get('/audios', AudiosListPage::class)
         ->name('trafikrak.storefront.media.audios.index');
 
-    Route::get('/audios/{slug}', MediaHomePage::class)
+    Route::get('/audios/{slug}', AudioPage::class)
         ->name('trafikrak.storefront.media.audios.show');
 
-    Route::get('/videos', MediaHomePage::class)
+    Route::get('/videos', VideosListPage::class)
         ->name('trafikrak.storefront.media.videos.index');
+
+    Route::get('/videos/{slug}', VideoPage::class)
+        ->name('trafikrak.storefront.media.videos.show');
+
+    Route::get('/documentos', DocumentsListPage::class)
+        ->name('trafikrak.storefront.media.documents.index');
+
+    Route::get('/documentos/{slug}', DocumentPage::class)
+        ->name('trafikrak.storefront.media.documents.show');
 });
 
 Route::prefix('/actualidad')->group(function () {

@@ -32,7 +32,7 @@
             @endif
         </header>
 
-        <x-numaxlab-atomic::organisms.tier class="mt-9">
+        <x-numaxlab-atomic::organisms.tier class="mt-10">
             <x-numaxlab-atomic::organisms.tier.header>
                 <h2 class="at-heading is-2">
                     {{ __('Libros') }}

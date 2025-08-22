@@ -1,7 +1,9 @@
+@props(['author', 'editorial' => false])
+
 <article class="ml-summary">
     <a
             @if ($author->defaultUrl->slug)
-                href="{{ route('trafikrak.storefront.editorial.authors.show', $author->defaultUrl->slug) }}"
+                href="{{ route($editorial ? 'trafikrak.storefront.editorial.authors.show' : 'trafikrak.storefront.authors.show', $author->defaultUrl->slug) }}"
             @endif
             class="flex gap-3"
     >

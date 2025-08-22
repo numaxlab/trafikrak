@@ -8,6 +8,7 @@ use Livewire\Component;
 use Lunar\Models\Product;
 use Trafikrak\Models\Education\Course;
 use Trafikrak\Models\Media\Audio;
+use Trafikrak\Models\Media\Video;
 use Trafikrak\Storefront\GlobalSearch\GlobalSearch;
 
 class Search extends Component
@@ -29,6 +30,7 @@ class Search extends Component
             (new Product)->searchableAs() => __('Libros'),
             (new Course)->searchableAs() => __('Cursos'),
             (new Audio)->searchableAs() => __('Audios'),
+            (new Video)->searchableAs() => __('Vídeos'),
         ];
 
         $this->results = collect();
@@ -68,8 +70,9 @@ class Search extends Component
     {
         match ($this->contentTypeFilter) {
             'products' => $redirectRoute = 'trafikrak.storefront.bookshop.search',
-            'audio', 'video' => $redirectRoute = 'trafikrak.storefront.media.search',
-            'courses' => $redirectRoute = 'trafikrak.storefront.education.search',
+            'audio' => $redirectRoute = 'trafikrak.storefront.media.audios.index',
+            'video' => $redirectRoute = 'trafikrak.storefront.media.videos.index',
+            'courses' => $redirectRoute = 'trafikrak.storefront.education.courses.index',
             default => $redirectRoute = null,
         };
 

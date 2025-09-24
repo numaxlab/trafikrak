@@ -3,6 +3,7 @@
 namespace Trafikrak\Storefront\Livewire\Bookshop;
 
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Lunar\Facades\StorefrontSession;
 use Lunar\Models\Price;
@@ -15,6 +16,7 @@ class ProductPage extends Page
     public Product $product;
     public ?Price $pricing;
     public Collection $itineraries;
+    public bool $isUserFavourite;
 
     public function mount(string $slug): void
     {
@@ -50,13 +52,38 @@ class ProductPage extends Page
             $query->where('handle', Handle::COLLECTION_GROUP_ITINERARIES);
         })->whereHas('products', function ($query) {
             $query->where(
-                $this->product->getTable() . '.id',
+                $this->product->getTable().'.id',
                 $this->product->id,
             );
         })->channel(StorefrontSession::getChannel())
             ->customerGroup(StorefrontSession::getCustomerGroups())
             ->orderBy('_lft', 'ASC')
             ->get();
+
+        if (!Auth::check()) {
+            $this->isUserFavourite = false;
+        } else {
+            $user = Auth::user();
+
+            $this->isUserFavourite = $user->favourites->contains($this->product->id);
+        }
+    }
+
+    public function addToFavorites()
+    {
+        if (!Auth::check()) {
+            return $this->redirect(route('login'), true);
+        }
+
+        $user = Auth::user();
+
+        if ($user->favourites->contains($this->product->id)) {
+            $user->favourites()->detach($this->product->id);
+            $this->isUserFavourite = false;
+        } else {
+            $user->favourites()->attach($this->product->id);
+            $this->isUserFavourite = true;
+        }
     }
 
     public function render(): View

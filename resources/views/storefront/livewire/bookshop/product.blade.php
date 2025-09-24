@@ -9,7 +9,26 @@
                 </li>
             </x-numaxlab-atomic::molecules.breadcrumb>
 
-            <h1 class="at-heading is-1">{{ $product->recordTitle }}</h1>
+            <h1 class="at-heading is-1">
+                {{ $product->recordTitle }}
+
+                <button
+                        class="text-primary"
+                        aria-label="{{ __('Añadir a favoritos') }}"
+                        wire:click="addToFavorites"
+                        wire:loading.attr="disabled"
+                >
+                    @if ($isUserFavourite)
+                        <i class="fa-solid fa-heart" aria-hidden="true" wire:loading.remove></i>
+                    @else
+                        <i class="fa-regular fa-heart" aria-hidden="true" wire:loading.remove></i>
+                    @endif
+
+                    <div wire:loading>
+                        @include('trafikrak::storefront.partials.spinner')
+                    </div>
+                </button>
+            </h1>
 
             @if ($product->translateAttribute('subtitle'))
                 <h2 class="at-heading is-3">{{ $product->translateAttribute('subtitle') }}</h2>

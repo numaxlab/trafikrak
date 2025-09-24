@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use NumaxLab\Lunar\Geslib\Storefront\Http\Controllers\Auth\VerifyEmailController;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Actions\Logout;
 use Trafikrak\Storefront\Livewire\Account\DashboardPage;
+use Trafikrak\Storefront\Livewire\Account\FavouriteProductsPage;
 use Trafikrak\Storefront\Livewire\Account\HandleAddressPage;
 use Trafikrak\Storefront\Livewire\Account\PasswordPage;
 use Trafikrak\Storefront\Livewire\Account\ProfilePage;
@@ -146,7 +147,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard', DashboardPage::class)->name('dashboard');
+    Route::get('/mi-cuenta', DashboardPage::class)->name('dashboard');
 
     Route::redirect('/preferencias', '/preferencias/perfil');
 
@@ -154,6 +155,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/preferencias/contrasenha', PasswordPage::class)->name('settings.password');
     Route::get('/preferencias/direcciones', HandleAddressPage::class)->name('settings.add-address');
     Route::get('/preferencias/direcciones/{id}/editar', HandleAddressPage::class)->name('settings.edit-address');
+
+    Route::get('/mis-favoritos', FavouriteProductsPage::class)->name('favourite-products.index');
 });
 
 Route::post('logout', Logout::class)->name('logout');

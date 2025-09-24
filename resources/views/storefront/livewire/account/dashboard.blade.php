@@ -61,7 +61,7 @@
 
         <livewire:trafikrak.storefront.livewire.components.account.latest-order lazy/>
 
-        <livewire:trafikrak.storefront.livewire.components.account.starred-products lazy/>
+        <livewire:trafikrak.storefront.livewire.components.account.favourite-products lazy/>
 
         <livewire:trafikrak.storefront.livewire.components.account.latest-course lazy/>
     </div>

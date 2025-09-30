@@ -69,7 +69,7 @@ class ProductPage extends Page
         }
     }
 
-    public function addToFavorites()
+    public function addToFavorites(): null
     {
         if (!Auth::check()) {
             return $this->redirect(route('login'), true);
@@ -84,6 +84,8 @@ class ProductPage extends Page
             $user->favourites()->attach($this->product->id);
             $this->isUserFavourite = true;
         }
+
+        return null;
     }
 
     public function render(): View

@@ -5,11 +5,12 @@ namespace Trafikrak\Storefront\Livewire\Bookshop;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Url;
 use Lunar\Facades\StorefrontSession;
 use Lunar\Models\Collection as LunarCollection;
 use Lunar\Models\Product;
-use NumaxLab\Lunar\Geslib\Handle;
+use Meilisearch\Endpoints\Indexes;
 use NumaxLab\Lunar\Geslib\InterCommands\LanguageCommand;
 use NumaxLab\Lunar\Geslib\InterCommands\StatusCommand;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
@@ -19,13 +20,15 @@ class SearchPage extends Page
     #[Url]
     public ?string $q;
 
-    public ?string $taxonQuery;
+    public string $taxonId = '';
 
-    public $taxonId;
+    public string $languageId = '';
+
+    public string $priceRange = '';
+
+    public string $availabilityId = '';
 
     public Collection $results;
-
-    public Collection $taxonomies;
 
     public Collection $languages;
 
@@ -49,7 +52,6 @@ class SearchPage extends Page
             return;
         }
 
-        $this->taxonomies = collect();
         $this->languages = LunarCollection::whereHas('group', function ($query) {
             $query->where('handle', LanguageCommand::HANDLE);
         })->channel(StorefrontSession::getChannel())
@@ -66,7 +68,17 @@ class SearchPage extends Page
 
     public function search(): void
     {
-        $this->results = Product::search(trim($this->q))
+        $filters = $this->buildFilters();
+
+        $this->results = Product::search(
+            trim($this->q),
+            function (Indexes $search, string $query, array $options) use ($filters) {
+                if (!empty($filters)) {
+                    $options['filter'] = $filters;
+                }
+
+                return $search->search($query, $options);
+            })
             ->query(fn(Builder $query) => $query->with([
                 'variant',
                 'variant.taxClass',
@@ -79,25 +91,47 @@ class SearchPage extends Page
             ->get();
     }
 
+    private function buildFilters(): string
+    {
+        $filters = [];
+
+        if ($this->taxonId) {
+            $filters[] = "taxonomies.id IN [$this->taxonId]";
+        }
+
+        if ($this->languageId) {
+            $filters[] = "languages.id IN [$this->languageId]";
+        }
+
+        if ($this->priceRange) {
+            [$min, $max] = explode('-', $this->priceRange);
+            $filters[] = "price >= $min AND price <= $max";
+        }
+
+        if ($this->availabilityId) {
+            $filters[] = "geslib_status.id = $this->availabilityId";
+        }
+
+        return implode(' AND ', $filters);
+    }
+
+    #[On('taxonomy-selected')]
+    public function updateSearch($params): void
+    {
+        $this->taxonId = $params['id'];
+
+        $this->search();
+    }
+
+    public function updated($property): void
+    {
+        if (in_array($property, ['languageId', 'priceRange', 'availabilityId'])) {
+            $this->search();
+        }
+    }
+
     public function render(): View
     {
         return view('trafikrak::storefront.livewire.bookshop.search');
-    }
-
-    public function updatedTaxonQuery(): void
-    {
-        if (empty($this->taxonQuery)) {
-            $this->taxonomies = collect();
-            return;
-        }
-
-        $this->taxonomies = LunarCollection::search($this->taxonQuery)
-            ->query(function (Builder $query) {
-                $query
-                    ->whereHas('group', function ($query) {
-                        $query->where('handle', Handle::COLLECTION_GROUP_TAXONOMIES);
-                    })->channel(StorefrontSession::getChannel())
-                    ->customerGroup(StorefrontSession::getCustomerGroups());
-            })->get();
     }
 }

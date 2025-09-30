@@ -17,7 +17,7 @@ class Search extends Component
 
     public array $contentTypes = [];
 
-    public ?string $contentTypeFilter = 'all';
+    public ?string $contentTypeFilter = '';
 
     public Collection $results;
 
@@ -26,12 +26,13 @@ class Search extends Component
     public function mount(): void
     {
         $this->contentTypes = [
-            'all' => __('Todos los resultados'),
             (new Product)->searchableAs() => __('Libros'),
             (new Course)->searchableAs() => __('Cursos'),
             (new Audio)->searchableAs() => __('Audios'),
             (new Video)->searchableAs() => __('Vídeos'),
         ];
+
+        $this->contentTypeFilter = (new Product)->searchableAs();
 
         $this->results = collect();
     }
@@ -56,11 +57,7 @@ class Search extends Component
             return;
         }
 
-        if ($this->contentTypeFilter !== 'all') {
-            $globalSearch->setContentType($this->contentTypeFilter);
-        } else {
-            $globalSearch->setContentType(null);
-        }
+        $globalSearch->setContentType($this->contentTypeFilter);
 
         $this->results = $globalSearch->getResults($search);
         $this->estimatedTotalHits = $globalSearch->estimatedTotalHits;

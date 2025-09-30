@@ -31,30 +31,7 @@
 
                 <fieldset class="flex flex-col gap-3 md:flex-row mt-3">
                     <div class="md:w-4/12 relative">
-                        <x-numaxlab-atomic::atoms.forms.input
-                                type="search"
-                                wire:model.live="taxonQuery"
-                                name="taxonQuery"
-                                placeholder="{{ __('Secciones o materias') }}"
-                                aria-label="{{ __('Buscar por sección o materia') }}"
-                                autocomplete="off"
-                        />
-
-                        <x-numaxlab-atomic::atoms.forms.input
-                                type="hidden"
-                                wire:model.live="taxonId"
-                                name="taxonId"
-                        />
-
-                        @if ($taxonomies->isNotEmpty())
-                            <ul class="divide-y py-2 px-4 bg-white absolute w-full border border-primary z-10">
-                                @foreach ($taxonomies as $taxonomy)
-                                    <li>
-                                        {{ $taxonomy->translateAttribute('name') }}
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @endif
+                        <livewire:trafikrak.storefront.livewire.components.bookshop.taxonomy-select/>
                     </div>
 
                     <div class="md:w-3/12">

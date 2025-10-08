@@ -33,59 +33,61 @@
         'step' => $steps['billing_address'],
     ])
 
-    @include('lunar-geslib::storefront.partials.checkout.payment', [
-        'step' => $steps['payment'],
-    ])
+    <form method="post" action="{{ route('trafikrak.storefront.checkout.process-payment') }}">
+        @csrf
 
-    <div class="flow-root mt-7">
-        <dl class="-my-4 text-sm divide-y divide-gray-100">
-            <div class="flex flex-wrap py-4">
-                <dt class="w-1/2 font-medium">
-                    Subtotal
-                </dt>
+        @include('trafikrak::storefront.partials.checkout.payment', [
+            'step' => $steps['payment'],
+        ])
 
-                <dd class="w-1/2 text-right">
-                    {{ $cart->subTotal->formatted() }}
-                </dd>
-            </div>
-
-            @if ($this->shippingOption)
+        <div class="flow-root my-7">
+            <dl class="-my-4 text-sm divide-y divide-gray-100">
                 <div class="flex flex-wrap py-4">
                     <dt class="w-1/2 font-medium">
-                        Gastos de envío
+                        Subtotal
                     </dt>
 
                     <dd class="w-1/2 text-right">
-                        {{ $this->shippingOption->getPrice()->formatted() }}
+                        {{ $cart->subTotal->formatted() }}
                     </dd>
                 </div>
-            @endif
 
-            @foreach ($cart->taxBreakdown->amounts as $tax)
-                <div class="flex flex-wrap py-4" wire:key="{{ 'cart-tax-'.$tax->identifier }}">
+                @if ($this->shippingOption)
+                    <div class="flex flex-wrap py-4">
+                        <dt class="w-1/2 font-medium">
+                            Gastos de envío
+                        </dt>
+
+                        <dd class="w-1/2 text-right">
+                            {{ $this->shippingOption->getPrice()->formatted() }}
+                        </dd>
+                    </div>
+                @endif
+
+                @foreach ($cart->taxBreakdown->amounts as $tax)
+                    <div class="flex flex-wrap py-4" wire:key="{{ 'cart-tax-'.$tax->identifier }}">
+                        <dt class="w-1/2 font-medium">
+                            {{ $tax->description }}
+                        </dt>
+
+                        <dd class="w-1/2 text-right">
+                            {{ $tax->price->formatted() }}
+                        </dd>
+                    </div>
+                @endforeach
+
+                <div class="flex flex-wrap py-4">
                     <dt class="w-1/2 font-medium">
-                        {{ $tax->description }}
+                        Total
                     </dt>
 
                     <dd class="w-1/2 text-right">
-                        {{ $tax->price->formatted() }}
+                        {{ $cart->total->formatted() }}
                     </dd>
                 </div>
-            @endforeach
+            </dl>
+        </div>
 
-            <div class="flex flex-wrap py-4">
-                <dt class="w-1/2 font-medium">
-                    Total
-                </dt>
-
-                <dd class="w-1/2 text-right">
-                    {{ $cart->total->formatted() }}
-                </dd>
-            </div>
-        </dl>
-    </div>
-
-    <form wire:submit="checkout" class="mt-7">
         <x-numaxlab-atomic::atoms.button type="submit" class="is-primary w-full">
             {{ __('Pagar') }}
         </x-numaxlab-atomic::atoms.button>

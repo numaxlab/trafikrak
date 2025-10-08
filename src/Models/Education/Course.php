@@ -51,6 +51,11 @@ class Course extends Model implements SpatieHasMedia
         return $this->belongsTo(Topic::class);
     }
 
+    public function prices(): BelongsToMany
+    {
+        return $this->belongsToMany(Price::class);
+    }
+
     public function products(): BelongsToMany
     {
         return $this->belongsToMany(

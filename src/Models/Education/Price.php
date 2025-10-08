@@ -1,12 +1,13 @@
 <?php
 
-namespace Trafikrak\Models\Membership;
+namespace Trafikrak\Models\Education;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Lunar\Base\Traits\LogsActivity;
 use Spatie\Translatable\HasTranslations;
 
-class MembershipTier extends Model
+class Price extends Model
 {
     use HasTranslations;
     use LogsActivity;
@@ -17,8 +18,8 @@ class MembershipTier extends Model
     ];
     protected $guarded = [];
 
-    public function plans()
+    public function courses(): BelongsToMany
     {
-        return $this->hasMany(MembershipPlan::class);
+        return $this->belongsToMany(Course::class);
     }
 }

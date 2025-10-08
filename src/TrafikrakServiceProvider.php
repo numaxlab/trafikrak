@@ -29,6 +29,11 @@ class TrafikrakServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'trafikrak');
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'trafikrak');
 
+        $this->publishes([
+            __DIR__.'/../config/trafikrak.php' => config_path('lunar/trafikrak.php'),
+            __DIR__.'/../resources/views' => resource_path('views/vendor/lunar/trafikrak'),
+        ], ['trafikrak']);
+
         Route::middleware('web')
             ->group(fn() => $this->loadRoutesFrom(__DIR__.'/../routes/storefront.php'));
 
@@ -78,6 +83,8 @@ class TrafikrakServiceProvider extends ServiceProvider
 
     public function register(): void
     {
+        $this->mergeConfigFrom(__DIR__.'/../config/trafikrak.php', 'trafikrak');
+
         ModelManifest::replace(
             \Lunar\Models\Contracts\Customer::class,
             \Trafikrak\Models\Customer::class,

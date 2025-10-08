@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Collection;
 use Lunar\Base\Purchasable;
 use Lunar\Base\Traits\HasPrices;
+use Lunar\Base\Traits\LogsActivity;
 use Lunar\Models\TaxClass;
 use Spatie\LaravelBlink\BlinkFacade as Blink;
 use Spatie\Translatable\HasTranslations;
@@ -15,6 +16,7 @@ class MembershipPlan extends Model implements Purchasable
 {
     use HasTranslations;
     use HasPrices;
+    use LogsActivity;
 
     public const BILLING_INTERVAL_MONTHLY = 'monthly';
     public const BILLING_INTERVAL_BIMONTHLY = 'bimonthly';

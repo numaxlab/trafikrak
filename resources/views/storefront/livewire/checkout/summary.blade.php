@@ -44,20 +44,22 @@
         @endforeach
     </ul>
 
-    <div class="mt-10">
-        <ul class="divide-y divide-black border-y border-black">
-            <li class="at-small py-2">
-                <i class="fa-solid fa-shopping-bag" aria-hidden="true"></i>
-                {{ __('Total pedido') }}: {{ $this->cart->subTotal->formatted() }}
-            </li>
-        </ul>
-    </div>
+    @if ($this->cart->subTotal)
+        <div class="mt-10">
+            <ul class="divide-y divide-black border-y border-black">
+                <li class="at-small py-2">
+                    <i class="fa-solid fa-shopping-bag" aria-hidden="true"></i>
+                    {{ __('Total pedido') }}: {{ $this->cart->subTotal->formatted() }}
+                </li>
+            </ul>
+        </div>
 
-    <a
-            class="at-button is-primary mt-10"
-            href="{{ route('trafikrak.storefront.checkout.shipping-and-payment') }}"
-            wire:navigate
-    >
-        {{ __('Finalizar pedido') }}
-    </a>
+        <a
+                class="at-button is-primary mt-10"
+                href="{{ route('trafikrak.storefront.checkout.shipping-and-payment') }}"
+                wire:navigate
+        >
+            {{ __('Finalizar pedido') }}
+        </a>
+    @endif
 </article>

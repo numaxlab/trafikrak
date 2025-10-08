@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use NumaxLab\Lunar\Geslib\Storefront\Http\Controllers\Auth\VerifyEmailController;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Actions\Logout;
+use Trafikrak\Storefront\Http\Controllers\CheckoutController;
 use Trafikrak\Storefront\Livewire\Account\DashboardPage;
 use Trafikrak\Storefront\Livewire\Account\FavouriteProductsPage;
 use Trafikrak\Storefront\Livewire\Account\HandleAddressPage;
@@ -178,6 +179,9 @@ Route::prefix('/checkout')->group(function () {
     Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/envio-y-pago', ShippingAndPaymentPage::class)
             ->name('trafikrak.storefront.checkout.shipping-and-payment');
+
+        Route::post('/pagar', CheckoutController::class)
+            ->name('trafikrak.storefront.checkout.process-payment');
 
         Route::get('/finalizado/{fingerprint}', SuccessPage::class)
             ->name('trafikrak.storefront.checkout.success');

@@ -4,10 +4,13 @@ namespace Trafikrak\Models\Membership;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Lunar\Base\Traits\LogsActivity;
 use Lunar\Models\Customer;
 
 class Subscription extends Model
 {
+    use LogsActivity;
+
     public const STATUS_ACTIVE = 'active';
     public const STATUS_CANCELLED = 'cancelled';
 

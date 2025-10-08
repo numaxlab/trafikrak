@@ -14,6 +14,7 @@ use Lunar\Models\Contracts\Cart;
 use Lunar\Models\Country;
 use Lunar\Models\Order;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
+use NumaxLab\Lunar\Redsys\RedsysPayment;
 use Trafikrak\Storefront\Livewire\Checkout\Forms\AddressForm;
 
 class ShippingAndPaymentPage extends Page
@@ -37,16 +38,11 @@ class ShippingAndPaymentPage extends Page
         'payment' => 4,
     ];
 
-    public string $paymentType = 'cash-in-hand';
-    public $payment_intent = null;
-    public $payment_intent_client_secret = null;
+    public array $paymentTypes = [];
+
     protected $listeners = [
         'cartUpdated' => 'refreshCart',
         'selectedShippingOption' => 'refreshCart',
-    ];
-    protected $queryString = [
-        'payment_intent',
-        'payment_intent_client_secret',
     ];
 
     public function getCountriesProperty(): Collection
@@ -64,18 +60,7 @@ class ShippingAndPaymentPage extends Page
             return;
         }
 
-        if ($this->payment_intent) {
-            $payment = Payments::driver($this->paymentType)->cart($this->cart)->withData([
-                'payment_intent_client_secret' => $this->payment_intent_client_secret,
-                'payment_intent' => $this->payment_intent,
-            ])->authorize();
-
-            if ($payment->success) {
-                redirect()->route('checkout-success.view');
-
-                return;
-            }
-        }
+        $this->paymentTypes = config('trafikrak.payment_types.store');
 
         $this->shipping->init();
         $this->billing->init();
@@ -225,26 +210,5 @@ class ShippingAndPaymentPage extends Page
     public function refreshCart(): void
     {
         $this->cart = CartSession::current();
-    }
-
-    public function checkout()
-    {
-        /** @var PaymentTypeInterface $paymentDriver */
-        $paymentDriver = Payments::driver($this->paymentType)
-            ->cart($this->cart)
-            ->withData([
-                'payment_intent_client_secret' => $this->payment_intent_client_secret,
-                'payment_intent' => $this->payment_intent,
-            ]);
-
-        $payment = $paymentDriver->authorize();
-
-        if ($payment->success) {
-            $order = Order::findOrFail($payment->orderId);
-
-            return redirect()->route('trafikrak.storefront.checkout.success', $order->fingerprint);
-        }
-
-        return redirect()->route('trafikrak.storefront.checkout.shipping-and-payment');
     }
 }

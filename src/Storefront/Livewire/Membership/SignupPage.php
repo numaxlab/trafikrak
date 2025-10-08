@@ -24,12 +24,16 @@ class SignupPage extends Page
 
     public AddressForm $billing;
 
+    public array $paymentTypes = [];
+
     public function mount(): void
     {
         $this->tiers = MembershipTier::with('plans')->get();
         $this->plans = collect();
 
         $this->billing->init();
+
+        $this->paymentTypes = config('trafikrak.payment_types.membership');
     }
 
     public function updated($field, $value): void
@@ -63,7 +67,7 @@ class SignupPage extends Page
             'currency_id' => StorefrontSession::getCurrency()->id,
             'channel_id' => StorefrontSession::getChannel()->id,
             'meta' => [
-                'subscription_purchase' => true,
+                'Tipo de pedido' => 'Subscripción socias',
             ],
         ]);
 
@@ -75,12 +79,9 @@ class SignupPage extends Page
 
         $cart->calculate();
 
-        $paymentDriver = Payments::driver('cash-in-hand')
+        $paymentDriver = Payments::driver('cash-on-delivery')
             ->cart($cart)
-            ->withData([
-                'payment_intent_client_secret' => null,
-                'payment_intent' => null,
-            ]);
+            ->withData([]);
 
         $payment = $paymentDriver->authorize();
 

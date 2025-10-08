@@ -213,6 +213,16 @@
 
             <fieldset class="mb-8 pt-2 border-t">
                 <legend class="at-heading is-2 float-left w-full">Método de pago</legend>
+
+                @foreach ($paymentTypes as $type)
+                    <x-numaxlab-atomic::atoms.forms.radio
+                            name="payment_type"
+                            id="paymentType-{{ $type }}"
+                            key="paymentType{{ $type }}"
+                            value="{{ $type }}">
+                        {{ __("trafikrak::global.payment_types.{$type}") }}
+                    </x-numaxlab-atomic::atoms.forms.radio>
+                @endforeach
             </fieldset>
 
             <button class="at-button is-primary w-full" type="submit">

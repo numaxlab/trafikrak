@@ -10,7 +10,7 @@ use Trafikrak\Models\Content\Tier;
 
 class HomePage extends Page
 {
-    public ?Collection $tiers;
+    public Collection $tiers;
 
     public function mount(): void
     {

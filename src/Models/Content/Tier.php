@@ -33,4 +33,17 @@ class Tier extends Model
 
         return $this->belongsToMany(Collection::modelClass(), "{$prefix}collection_tier");
     }
+
+    public function getLivewireComponentAttribute()
+    {
+        return match ($this->type) {
+            TierType::RELATED_CONTENT_BANNER => 'banner',
+            TierType::RELATED_CONTENT_COLLECTION => 'collection',
+            TierType::BOOKSHOP_LATEST => 'bookshop-latest',
+            TierType::EDITORIAL_LATEST => 'editorial-latest',
+            TierType::EDUCATION_UPCOMING => 'education-upcoming',
+            TierType::EVENTS_UPCOMING => 'events-upcoming',
+            default => null,
+        };
+    }
 }

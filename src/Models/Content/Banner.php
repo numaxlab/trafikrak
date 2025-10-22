@@ -20,4 +20,8 @@ class Banner extends Model
         'button_text',
     ];
     protected $guarded = [];
+
+    protected $casts = [
+        'type' => BannerType::class,
+    ];
 }

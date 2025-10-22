@@ -11,54 +11,12 @@
         </div>
     </article>
 
-    <div class="container mx-auto px-4">
-        <livewire:trafikrak.storefront.livewire.components.education.current-courses/>
-    </div>
-
-    <div class="container mx-auto px-4">
-        <x-numaxlab-atomic::organisms.tier class="mb-10">
-            <x-numaxlab-atomic::organisms.tier.header>
-                <h2 class="at-heading is-2">
-                    {{ __('Multimedia') }}
-                </h2>
-            </x-numaxlab-atomic::organisms.tier.header>
-
-            <ul class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-                @for ($i=0; $i<4; $i++)
-                    <li>
-                        <x-trafikrak::videos.summary/>
-                    </li>
-                @endfor
-            </ul>
-        </x-numaxlab-atomic::organisms.tier>
-    </div>
-
-    <article class="bg-secondary pt-5 pb-50 px-5 mb-10">
-        <div class="container mx-auto px-4">
-            <h2>Báner 1</h2>
-        </div>
-    </article>
-
-    <div class="container mx-auto px-4">
-        <x-numaxlab-atomic::organisms.tier class="mb-10">
-            <x-numaxlab-atomic::organisms.tier.header>
-                <h2 class="at-heading is-2">
-                    {{ __('Autoformación') }}
-                </h2>
-
-                <a href="{{ route('trafikrak.storefront.education.courses.index') }}"
-                   wire:navigate
-                   class="at-small"
-                >
-                    {{ __('Ver más') }}
-                </a>
-            </x-numaxlab-atomic::organisms.tier.header>
-
-            <p>Cursos de autoformación...</p>
-        </x-numaxlab-atomic::organisms.tier>
-    </div>
-
-    <div class="container mx-auto px-4">
-        <livewire:trafikrak.storefront.livewire.components.education.featured-topics lazy/>
-    </div>
+    @foreach ($tiers as $tier)
+        <livewire:dynamic-component
+                :component="'trafikrak.storefront.livewire.components.tier.' . $tier->livewire_component"
+                :lazy="!$loop->first"
+                :tier="$tier"
+                :key="$tier->id"
+        />
+    @endforeach
 </div>

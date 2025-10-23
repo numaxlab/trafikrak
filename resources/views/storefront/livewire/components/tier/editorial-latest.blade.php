@@ -5,12 +5,14 @@
                 {{ $tier->name }}
             </h2>
 
-            <a href="{{ route('trafikrak.storefront.editorial.homepage') }}"
-               wire:navigate
-               class="at-small"
-            >
-                {{ __('Ver máis') }}
-            </a>
+            @if ($tier->has_link)
+                <a href="{{ $tier->link }}"
+                   wire:navigate
+                   class="at-small"
+                >
+                    {{ $tier->link_name }}
+                </a>
+            @endif
         </x-numaxlab-atomic::organisms.tier.header>
 
         <ul class="grid gap-6 grid-cols-2 md:grid-cols-4 lg:grid-cols-6">

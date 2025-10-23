@@ -1,16 +1,18 @@
-@if ($itineraries->isNotEmpty())
+<div class="container mx-auto px-4">
     <x-numaxlab-atomic::organisms.tier class="mb-10">
         <x-numaxlab-atomic::organisms.tier.header>
             <h2 class="at-heading is-2">
-                {{ __('Itinerarios') }}
+                {{ $tier->name }}
             </h2>
 
-            <a href="{{ route('trafikrak.storefront.bookshop.itineraries.index') }}"
-               wire:navigate
-               class="at-small"
-            >
-                {{ __('Ver máis') }}
-            </a>
+            @if ($tier->has_link)
+                <a href="{{ $tier->link }}"
+                   wire:navigate
+                   class="at-small"
+                >
+                    {{ $tier->link_name }}
+                </a>
+            @endif
         </x-numaxlab-atomic::organisms.tier.header>
 
         <ul class="grid gap-6 md:grid-cols-2">
@@ -32,4 +34,4 @@
             @endforeach
         </ul>
     </x-numaxlab-atomic::organisms.tier>
-@endif
+</div>

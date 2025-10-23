@@ -15,10 +15,12 @@
             @endif
         </x-numaxlab-atomic::organisms.tier.header>
 
-        <ul class="grid gap-6 grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
-            <li>
-                Libros
-            </li>
+        <ul class="grid gap-6 md:grid-cols-2">
+            @foreach($topics as $topic)
+                <li>
+                    <x-trafikrak::education-topics.summary :topic="$topic"/>
+                </li>
+            @endforeach
         </ul>
     </x-numaxlab-atomic::organisms.tier>
 </div>

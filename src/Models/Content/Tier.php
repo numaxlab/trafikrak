@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Lunar\Base\Traits\LogsActivity;
 use Lunar\Models\Collection;
 use Spatie\Translatable\HasTranslations;
+use Trafikrak\Models\Education\Course;
+use Trafikrak\Models\Education\Topic;
 
 class Tier extends Model
 {
@@ -15,6 +17,8 @@ class Tier extends Model
 
     public $translatable = [
         'name',
+        'link',
+        'link_name',
     ];
     protected $casts = [
         'section' => Section::class,
@@ -34,11 +38,28 @@ class Tier extends Model
         return $this->belongsToMany(Collection::modelClass(), "{$prefix}collection_tier");
     }
 
-    public function getLivewireComponentAttribute()
+    public function courses(): BelongsToMany
+    {
+        return $this->belongsToMany(Course::class);
+    }
+
+    public function educationTopics(): BelongsToMany
+    {
+        return $this->belongsToMany(Topic::class, 'education_topic_tier');
+    }
+
+    public function getHasLinkAttribute(): bool
+    {
+        return $this->link && $this->link_name;
+    }
+
+    public function getLivewireComponentAttribute(): ?string
     {
         return match ($this->type) {
             TierType::RELATED_CONTENT_BANNER => 'banner',
             TierType::RELATED_CONTENT_COLLECTION => 'collection',
+            TierType::RELATED_CONTENT_COURSE => 'courses',
+            TierType::RELATED_CONTENT_EDUCATION_TOPIC => 'education-topics',
             TierType::BOOKSHOP_LATEST => 'bookshop-latest',
             TierType::EDITORIAL_LATEST => 'editorial-latest',
             TierType::EDUCATION_UPCOMING => 'education-upcoming',

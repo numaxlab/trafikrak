@@ -5,9 +5,10 @@ namespace Trafikrak\Models\Content;
 use Illuminate\Database\Eloquent\Model;
 use Lunar\Base\Traits\HasMedia;
 use Lunar\Base\Traits\LogsActivity;
+use Spatie\MediaLibrary\HasMedia as SpatieHasMedia;
 use Spatie\Translatable\HasTranslations;
 
-class Banner extends Model
+class Banner extends Model implements SpatieHasMedia
 {
     use HasTranslations;
     use LogsActivity;

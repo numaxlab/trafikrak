@@ -6,9 +6,8 @@ use Illuminate\Support\Collection;
 use Illuminate\View\View;
 use Livewire\Component;
 use Trafikrak\Models\Content\Tier;
-use Trafikrak\Models\Education\Course;
 
-class EducationUpcoming extends Component
+class Courses extends Component
 {
     public Tier $tier;
 
@@ -16,15 +15,14 @@ class EducationUpcoming extends Component
 
     public function mount(): void
     {
-        $this->courses = Course::where('is_published', true)
-            ->where('ends_at', '>=', now())
+        $this->courses = $this->tier
+            ->courses()
             ->with([
                 'media',
                 'defaultUrl',
                 'topic',
             ])
             ->orderBy('starts_at', 'asc')
-            ->limit(6)
             ->get();
     }
 

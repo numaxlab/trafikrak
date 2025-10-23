@@ -2,22 +2,36 @@
 
 namespace Trafikrak\Storefront\Livewire\Components\Tier;
 
+use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
-use Illuminate\View\View;
 use Livewire\Component;
 use Lunar\Facades\StorefrontSession;
 use Lunar\Models\Collection as LunarCollection;
 use Lunar\Models\Product;
+use NumaxLab\Lunar\Geslib\Handle;
 use Trafikrak\Models\Content\Tier;
 
 class Collection extends Component
 {
     public Tier $tier;
-
-    public EloquentCollection $products;
+    public ?EloquentCollection $itineraries;
+    public ?EloquentCollection $products;
+    private bool $isItineraries = false;
 
     public function mount(): void
     {
+        if ($this->tier->collections->first()->group->handle === Handle::COLLECTION_GROUP_ITINERARIES) {
+            $this->isItineraries = true;
+
+            $this->itineraries = LunarCollection::whereIn('id', $this->tier->collections->pluck('id')->toArray())
+                ->channel(StorefrontSession::getChannel())
+                ->customerGroup(StorefrontSession::getCustomerGroups())
+                ->orderBy('_lft', 'ASC')
+                ->get();
+
+            return;
+        }
+
         $this->products = Product::channel(StorefrontSession::getChannel())
             ->customerGroup(StorefrontSession::getCustomerGroups())
             ->status('published')
@@ -44,8 +58,17 @@ class Collection extends Component
             ->get();
     }
 
+    public function placeholder(): View
+    {
+        return view('trafikrak::storefront.livewire.components.placeholder.products-tier');
+    }
+
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.components.tier.collection');
+        if ($this->isItineraries) {
+            return view('trafikrak::storefront.livewire.components.tier.collection-itineraries');
+        }
+
+        return view('trafikrak::storefront.livewire.components.tier.collection-products');
     }
 }

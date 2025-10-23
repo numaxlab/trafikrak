@@ -15,10 +15,18 @@
             @endif
         </x-numaxlab-atomic::organisms.tier.header>
 
-        <ul class="grid gap-6 grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
-            <li>
-                Libros
-            </li>
-        </ul>
+        @if ($courses->isEmpty())
+            <p class="text-center">
+                {{ __('No hay cursos disponibles en este momento.') }}
+            </p>
+        @else
+            <ul class="grid gap-6 md:grid-cols-2 lg:grid-cols-6">
+                @foreach($courses as $course)
+                    <li class="{{ $loop->index > 1 ? 'lg:col-span-2' : 'lg:col-span-3' }}">
+                        <x-trafikrak::courses.summary :course="$course"/>
+                    </li>
+                @endforeach
+            </ul>
+        @endif
     </x-numaxlab-atomic::organisms.tier>
 </div>

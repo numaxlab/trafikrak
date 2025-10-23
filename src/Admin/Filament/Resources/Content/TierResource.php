@@ -59,6 +59,8 @@ class TierResource extends BaseResource
                     ->formatStateUsing(fn(TierType $state): string => match ($state) {
                         TierType::RELATED_CONTENT_BANNER => 'Banner',
                         TierType::RELATED_CONTENT_COLLECTION => 'Colección',
+                        TierType::RELATED_CONTENT_COURSE => 'Cursos',
+                        TierType::RELATED_CONTENT_EDUCATION_TOPIC => 'Temas de formación',
                         TierType::BOOKSHOP_LATEST => 'Últimos productos Librería',
                         TierType::EDITORIAL_LATEST => 'Últimos productos Editorial',
                         TierType::EDUCATION_UPCOMING => 'Próximos cursos',
@@ -97,6 +99,8 @@ class TierResource extends BaseResource
                             ->options([
                                 TierType::RELATED_CONTENT_BANNER->value => 'Banner',
                                 TierType::RELATED_CONTENT_COLLECTION->value => 'Colección',
+                                TierType::RELATED_CONTENT_COURSE->value => 'Cursos',
+                                TierType::RELATED_CONTENT_EDUCATION_TOPIC->value => 'Temas de formación',
                                 TierType::BOOKSHOP_LATEST->value => 'Últimos productos Librería',
                                 TierType::EDITORIAL_LATEST->value => 'Últimos productos Editorial',
                                 TierType::EDUCATION_UPCOMING->value => 'Próximos cursos',
@@ -133,6 +137,33 @@ class TierResource extends BaseResource
                             ->preload()
                             ->hint('taxonomías, destacados, destacados editorial, itinerarios')
                             ->visible(fn(Get $get) => $get('type') === TierType::RELATED_CONTENT_COLLECTION->value),
+                        Forms\Components\Select::make('courses')
+                            ->relationship(titleAttribute: 'name')
+                            ->label(__('trafikrak::tier.form.courses.label'))
+                            ->multiple()
+                            ->preload()
+                            ->visible(fn(Get $get) => $get('type') === TierType::RELATED_CONTENT_COURSE->value),
+                        Forms\Components\Select::make('educationTopics')
+                            ->relationship(titleAttribute: 'name')
+                            ->label(__('trafikrak::tier.form.education_topics.label'))
+                            ->multiple()
+                            ->preload()
+                            ->visible(fn(Get $get,
+                            )
+                                => $get('type') === TierType::RELATED_CONTENT_EDUCATION_TOPIC->value),
+                        Forms\Components\Grid::make()
+                            ->columns([
+                                'sm' => 1,
+                                'md' => 2,
+                            ])
+                            ->schema([
+                                Forms\Components\TextInput::make('link')
+                                    ->label(__('trafikrak::tier.form.link.label')),
+                                Forms\Components\TextInput::make('link_name')
+                                    ->label(__('trafikrak::tier.form.link_name.label'))
+                                    ->maxLength(255),
+                            ])
+                            ->visible(fn(Get $get) => $get('type') !== TierType::RELATED_CONTENT_BANNER->value),
                         Forms\Components\Toggle::make('is_published')
                             ->label(__('trafikrak::tier.form.is_published.label')),
                     ]),

@@ -38,11 +38,23 @@ return [
         'name' => [
             'label' => 'Nombre',
         ],
+        'link' => [
+            'label' => 'Enlace',
+        ],
+        'link_name' => [
+            'label' => 'Etiqueta del enlace',
+        ],
         'type' => [
             'label' => 'Tipo',
         ],
         'banners' => [
             'label' => 'Banners',
+        ],
+        'courses' => [
+            'label' => 'Cursos',
+        ],
+        'education_topics' => [
+            'label' => 'Temas formación',
         ],
         'collections' => [
             'label' => 'Colecciones',

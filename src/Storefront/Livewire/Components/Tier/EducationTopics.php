@@ -6,30 +6,26 @@ use Illuminate\Support\Collection;
 use Illuminate\View\View;
 use Livewire\Component;
 use Trafikrak\Models\Content\Tier;
-use Trafikrak\Models\Education\Course;
 
-class EducationUpcoming extends Component
+class EducationTopics extends Component
 {
     public Tier $tier;
 
-    public Collection $courses;
+    public Collection $topics;
 
     public function mount(): void
     {
-        $this->courses = Course::where('is_published', true)
-            ->where('ends_at', '>=', now())
+        $this->topics = $this->tier
+            ->educationTopics()
             ->with([
                 'media',
                 'defaultUrl',
-                'topic',
             ])
-            ->orderBy('starts_at', 'asc')
-            ->limit(6)
             ->get();
     }
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.components.tier.courses');
+        return view('trafikrak::storefront.livewire.components.tier.education-topics');
     }
 }

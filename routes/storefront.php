@@ -35,6 +35,7 @@ use Trafikrak\Storefront\Livewire\Education\ModulePage;
 use Trafikrak\Storefront\Livewire\Education\TopicPage;
 use Trafikrak\Storefront\Livewire\Education\TopicsListPage;
 use Trafikrak\Storefront\Livewire\HomePage;
+use Trafikrak\Storefront\Livewire\KitchenSink;
 use Trafikrak\Storefront\Livewire\Media\AudioPage;
 use Trafikrak\Storefront\Livewire\Media\AudiosListPage;
 use Trafikrak\Storefront\Livewire\Media\DocumentPage;
@@ -187,3 +188,8 @@ Route::prefix('/checkout')->group(function () {
             ->name('trafikrak.storefront.checkout.success');
     });
 });
+
+if (app()->environment('local')) {
+    Route::get('/kitchen-sink', KitchenSink::class)
+        ->name('trafikrak.storefront.kitchen-sink');
+}

@@ -18,7 +18,6 @@ class BannerFactory extends Factory
             'description' => $this->faker->paragraph(rand(3, 8)),
             'link' => $this->faker->url(),
             'button_text' => $this->faker->word(),
-            'image' => $this->faker->imageUrl(),
             'is_published' => true,
         ];
     }

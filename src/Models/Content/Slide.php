@@ -1,0 +1,27 @@
+<?php
+
+namespace Trafikrak\Models\Content;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Lunar\Base\Traits\LogsActivity;
+use Spatie\Translatable\HasTranslations;
+
+class Slide extends Model
+{
+    use HasFactory;
+    use HasTranslations;
+    use LogsActivity;
+
+    public $translatable = [
+        'name',
+        'description',
+        'link',
+        'button_text',
+    ];
+    protected $guarded = [];
+
+    protected $casts = [
+        'section' => Section::class,
+    ];
+}

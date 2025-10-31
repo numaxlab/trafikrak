@@ -1,5 +1,47 @@
 <div class="lg:flex lg:gap-6">
     <div class="lg:w-2/3">
+        @if ($product->taxonomies->isNotEmpty())
+            <ul class="flex flex-wrap gap-2">
+                @foreach ($product->taxonomies as $taxonomy)
+                    <li>
+                        <a href="{{ $taxonomy->url }}" class="at-small at-tag is-primary">
+                            {{ $taxonomy->translateAttribute('name') }}
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
+        @endif
+
+        <ul class="at-small flex flex-wrap gap-2 -ml-2 my-3">
+            @if ($product->brand)
+                <li>
+                    {{ $product->brand->translateAttribute('name') }}
+                </li>
+            @endif
+            @foreach ($product->editorialCollections as $collection)
+                <li>
+                    <a href="" wire:navigate>
+                        {{ $collection->translateAttribute('name') }}
+                    </a>
+                </li>
+            @endforeach
+            @if ($product->translateAttribute('first-issue-year'))
+                <li>
+                    {{ $product->translateAttribute('first-issue-year') }}
+                </li>
+            @endif
+            @if ($product->translateAttribute('pages'))
+                <li>
+                    {{ $product->translateAttribute('pages') }} {{ __('páginas') }}
+                </li>
+            @endif
+            @foreach ($product->languages as $language)
+                <li>
+                    {{ $language->translateAttribute('name') }}
+                </li>
+            @endforeach
+        </ul>
+
         @if ($product->translateAttribute('bookshop-reference'))
             <div>
                 {!! $product->translateAttribute('bookshop-reference') !!}
@@ -9,79 +51,64 @@
                 {!! $product->translateAttribute('editorial-reference') !!}
             </div>
         @endif
-    </div>
 
-    <div class="border-t-1 mt-10 pt-3 lg:w-1/3 lg:mt-0">
-        @if ($product->collections->isNotEmpty())
-            <ul class="flex flex-wrap gap-2">
-                @foreach ($product->collections as $collection)
-                    @if (!in_array($collection->group->handle, ['product-types', 'itineraries']))
-                        <li>
-                            <a href="{{ $collection->url }}" class="at-small at-tag is-primary">
-                                {{ $collection->translateAttribute('name') }}
-                            </a>
-                        </li>
-                    @endif
-                @endforeach
-            </ul>
-        @endif
-
-        <dl class="at-description-list is-grid text-sm mt-5">
-            @if ($product->translators->isNotEmpty())
-                <dt>{{ __('Traducción') }}</dt>
-                <dd>
-                    @foreach ($product->translators as $author)
-                        <a href="{{ route('trafikrak.storefront.bookshop.search', ['q' => $author->name]) }}">{{ $author->name }}</a>{{ $loop->last ? '' : ', ' }}
-                    @endforeach
-                </dd>
+        <ul class="at-small mt-5">
+            @if ($product->variant->width->getValue() && $product->variant->height->getValue())
+                <li>
+                    {{ $product->variant->width->to('length.cm')->format() }}
+                    x
+                    {{ $product->variant->height->to('length.cm')->format() }}
+                </li>
             @endif
-
-            @if ($product->illustrators->isNotEmpty())
-                <dt>{{ __('Ilustración') }}</dt>
-                <dd>
-                    @foreach ($product->illustrators as $author)
-                        <a href="{{ route('trafikrak.storefront.bookshop.search', ['q' => $author->name]) }}">{{ $author->name }}</a>{{ $loop->last ? '' : ', ' }}
-                    @endforeach
-                </dd>
+            @if ($product->variant->weight->getValue())
+                <li>
+                    {{ $product->variant->width->to('weight.g')->format() }}
+                </li>
             @endif
-
-            @if ($product->coverIllustrators->isNotEmpty())
-                <dt>{{ __('Ilustración de portada') }}</dt>
-                <dd>
-                    @foreach ($product->coverIllustrators as $author)
-                        <a href="{{ route('trafikrak.storefront.bookshop.search', ['q' => $author->name]) }}">{{ $author->name }}</a>{{ $loop->last ? '' : ', ' }}
-                    @endforeach
-                </dd>
-            @endif
-
-            @if ($product->backCoverIllustrators->isNotEmpty())
-                <dt>{{ __('Ilustración de contraportada') }}</dt>
-                <dd>
-                    @foreach ($product->backCoverIllustrators as $author)
-                        <a href="{{ route('trafikrak.storefront.bookshop.search', ['q' => $author->name]) }}">{{ $author->name }}</a>{{ $loop->last ? '' : ', ' }}
-                    @endforeach
-                </dd>
-            @endif
-
-            @foreach ($product->mappedAttributes() as $attribute)
-                @if (! in_array($attribute->handle, ['name', 'subtitle', 'bookshop-reference', 'editorial-reference', 'index']))
-                    @if ($product->translateAttribute($attribute->handle))
-                        <dt>{{ $attribute->translate('name') }}</dt>
-                        <dd>
-                            {!! $product->translateAttribute($attribute->handle) !!}
-                        </dd>
-                    @endif
-                @endif
-            @endforeach
-
             @if ($product->variant->gtin)
-                <dt class="mt-4">ISBN</dt>
-                <dd class="mt-4">{{ $product->variant->gtin }}</dd>
+                <li>
+                    ISBN: {{ $product->variant->gtin }}
+                </li>
             @endif
             @if ($product->variant->ean)
-                <dt>EAN</dt>
-                <dd>{{ $product->variant->ean }}</dd>
+                <li>
+                    EAN: {{ $product->variant->ean }}
+                </li>
             @endif
-        </dl>
+        </ul>
+    </div>
+
+    <div class="mt-10 lg:w-1/3 lg:mt-0">
+        @if ($pricing)
+            <div class="at-heading is-3 mb-3">
+                {{ $pricing->priceIncTax()->formatted() }}
+            </div>
+        @endif
+
+        @foreach ($product->statuses as $status)
+            <span class="text-primary mb-3">
+                {{ $status->translateAttribute('name') }}
+            </span>
+        @endforeach
+
+        <livewire:trafikrak.storefront.livewire.components.bookshop.add-to-cart
+                :key="'add-to-cart-' . $product->id"
+                :purchasable="$product->variant"/>
+
+        <a class="at-button border-primary text-primary">
+            Descarga este libro
+        </a>
+
+        <a class="at-button border-primary text-primary">
+            Haz una donación
+        </a>
+
+        <a class="at-button border-primary text-primary">
+            Descargar ficha
+        </a>
+
+        <a class="at-button border-primary text-primary">
+            Descargar portada
+        </a>
     </div>
 </div>

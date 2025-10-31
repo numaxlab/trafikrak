@@ -8,7 +8,6 @@ use Illuminate\View\View;
 use Lunar\Facades\StorefrontSession;
 use Lunar\Models\Price;
 use Lunar\Models\Product;
-use NumaxLab\Lunar\Geslib\Handle;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
 
 class ProductPage extends Page
@@ -30,8 +29,6 @@ class ProductPage extends Page
                 $query->where('slug', $slug);
             })
             ->with([
-                'collections',
-                'collections.group',
                 'variant',
                 'variant.prices',
                 'variant.prices.priceable',
@@ -39,6 +36,10 @@ class ProductPage extends Page
                 'variant.prices.priceable.taxClass.taxRateAmounts',
                 'variant.prices.currency',
                 'media',
+                'taxonomies',
+                'editorialCollections',
+                'languages',
+                'statuses',
             ])
             ->firstOrFail();
 
@@ -47,18 +48,6 @@ class ProductPage extends Page
             ->currency(StorefrontSession::getCurrency())
             ->customerGroups(StorefrontSession::getCustomerGroups())
             ->get()->matched;
-
-        $this->itineraries = \Lunar\Models\Collection::whereHas('group', function ($query) {
-            $query->where('handle', Handle::COLLECTION_GROUP_ITINERARIES);
-        })->whereHas('products', function ($query) {
-            $query->where(
-                $this->product->getTable().'.id',
-                $this->product->id,
-            );
-        })->channel(StorefrontSession::getChannel())
-            ->customerGroup(StorefrontSession::getCustomerGroups())
-            ->orderBy('_lft', 'ASC')
-            ->get();
 
         if (!Auth::check()) {
             $this->isUserFavourite = false;

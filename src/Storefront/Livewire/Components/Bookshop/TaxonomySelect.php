@@ -3,6 +3,7 @@
 namespace Trafikrak\Storefront\Livewire\Components\Bookshop;
 
 use Illuminate\Contracts\Database\Eloquent\Builder;
+use Illuminate\View\View;
 use Livewire\Component;
 use Lunar\Facades\StorefrontSession;
 use Lunar\Models\Collection;
@@ -25,7 +26,7 @@ class TaxonomySelect extends Component
         $this->dispatch('taxonomy-selected', ['id' => $id]);
     }
 
-    public function render()
+    public function render(): View
     {
         $options = Collection::search($this->search)
             ->query(function (Builder $query) {

@@ -3,7 +3,7 @@
         <header class="lg:w-8/12">
             <x-numaxlab-atomic::molecules.breadcrumb :label="__('Miga de pan')">
                 <li>
-                    <a href="{{ route('trafikrak.storefront.bookshop.homepage') }}">
+                    <a href="{{ route('trafikrak.storefront.bookshop.homepage') }}" wire:navigate>
                         {{ __('Librería') }}
                     </a>
                 </li>
@@ -53,32 +53,6 @@
                     alt="{{ __('Portada del libro :title', ['title' => $product->recordFullTitle]) }}"
                     class="w-full h-auto mt-7"
             >
-
-            @if ($pricing)
-                <div class="mt-5 mb-3 text-xl">
-                    {{ $pricing->priceIncTax()->formatted() }}
-                </div>
-            @endif
-
-            <livewire:trafikrak.storefront.livewire.components.bookshop.add-to-cart
-                    :key="'add-to-cart-' . $product->id"
-                    :purchasable="$product->variant"/>
-
-            <a class="at-button border-primary text-primary mt-3">
-                Descarga este libro
-            </a>
-
-            <a class="at-button border-primary text-primary mt-3">
-                Haz una donación
-            </a>
-
-            <a class="at-button border-primary text-primary mt-3">
-                Descargar ficha
-            </a>
-
-            <a class="at-button border-primary text-primary mt-3">
-                Descargar portada
-            </a>
         </div>
 
         <div class="mt-10 lg:w-8/12 lg:ml-[25%] lg:pl-10">
@@ -86,131 +60,30 @@
                 @include('trafikrak::storefront.partials.product.body')
             </div>
 
-            <x-numaxlab-atomic::organisms.tier class="mt-10">
-                <x-numaxlab-atomic::organisms.tier.header>
-                    <h2 class="at-heading is-2">
-                        {{ __('Reseñas') }}
-                    </h2>
+            <livewire:trafikrak.storefront.livewire.components.bookshop.product-reviews
+                    :product="$product"
+                    lazy="true"
+            />
 
-                    <a class="at-small">
-                        {{ __('Ver más') }}
-                    </a>
-                </x-numaxlab-atomic::organisms.tier.header>
+            <livewire:trafikrak.storefront.livewire.components.bookshop.product-associations
+                    :product="$product"
+                    lazy="true"
+            />
 
-                <ul class="flex flex-col gap-4 md:flex-row md:gap-6">
-                    @for($i=0; $i<2; $i++)
-                        <li class="pr-10">
-                            <x-trafikrak::reviews.summary/>
-                        </li>
-                    @endfor
-                </ul>
-            </x-numaxlab-atomic::organisms.tier>
+            <livewire:trafikrak.storefront.livewire.components.bookshop.product-media
+                    :product="$product"
+                    lazy="true"
+            />
 
-            @if ($product->associations->isNotEmpty())
-                <x-numaxlab-atomic::organisms.tier class="mt-10">
-                    <x-numaxlab-atomic::organisms.tier.header>
-                        <h2 class="at-heading is-2">
-                            {{ __('Relacionados') }}
-                        </h2>
-                    </x-numaxlab-atomic::organisms.tier.header>
+            <livewire:trafikrak.storefront.livewire.components.bookshop.product-itineraries
+                    :product="$product"
+                    lazy="true"
+            />
 
-                    <ul class="grid gap-6 grid-cols-2 mb-9 md:grid-cols-4">
-                        @foreach ($product->associations as $association)
-                            <li>
-                                <x-trafikrak::products.summary
-                                        :product="$association->target"
-                                        :href="route('trafikrak.storefront.bookshop.products.show', $association->target->defaultUrl->slug)"
-                                />
-                            </li>
-                        @endforeach
-                    </ul>
-                </x-numaxlab-atomic::organisms.tier>
-            @endif
-
-            <x-numaxlab-atomic::organisms.tier class="mt-10">
-                <x-numaxlab-atomic::organisms.tier.header>
-                    <h2 class="at-heading is-2">
-                        {{ __('Audiovisual') }}
-                    </h2>
-
-                    <a class="at-small">
-                        {{ __('Ver más') }}
-                    </a>
-                </x-numaxlab-atomic::organisms.tier.header>
-
-                Dos audiovisuales relacionados con el libro, si los hubiera.
-            </x-numaxlab-atomic::organisms.tier>
-
-            @if ($itineraries->isNotEmpty())
-                <x-numaxlab-atomic::organisms.tier class="mt-10">
-                    <x-numaxlab-atomic::organisms.tier.header>
-                        <h2 class="at-heading is-2">
-                            {{ __('Itinerarios') }}
-                        </h2>
-                    </x-numaxlab-atomic::organisms.tier.header>
-
-                    <ul>
-                        @foreach($itineraries as $collection)
-                            <li class="mb-6">
-                                <x-numaxlab-atomic::molecules.banner
-                                        :href="route('trafikrak.storefront.bookshop.itineraries.show', $collection->defaultUrl->slug)">
-                                    <h2 class="at-heading is-3 mb-4">{{ $collection->translateAttribute('name') }}</h2>
-
-                                    @if ($collection->translateAttribute('description'))
-                                        <x-slot:content>
-                                            {!! $collection->translateAttribute('description') !!}
-                                        </x-slot:content>
-                                    @endif
-                                </x-numaxlab-atomic::molecules.banner>
-                            </li>
-                        @endforeach
-                    </ul>
-                </x-numaxlab-atomic::organisms.tier>
-            @endif
-
-            <div class="grid gap-6 lg:grid-cols-2">
-                <x-numaxlab-atomic::organisms.tier class="mt-10">
-                    <x-numaxlab-atomic::organisms.tier.header>
-                        <h2 class="at-heading is-2">
-                            {{ __('Cursos') }}
-                        </h2>
-
-                        <a class="at-small">
-                            {{ __('Ver más') }}
-                        </a>
-                    </x-numaxlab-atomic::organisms.tier.header>
-
-                    Un curso relacionado con el libro, si lo hubiera.
-                </x-numaxlab-atomic::organisms.tier>
-
-                <x-numaxlab-atomic::organisms.tier class="mt-10">
-                    <x-numaxlab-atomic::organisms.tier.header>
-                        <h2 class="at-heading is-2">
-                            {{ __('Actividades') }}
-                        </h2>
-
-                        <a class="at-small">
-                            {{ __('Ver más') }}
-                        </a>
-                    </x-numaxlab-atomic::organisms.tier.header>
-
-                    Una actividad relacionada con el libro, si lo hubiera.
-                </x-numaxlab-atomic::organisms.tier>
-            </div>
-
-            <x-numaxlab-atomic::organisms.tier class="mt-10">
-                <x-numaxlab-atomic::organisms.tier.header>
-                    <h2 class="at-heading is-2">
-                        {{ __('Noticias') }}
-                    </h2>
-
-                    <a class="at-small">
-                        {{ __('Ver más') }}
-                    </a>
-                </x-numaxlab-atomic::organisms.tier.header>
-
-                Dos noticias relacionadas con el libro, si las hubiera.
-            </x-numaxlab-atomic::organisms.tier>
+            <livewire:trafikrak.storefront.livewire.components.bookshop.product-events
+                    :product="$product"
+                    lazy="true"
+            />
         </div>
     </div>
 </article>

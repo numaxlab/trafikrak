@@ -46,7 +46,6 @@ class BannerResource extends BaseResource
     {
         return [
             BannerResource\Pages\EditBanner::class,
-            BannerResource\Pages\ManageBannerMedia::class,
         ];
     }
 
@@ -101,6 +100,10 @@ class BannerResource extends BaseResource
                                     ->label(__('trafikrak::banner.form.button_text.label'))
                                     ->maxLength(255),
                             ]),
+                        Forms\Components\FileUpload::make('image')
+                            ->label(__('trafikrak::slide.form.image.label'))
+                            ->image()
+                            ->imageEditor(),
                         Forms\Components\Toggle::make('is_published')
                             ->label(__('trafikrak::banner.form.is_published.label')),
                     ]),
@@ -114,7 +117,6 @@ class BannerResource extends BaseResource
             'index' => BannerResource\Pages\ListBanners::route('/'),
             'create' => BannerResource\Pages\CreateBanner::route('/create'),
             'edit' => BannerResource\Pages\EditBanner::route('/{record}/edit'),
-            'media' => BannerResource\Pages\ManageBannerMedia::route('/{record}/media'),
         ];
     }
 }

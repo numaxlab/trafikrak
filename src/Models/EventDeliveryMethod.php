@@ -1,8 +1,8 @@
 <?php
 
-namespace Trafikrak\Models\Education;
+namespace Trafikrak\Models;
 
-enum CourseDeliveryMethod: string
+enum EventDeliveryMethod: string
 {
     case IN_PERSON = 'in_person';
     case ONLINE = 'online';

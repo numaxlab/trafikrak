@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->json('description')->nullable();
             $table->json('link')->nullable();
             $table->json('button_text')->nullable();
+            $table->string('image')->nullable();
 
             $table->boolean('is_published')->default(false);
 

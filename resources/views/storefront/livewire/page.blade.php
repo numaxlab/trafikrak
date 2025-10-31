@@ -30,7 +30,7 @@
 
         <div class="lg:w-8/12">
             @if ($page->intro)
-                <div class="at-lead  mb-4">
+                <div class="at-lead mb-4">
                     {!! $page->intro !!}
                 </div>
             @endif
@@ -43,17 +43,19 @@
 
             @if ($page->content)
                 @foreach ($page->content as $block)
-                    <article id="{{ Str::slug($block['name']) }}" class="mb-10">
-                        <h2 class="at-heading is-2">
-                            {{ $block['name'] }}
-                        </h2>
+                    <x-numaxlab-atomic::organisms.tier class="mb-10" id="{{ Str::slug($block['name']) }}">
+                        <x-numaxlab-atomic::organisms.tier.header>
+                            <h2 class="at-heading is-2">
+                                {{ $block['name'] }}
+                            </h2>
+                        </x-numaxlab-atomic::organisms.tier.header>
 
                         @if ($block['description'])
                             <div class="mt-5">
                                 {!! $block['description'] !!}
                             </div>
                         @endif
-                    </article>
+                    </x-numaxlab-atomic::organisms.tier>
                 @endforeach
             @endif
         </div>

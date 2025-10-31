@@ -60,10 +60,10 @@ class Tier extends Model
             TierType::RELATED_CONTENT_COLLECTION => 'collection',
             TierType::RELATED_CONTENT_COURSE => 'courses',
             TierType::RELATED_CONTENT_EDUCATION_TOPIC => 'education-topics',
-            TierType::BOOKSHOP_LATEST => 'bookshop-latest',
             TierType::EDITORIAL_LATEST => 'editorial-latest',
             TierType::EDUCATION_UPCOMING => 'education-upcoming',
             TierType::EVENTS_UPCOMING => 'events-upcoming',
+            TierType::ARTICLES_LATEST => 'articles-latest',
             default => null,
         };
     }

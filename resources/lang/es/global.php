@@ -6,6 +6,7 @@ return [
         'media' => 'Mediateca',
         'membership' => 'Membresía',
         'content' => 'Contenido',
+        'news' => 'Actualidad',
     ],
     'payment_types' => [
         'card' => 'Tarjeta',

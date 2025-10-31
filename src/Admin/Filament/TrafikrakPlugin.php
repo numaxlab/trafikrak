@@ -16,6 +16,7 @@ use Trafikrak\Admin\Filament\Resources\Media\DocumentResource;
 use Trafikrak\Admin\Filament\Resources\Media\VideoResource;
 use Trafikrak\Admin\Filament\Resources\Membership\MembershipPlanResource;
 use Trafikrak\Admin\Filament\Resources\Membership\MembershipTierResource;
+use Trafikrak\Admin\Filament\Resources\News\ArticleResource;
 
 class TrafikrakPlugin implements Plugin
 {
@@ -49,6 +50,7 @@ class TrafikrakPlugin implements Plugin
             SlideResource::class,
             BannerResource::class,
             PageResource::class,
+            ArticleResource::class,
         ]);
     }
 

@@ -1,14 +1,14 @@
 <?php
 
-namespace Trafikrak\Models\Content;
+namespace Trafikrak\Models\News;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Lunar\Base\Traits\LogsActivity;
 use Spatie\Translatable\HasTranslations;
-use Trafikrak\Database\Factories\Content\BannerFactory;
 
-class Banner extends Model
+class EventType extends Model
 {
     use HasFactory;
     use HasTranslations;
@@ -16,18 +16,11 @@ class Banner extends Model
 
     public $translatable = [
         'name',
-        'description',
-        'link',
-        'button_text',
     ];
     protected $guarded = [];
 
-    protected $casts = [
-        'type' => BannerType::class,
-    ];
-
-    protected static function newFactory()
+    public function events(): HasMany
     {
-        return BannerFactory::new();
+        return $this->hasMany(Event::class);
     }
 }

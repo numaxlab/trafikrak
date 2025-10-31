@@ -57,20 +57,21 @@ class TierResource extends BaseResource
                 Tables\Columns\TextColumn::make('type')
                     ->label(__('trafikrak::tier.table.type.label'))
                     ->formatStateUsing(fn(TierType $state): string => match ($state) {
-                        TierType::RELATED_CONTENT_BANNER => 'Banner',
-                        TierType::RELATED_CONTENT_COLLECTION => 'Colección',
-                        TierType::RELATED_CONTENT_COURSE => 'Cursos',
-                        TierType::RELATED_CONTENT_EDUCATION_TOPIC => 'Temas de formación',
-                        TierType::BOOKSHOP_LATEST => 'Últimos productos Librería',
-                        TierType::EDITORIAL_LATEST => 'Últimos productos Editorial',
-                        TierType::EDUCATION_UPCOMING => 'Próximos cursos',
-                        TierType::EVENTS_UPCOMING => 'Próximos eventos',
+                        TierType::RELATED_CONTENT_BANNER => __('trafikrak::tier.form.type.options.'.TierType::RELATED_CONTENT_BANNER->value),
+                        TierType::RELATED_CONTENT_COLLECTION => __('trafikrak::tier.form.type.options.'.TierType::RELATED_CONTENT_COLLECTION->value),
+                        TierType::RELATED_CONTENT_COURSE => __('trafikrak::tier.form.type.options.'.TierType::RELATED_CONTENT_COURSE->value),
+                        TierType::RELATED_CONTENT_EDUCATION_TOPIC => __('trafikrak::tier.form.type.options.'.TierType::RELATED_CONTENT_EDUCATION_TOPIC->value),
+                        TierType::EDITORIAL_LATEST => __('trafikrak::tier.form.type.options.'.TierType::EDITORIAL_LATEST->value),
+                        TierType::EDUCATION_UPCOMING => __('trafikrak::tier.form.type.options.'.TierType::EDUCATION_UPCOMING->value),
+                        TierType::EVENTS_UPCOMING => __('trafikrak::tier.form.type.options.'.TierType::EVENTS_UPCOMING->value),
+                        TierType::ARTICLES_LATEST => __('trafikrak::tier.form.type.options.'.TierType::ARTICLES_LATEST->value),
                         default => $state->value,
                     })
                     ->badge(),
                 Tables\Columns\ToggleColumn::make('is_published')
                     ->label(__('trafikrak::tier.table.is_published.label')),
-            ])->defaultSort('sort_position')
+            ])
+            ->defaultSort('sort_position')
             ->reorderable('sort_position');
     }
 
@@ -97,14 +98,14 @@ class TierResource extends BaseResource
                         Forms\Components\Select::make('type')
                             ->label(__('trafikrak::tier.form.type.label'))
                             ->options([
-                                TierType::RELATED_CONTENT_BANNER->value => 'Banner',
-                                TierType::RELATED_CONTENT_COLLECTION->value => 'Colección',
-                                TierType::RELATED_CONTENT_COURSE->value => 'Cursos',
-                                TierType::RELATED_CONTENT_EDUCATION_TOPIC->value => 'Temas de formación',
-                                TierType::BOOKSHOP_LATEST->value => 'Últimos productos Librería',
-                                TierType::EDITORIAL_LATEST->value => 'Últimos productos Editorial',
-                                TierType::EDUCATION_UPCOMING->value => 'Próximos cursos',
-                                TierType::EVENTS_UPCOMING->value => 'Próximos eventos',
+                                TierType::RELATED_CONTENT_BANNER->value => __('trafikrak::tier.form.type.options.'.TierType::RELATED_CONTENT_BANNER->value),
+                                TierType::RELATED_CONTENT_COLLECTION->value => __('trafikrak::tier.form.type.options.'.TierType::RELATED_CONTENT_COLLECTION->value),
+                                TierType::RELATED_CONTENT_COURSE->value => __('trafikrak::tier.form.type.options.'.TierType::RELATED_CONTENT_COURSE->value),
+                                TierType::RELATED_CONTENT_EDUCATION_TOPIC->value => __('trafikrak::tier.form.type.options.'.TierType::RELATED_CONTENT_EDUCATION_TOPIC->value),
+                                TierType::EDITORIAL_LATEST->value => __('trafikrak::tier.form.type.options.'.TierType::EDITORIAL_LATEST->value),
+                                TierType::EDUCATION_UPCOMING->value => __('trafikrak::tier.form.type.options.'.TierType::EDUCATION_UPCOMING->value),
+                                TierType::EVENTS_UPCOMING->value => __('trafikrak::tier.form.type.options.'.TierType::EVENTS_UPCOMING->value),
+                                TierType::ARTICLES_LATEST->value => __('trafikrak::tier.form.type.options.'.TierType::ARTICLES_LATEST->value),
                             ])
                             ->required()
                             ->live(),

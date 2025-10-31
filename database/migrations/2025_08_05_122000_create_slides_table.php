@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->string('button_text')->nullable();
             $table->string('image')->nullable();
 
+            $table->string('sort_position')->default('0');
             $table->boolean('is_published')->default(false);
 
             $table->timestamps();

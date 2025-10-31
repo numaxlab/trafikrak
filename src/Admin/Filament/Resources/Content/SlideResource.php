@@ -61,7 +61,9 @@ class SlideResource extends BaseResource
                     ->searchable(),
                 Tables\Columns\ToggleColumn::make('is_published')
                     ->label(__('trafikrak::slide.table.is_published.label')),
-            ]);
+            ])
+            ->defaultSort('sort_position')
+            ->reorderable('sort_position');
     }
 
     public static function getDefaultForm(Form $form): Form

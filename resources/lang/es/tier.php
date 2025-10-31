@@ -46,6 +46,16 @@ return [
         ],
         'type' => [
             'label' => 'Tipo',
+            'options' => [
+                'related_content_banner' => 'Banners',
+                'related_content_collection' => 'Categorías de productos',
+                'related_content_course' => 'Cursos',
+                'related_content_education_topic' => 'Temas de formación',
+                'editorial_latest' => 'Últimos productos Editorial',
+                'education_upcoming' => 'Próximos cursos',
+                'events_upcoming' => 'Próximos eventos (actividades + sesiones de cursos)',
+                'articles_latest' => 'Últimas noticias',
+            ],
         ],
         'banners' => [
             'label' => 'Banners',
@@ -57,7 +67,7 @@ return [
             'label' => 'Temas formación',
         ],
         'collections' => [
-            'label' => 'Colecciones',
+            'label' => 'Categorías',
         ],
         'is_published' => [
             'label' => 'Público',

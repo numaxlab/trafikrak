@@ -13,7 +13,7 @@
             </h2>
             <p>Descripción apoyo</p>
             <a
-                    href="{{ route('trafikrak.storefront.membership.homepage') }}"
+                    href=""
                     wire:navigate
                     class="at-button is-primary mt-5"
             >

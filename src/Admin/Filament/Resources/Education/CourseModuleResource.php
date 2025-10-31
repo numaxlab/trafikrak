@@ -11,8 +11,8 @@ use Filament\Tables;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Lunar\Admin\Support\Resources\BaseResource;
-use Trafikrak\Models\Education\CourseDeliveryMethod;
 use Trafikrak\Models\Education\CourseModule;
+use Trafikrak\Models\EventDeliveryMethod;
 
 class CourseModuleResource extends BaseResource
 {
@@ -113,13 +113,13 @@ class CourseModuleResource extends BaseResource
                             ->label(__('trafikrak::coursemodule.form.delivery_method.label'))
                             ->required()
                             ->options([
-                                CourseDeliveryMethod::IN_PERSON->value => __(
+                                EventDeliveryMethod::IN_PERSON->value => __(
                                     'trafikrak::coursemodule.form.delivery_method.options.in_person',
                                 ),
-                                CourseDeliveryMethod::ONLINE->value => __(
+                                EventDeliveryMethod::ONLINE->value => __(
                                     'trafikrak::coursemodule.form.delivery_method.options.online',
                                 ),
-                                CourseDeliveryMethod::HYBRID->value => __(
+                                EventDeliveryMethod::HYBRID->value => __(
                                     'trafikrak::coursemodule.form.delivery_method.options.hybrid',
                                 ),
                             ]),

@@ -1,22 +1,26 @@
 <?php
 
-namespace Trafikrak\Models\Education;
+namespace Trafikrak\Models\News;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Lunar\Base\Traits\HasMedia;
 use Lunar\Base\Traits\HasUrls;
 use Lunar\Base\Traits\LogsActivity;
 use Lunar\Models\Product;
-use NumaxLab\Lunar\Geslib\Models\Author;
+use Spatie\MediaLibrary\HasMedia as SpatieHasMedia;
 use Spatie\Translatable\HasTranslations;
 use Trafikrak\Models\Attachment;
 use Trafikrak\Models\EventDeliveryMethod;
 
-class CourseModule extends Model
+class Event extends Model implements SpatieHasMedia
 {
+    use HasFactory;
     use HasUrls;
+    use HasMedia;
     use HasTranslations;
     use LogsActivity;
 
@@ -25,30 +29,23 @@ class CourseModule extends Model
         'subtitle',
         'description',
     ];
+    protected $guarded = [];
+
     protected $casts = [
         'starts_at' => 'datetime',
         'delivery_method' => EventDeliveryMethod::class,
     ];
-    protected $guarded = [];
 
-    public function course(): BelongsTo
+    public function eventType(): BelongsTo
     {
-        return $this->belongsTo(Course::class);
-    }
-
-    public function instructors(): BelongsToMany
-    {
-        return $this
-            ->belongsToMany(Author::class, 'course_module_'.config('lunar.database.table_prefix').'geslib_author')
-            ->withPivot(['position'])
-            ->orderByPivot('position');
+        return $this->belongsTo(EventType::class);
     }
 
     public function products(): BelongsToMany
     {
         return $this->belongsToMany(
             Product::modelClass(),
-            'course_module_'.config('lunar.database.table_prefix').'product',
+            'course_'.config('lunar.database.table_prefix').'product',
         )->withPivot(['position'])->orderByPivot('position');
     }
 

@@ -1,7 +1,7 @@
 <article>
-    <div class="container mx-auto px-4">
-        <h1 class="at-heading is-1 mb-10">{{ __('Librería') }}</h1>
-    </div>
+    @foreach ($slides as $slide)
+        <x-trafikrak::slides.full-width :slide="$slide"/>
+    @endforeach
 
     @foreach ($tiers as $tier)
         <livewire:dynamic-component

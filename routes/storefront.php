@@ -43,7 +43,6 @@ use Trafikrak\Storefront\Livewire\Media\DocumentsListPage;
 use Trafikrak\Storefront\Livewire\Media\HomePage as MediaHomePage;
 use Trafikrak\Storefront\Livewire\Media\VideoPage;
 use Trafikrak\Storefront\Livewire\Media\VideosListPage;
-use Trafikrak\Storefront\Livewire\Membership\HomePage as MembershipHomePage;
 use Trafikrak\Storefront\Livewire\Membership\SignupPage;
 use Trafikrak\Storefront\Livewire\PagePage;
 
@@ -143,10 +142,12 @@ Route::prefix('/actualidad')->group(function () {
     //
 });
 
-Route::prefix('/apoya-el-proyecto')->group(function () {
-    Route::get('/', MembershipHomePage::class)
-        ->name('trafikrak.storefront.membership.homepage');
+Route::prefix('/info')->group(function () {
+    Route::get('/{slug}', PagePage::class)
+        ->name('trafikrak.storefront.info.page');
+});
 
+Route::prefix('/apoya-el-proyecto')->group(function () {
     Route::get('/hazte-socix', SignupPage::class)
         ->name('trafikrak.storefront.membership.signup');
 });

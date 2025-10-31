@@ -83,7 +83,7 @@
 
         <div class="mt-10 lg:w-8/12 lg:ml-[25%] lg:pl-10">
             <div class="lg:hidden">
-                @include('lunar-geslib::storefront.partials.product.body')
+                @include('trafikrak::storefront.partials.product.body')
             </div>
 
             <x-numaxlab-atomic::organisms.tier class="mt-10">

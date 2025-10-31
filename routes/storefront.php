@@ -28,6 +28,7 @@ use Trafikrak\Storefront\Livewire\Editorial\AuthorPage;
 use Trafikrak\Storefront\Livewire\Editorial\AuthorsListPage;
 use Trafikrak\Storefront\Livewire\Editorial\CollectionPage;
 use Trafikrak\Storefront\Livewire\Editorial\HomePage as EditorialHomePage;
+use Trafikrak\Storefront\Livewire\Editorial\SpecialCollectionPage;
 use Trafikrak\Storefront\Livewire\Education\CoursePage;
 use Trafikrak\Storefront\Livewire\Education\CoursesListPage;
 use Trafikrak\Storefront\Livewire\Education\HomePage as EducationHomePage;
@@ -87,6 +88,9 @@ Route::prefix('/editorial')->group(function () {
 
     Route::get('/colecciones/{slug}', CollectionPage::class)
         ->name('trafikrak.storefront.editorial.collections.show');
+
+    Route::get('/especiales/{slug}', SpecialCollectionPage::class)
+        ->name('trafikrak.storefront.editorial.collections.special.show');
 
     Route::get('/{slug}', PagePage::class)
         ->name('trafikrak.storefront.editorial.page');

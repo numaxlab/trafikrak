@@ -98,7 +98,7 @@
                                         @foreach($editorialSpecialCollections as $collection)
                                             <li>
                                                 <a
-                                                        href=""
+                                                        href="{{ route('trafikrak.storefront.editorial.collections.special.show', $collection->defaultUrl->slug) }}"
                                                         wire:navigate
                                                 >
                                                     {{ $collection->translateAttribute('name') }}

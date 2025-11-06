@@ -20,7 +20,7 @@
             </ul>
         @endif
 
-        <ul class="font-bold at-small flex flex-wrap gap-1 mt-2 mb-3 [&>li:not(:last-child)]:after:content-['|']">            
+        <ul class="font-bold at-small flex flex-wrap gap-1 mt-2 mb-3 [&>li:not(:last-child)]:after:content-['|']">
             @if ($product->brand)
                 <li>
                     {{ $product->brand->name }}
@@ -28,7 +28,10 @@
             @endif
             @foreach ($product->editorialCollections as $collection)
                 <li>
-                    <a href="" wire:navigate>
+                    <a
+                            href="{{ route('trafikrak.storefront.editorial.collections.show', $collection->defaultUrl->slug) }}"
+                            wire:navigate
+                    >
                         {{ $collection->translateAttribute('name') }}
                     </a>
                 </li>
@@ -56,7 +59,7 @@
             </div>
         @endif
 
-        <ul class="at-small flex flex-wrap gap-1 mt-3 mb-1 [&>li:not(:last-child)]:after:content-['|']">            
+        <ul class="at-small flex flex-wrap gap-1 mt-3 mb-1 [&>li:not(:last-child)]:after:content-['|']">
             @if ($product->translateAttribute('pages'))
                 <li>
                     {{ $product->translateAttribute('pages') }} {{ __('páginas') }}
@@ -97,7 +100,9 @@
             <div class="at-heading is-3 mb-1 font-titles">
                 {{ $pricing->priceIncTax()->formatted() }}
             </div>
-            <div class="font-serif font-small text-primary mb-3">Disponible <i class="fa-solid fa-circle-info" aria-hidden="true" wire:loading.remove></i></div>
+            <div class="font-serif font-small text-primary mb-3">
+                Disponible <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+            </div>
         @endif
 
         @foreach ($product->statuses as $status)
@@ -107,7 +112,7 @@
         @endforeach
 
         <livewire:trafikrak.storefront.livewire.components.bookshop.add-to-cart
-                :key="'add-to-cart-' . $product->id"
+                :key="$prefix . 'add-to-cart-' . $product->id"
                 :purchasable="$product->variant"/>
 
         @if ($product->translateAttribute('digital-book'))

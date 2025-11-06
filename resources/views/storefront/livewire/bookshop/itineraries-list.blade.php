@@ -12,7 +12,10 @@
             <h1 class="at-heading is-1">{{ __('Itinerarios') }}</h1>
 
             <p class="mt-4 md:max-w-[70%] lg:max-w-[50%]">
-                Los itinerarios de formación y lectura es un proyecto donde tratamos de recoger los saberes acumulados a lo largo de los años por activistas y teóricos. Con estos caminos tratamos de recoger los mapas de nuestro quehacer político, y recuperar la memoria de esos caminos, que inevitablemente nos encontramos muchas veces de nuevo.
+                Los itinerarios de formación y lectura es un proyecto donde tratamos de recoger los saberes acumulados a
+                lo largo de los años por activistas y teóricos. Con estos caminos tratamos de recoger los mapas de
+                nuestro quehacer político, y recuperar la memoria de esos caminos, que inevitablemente nos encontramos
+                muchas veces de nuevo.
             </p>
         </header>
 
@@ -21,6 +24,7 @@
                 @foreach($itineraries as $collection)
                     <li>
                         <x-numaxlab-atomic::molecules.banner
+                                :image-src="$collection->getFirstMediaUrl(config('lunar.media.collection'), 'medium')"
                                 :href="route('trafikrak.storefront.bookshop.itineraries.show', $collection->defaultUrl->slug)">
                             <h2 class="at-heading is-3 mb-4">{{ $collection->translateAttribute('name') }}</h2>
 

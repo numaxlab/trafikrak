@@ -37,6 +37,7 @@
                         class="text-primary"
                         aria-label="{{ __('Añadir a favoritos') }}"
                         wire:click="addToFavorites"
+                        wire:key="fav-{{ $product->id }}"
                         wire:loading.attr="disabled"
                 >
                     @if ($isUserFavourite)
@@ -64,7 +65,7 @@
             @endif
 
             <div class="hidden lg:block mt-8">
-                @include('trafikrak::storefront.partials.product.body')
+                @include('trafikrak::storefront.partials.product.body', ['prefix' => 'desktop'])
             </div>
         </header>
 
@@ -78,15 +79,17 @@
 
         <div class="mt-1 lg:w-8/12 lg:ml-[25%] lg:pl-10">
             <div class="lg:hidden">
-                @include('trafikrak::storefront.partials.product.body')
+                @include('trafikrak::storefront.partials.product.body', ['prefix' => 'mobile'])
             </div>
 
             <livewire:trafikrak.storefront.livewire.components.bookshop.product-reviews
+                    :key="$product->id . '-reviews'"
                     :product="$product"
                     lazy="true"
             />
 
             <livewire:trafikrak.storefront.livewire.components.bookshop.product-associations
+                    :key="$product->id . '-associations'"
                     :product="$product"
                     lazy="true"
             />
@@ -97,6 +100,7 @@
             />--}}
 
             <livewire:trafikrak.storefront.livewire.components.bookshop.product-itineraries
+                    :key="$product->id . '-itineraries'"
                     :product="$product"
                     lazy="true"
             />

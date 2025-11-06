@@ -18,7 +18,7 @@
     @endif
 
     <x-slot name="content">
-        <ul class="text-sm border-y border-black divide-x divide-black flex gap-2 py-2">
+        <ul class="font-sans text-sm border-y border-black divide-x divide-black flex gap-2 py-2">
             <li class="pr-2">
                 <i class="fa-solid fa-calendar text-2xl mr-2" aria-hidden="true"></i>
                 <time datetime="{{ $course->starts_at->format('Y-m-d') }}">{{ $course->starts_at->format('d/m/Y') }}</time>

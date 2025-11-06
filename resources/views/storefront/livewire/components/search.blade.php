@@ -1,5 +1,5 @@
 <div>
-    <div class="bg-primary p-4 absolute inset-0 flex items-center">
+    <div class="bg-black p-4 absolute inset-0 flex items-center">
         <div class="w-full">
             <div class="container mx-auto px-4">
                 <div class="relative">
@@ -13,7 +13,7 @@
                     />
                     <button
                             type="button"
-                            class="text-primary absolute inset-y-0 right-3"
+                            class="text-black absolute inset-y-0 right-3"
                             @click="searchExpanded = false"
                     >
                         <i class="fa-solid fa-xmark" aria-hidden="true"></i>
@@ -23,7 +23,7 @@
             </div>
 
             @if (! empty($query))
-                <div class="pt-4 pb-10 bg-primary text-white absolute left-0 w-full z-10">
+                <div class="pt-4 pb-10 bg-black text-white absolute left-0 w-full z-10">
                     <div class="container mx-auto px-4">
                         <div class="flex gap-10">
                             @foreach ($contentTypes as $key => $contentType)

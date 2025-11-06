@@ -1,21 +1,21 @@
 <article>
-    <a href="{{ $attributes->get('href') }}" wire:navigate class="block mb-2">
+    <a href="{{ $attributes->get('href') }}" wire:navigate class="block mb-1 hover:no-underline group">
         <img
                 src="{{ $product->getFirstMediaUrl(config('lunar.media.collection'), 'medium') }}"
                 loading="lazy"
                 alt=""/>
 
-        <h3 class="at-heading is-4 mt-3">
+        <h3 class="at-heading is-4 mt-3 text-black group-hover:text-black/70">
             {{ $product->recordTitle }}
         </h3>
     </a>
 
     @if ($product->authors->isNotEmpty())
-        <div class="mb-2">
+        <div class="mb-3">
             <ul>
                 @foreach ($product->authors as $author)
                     <li>
-                        <p>{{ $author->name }}</p>
+                        <p class="text-sm leading-5">{{ $author->name }}</p>
                     </li>
                 @endforeach
             </ul>

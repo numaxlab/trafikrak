@@ -10,7 +10,7 @@
                                         href="{{ route('trafikrak.storefront.bookshop.sections.show', ['slug' => $taxonomy->getAncestorSection()->defaultUrl->slug, 't' => $taxonomy->id]) }}"
                                     @endif
                                     wire:navigate
-                                    class="at-small at-tag is-primary"
+                                    class="at-small at-tag"
                             >
                                 {{ $taxonomy->translateAttribute('name') }}
                             </a>
@@ -20,7 +20,7 @@
             </ul>
         @endif
 
-        <ul class="at-small flex flex-wrap gap-2 my-3">
+        <ul class="font-bold at-small flex flex-wrap gap-1 mt-2 mb-3 [&>li:not(:last-child)]:after:content-['|']">            
             @if ($product->brand)
                 <li>
                     {{ $product->brand->name }}
@@ -38,21 +38,11 @@
                     {{ $product->translateAttribute('first-issue-year') }}
                 </li>
             @endif
-            @if ($product->translateAttribute('pages'))
-                <li>
-                    {{ $product->translateAttribute('pages') }} {{ __('páginas') }}
-                </li>
-            @endif
-            @foreach ($product->languages as $language)
-                <li>
-                    {{ $language->translateAttribute('name') }}
-                </li>
-            @endforeach
         </ul>
 
         @if ($product->translateAttribute('bookshop-reference') || $product->translateAttribute('editorial-reference'))
             <div x-data="lineClamp">
-                <div x-ref="description" :class="{ 'line-clamp-8': !showMore }">
+                <div x-ref="description" :class="{ 'line-clamp-10 ': !showMore }">
                     @if ($product->translateAttribute('bookshop-reference'))
                         {!! $product->translateAttribute('bookshop-reference') !!}
                     @elseif ($product->translateAttribute('editorial-reference'))
@@ -66,7 +56,17 @@
             </div>
         @endif
 
-        <ul class="at-small mt-5">
+        <ul class="at-small flex flex-wrap gap-1 mt-3 mb-1 [&>li:not(:last-child)]:after:content-['|']">            
+            @if ($product->translateAttribute('pages'))
+                <li>
+                    {{ $product->translateAttribute('pages') }} {{ __('páginas') }}
+                </li>
+            @endif
+            @foreach ($product->languages as $language)
+                <li>
+                    {{ $language->translateAttribute('name') }}
+                </li>
+            @endforeach
             @if ($product->variant->width->getValue() && $product->variant->height->getValue())
                 <li>
                     {{ $product->variant->width->to('length.cm')->format() }}
@@ -94,9 +94,10 @@
 
     <div class="mt-10 lg:w-1/3 lg:mt-0">
         @if ($pricing)
-            <div class="at-heading is-3 mb-3">
+            <div class="at-heading is-3 mb-1 font-titles">
                 {{ $pricing->priceIncTax()->formatted() }}
             </div>
+            <div class="font-serif font-small text-primary mb-3">Disponible <i class="fa-solid fa-circle-info" aria-hidden="true" wire:loading.remove></i></div>
         @endif
 
         @foreach ($product->statuses as $status)

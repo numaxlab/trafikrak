@@ -40,9 +40,9 @@
                         wire:loading.attr="disabled"
                 >
                     @if ($isUserFavourite)
-                        <i class="fa-solid fa-heart" aria-hidden="true" wire:loading.remove></i>
+                        <i class="fa-solid fa-heart fa-2xs" aria-hidden="true" wire:loading.remove></i>
                     @else
-                        <i class="fa-regular fa-heart" aria-hidden="true" wire:loading.remove></i>
+                        <i class="fa-regular fa-heart fa-2xs" aria-hidden="true" wire:loading.remove></i>
                     @endif
 
                     <div wire:loading>
@@ -56,14 +56,14 @@
             @endif
 
             @if ($product->authors->isNotEmpty())
-                <p class="at-heading is-3 font-normal mt-3">
+                <p class="at-heading is-4 font-normal normal-case mt-3">
                     @foreach ($product->authors as $author)
                         <a href="{{ route('trafikrak.storefront.authors.show', $author->defaultUrl->slug) }}">{{ $author->name }}</a>{{ $loop->last ? '' : '; ' }}
                     @endforeach
                 </p>
             @endif
 
-            <div class="hidden lg:block mt-10">
+            <div class="hidden lg:block mt-8">
                 @include('trafikrak::storefront.partials.product.body')
             </div>
         </header>
@@ -72,11 +72,11 @@
             <img
                     src="{{ $product->getFirstMediaUrl(config('lunar.media.collection'), 'large') }}"
                     alt="{{ __('Portada del libro :title', ['title' => $product->recordFullTitle]) }}"
-                    class="w-full h-auto mt-7"
+                    class="w-full h-auto mt-2"
             >
         </div>
 
-        <div class="mt-10 lg:w-8/12 lg:ml-[25%] lg:pl-10">
+        <div class="mt-1 lg:w-8/12 lg:ml-[25%] lg:pl-10">
             <div class="lg:hidden">
                 @include('trafikrak::storefront.partials.product.body')
             </div>

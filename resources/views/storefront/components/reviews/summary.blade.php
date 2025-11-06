@@ -3,9 +3,9 @@
     <blockquote>
         {{ $review->quote }}
     </blockquote>
-    <figcaption class="blockquote-footer">
+    <figcaption class="blockquote-footer mt-2">
         @if ($review->author)
-            <p class="font-bold">{{ $review->author }}</p>
+            <p class="font-bold mb-0">{{ $review->author }}</p>
         @endif
         @if ($review->media_name && $review->link)
             <a href="{{ $review->link }}" target="_blank">

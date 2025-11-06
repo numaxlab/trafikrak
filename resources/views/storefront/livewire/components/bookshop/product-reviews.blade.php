@@ -3,7 +3,7 @@
         <x-numaxlab-atomic::organisms.tier class="mt-10">
             <x-numaxlab-atomic::organisms.tier.header>
                 <h2 class="at-heading is-2">
-                    {{ __('Reseñas') }}
+                    {{ __('Sobre este libro se ha dicho...') }}
                 </h2>
             </x-numaxlab-atomic::organisms.tier.header>
 

@@ -7,7 +7,8 @@
                 </h2>
             </x-numaxlab-atomic::organisms.tier.header>
 
-            <ul class="grid gap-6 grid-cols-2 mb-9 md:grid-cols-4">
+            <div class="overflow-x-auto">
+            <ul class="grid grid-flow-col auto-cols-[40%] md:auto-cols-[25%] gap-6">
                 @foreach ($associations as $association)
                     <li>
                         <x-trafikrak::products.summary
@@ -17,6 +18,7 @@
                     </li>
                 @endforeach
             </ul>
+            </div>
         </x-numaxlab-atomic::organisms.tier>
     @endif
 </div>

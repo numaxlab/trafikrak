@@ -26,39 +26,30 @@
                 <h1 class="at-heading is-1 mb-5">Título 1 [at-heading is-1]</h1>
                 <h2 class="at-heading is-2 mb-5">Título 2 [at-heading is-2]</h2>
                 <h3 class="at-heading is-3 mb-5">Título 3 [at-heading is-3]</h3>
-                <h4 class="at-heading is-4">Título 4 [at-heading is-4]</h4>
+                <h4 class="at-heading is-4">Título 44[at-heading is-4]</h4>
 
                 <div class="mt-5">
-                    <div class="mb-5">
+                    <div class="at-lead mb-5">
                         <p>
-                            [body]<br>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra eros quis ex
-                            malesuada
-                            pellentesque. Suspendisse mauris mauris, ultricies id egestas.
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra eros quis ex
-                            malesuada pellentesque. <a href="">Suspendisse mauris mauris</a>, ultricies id egestas.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra eros quis exenoration <a href="">pellentesque</a>. Suspendisse mauris mauris, ultricies id egestas. [at-lead] 
                         </p>
                     </div>
 
-                    <div class="at-lead mb-5">
+                    <div class="mb-5">
                         <p>
-                            [at-lead]<br>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra eros quis ex
-                            malesuada <a href="">pellentesque</a>. Suspendisse mauris mauris, ultricies id egestas.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra eros quis ex malesuada pellentesque. Suspendisse mauris mauris, ultricies id egestas. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius repellat necessitatibus est eveniet sunt adipisci explicabo iure? Consequuntur nulla error unde, dolores reprehenderit nobis minus nam eveniet esse aliquam repellat?
+                        </p>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra eros quis ex malesuada pellentesque. <a href="">Suspendisse mauris mauris</a>, ultricies id egestas. [body]
                         </p>
                     </div>
 
                     <blockquote class="mb-5">
-                        [at-blockquote]<br>
-                        Suspendisse mauris mauris, ultricies id egestas.
+                        <br> Suspendisse mauris mauris, ultricies id egestas. [at-blockquote]
                     </blockquote>
 
                     <small class="at-small">
-                        [at-small]<br>
-                        Lorem ipsum dolor sit amet, sectetur ipsum do amet, consectetur. Lorem ipsum dolor sit amet,
-                        consectetur amet ipsum.
+                        <br> Lorem ipsum dolor sit amet, sectetur ipsum do amet, consectetur. Lorem ipsum dolor sit amet, consectetur amet ipsum.[at-small]
                     </small>
                 </div>
             </div>
@@ -82,20 +73,23 @@
             <x-numaxlab-atomic::organisms.tier.header>
                 <h2 class="at-heading is-2">Libros</h2>
                 <a href="" class="at-small">
-                    ver más
+                    
                 </a>
             </x-numaxlab-atomic::organisms.tier.header>
 
-            <ul class="grid gap-6 grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
+            <div class="overflow-x-auto">
+                <ul class="grid grid-flow-col auto-cols-[50%] md:auto-cols-[25%] lg:auto-cols-[16.666%] gap-6">
                 @foreach ($products as $product)
-                    <li>
-                        <x-trafikrak::products.summary
-                                :product="$product"
-                                :href="route('trafikrak.storefront.bookshop.products.show', $product->defaultUrl->slug)"
-                        />
-                    </li>
+                <li>
+                    <x-trafikrak::products.summary
+                    :product="$product"
+                    :href="route('trafikrak.storefront.bookshop.products.show', $product->defaultUrl->slug)"
+                />
+                </li>
                 @endforeach
             </ul>
+            </div>
+
         </x-numaxlab-atomic::organisms.tier>
     </div>
 

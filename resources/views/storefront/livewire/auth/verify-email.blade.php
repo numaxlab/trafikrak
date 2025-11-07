@@ -1,3 +1,5 @@
+<x-slot name="bodyClass">bg-secondary</x-slot>
+
 <div class="flex flex-col gap-6 sm:w-sm sm:mx-auto">
     <p>{{ __('Please verify your email address by clicking on the link we just emailed to you.') }}</p>
 

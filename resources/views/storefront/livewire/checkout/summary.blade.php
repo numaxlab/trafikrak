@@ -1,3 +1,5 @@
+<x-slot name="bodyClass">bg-secondary</x-slot>
+
 <article class="container mx-auto px-4 lg:max-w-4xl">
     <h1 class="at-heading is-1">Carrito</h1>
 

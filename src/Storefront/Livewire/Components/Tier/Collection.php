@@ -55,6 +55,7 @@ class Collection extends Component
                 'defaultUrl',
                 'authors',
             ])
+            ->take(12)
             ->get();
     }
 

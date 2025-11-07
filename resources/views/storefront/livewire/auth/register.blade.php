@@ -1,3 +1,5 @@
+<x-slot name="bodyClass">bg-secondary</x-slot>
+
 <section class="flex flex-col gap-6 lg:w-4xl lg:mx-auto">
     <h1 class="at-heading is-1">{{ __('Regístrate') }}</h1>
 

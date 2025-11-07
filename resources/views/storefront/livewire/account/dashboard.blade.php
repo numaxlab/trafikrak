@@ -1,3 +1,5 @@
+<x-slot name="bodyClass">bg-secondary</x-slot>
+
 <article class="container mx-auto px-4 lg:max-w-4xl">
     <div class="grid gap-6 md:grid-cols-2">
         <header>

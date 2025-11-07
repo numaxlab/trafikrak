@@ -19,6 +19,7 @@
             @foreach($itineraries as $collection)
                 <li>
                     <x-numaxlab-atomic::molecules.banner
+                            :class="$collection->getFirstMediaUrl(config('lunar.media.collection'), 'medium') ? 'has-media' : ''"
                             :image-src="$collection->getFirstMediaUrl(config('lunar.media.collection'), 'medium')"
                             :href="route('trafikrak.storefront.bookshop.itineraries.show', $collection->defaultUrl->slug)">
                         <h2 class="at-heading is-3 mb-4">

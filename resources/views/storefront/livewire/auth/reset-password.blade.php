@@ -1,3 +1,5 @@
+<x-slot name="bodyClass">bg-secondary</x-slot>
+
 <div class="flex flex-col gap-6 sm:w-sm sm:mx-auto">
     <!-- Session Status -->
     <x-trafikrak::auth.session-status class="text-center" :status="session('status')"/>

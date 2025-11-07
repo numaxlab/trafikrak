@@ -13,7 +13,7 @@
         {{ $head }}
     @endif
 </head>
-<body>
+<body class="{{ !empty($bodyClass) ? $bodyClass : '' }}">
 <x-trafikrak::header/>
 
 <main>

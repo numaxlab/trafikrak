@@ -1,3 +1,5 @@
+<x-slot name="bodyClass">bg-secondary</x-slot>
+
 <article class="container mx-auto px-4 lg:max-w-4xl">
     <header class="mb-10">
         <x-numaxlab-atomic::molecules.breadcrumb :label="__('Miga de pan')">

@@ -1,3 +1,5 @@
+<x-slot name="bodyClass">bg-secondary</x-slot>
+
 <section class="flex flex-col gap-6 sm:w-sm sm:mx-auto">
     <h1 class="at-heading is-1">{{ __('Recuperar contraseña') }}</h1>
 

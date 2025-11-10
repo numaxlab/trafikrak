@@ -10,7 +10,7 @@
             @foreach ($paymentTypes as $type)
                 <li>
                     <x-numaxlab-atomic::atoms.forms.radio
-                            name="payment_type"
+                            wire:model.live="paymentType"
                             id="paymentType-{{ $type }}"
                             key="paymentType{{ $type }}"
                             value="{{ $type }}">

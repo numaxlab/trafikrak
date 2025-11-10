@@ -27,6 +27,8 @@ class ShippingAndPaymentPage extends Page
 
     public $chosenShipping = null;
 
+    public $paymentType = null;
+
     public array $steps = [
         'shipping_address' => 1,
         'shipping_option' => 2,

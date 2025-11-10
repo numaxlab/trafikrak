@@ -29,22 +29,24 @@
         </div>
     </div>
 
+    <div class="lg:flex lg:gap-6">
+        <div class="lg:w-1/2">
+            @include('trafikrak::storefront.partials.checkout.address', [
+               'type' => 'billing',
+               'step' => $steps['billing_address'],
+           ])
+        </div>
+        <div class="lg:w-1/2">
+            @include('trafikrak::storefront.partials.checkout.payment', [
+            'step' => $steps['payment'],
+        ])
+        </div>
+    </div>
+
     <form method="post" action="{{ route('trafikrak.storefront.checkout.process-payment') }}">
         @csrf
 
-        <div class="lg:flex lg:gap-6">
-            <div class="lg:w-1/2">
-                @include('trafikrak::storefront.partials.checkout.address', [
-                   'type' => 'billing',
-                   'step' => $steps['billing_address'],
-               ])
-            </div>
-            <div class="lg:w-1/2">
-                @include('trafikrak::storefront.partials.checkout.payment', [
-                'step' => $steps['payment'],
-            ])
-            </div>
-        </div>
+        <input type="hidden" name="payment_type" value="{{ $paymentType }}">
 
         <div class="flow-root my-7">
             <h2 class="at-heading is-4">

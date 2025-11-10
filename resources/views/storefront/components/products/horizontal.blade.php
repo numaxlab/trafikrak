@@ -1,4 +1,4 @@
-<article class="flex gap-2">
+<article class="flex gap-4">
     <a href="{{ $attributes->get('href') }}" wire:navigate class="block w-1/3">
         <img
                 src="{{ $product->getFirstMediaUrl(config('lunar.media.collection'), 'medium') }}"

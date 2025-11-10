@@ -11,11 +11,6 @@ class FavouriteProductsPage extends Page
 {
     use WithPagination;
 
-    public function mount(): void
-    {
-        //
-    }
-
     public function removeFromFavourites($productId): void
     {
         Auth::user()->favourites()->detach($productId);

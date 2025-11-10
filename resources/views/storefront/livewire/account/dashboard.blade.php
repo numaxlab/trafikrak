@@ -1,14 +1,14 @@
 <x-slot name="bodyClass">bg-secondary</x-slot>
 
 <article class="container mx-auto px-4 lg:max-w-4xl">
-    <div class="grid gap-6 md:grid-cols-2">
+    <div class="grid gap-8 md:grid-cols-2">
         <header>
             <nav>
                 <h1 class="at-heading is-1">{{ __('Mi cuenta') }}</h1>
 
                 <ul class="mt-7">
                     <li><strong>{{ $user->full_name }}</strong></li>
-                    <li>{{ $user->email }}</li>
+                    <li class="mb-4">{{ $user->email }}</li>
                     <li>
                         <ul>
                             <li>

@@ -16,7 +16,7 @@
     p {
         margin-bottom: var(--spacing);
     }
-    
+
     h1, h2, h3, h4, h5, h6 {
         font-family: var(--font-titles);
         letter-spacing: var(--tracking-tight);
@@ -32,20 +32,28 @@
     .at-lead {
         font-size: var(--text-3xl);
     }
+
     .at-tag {
-        font-family: var(--font-serif); 
-        background-color: var(--color-primary);  
-        color: var(--color-white); 
+        font-family: var(--font-serif);
+        background-color: var(--color-primary);
+        color: var(--color-white);
+
+        &.is-primary {
+            color: var(--color-white);
+        }
     }
+
     .at-button {
         font-family: var(--font-sans);
     }
+
     .tier-header {
-        border-bottom-width: 0!important;
-        margin-bottom: calc(var(--spacing) * 3)!important;
+        border-bottom-width: 0 !important;
+        margin-bottom: calc(var(--spacing) * 3) !important;
     }
+
     input:focus, select:focus {
         border-color: var(--color-primary);
-        box-shadow: var(--color-primary);   
+        box-shadow: var(--color-primary);
     }
 }

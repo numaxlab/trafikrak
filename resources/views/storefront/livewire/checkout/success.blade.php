@@ -8,4 +8,17 @@
             puedes revisarlo en tu cuenta. Si tienes cualquier duda, puedes contactar con nosotros en
             info@libreria.com</p>
     </div>
+
+    <ul class="flex gap-10 mt-10">
+        <li>
+            <a href="{{ route('dashboard') }}" wire:navigate class="at-button is-primary">
+                {{ __('Ver pedido en mi cuenta') }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('trafikrak.storefront.homepage') }}" wire:navigate class="at-button is-primary">
+                {{ __('Ir a la portada') }}
+            </a>
+        </li>
+    </ul>
 </article>

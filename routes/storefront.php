@@ -7,6 +7,8 @@ use Trafikrak\Storefront\Http\Controllers\CheckoutController;
 use Trafikrak\Storefront\Livewire\Account\DashboardPage;
 use Trafikrak\Storefront\Livewire\Account\FavouriteProductsPage;
 use Trafikrak\Storefront\Livewire\Account\HandleAddressPage;
+use Trafikrak\Storefront\Livewire\Account\OrderPage;
+use Trafikrak\Storefront\Livewire\Account\OrdersListPage;
 use Trafikrak\Storefront\Livewire\Account\PasswordPage;
 use Trafikrak\Storefront\Livewire\Account\ProfilePage;
 use Trafikrak\Storefront\Livewire\Auth\ConfirmPasswordPage;
@@ -184,6 +186,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/preferencias/direcciones/{id}/editar', HandleAddressPage::class)->name('settings.edit-address');
 
     Route::get('/mis-favoritos', FavouriteProductsPage::class)->name('favourite-products.index');
+
+    Route::get('/mis-pedidos', OrdersListPage::class)->name('orders.index');
+    Route::get('/mis-pedidos/{reference}', OrderPage::class)->name('orders.show');
 });
 
 Route::post('logout', Logout::class)->name('logout');

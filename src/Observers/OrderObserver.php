@@ -3,7 +3,9 @@
 namespace Trafikrak\Observers;
 
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Lunar\Models\Customer;
 use Lunar\Models\Order;
+use Trafikrak\Models\Membership\Benefit;
 use Trafikrak\Models\Membership\MembershipPlan;
 use Trafikrak\Models\Membership\Subscription;
 
@@ -11,9 +13,9 @@ class OrderObserver
 {
     public function updated(Order $order): void
     {
-        $paidStatus = 'payment-received';
+        $validStatuses = ['payment-received', 'dispatched'];
 
-        if ($order->isDirty('status') && $order->status === $paidStatus) {
+        if ($order->isDirty('status') && in_array($order->status, $validStatuses)) {
             $this->activateSubscriptionFor($order);
         }
     }
@@ -45,11 +47,21 @@ class OrderObserver
                 'expires_at' => now()->addYear(),
             ]);
 
+            $this->applyBenefits($customer, $membershipPlan);
             $this->calculateRecurringPayment($membershipPlan);
 
             // Envía email, notifica, etc.
 
             break;
+        }
+    }
+
+    protected function applyBenefits(Customer $customer, MembershipPlan $membershipPlan): void
+    {
+        foreach ($membershipPlan->benefits as $benefit) {
+            if ($benefit->code === Benefit::CUSTOMER_GROUP) {
+                $customer->customerGroups()->attach($benefit->customer_group_id);
+            }
         }
     }
 

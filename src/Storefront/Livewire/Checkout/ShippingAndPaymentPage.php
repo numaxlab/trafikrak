@@ -5,6 +5,7 @@ namespace Trafikrak\Storefront\Livewire\Checkout;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Lunar\DataTypes\ShippingOption;
 use Lunar\Facades\CartSession;
@@ -63,6 +64,13 @@ class ShippingAndPaymentPage extends Page
         }
 
         $this->paymentTypes = config('trafikrak.payment_types.store');
+
+        if (! Auth::user()?->latestCustomer()?->canBuyOnCredit()) {
+            $this->paymentTypes = array_values(array_filter(
+                $this->paymentTypes,
+                fn ($type) => $type !== 'credit',
+            ));
+        }
 
         $this->shipping->init();
         $this->billing->init();
@@ -224,6 +232,13 @@ class ShippingAndPaymentPage extends Page
     public function refreshCart(): void
     {
         $this->cart = CartSession::current();
+    }
+
+    public function updatedCouponCode($value): void
+    {
+        $this->cart->coupon_code = $value;
+        $this->cart->save();
+        $this->cart->calculate();
     }
 
     public function finish(): null|RedirectResponse|Redirector

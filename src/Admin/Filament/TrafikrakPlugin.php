@@ -14,6 +14,7 @@ use Trafikrak\Admin\Filament\Resources\Education\TopicResource;
 use Trafikrak\Admin\Filament\Resources\Media\AudioResource;
 use Trafikrak\Admin\Filament\Resources\Media\DocumentResource;
 use Trafikrak\Admin\Filament\Resources\Media\VideoResource;
+use Trafikrak\Admin\Filament\Resources\Membership\BenefitResource;
 use Trafikrak\Admin\Filament\Resources\Membership\MembershipPlanResource;
 use Trafikrak\Admin\Filament\Resources\Membership\MembershipTierResource;
 use Trafikrak\Admin\Filament\Resources\News\ArticleResource;
@@ -46,6 +47,7 @@ class TrafikrakPlugin implements Plugin
             VideoResource::class,
             MembershipTierResource::class,
             MembershipPlanResource::class,
+            BenefitResource::class,
             TierResource::class,
             SlideResource::class,
             BannerResource::class,

@@ -6,7 +6,7 @@
     </x-numaxlab-atomic::organisms.tier.header>
 
     <x-numaxlab-atomic::atoms.input
-            wire:model="couponCode"
+            wire:model.blur="couponCode"
             type="text"
             name="couponCode"
             id="couponCode"

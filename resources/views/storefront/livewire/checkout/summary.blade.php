@@ -56,12 +56,22 @@
             </ul>
         </div>
 
-        <a
-                class="at-button is-primary mt-10"
-                href="{{ route('trafikrak.storefront.checkout.shipping-and-payment') }}"
-                wire:navigate
-        >
-            {{ __('Finalizar pedido') }}
-        </a>
+        <div class="flex gap-10 mt-10">
+            <a
+                    href="{{ route('trafikrak.storefront.bookshop.homepage') }}"
+                    class="at-button is-secondary md:w-1/2"
+                    wire:navigate
+            >
+                {{ __('Seguir comprando') }}
+            </a>
+
+            <a
+                    class="at-button is-primary md:w-1/2"
+                    href="{{ route('trafikrak.storefront.checkout.shipping-and-payment') }}"
+                    wire:navigate
+            >
+                {{ __('Finalizar pedido') }}
+            </a>
+        </div>
     @endif
 </article>

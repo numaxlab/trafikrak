@@ -91,6 +91,11 @@ class MembershipPlanResource extends BaseResource
                             ->autofocus(),
                         Forms\Components\RichEditor::make('description')
                             ->label(__('trafikrak::membership-plan.form.description.label')),
+                        Forms\Components\Select::make('benefits')
+                            ->relationship(titleAttribute: 'name')
+                            ->multiple()
+                            ->preload()
+                            ->label(__('trafikrak::membership-plan.form.benefits.label')),
                         Forms\Components\Toggle::make('is_published')
                             ->label(__('trafikrak::membership-plan.form.is_published.label')),
                     ]),

@@ -55,7 +55,7 @@ class ProductPage extends Page
             ->customerGroups(StorefrontSession::getCustomerGroups())
             ->get()->matched;
 
-        if (!Auth::check()) {
+        if (! Auth::check()) {
             $this->isUserFavourite = false;
         } else {
             $user = Auth::user();
@@ -66,7 +66,7 @@ class ProductPage extends Page
 
     public function addToFavorites(): null
     {
-        if (!Auth::check()) {
+        if (! Auth::check()) {
             return $this->redirect(route('login'), true);
         }
 

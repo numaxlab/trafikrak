@@ -4,6 +4,7 @@ namespace Trafikrak\Models\Membership;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Collection;
 use Lunar\Base\Purchasable;
 use Lunar\Base\Traits\HasPrices;
@@ -18,10 +19,10 @@ class MembershipPlan extends Model implements Purchasable
     use HasPrices;
     use LogsActivity;
 
-    public const BILLING_INTERVAL_MONTHLY = 'monthly';
-    public const BILLING_INTERVAL_BIMONTHLY = 'bimonthly';
-    public const BILLING_INTERVAL_QUARTERLY = 'quarterly';
-    public const BILLING_INTERVAL_YEARLY = 'yearly';
+    public const string BILLING_INTERVAL_MONTHLY = 'monthly';
+    public const string BILLING_INTERVAL_BIMONTHLY = 'bimonthly';
+    public const string BILLING_INTERVAL_QUARTERLY = 'quarterly';
+    public const string BILLING_INTERVAL_YEARLY = 'yearly';
 
     public $translatable = [
         'name',
@@ -32,6 +33,11 @@ class MembershipPlan extends Model implements Purchasable
     public function tier(): BelongsTo
     {
         return $this->belongsTo(MembershipTier::class, 'membership_tier_id');
+    }
+
+    public function benefits(): BelongsToMany
+    {
+        return $this->belongsToMany(Benefit::class);
     }
 
     public function taxClass(): BelongsTo

@@ -7,7 +7,7 @@ return [
             'bizum',
             'paypal',
             'cash-on-delivery',
-            //'credit',
+            'credit',
         ],
         'education' => [
             'card',

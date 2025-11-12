@@ -29,6 +29,9 @@ return [
         'description' => [
             'label' => 'Descripción',
         ],
+        'benefits' => [
+            'label' => 'Beneficios',
+        ],
         'is_published' => [
             'label' => 'Pública',
         ],

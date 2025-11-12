@@ -21,7 +21,10 @@ class Slide extends Model
     ];
     protected $guarded = [];
 
-    protected $casts = [
-        'section' => Section::class,
-    ];
+    protected function casts(): array
+    {
+        return [
+            'section' => Section::class,
+        ];
+    }
 }

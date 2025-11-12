@@ -15,7 +15,13 @@ class LatestOrder extends Component
 
     public function mount(): void
     {
-        $latestOrders = Auth::user()->latestCustomer()->orders()->latest()->take(2)->get();
+        $latestOrders = Auth::user()
+            ->latestCustomer()
+            ->orders()
+            ->whereNotIn('status', ['awaiting-payment', 'cancelled'])
+            ->latest()
+            ->take(2)
+            ->get();
 
         if ($latestOrders->isNotEmpty()) {
             $this->order = $latestOrders->first();

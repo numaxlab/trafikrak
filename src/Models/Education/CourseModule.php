@@ -25,10 +25,6 @@ class CourseModule extends Model
         'subtitle',
         'description',
     ];
-    protected $casts = [
-        'starts_at' => 'datetime',
-        'delivery_method' => EventDeliveryMethod::class,
-    ];
     protected $guarded = [];
 
     public function course(): BelongsTo
@@ -55,5 +51,13 @@ class CourseModule extends Model
     public function attachments(): MorphMany
     {
         return $this->morphMany(Attachment::class, 'attachable');
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'starts_at' => 'datetime',
+            'delivery_method' => EventDeliveryMethod::class,
+        ];
     }
 }

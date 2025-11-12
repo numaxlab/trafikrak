@@ -20,10 +20,6 @@ class Tier extends Model
         'link',
         'link_name',
     ];
-    protected $casts = [
-        'section' => Section::class,
-        'type' => TierType::class,
-    ];
     protected $guarded = [];
 
     public function banners(): BelongsToMany
@@ -66,5 +62,13 @@ class Tier extends Model
             TierType::ARTICLES_LATEST => 'articles-latest',
             default => null,
         };
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'section' => Section::class,
+            'type' => TierType::class,
+        ];
     }
 }

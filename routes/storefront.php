@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use NumaxLab\Lunar\Geslib\Storefront\Http\Controllers\Auth\VerifyEmailController;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Actions\Logout;
-use Trafikrak\Storefront\Http\Controllers\CheckoutController;
+use Trafikrak\Storefront\Http\Controllers\ProcessPaymentController;
 use Trafikrak\Storefront\Livewire\Account\DashboardPage;
 use Trafikrak\Storefront\Livewire\Account\FavouriteProductsPage;
 use Trafikrak\Storefront\Livewire\Account\HandleAddressPage;
@@ -47,6 +47,7 @@ use Trafikrak\Storefront\Livewire\Media\HomePage as MediaHomePage;
 use Trafikrak\Storefront\Livewire\Media\VideoPage;
 use Trafikrak\Storefront\Livewire\Media\VideosListPage;
 use Trafikrak\Storefront\Livewire\Membership\SignupPage;
+use Trafikrak\Storefront\Livewire\Membership\SignupSuccessPage;
 use Trafikrak\Storefront\Livewire\PagePage;
 
 Route::get('/', HomePage::class)
@@ -153,11 +154,6 @@ Route::prefix('/info')->group(function () {
         ->name('trafikrak.storefront.info.page');
 });
 
-Route::prefix('/apoya-el-proyecto')->group(function () {
-    Route::get('/hazte-socix', SignupPage::class)
-        ->name('trafikrak.storefront.membership.signup');
-});
-
 Route::middleware('guest')->group(function () {
     Route::get('/login', LoginPage::class)->name('login');
     Route::get('/registrate', RegisterPage::class)->name('register');
@@ -193,20 +189,30 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::post('logout', Logout::class)->name('logout');
 
-Route::prefix('/checkout')->group(function () {
+Route::prefix('/pedido')->group(function () {
     Route::get('/', SummaryPage::class)
         ->name('trafikrak.storefront.checkout.summary');
 
     Route::middleware(['auth', 'verified'])->group(function () {
-        Route::get('/envio-y-pago', ShippingAndPaymentPage::class)
+        Route::get('/completar', ShippingAndPaymentPage::class)
             ->name('trafikrak.storefront.checkout.shipping-and-payment');
-
-        Route::post('/pagar', CheckoutController::class)
-            ->name('trafikrak.storefront.checkout.process-payment');
 
         Route::get('/finalizado/{fingerprint}', SuccessPage::class)
             ->name('trafikrak.storefront.checkout.success');
     });
+});
+
+Route::prefix('/apoya-el-proyecto')->group(function () {
+    Route::get('/hazte-socix', SignupPage::class)
+        ->name('trafikrak.storefront.membership.signup');
+
+    Route::get('/hazte-socix/gracias/{fingerprint}', SignupSuccessPage::class)
+        ->name('trafikrak.storefront.membership.signup.success');
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/checkout/procesar-pago/{id}', ProcessPaymentController::class)
+        ->name('trafikrak.storefront.checkout.process-payment');
 });
 
 if (app()->environment('local')) {

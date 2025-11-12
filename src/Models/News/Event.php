@@ -31,11 +31,6 @@ class Event extends Model implements SpatieHasMedia
     ];
     protected $guarded = [];
 
-    protected $casts = [
-        'starts_at' => 'datetime',
-        'delivery_method' => EventDeliveryMethod::class,
-    ];
-
     public function eventType(): BelongsTo
     {
         return $this->belongsTo(EventType::class);
@@ -52,5 +47,13 @@ class Event extends Model implements SpatieHasMedia
     public function attachments(): MorphMany
     {
         return $this->morphMany(Attachment::class, 'attachable');
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'starts_at' => 'datetime',
+            'delivery_method' => EventDeliveryMethod::class,
+        ];
     }
 }

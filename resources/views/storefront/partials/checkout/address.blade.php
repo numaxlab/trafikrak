@@ -256,6 +256,8 @@
                     </div>
                 </dl>
             @endif
+        @else
+            <p>{{ __('Primero necesitamos tus datos de envío.') }}</p>
         @endif
     </form>
 </x-numaxlab-atomic::organisms.tier>

@@ -20,6 +20,7 @@
                 @foreach ($this->shippingOptions as $option)
                     <div wire:key="shipping-option-{{ $option->getIdentifier() }}">
                         <x-numaxlab-atomic::atoms.forms.radio
+                                id="shipping-option-{{ $option->getIdentifier() }}"
                                 wire:model.live="chosenShipping"
                                 name="chosenShipping"
                                 value="{{ $option->getIdentifier() }}">

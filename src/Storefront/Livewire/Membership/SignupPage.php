@@ -2,14 +2,15 @@
 
 namespace Trafikrak\Storefront\Livewire\Membership;
 
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
-use Lunar\Facades\Payments;
+use Intervention\Validation\Rules\Iban;
 use Lunar\Facades\StorefrontSession;
 use Lunar\Models\Cart;
 use Lunar\Models\CartAddress;
-use Lunar\Models\Order;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
 use Trafikrak\Models\Membership\MembershipPlan;
 use Trafikrak\Models\Membership\MembershipTier;
@@ -24,7 +25,15 @@ class SignupPage extends Page
 
     public AddressForm $billing;
 
+    public string $privacy_policy = '';
+
     public array $paymentTypes = [];
+
+    public ?string $paymentType = null;
+
+    public ?string $directDebitOwnerName = null;
+    public ?string $directDebitBankName = null;
+    public ?string $directDebitIban = null;
 
     public function mount(): void
     {
@@ -32,6 +41,10 @@ class SignupPage extends Page
         $this->plans = collect();
 
         $this->billing->init();
+
+        if (Auth::check()) {
+            $this->billing->contact_email = Auth::user()->email;
+        }
 
         $this->paymentTypes = config('trafikrak.payment_types.membership');
     }
@@ -53,22 +66,55 @@ class SignupPage extends Page
         }
     }
 
-    public function signup()
+    public function signup(): RedirectResponse|Redirector
     {
-        // 1. Comprobar login
-        // 2. Validar datos
+        if (! Auth::check()) {
+            return $this->redirectToLogin();
+        }
+
+        $rules = collect($this->billing->getRules())
+            ->mapWithKeys(fn ($value, $key) => ["billing.$key" => $value])
+            ->toArray();
+
+        $this->validate(
+            array_merge(
+                [
+                    'selectedTier' => ['required'],
+                    'selectedPlan' => ['required'],
+                    'paymentType' => ['required'],
+                    'directDebitOwnerName' => ['required_if:paymentType,direct-debit'],
+                    'directDebitBankName' => ['required_if:paymentType,direct-debit'],
+                    'directDebitIban' => [
+                        'required_if:paymentType,direct-debit',
+                        'nullable',
+                        new Iban(),
+                    ],
+                    'privacy_policy' => ['accepted', 'required'],
+                ],
+                $rules,
+            ),
+        );
 
         $user = Auth::user();
 
         $membershipPlan = MembershipPlan::find($this->selectedPlan);
 
+        $meta = [
+            'Tipo de pedido' => 'Subscripción socias',
+            'Método de pago' => __("trafikrak::global.payment_types.{$this->paymentType}.title"),
+        ];
+
+        if ($this->paymentType === 'direct-debit') {
+            $meta['Titular de la cuenta'] = $this->directDebitOwnerName;
+            $meta['Banco'] = $this->directDebitBankName;
+            $meta['IBAN'] = $this->directDebitIban;
+        }
+
         $cart = Cart::create([
             'user_id' => $user->id,
             'currency_id' => StorefrontSession::getCurrency()->id,
             'channel_id' => StorefrontSession::getChannel()->id,
-            'meta' => [
-                'Tipo de pedido' => 'Subscripción socias',
-            ],
+            'meta' => $meta,
         ]);
 
         $cart->add($membershipPlan);
@@ -79,17 +125,20 @@ class SignupPage extends Page
 
         $cart->calculate();
 
-        $paymentDriver = Payments::driver('cash-on-delivery')
-            ->cart($cart)
-            ->withData([]);
+        $fingerprint = $cart->fingerprint();
 
-        $payment = $paymentDriver->authorize();
+        return redirect()
+            ->route(
+                'trafikrak.storefront.checkout.process-payment',
+                ['id' => $cart->id, 'fingerprint' => $fingerprint, 'payment' => $this->paymentType],
+            );
+    }
 
-        if ($payment->success) {
-            $order = Order::findOrFail($payment->orderId);
+    public function redirectToLogin(): Redirector|RedirectResponse
+    {
+        session()->put('url.intended', route('trafikrak.storefront.membership.signup'));
 
-            return redirect()->route('dashboard', $order->fingerprint);
-        }
+        return redirect()->route('login');
     }
 
     public function render(): View

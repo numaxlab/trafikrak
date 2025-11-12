@@ -6,25 +6,27 @@
     </x-numaxlab-atomic::organisms.tier.header>
 
     @if ($currentStep >= $step)
-        <ul class="space-y-5">
+        <ul class="grid gap-5 md:grid-cols-2">
             @foreach ($paymentTypes as $type)
                 <li>
                     <x-numaxlab-atomic::atoms.forms.radio
                             wire:model.live="paymentType"
                             id="paymentType-{{ $type }}"
                             key="paymentType{{ $type }}"
+                            name="payment_type"
                             value="{{ $type }}">
                         <span class="text-2xl">
-                            {{ __("trafikrak::global.payment_types.{$type}") }}
+                            {{ __("trafikrak::global.payment_types.{$type}.title") }}
                         </span>
                     </x-numaxlab-atomic::atoms.forms.radio>
 
                     <p class="at-small mt-2">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus congue tempus ultricies.
-                        Curabitur tempus nulla a lectus tincidunt pulvinar. Aenean at metus ac lorem egestas tincidunt.
+                        {{ __("trafikrak::global.payment_types.{$type}.description") }}
                     </p>
                 </li>
             @endforeach
         </ul>
+    @else
+        <p>{{ __('Primero necesitamos tus datos de facturación.') }}</p>
     @endif
 </x-numaxlab-atomic::organisms.tier>

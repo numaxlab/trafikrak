@@ -24,15 +24,18 @@ class Article extends Model
     ];
     protected $guarded = [];
 
-    protected $casts = [
-        'published_at' => 'datetime',
-    ];
-
     public function products(): BelongsToMany
     {
         return $this->belongsToMany(
             Product::modelClass(),
             'course_'.config('lunar.database.table_prefix').'product',
         )->withPivot(['position'])->orderByPivot('position');
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'published_at' => 'datetime',
+        ];
     }
 }

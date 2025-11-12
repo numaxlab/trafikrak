@@ -37,16 +37,14 @@
            ])
         </div>
         <div class="lg:w-1/2">
-            @include('trafikrak::storefront.partials.checkout.payment', [
-            'step' => $steps['payment'],
-        ])
+            @include('trafikrak::storefront.partials.checkout.discounts')
         </div>
     </div>
 
-    <form method="post" action="{{ route('trafikrak.storefront.checkout.process-payment') }}">
-        @csrf
-
-        <input type="hidden" name="payment_type" value="{{ $paymentType }}">
+    <form wire:submit="finish">
+        @include('trafikrak::storefront.partials.checkout.payment', [
+            'step' => $steps['payment'],
+        ])
 
         <div class="flow-root my-7">
             <h2 class="at-heading is-4">
@@ -98,6 +96,10 @@
                 </div>
             </dl>
         </div>
+
+        <x-trafikrak::action-message class="text-2xl text-danger mb-4" on="uncompleted-steps">
+            {{ __('Completa todos los datos antes de proceder al pago') }}
+        </x-trafikrak::action-message>
 
         <x-numaxlab-atomic::atoms.button type="submit" class="is-primary w-full">
             {{ __('Pagar') }}

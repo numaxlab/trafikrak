@@ -2,6 +2,8 @@
 
 namespace Trafikrak\Storefront\Livewire\Checkout;
 
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
 use Lunar\DataTypes\ShippingOption;
@@ -25,9 +27,11 @@ class ShippingAndPaymentPage extends Page
 
     public bool $shippingIsBilling = true;
 
-    public $chosenShipping = null;
+    public ?string $chosenShipping = null;
 
-    public $paymentType = null;
+    public ?string $couponCode = null;
+
+    public ?string $paymentType = null;
 
     public array $steps = [
         'shipping_address' => 1,
@@ -85,21 +89,19 @@ class ShippingAndPaymentPage extends Page
         $shippingAddress = $this->cart->shippingAddress;
         $billingAddress = $this->cart->billingAddress;
 
-        if ($shippingAddress) {
-            if ($shippingAddress->id) {
-                $this->currentStep = $this->steps['shipping_address'] + 1;
-            }
-
-            if ($this->shippingOption) {
-                $this->chosenShipping = $this->shippingOption->getIdentifier();
-                $this->currentStep = $this->steps['shipping_option'] + 1;
-            } else {
-                $this->currentStep = $this->steps['shipping_option'];
-                $this->chosenShipping = $this->shippingOptions->first()?->getIdentifier();
-
-                return;
-            }
+        if (! $shippingAddress) {
+            return;
         }
+
+        $this->currentStep = $this->steps['shipping_address'] + 1;
+
+        if (! $this->shippingOption) {
+            $this->currentStep = $this->steps['shipping_option'];
+            return;
+        }
+
+        $this->chosenShipping = $this->shippingOption->getIdentifier();
+        $this->currentStep = $this->steps['shipping_option'] + 1;
 
         if ($billingAddress) {
             $this->currentStep = $this->steps['billing_address'] + 1;
@@ -222,5 +224,35 @@ class ShippingAndPaymentPage extends Page
     public function refreshCart(): void
     {
         $this->cart = CartSession::current();
+    }
+
+    public function finish(): null|RedirectResponse|Redirector
+    {
+        if ($this->currentStep < $this->steps['payment']) {
+            $this->dispatch('uncompleted-steps');
+            return null;
+        }
+
+        if (! $this->paymentType) {
+            $this->dispatch('uncompleted-steps');
+            return null;
+        }
+
+        $this->cart->meta = [
+            'Tipo de pedido' => 'Pedido librería',
+            'Método de pago' => __("trafikrak::global.payment_types.{$this->paymentType}.title"),
+        ];
+
+        $this->cart->save();
+
+        $this->cart->calculate();
+
+        $fingerprint = $this->cart->fingerprint();
+
+        return redirect()
+            ->route(
+                'trafikrak.storefront.checkout.process-payment',
+                ['id' => $this->cart->id, 'fingerprint' => $fingerprint, 'payment' => $this->paymentType],
+            );
     }
 }

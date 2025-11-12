@@ -20,16 +20,26 @@ class OrderObserver
 
     protected function activateSubscriptionFor(Order $order): void
     {
+        $customer = $order->user->latestCustomer();
+
+        $existingSubscription = Subscription::where('order_id', $order->id)
+            ->where('customer_id', $customer->id)
+            ->first();
+
+        if ($existingSubscription) {
+            return;
+        }
+
         foreach ($order->lines as $line) {
             if ($line->purchasable_type !== Relation::getMorphAlias(MembershipPlan::class)) {
                 continue;
             }
 
             $membershipPlan = $line->purchasable;
-            $customer = $order->user->latestCustomer();
 
             $customer->subscriptions()->create([
                 'membership_plan_id' => $membershipPlan->id,
+                'order_id' => $order->id,
                 'status' => Subscription::STATUS_ACTIVE,
                 'started_at' => now(),
                 'expires_at' => now()->addYear(),

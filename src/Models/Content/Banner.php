@@ -2,6 +2,7 @@
 
 namespace Trafikrak\Models\Content;
 
+use Illuminate\Database\Eloquent\Casts\AsEnumCollection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Lunar\Base\Traits\LogsActivity;
@@ -22,12 +23,16 @@ class Banner extends Model
     ];
     protected $guarded = [];
 
-    protected $casts = [
-        'type' => BannerType::class,
-    ];
-
     protected static function newFactory()
     {
         return BannerFactory::new();
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'type' => BannerType::class,
+            'locations' => AsEnumCollection::of(Location::class),
+        ];
     }
 }

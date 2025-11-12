@@ -24,7 +24,13 @@ class PagePage extends PageComponent
 
     public function render(): View
     {
+        $title = $this->page->name;
+
+        if ($this->page->human_section) {
+            $title .= ' | '.$this->page->human_section;
+        }
+
         return view('trafikrak::storefront.livewire.page')
-            ->title($this->page->name.' | '.$this->page->human_section);
+            ->title($title);
     }
 }

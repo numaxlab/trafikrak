@@ -23,11 +23,6 @@ class Page extends Model
     ];
     protected $guarded = [];
 
-    protected $casts = [
-        'section' => Section::class,
-        'content' => 'array',
-    ];
-
     public function getHasBreadcrumbAttribute(): bool
     {
         return match ($this->section) {
@@ -54,5 +49,13 @@ class Page extends Model
             Section::EDUCATION => __('Formación'),
             default => null,
         };
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'section' => Section::class,
+            'content' => 'array',
+        ];
     }
 }

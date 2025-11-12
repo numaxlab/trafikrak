@@ -30,10 +30,6 @@ class Course extends Model implements SpatieHasMedia
         'subtitle',
         'description',
     ];
-    protected $casts = [
-        'starts_at' => 'date',
-        'ends_at' => 'date',
-    ];
     protected $guarded = [];
 
     protected static function newFactory()
@@ -62,5 +58,13 @@ class Course extends Model implements SpatieHasMedia
             Product::modelClass(),
             'course_'.config('lunar.database.table_prefix').'product',
         )->withPivot(['position'])->orderByPivot('position');
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'starts_at' => 'date',
+            'ends_at' => 'date',
+        ];
     }
 }

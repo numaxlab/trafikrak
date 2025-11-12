@@ -71,14 +71,7 @@
         </x-numaxlab-atomic::atoms.input>
 
         <div class="md:col-span-2">
-            <x-numaxlab-atomic::atoms.forms.checkbox
-                    wire:model="privacy_policy"
-                    value="1"
-                    id="privacy-policy"
-                    class="md:col-span-2"
-            >
-                {{ __('Acepto la política de privacidad') }}
-            </x-numaxlab-atomic::atoms.forms.checkbox>
+            @include('trafikrak::storefront.partials.privacy-policy')
         </div>
 
         <x-numaxlab-atomic::atoms.button type="submit" class="is-primary w-full md:col-span-2">

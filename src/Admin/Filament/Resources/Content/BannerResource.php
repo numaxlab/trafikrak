@@ -11,6 +11,7 @@ use Filament\Tables\Table;
 use Lunar\Admin\Support\Resources\BaseResource;
 use Trafikrak\Models\Content\Banner;
 use Trafikrak\Models\Content\BannerType;
+use Trafikrak\Models\Content\Location;
 
 class BannerResource extends BaseResource
 {
@@ -78,13 +79,6 @@ class BannerResource extends BaseResource
                             ->required()
                             ->maxLength(255)
                             ->autofocus(),
-                        Forms\Components\Select::make('type')
-                            ->label(__('trafikrak::banner.form.type.label'))
-                            ->options([
-                                BannerType::FULL_WIDTH->value => __('trafikrak::banner.form.type.options.full_width'),
-                                BannerType::CONTAINED->value => __('trafikrak::banner.form.type.options.contained'),
-                            ])
-                            ->required(),
                         Forms\Components\RichEditor::make('description')
                             ->label(__('trafikrak::banner.form.description.label')),
                         Forms\Components\Grid::make()
@@ -104,6 +98,19 @@ class BannerResource extends BaseResource
                             ->label(__('trafikrak::slide.form.image.label'))
                             ->image()
                             ->imageEditor(),
+                        Forms\Components\Select::make('type')
+                            ->label(__('trafikrak::banner.form.type.label'))
+                            ->options([
+                                BannerType::FULL_WIDTH->value => __('trafikrak::banner.form.type.options.full_width'),
+                                BannerType::CONTAINED->value => __('trafikrak::banner.form.type.options.contained'),
+                            ])
+                            ->required(),
+                        Forms\Components\Select::make('locations')
+                            ->label(__('trafikrak::banner.form.locations.label'))
+                            ->options([
+                                Location::USER_DASHBOARD_SUBSCRIPTIONS->value => __('trafikrak::banner.form.locations.options.user_dashboard_subscriptions'),
+                            ])
+                            ->multiple(),
                         Forms\Components\Toggle::make('is_published')
                             ->label(__('trafikrak::banner.form.is_published.label')),
                     ]),

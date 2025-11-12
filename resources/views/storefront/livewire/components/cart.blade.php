@@ -27,35 +27,51 @@
 
         <div class="mt-9">
             @if ($this->cart && count($lines) > 0)
-                <ul class="divide-y divide-black">
+                <ul class="divide-y divide-black space-y-4">
                     @foreach ($lines as $index => $line)
-                        <li>
-                            <x-trafikrak::products.in-cart
-                                    :href="route('trafikrak.storefront.bookshop.products.show', $line['slug'])"
-                                    :image="$line['thumbnail']"
-                                    :price="$line['unit_price']"
-                                    wire:key="line_{{ $line['id'] }}"
-                            >
-                                {{ $line['description'] }}
+                        <li wire:key="line_{{ $line['id'] }}">
+                            <article class="flex gap-4 pb-4">
+                                <a
+                                        href="{{ route('trafikrak.storefront.bookshop.products.show', $line['slug']) }}"
+                                        wire:navigate class="block w-1/4"
+                                >
+                                    <img
+                                            src="{{ $line['thumbnail'] }}"
+                                            loading="lazy"
+                                            alt=""/>
+                                </a>
 
-                                <x-slot:quantity>
-                                    <x-numaxlab-atomic::atoms.forms.input
-                                            wire:model.live="lines.{{ $index }}.quantity"
-                                            wire:change="updateLines"
-                                            type="number"
-                                            class="text-xs"
-                                    />
-                                </x-slot:quantity>
+                                <div class="w-3/4">
+                                    <h3 class="at-heading is-4 mb-2">
+                                        <a
+                                                href="{{ route('trafikrak.storefront.bookshop.products.show', $line['slug']) }}"
+                                                wire:navigate
+                                        >
+                                            {{ $line['description'] }}
+                                        </a>
+                                    </h3>
 
-                                <x-slot:actions>
+                                    <div class="w-1/3">
+                                        <x-numaxlab-atomic::atoms.forms.input
+                                                wire:model.live="lines.{{ $index }}.quantity"
+                                                wire:change="updateLines"
+                                                type="number"
+                                                class="text-xs mb-2"
+                                        />
+                                    </div>
+
+                                    <p class="at-small">
+                                        {{ $line['unit_price'] }}
+                                    </p>
+
                                     <button
                                             class="at-small text-primary"
                                             type="button"
                                             wire:click="removeLine('{{ $line['id'] }}')">
                                         {{ __('Eliminar') }}
                                     </button>
-                                </x-slot:actions>
-                            </x-trafikrak::products.in-cart>
+                                </div>
+                            </article>
 
                             @if ($errors->get('lines.' . $index . '.quantity'))
                                 <div
@@ -70,15 +86,12 @@
                     @endforeach
                 </ul>
 
-                <div class="border-t border-black">
-                    <h3 class="at-heading is-4 py-2">Resumen</h3>
-                    <ul class="flex flex-col divide-y divide-black border-t border-b border-black">
-                        <li class="at-small py-2">
-                            <i class="fa-solid fa-shopping-bag" aria-hidden="true"></i>
-                            Subtotal pedido: {{ $this->cart->subTotal->formatted() }}
-                        </li>
-                    </ul>
-                </div>
+                <ul class="flex flex-col divide-y divide-black border-t border-b border-black">
+                    <li class="at-small py-2">
+                        <i class="fa-solid fa-shopping-bag" aria-hidden="true"></i>
+                        {{ __('Subtotal pedido') }}: {{ $this->cart->subTotal->formatted() }}
+                    </li>
+                </ul>
             @else
                 <p class="py-4 text-sm">
                     {{ __('Tu cesta está vacía') }}

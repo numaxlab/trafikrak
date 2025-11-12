@@ -12,14 +12,19 @@
                     <li>
                         <ul>
                             <li>
-                                <a href="{{ route('settings.profile') }}" wire:navigate>{{ __('Gestionar cuenta') }}</a>
+                                <a href="{{ route('settings.profile') }}" wire:navigate>
+                                    {{ __('Gestionar cuenta') }}
+                                </a>
                             </li>
                             <li>
-                                <a href="{{ route('settings.password') }}"
-                                   wire:navigate>{{ __('Modificar contraseña') }}</a>
+                                <a href="{{ route('settings.password') }}" wire:navigate>
+                                    {{ __('Modificar contraseña') }}
+                                </a>
                             </li>
                             <li>
-                                <a>{{ __('Gestionar subscripciones') }}</a>
+                                <a>
+                                    {{ __('Gestionar subscripciones') }}
+                                </a>
                             </li>
                             <li>
                                 <form method="post" action="{{ route('logout') }}">

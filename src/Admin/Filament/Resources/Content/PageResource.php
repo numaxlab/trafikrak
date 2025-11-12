@@ -63,7 +63,7 @@ class PageResource extends BaseResource
                 Tables\Columns\TextColumn::make('section')
                     ->label(__('trafikrak::page.table.section.label'))
                     ->badge()
-                    ->formatStateUsing(fn(Section $state): string => match ($state) {
+                    ->formatStateUsing(fn (Section $state): string => match ($state) {
                         Section::BOOKSHOP => __('trafikrak::page.form.section.options.bookshop'),
                         Section::EDITORIAL => __('trafikrak::page.form.section.options.editorial'),
                         Section::EDUCATION => __('trafikrak::page.form.section.options.education'),
@@ -108,6 +108,19 @@ class PageResource extends BaseResource
                                     ->maxLength(255),
                                 Forms\Components\RichEditor::make('description')
                                     ->label(__('trafikrak::page.form.description.label')),
+                                Forms\Components\Grid::make()
+                                    ->columns([
+                                        'sm' => 1,
+                                        'md' => 2,
+                                    ])
+                                    ->schema([
+                                        Forms\Components\TextInput::make('action')
+                                            ->label(__('trafikrak::page.form.content.fields.action.label'))
+                                            ->maxLength(255),
+                                        Forms\Components\TextInput::make('action_tag')
+                                            ->label(__('trafikrak::page.form.content.fields.action_tag.label'))
+                                            ->maxLength(255),
+                                    ]),
                             ])
                             ->defaultItems(0),
                         Forms\Components\Toggle::make('is_published')

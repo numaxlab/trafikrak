@@ -55,6 +55,12 @@
                                 {!! $block['description'] !!}
                             </div>
                         @endif
+
+                        @if ($block['action'] && $block['action_tag'])
+                            <a href="{{ $block['action'] }}" class="at-button is-primary mt-5">
+                                {{ $block['action_tag'] }}
+                            </a>
+                        @endif
                     </x-numaxlab-atomic::organisms.tier>
                 @endforeach
             @endif

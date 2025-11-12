@@ -30,6 +30,12 @@ return [
                 'contained' => 'Contenido',
             ],
         ],
+        'locations' => [
+            'label' => 'Ubicaciones',
+            'options' => [
+                'user_dashboard_subscriptions' => 'Panel de usuario - Subscripciones',
+            ],
+        ],
         'description' => [
             'label' => 'Descripción',
         ],

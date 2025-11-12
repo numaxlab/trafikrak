@@ -13,7 +13,10 @@ class OrdersListPage extends Page
 
     public function render(): View
     {
-        $orders = Auth::user()->latestCustomer()->orders()->latest()->paginate(8);
+        $orders = Auth::user()->latestCustomer()->orders()
+            ->whereNotIn('status', ['awaiting-payment', 'cancelled'])
+            ->latest()
+            ->paginate(8);
 
         return view('trafikrak::storefront.livewire.account.orders-list', compact('orders'));
     }

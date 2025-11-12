@@ -40,6 +40,14 @@ return [
         ],
         'content' => [
             'label' => 'Contenido',
+            'fields' => [
+                'action' => [
+                    'label' => 'Acción',
+                ],
+                'action_tag' => [
+                    'label' => 'Etiqueta de la acción',
+                ],
+            ],
         ],
         'is_published' => [
             'label' => 'Pública',

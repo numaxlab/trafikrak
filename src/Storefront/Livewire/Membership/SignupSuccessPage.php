@@ -1,12 +1,12 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Checkout;
+namespace Trafikrak\Storefront\Livewire\Membership;
 
 use Illuminate\View\View;
 use Lunar\Models\Order;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
 
-class SuccessPage extends Page
+class SignupSuccessPage extends Page
 {
     public Order $order;
 
@@ -17,6 +17,6 @@ class SuccessPage extends Page
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.checkout.success');
+        return view('trafikrak::storefront.livewire.membership.signup-success');
     }
 }

@@ -16,7 +16,12 @@ class OrderPage extends Page
 
     public function mount($reference): void
     {
-        $this->order = Auth::user()->latestCustomer()->orders()->where('reference', $reference)->firstOrFail();
+        $this->order = Auth::user()
+            ->latestCustomer()
+            ->orders()
+            ->where('reference', $reference)
+            ->whereNotIn('status', ['awaiting-payment', 'cancelled'])
+            ->firstOrFail();
     }
 
     public function render(): View

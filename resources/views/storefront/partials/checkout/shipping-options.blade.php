@@ -1,7 +1,7 @@
 <x-numaxlab-atomic::organisms.tier class="mt-7">
     <x-numaxlab-atomic::organisms.tier.header>
         <h2 class="at-heading is-2">
-            {{ __('Tipo de envío') }}
+            {{ __('Métodos de envío') }}
         </h2>
 
         @if ($currentStep > $step)
@@ -18,15 +18,17 @@
         @if ($currentStep >= $step)
             @if ($currentStep == $step)
                 @foreach ($this->shippingOptions as $option)
-                    <div wire:key="shipping-option-{{ $option->getIdentifier() }}">
-                        <x-numaxlab-atomic::atoms.forms.radio
-                                id="shipping-option-{{ $option->getIdentifier() }}"
-                                wire:model.live="chosenShipping"
-                                name="chosenShipping"
-                                value="{{ $option->getIdentifier() }}">
-                            {{ $option->getName() }} {{ $option->getPrice()->formatted() }}
-                        </x-numaxlab-atomic::atoms.forms.radio>
-                    </div>
+                    @if (! $option->collect)
+                        <div wire:key="shipping-option-{{ $option->getIdentifier() }}">
+                            <x-numaxlab-atomic::atoms.forms.radio
+                                    id="shipping-option-{{ $option->getIdentifier() }}"
+                                    wire:model.live="chosenShipping"
+                                    name="chosenShipping"
+                                    value="{{ $option->getIdentifier() }}">
+                                {{ $option->getName() }} {{ $option->getPrice()->formatted() }}
+                            </x-numaxlab-atomic::atoms.forms.radio>
+                        </div>
+                    @endif
                 @endforeach
 
                 <x-numaxlab-atomic::atoms.button

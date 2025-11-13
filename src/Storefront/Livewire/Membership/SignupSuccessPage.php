@@ -17,6 +17,7 @@ class SignupSuccessPage extends Page
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.membership.signup-success');
+        return view('trafikrak::storefront.livewire.membership.signup-success')
+            ->title(__('Ya eres socix'));
     }
 }

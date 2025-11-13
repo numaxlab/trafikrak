@@ -13,6 +13,7 @@ use Lunar\Facades\ShippingManifest;
 use Lunar\Models\CartAddress;
 use Lunar\Models\Contracts\Cart;
 use Lunar\Models\Country;
+use Lunar\Shipping\Models\ShippingMethod;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
 use Trafikrak\Storefront\Livewire\Checkout\Forms\AddressForm;
 
@@ -25,6 +26,8 @@ class ShippingAndPaymentPage extends Page
     public AddressForm $billing;
 
     public int $currentStep = 1;
+
+    public string $shippingMethod = 'send';
 
     public bool $shippingIsBilling = true;
 
@@ -97,6 +100,18 @@ class ShippingAndPaymentPage extends Page
         $shippingAddress = $this->cart->shippingAddress;
         $billingAddress = $this->cart->billingAddress;
 
+        if ($this->shippingMethod !== 'send') {
+            $this->currentStep = $this->steps['billing_address'];
+
+            if ($billingAddress) {
+                $this->currentStep = $this->steps['billing_address'] + 1;
+            }
+
+            return;
+        }
+
+        $this->currentStep = $this->steps['shipping_address'];
+
         if (! $shippingAddress) {
             return;
         }
@@ -118,6 +133,9 @@ class ShippingAndPaymentPage extends Page
 
     public function updated($field, $value): void
     {
+        if ($field === 'shippingMethod') {
+            $this->determineCheckoutStep();
+        }
         if ($field === 'shipping.customer_address_id') {
             $this->shipping->loadAddress($value);
         }
@@ -129,6 +147,11 @@ class ShippingAndPaymentPage extends Page
         }
         if ($field === 'billing.country_id') {
             $this->billing->loadStates($value);
+        }
+        if ($field === 'couponCode') {
+            $this->cart->coupon_code = $value;
+            $this->cart->save();
+            $this->cart->calculate();
         }
     }
 
@@ -156,11 +179,12 @@ class ShippingAndPaymentPage extends Page
         $this->validate($rules);
 
         if ($type == 'billing') {
-            $billing = new CartAddress();
-            $billing->fill($this->shipping->all());
-            $this->cart->setBillingAddress($billing);
+            $this->shippingIsBilling = false;
 
-            $this->billing->fill($this->cart->billingAddress->toArray());
+            $billing = new CartAddress();
+            $billing->fill($this->billing->all());
+
+            $this->cart->setBillingAddress($billing);
         }
 
         if ($type == 'shipping') {
@@ -192,6 +216,11 @@ class ShippingAndPaymentPage extends Page
         }
 
         $this->determineCheckoutStep();
+    }
+
+    public function getPickupOptionsProperty(): Collection
+    {
+        return ShippingMethod::where('driver', 'collection')->get();
     }
 
     public function getShippingOptionsProperty(): Collection
@@ -234,13 +263,6 @@ class ShippingAndPaymentPage extends Page
         $this->cart = CartSession::current();
     }
 
-    public function updatedCouponCode($value): void
-    {
-        $this->cart->coupon_code = $value;
-        $this->cart->save();
-        $this->cart->calculate();
-    }
-
     public function finish(): null|RedirectResponse|Redirector
     {
         if ($this->currentStep < $this->steps['payment']) {
@@ -251,6 +273,15 @@ class ShippingAndPaymentPage extends Page
         if (! $this->paymentType) {
             $this->dispatch('uncompleted-steps');
             return null;
+        }
+
+        if ($this->shippingMethod !== 'send') {
+            $this->cart->setShippingAddress($this->cart->billingAddress);
+
+            $shippingMethod = ShippingMethod::where('id', $this->shippingMethod)->firstOrFail();
+            $shippingOption = $shippingMethod->shippingRates->first()->getShippingOption($this->cart);
+
+            $this->cart->setShippingOption($shippingOption);
         }
 
         $this->cart->meta = [

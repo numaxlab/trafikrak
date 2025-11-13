@@ -8,11 +8,10 @@
     @if ($currentStep >= $step)
         <ul class="grid gap-5 md:grid-cols-2">
             @foreach ($paymentTypes as $type)
-                <li>
+                <li wire:key="paymentType{{ $type }}">
                     <x-numaxlab-atomic::atoms.forms.radio
                             wire:model.live="paymentType"
                             id="paymentType-{{ $type }}"
-                            key="paymentType{{ $type }}"
                             name="payment_type"
                             value="{{ $type }}">
                         <span class="text-2xl">

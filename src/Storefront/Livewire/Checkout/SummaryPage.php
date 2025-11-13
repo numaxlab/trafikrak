@@ -52,6 +52,10 @@ class SummaryPage extends Page
                 'unit_price' => $line->unitPriceInclTax->formatted(),
             ];
         })->toArray();
+
+        if (count($this->lines) === 0) {
+            CartSession::forget();
+        }
     }
 
     public function updateLines(): void

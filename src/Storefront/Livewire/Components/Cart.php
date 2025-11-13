@@ -43,6 +43,10 @@ class Cart extends Component
                 'unit_price' => $line->unitPriceInclTax?->formatted(),
             ];
         })->toArray();
+
+        if (count($this->lines) === 0) {
+            CartSession::forget();
+        }
     }
 
     public function getCartProperty(): ?CartContract

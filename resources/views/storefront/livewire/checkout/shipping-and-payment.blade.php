@@ -15,19 +15,23 @@
         </h1>
     </header>
 
-    <div class="lg:flex lg:gap-6">
-        <div class="lg:w-1/2">
-            @include('trafikrak::storefront.partials.checkout.address', [
-                'type' => 'shipping',
-                'step' => $steps['shipping_address'],
-            ])
+    @include('trafikrak::storefront.partials.checkout.shipping-methods')
+
+    @if ($this->shippingMethod === 'send')
+        <div class="lg:flex lg:gap-6">
+            <div class="lg:w-1/2">
+                @include('trafikrak::storefront.partials.checkout.address', [
+                    'type' => 'shipping',
+                    'step' => $steps['shipping_address'],
+                ])
+            </div>
+            <div class="lg:w-1/2">
+                @include('trafikrak::storefront.partials.checkout.shipping-options', [
+                    'step' => $steps['shipping_option'],
+                ])
+            </div>
         </div>
-        <div class="lg:w-1/2">
-            @include('trafikrak::storefront.partials.checkout.shipping-options', [
-                'step' => $steps['shipping_option'],
-            ])
-        </div>
-    </div>
+    @endif
 
     <div class="lg:flex lg:gap-6">
         <div class="lg:w-1/2">

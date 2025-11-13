@@ -17,6 +17,7 @@ class DonateSuccessPage extends Page
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.membership.donate-success');
+        return view('trafikrak::storefront.livewire.membership.donate-success')
+            ->title(__('Gracias por tu donación'));
     }
 }

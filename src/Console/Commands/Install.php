@@ -273,6 +273,8 @@ class Install extends Command
                 'purchasable' => 'always',
             ]);
 
+            $variant->values()->attach($value);
+
             $variant->prices()->create([
                 'price' => $value->name->get('es') * 100,
                 'currency_id' => $currency->id,

@@ -2,19 +2,19 @@
 
 namespace Trafikrak\Storefront\Livewire\Components\Account;
 
+use Illuminate\Support\Collection;
 use Illuminate\View\View;
 use Livewire\Component;
 use Trafikrak\Models\Content\Banner;
 use Trafikrak\Models\Content\Location;
-use Trafikrak\Models\Membership\Subscription as SubscriptionModel;
 
 class Subscription extends Component
 {
-    public ?SubscriptionModel $subscription = null;
+    public ?Collection $subscriptions;
 
     public function mount(): void
     {
-        $this->subscription = auth()->user()->latestCustomer()->activeSubscription();
+        $this->subscriptions = auth()->user()->latestCustomer()->activeSubscriptions;
     }
 
     public function render(): View

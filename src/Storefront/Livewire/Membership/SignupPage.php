@@ -8,6 +8,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Intervention\Validation\Rules\Iban;
+use Livewire\Attributes\Url;
 use Lunar\Facades\StorefrontSession;
 use Lunar\Models\Cart;
 use Lunar\Models\CartAddress;
@@ -19,8 +20,13 @@ use Trafikrak\Storefront\Livewire\Checkout\Forms\AddressForm;
 class SignupPage extends Page
 {
     public Collection $tiers;
-    public ?string $selectedTier = null;
+
     public Collection $plans;
+
+    #[Url]
+    public ?string $selectedTier = null;
+
+    #[Url]
     public ?string $selectedPlan = null;
 
     public AddressForm $billing;
@@ -37,8 +43,8 @@ class SignupPage extends Page
 
     public function mount(): void
     {
-        $this->tiers = MembershipTier::with('plans')->get();
-        $this->plans = collect();
+        $this->tiers = MembershipTier::where('is_published', true)->get();
+        $this->retrieveTierPlans();
 
         $this->billing->init();
 
@@ -49,12 +55,21 @@ class SignupPage extends Page
         $this->paymentTypes = config('trafikrak.payment_types.membership');
     }
 
+    private function retrieveTierPlans(): void
+    {
+        if ($this->selectedTier === null) {
+            $this->plans = collect();
+        }
+
+        $this->plans = MembershipPlan::where('membership_tier_id', $this->selectedTier)
+            ->where('is_published', true)
+            ->get();
+    }
+
     public function updated($field, $value): void
     {
         if ($field === 'selectedTier') {
-            $tier = $this->tiers->firstWhere('id', $value);
-
-            $this->plans = $tier ? $tier->plans : collect();
+            $this->retrieveTierPlans();
 
             $this->selectedPlan = null;
         }

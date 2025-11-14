@@ -178,11 +178,6 @@
                                 @endif
                                 <li>
                                     <a>
-                                        {{ __('Subscríbete') }}
-                                    </a>
-                                </li>
-                                <li>
-                                    <a>
                                         {{ __('Mis cursos') }}
                                     </a>
                                 </li>

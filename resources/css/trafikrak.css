@@ -6,6 +6,7 @@
     --text-2xl: 1.275rem; /* h4 */
     --text-2xl--line-height: calc(2.15 / 1.875);
     --text-xl: 1.125rem; /* baixado para manter a coherencia de tamaño descendente, con este tamaño queda igual ca o text-lg */
+    --tw-prose-body: var(--color-black);
 }
 
 @layer base {
@@ -53,7 +54,7 @@
 
         &.is-secondary {
             border-color: var(--color-primary);
-        }    
+        }
     }
 
     .tier-header {

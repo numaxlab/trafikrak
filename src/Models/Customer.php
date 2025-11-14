@@ -10,9 +10,7 @@ class Customer extends \Lunar\Models\Customer
 {
     public function canBuyOnCredit(): bool
     {
-        $activeSubscription = $this->activeSubscription();
-
-        if ($activeSubscription) {
+        foreach ($this->activeSubscriptions as $activeSubscription) {
             foreach ($activeSubscription->plan->benefits as $benefit) {
                 if ($benefit->code === Benefit::CREDIT_PAYMENT_TYPE) {
                     return true;
@@ -23,13 +21,13 @@ class Customer extends \Lunar\Models\Customer
         return false;
     }
 
-    public function activeSubscription(): ?Subscription
+    public function activeSubscriptions(): HasMany
     {
         return $this
             ->subscriptions()
             ->where('status', Subscription::STATUS_ACTIVE)
             ->where('expires_at', '>=', now())
-            ->first();
+            ->orderBy('started_at');
     }
 
     public function subscriptions(): HasMany

@@ -50,6 +50,7 @@ class CourseResource extends BaseResource
             CourseResource\Pages\ManageCourseMedia::class,
             CourseResource\Pages\ManageCourseUrls::class,
             CourseResource\Pages\ManageCourseProducts::class,
+            CourseResource\Pages\ManageCourseAttachments::class,
         ];
     }
 
@@ -128,6 +129,7 @@ class CourseResource extends BaseResource
             'media' => CourseResource\Pages\ManageCourseMedia::route('/{record}/media'),
             'urls' => CourseResource\Pages\ManageCourseUrls::route('/{record}/urls'),
             'products' => CourseResource\Pages\ManageCourseProducts::route('/{record}/products'),
+            'attachments' => CourseResource\Pages\ManageCourseAttachments::route('/{record}/attachments'),
         ];
     }
 }

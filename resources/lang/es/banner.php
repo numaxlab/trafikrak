@@ -34,6 +34,7 @@ return [
             'label' => 'Ubicaciones',
             'options' => [
                 'user_dashboard_subscriptions' => 'Panel de usuario - Subscripciones',
+                'course' => 'Página de curso',
             ],
         ],
         'description' => [

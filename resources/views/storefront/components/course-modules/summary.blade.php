@@ -10,9 +10,11 @@
     @endif
 
     <x-slot name="content">
-        <div class="at-small mb-4">
-            <p>Un breve texto explicativo de la sesión.</p>
-        </div>
+        @if ($module->description)
+            <div class="at-small mb-4">
+                {!! \Illuminate\Support\Str::limit($module->description, 150) !!}
+            </div>
+        @endif
 
         <ul class="text-sm border-y border-black divide-x divide-black flex gap-2 py-2">
             <li class="pr-2">

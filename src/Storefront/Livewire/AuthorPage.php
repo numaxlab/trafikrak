@@ -8,6 +8,7 @@ use Lunar\Facades\StorefrontSession;
 use Lunar\Models\Product;
 use NumaxLab\Lunar\Geslib\Models\Author;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
+use Trafikrak\Models\Education\CourseModule;
 
 class AuthorPage extends Page
 {
@@ -50,7 +51,11 @@ class AuthorPage extends Page
             ])
             ->paginate(12);
 
-        return view('trafikrak::storefront.livewire.author', compact('products'))
+        $hasMedia = CourseModule::whereHas('instructors', function ($query) {
+            $query->where((new Author)->getTable().'.id', $this->author->id);
+        })->where('is_published', true)->exists();
+
+        return view('trafikrak::storefront.livewire.author', compact('products', 'hasMedia'))
             ->title($this->author->name);
     }
 }

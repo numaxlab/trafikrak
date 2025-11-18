@@ -44,7 +44,7 @@ class ManageAttachmentsRelatedRecords extends BaseManageRelatedRecords
                     ->label(__('trafikrak::attachment.table.name.label')),
                 Tables\Columns\TextColumn::make('media_type')
                     ->label(__('trafikrak::attachment.table.type.label'))
-                    ->formatStateUsing(fn(string $state): string => match ($state) {
+                    ->formatStateUsing(fn (string $state): string => match ($state) {
                         Audio::class => __('trafikrak::attachment.table.type.options.audio'),
                         Video::class => __('trafikrak::attachment.table.type.options.video'),
                         Document::class => __('trafikrak::attachment.table.type.options.document'),
@@ -67,9 +67,9 @@ class ManageAttachmentsRelatedRecords extends BaseManageRelatedRecords
                             ]),
                     ])
                     ->action(function (array $arguments, array $data, Form $form, Table $table) {
-                        $relationship = Relation::noConstraints(fn() => $table->getRelationship());
+                        $relationship = Relation::noConstraints(fn () => $table->getRelationship());
 
-                        $data['attachable_type'] = get_class($relationship->getParent());
+                        $data['attachable_type'] = $relationship->getParent()->getMorphClass();
                         $data['attachable_id'] = $relationship->getParent()->id;
                         $data['position'] = $relationship->count() + 1;
 

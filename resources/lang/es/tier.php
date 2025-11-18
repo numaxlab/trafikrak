@@ -8,6 +8,7 @@ return [
         'bookshop' => 'Librería',
         'editorial' => 'Editorial',
         'education' => 'Formación',
+        'media' => 'Mediateca',
     ],
     'pages' => [
         'edit' => [
@@ -51,6 +52,7 @@ return [
                 'related_content_collection' => 'Categorías de productos',
                 'related_content_course' => 'Cursos',
                 'related_content_education_topic' => 'Temas de formación',
+                'related_content_media' => 'Audios y/o vídeos',
                 'editorial_latest' => 'Últimos productos Editorial',
                 'education_upcoming' => 'Próximos cursos',
                 'events_upcoming' => 'Próximos eventos (actividades + sesiones de cursos)',

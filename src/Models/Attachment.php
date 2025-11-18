@@ -4,6 +4,9 @@ namespace Trafikrak\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Trafikrak\Models\Media\Audio;
+use Trafikrak\Models\Media\Document;
+use Trafikrak\Models\Media\Video;
 
 class Attachment extends Model
 {
@@ -17,5 +20,15 @@ class Attachment extends Model
     public function media(): MorphTo
     {
         return $this->morphTo();
+    }
+
+    public function getComponentNamespaceAttribute(): string
+    {
+        return match ($this->media_type) {
+            (new Video)->getMorphClass() => 'videos',
+            (new Audio)->getMorphClass() => 'audios',
+            (new Document)->getMorphClass() => 'documents',
+            default => throw new \RuntimeException('Unsupported media type'),
+        };
     }
 }

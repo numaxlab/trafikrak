@@ -20,13 +20,15 @@ class ListTiers extends BaseListRecords
     {
         return [
             Section::HOMEPAGE->value => Tab::make(__('trafikrak::tier.sections.homepage'))
-                ->modifyQueryUsing(fn(Builder $query) => $query->where('section', Section::HOMEPAGE->value)),
+                ->modifyQueryUsing(fn (Builder $query) => $query->where('section', Section::HOMEPAGE->value)),
             Section::BOOKSHOP->value => Tab::make(__('trafikrak::tier.sections.bookshop'))
-                ->modifyQueryUsing(fn(Builder $query) => $query->where('section', Section::BOOKSHOP->value)),
+                ->modifyQueryUsing(fn (Builder $query) => $query->where('section', Section::BOOKSHOP->value)),
             Section::EDITORIAL->value => Tab::make(__('trafikrak::tier.sections.editorial'))
-                ->modifyQueryUsing(fn(Builder $query) => $query->where('section', Section::EDITORIAL->value)),
+                ->modifyQueryUsing(fn (Builder $query) => $query->where('section', Section::EDITORIAL->value)),
             Section::EDUCATION->value => Tab::make(__('trafikrak::tier.sections.education'))
-                ->modifyQueryUsing(fn(Builder $query) => $query->where('section', Section::EDUCATION->value)),
+                ->modifyQueryUsing(fn (Builder $query) => $query->where('section', Section::EDUCATION->value)),
+            Section::MEDIA->value => Tab::make(__('trafikrak::tier.sections.media'))
+                ->modifyQueryUsing(fn (Builder $query) => $query->where('section', Section::MEDIA->value)),
         ];
     }
 

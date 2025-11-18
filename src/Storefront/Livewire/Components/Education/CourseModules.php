@@ -8,7 +8,7 @@ use Livewire\Component;
 use Trafikrak\Models\Education\Course;
 use Trafikrak\Models\Education\CourseModule;
 
-class ModulesList extends Component
+class CourseModules extends Component
 {
     public Course $course;
 
@@ -32,6 +32,6 @@ class ModulesList extends Component
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.components.education.modules-list');
+        return view('trafikrak::storefront.livewire.components.education.course-modules');
     }
 }

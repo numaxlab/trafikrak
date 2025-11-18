@@ -18,11 +18,6 @@ class ModulePage extends Page
             firstOrFail: true,
             eagerLoad: [
                 'element.instructors',
-                'element.products',
-                'element.products.media',
-                'element.products.defaultUrl',
-                'element.attachments',
-                'element.attachments.media',
                 'element.course',
                 'element.course.defaultUrl',
             ],

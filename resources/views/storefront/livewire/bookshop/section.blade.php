@@ -27,8 +27,9 @@
                             aria-label="{{ __('Buscar en esta sección') }}"
                             autocomplete="off"
                     />
-                    <button type="submit" aria-label="Buscar" class="text-primary absolute inset-y-0 right-3">
-                        <i class="fa-solid fa-search" aria-hidden="true"></i>
+                    <button type="submit" aria-label="{{ __('Buscar') }}"
+                            class="text-primary absolute inset-y-0 right-3">
+                        <i class="icon icon-magnifying-glass" aria-hidden="true"></i>
                     </button>
                 </div>
 

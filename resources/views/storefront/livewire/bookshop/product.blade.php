@@ -41,9 +41,9 @@
                         wire:loading.attr="disabled"
                 >
                     @if ($isUserFavourite)
-                        <i class="fa-solid fa-heart fa-2xs" aria-hidden="true" wire:loading.remove></i>
+                        <i class="icon icon-heart bg-primary" aria-hidden="true" wire:loading.remove></i>
                     @else
-                        <i class="fa-regular fa-heart fa-2xs" aria-hidden="true" wire:loading.remove></i>
+                        <i class="icon icon-heart" aria-hidden="true" wire:loading.remove></i>
                     @endif
 
                     <div wire:loading>

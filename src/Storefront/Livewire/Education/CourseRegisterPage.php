@@ -4,13 +4,17 @@ namespace Trafikrak\Storefront\Livewire\Education;
 
 use Illuminate\View\View;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
-use Trafikrak\Models\Content\Banner;
-use Trafikrak\Models\Content\Location;
 use Trafikrak\Models\Education\Course;
 
-class CoursePage extends Page
+class CourseRegisterPage extends Page
 {
     public Course $course;
+
+    public array $paymentTypes = [];
+
+    public ?string $selectedVariant;
+
+    public ?string $paymentType = null;
 
     public function mount($slug): void
     {
@@ -20,24 +24,19 @@ class CoursePage extends Page
             firstOrFail: true,
             eagerLoad: [
                 'element.topic',
-                'element.media',
                 'element.purchasable',
+                'element.purchasable.variants',
+                'element.purchasable.variants.values',
             ],
         );
 
         $this->course = $this->url->element;
+
+        $this->paymentTypes = config('trafikrak.payment_types.education');
     }
 
     public function render(): View
     {
-        $banner = Banner::whereJsonContains('locations', Location::COURSE->value)
-            ->where('is_published', true)
-            ->first();
-
-        $banner->link = $this->course->purchasable ?
-            route('trafikrak.storefront.education.courses.register', $this->course->defaultUrl->slug)
-            : null;
-
-        return view('trafikrak::storefront.livewire.education.course', compact('banner'));
+        return view('trafikrak::storefront.livewire.education.course-register');
     }
 }

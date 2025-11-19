@@ -50,12 +50,12 @@
                 <div class="lg:w-4/12">
                     <ul class="text-sm border-y border-black divide-x divide-black flex gap-2 py-2">
                         <li class="pr-2">
-                            <i class="fa-solid fa-calendar text-2xl w-5 text-center mr-2" aria-hidden="true"></i>
+                            <i class="icon icon-calendar text-2xl w-5 text-center mr-2" aria-hidden="true"></i>
                             <time datetime="{{ $module->starts_at->format('Y-m-d') }}">{{ $module->starts_at->format('d/m/Y H:i') }}</time>
                         </li>
                     </ul>
                     <div class="flex gap-2 border-b border-black py-2">
-                        <i class="fa-solid fa-info text-2xl w-5 text-center mr-2" aria-hidden="true"></i>
+                        <i class="icon icon-info text-2xl w-5 text-center mr-2" aria-hidden="true"></i>
                         <p class="at-small">
                             {{ __('trafikrak::coursemodule.form.delivery_method.options.'.$module->delivery_method->value) }}
                             @if ($module->location)

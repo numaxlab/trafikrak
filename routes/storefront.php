@@ -40,9 +40,11 @@ use Trafikrak\Storefront\Livewire\Education\TopicPage;
 use Trafikrak\Storefront\Livewire\Education\TopicsListPage;
 use Trafikrak\Storefront\Livewire\HomePage;
 use Trafikrak\Storefront\Livewire\KitchenSinkPage;
+use Trafikrak\Storefront\Livewire\Media\AudioPage;
 use Trafikrak\Storefront\Livewire\Media\DocumentsListPage;
 use Trafikrak\Storefront\Livewire\Media\HomePage as MediaHomePage;
 use Trafikrak\Storefront\Livewire\Media\SearchPage as MediaSearchPage;
+use Trafikrak\Storefront\Livewire\Media\VideoPage;
 use Trafikrak\Storefront\Livewire\Media\VideosListPage;
 use Trafikrak\Storefront\Livewire\Membership\DonatePage;
 use Trafikrak\Storefront\Livewire\Membership\DonateSuccessPage;
@@ -136,6 +138,12 @@ Route::prefix('/mediateca')->group(function () {
 
     Route::get('/audiovisual/buscar', MediaSearchPage::class)
         ->name('trafikrak.storefront.media.search');
+
+    Route::get('/videos/{slug}', VideoPage::class)
+        ->name('trafikrak.storefront.media.videos.show');
+
+    Route::get('/audios/{slug}', AudioPage::class)
+        ->name('trafikrak.storefront.media.audios.show');
 
     Route::get('/documentos', DocumentsListPage::class)
         ->name('trafikrak.storefront.media.documents.index');

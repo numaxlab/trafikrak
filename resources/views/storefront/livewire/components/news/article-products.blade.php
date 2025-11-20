@@ -5,7 +5,6 @@
                 <h2 class="at-heading is-2">
                     {{ __('Libros relacionados') }}
                 </h2>
-
             </x-numaxlab-atomic::organisms.tier.header>
 
             <ul class="grid gap-6 grid-cols-2 mb-9 md:grid-cols-4">

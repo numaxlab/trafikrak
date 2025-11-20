@@ -1,26 +1,26 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\News\ArticleResource\Pages;
+namespace Trafikrak\Admin\Filament\Resources\News\EventTypeResource\Pages;
 
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord\Concerns\Translatable;
 use Lunar\Admin\Support\Pages\BaseEditRecord;
-use Trafikrak\Admin\Filament\Resources\News\ArticleResource;
+use Trafikrak\Admin\Filament\Resources\News\EventTypeResource;
 
-class EditArticle extends BaseEditRecord
+class EditEventType extends BaseEditRecord
 {
     use Translatable;
 
-    protected static string $resource = ArticleResource::class;
+    protected static string $resource = EventTypeResource::class;
 
     public static function getNavigationLabel(): string
     {
-        return __('trafikrak::article.pages.edit.title');
+        return __('trafikrak::event-type.pages.edit.title');
     }
 
     public function getTitle(): string
     {
-        return __('trafikrak::article.pages.edit.title');
+        return __('trafikrak::event-type.pages.edit.title');
     }
 
     protected function getDefaultHeaderActions(): array

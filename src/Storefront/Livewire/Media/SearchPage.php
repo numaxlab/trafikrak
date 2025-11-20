@@ -2,6 +2,7 @@
 
 namespace Trafikrak\Storefront\Livewire\Media;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Livewire\Attributes\Url;
 use Livewire\WithPagination;
@@ -35,7 +36,7 @@ class SearchPage extends Page
             ->get();
 
         $videosQuery = Video::query()
-            ->select([...$this->columns, \DB::raw("'videos' as type")])
+            ->select([...$this->columns, DB::raw("'videos' as type")])
             ->where('is_published', true)
             ->when($this->q, function ($query) {
                 $videosByQuery = Video::search($this->q)->get();
@@ -43,7 +44,7 @@ class SearchPage extends Page
             });
 
         $audiosQuery = Audio::query()
-            ->select([...$this->columns, \DB::raw("'audios' as type")])
+            ->select([...$this->columns, DB::raw("'audios' as type")])
             ->where('is_published', true)
             ->when($this->q, function ($query) {
                 $audiosByQuery = Audio::search($this->q)->get();

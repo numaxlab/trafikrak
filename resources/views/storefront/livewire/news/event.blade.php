@@ -25,15 +25,17 @@
                     <h2 class="at-heading is-3 font-normal mt-2">{{ $event->subtitle }}</h2>
                 @endif
 
-                <div class="mt-6">
-                    <a
-                            href="{{ route('trafikrak.storefront.activities.index', ['t' => $event->eventType->id]) }}"
-                            wire:navigate
-                            class="at-tag is-primary"
-                    >
-                        {{ $event->eventType->name }}
-                    </a>
-                </div>
+                @if ($event->eventType)
+                    <div class="mt-6">
+                        <a
+                                href="{{ route('trafikrak.storefront.activities.index', ['t' => $event->eventType->id]) }}"
+                                wire:navigate
+                                class="at-tag is-primary"
+                        >
+                            {{ $event->eventType->name }}
+                        </a>
+                    </div>
+                @endif
             </header>
 
             <div class="lg:flex lg:flex-row-reverse lg:gap-6">

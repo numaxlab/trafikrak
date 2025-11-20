@@ -17,7 +17,7 @@ class ProductActivities extends Component
 
     public Collection $activities;
 
-    private array $columns = ['id', 'name', 'subtitle', 'starts_at'];
+    private array $columns = ['id', 'starts_at'];
 
     public function mount(): void
     {

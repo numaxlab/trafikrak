@@ -46,7 +46,7 @@
                         type="search"
                         wire:model="q"
                         name="q"
-                        id="sectionQuery"
+                        id="query"
                         placeholder="{{ __('Buscar en actividades') }}"
                         aria-label="{{ __('Buscar en actividades') }}"
                         autocomplete="off"

@@ -33,6 +33,7 @@ use Trafikrak\Storefront\Livewire\Editorial\HomePage as EditorialHomePage;
 use Trafikrak\Storefront\Livewire\Editorial\SpecialCollectionPage;
 use Trafikrak\Storefront\Livewire\Education\CoursePage;
 use Trafikrak\Storefront\Livewire\Education\CourseRegisterPage;
+use Trafikrak\Storefront\Livewire\Education\CourseRegisterSuccessPage;
 use Trafikrak\Storefront\Livewire\Education\CoursesListPage;
 use Trafikrak\Storefront\Livewire\Education\HomePage as EducationHomePage;
 use Trafikrak\Storefront\Livewire\Education\ModulePage;
@@ -124,6 +125,9 @@ Route::prefix('/formacion')->group(function () {
 
     Route::get('/cursos/{slug}/inscripcion', CourseRegisterPage::class)
         ->name('trafikrak.storefront.education.courses.register');
+
+    Route::get('/cursos/inscripcion/finalizada/{fingerprint}', CourseRegisterSuccessPage::class)
+        ->name('trafikrak.storefront.education.courses.register.success');
 
     Route::get('/cursos/{courseSlug}/sesiones/{moduleSlug}', ModulePage::class)
         ->name('trafikrak.storefront.education.courses.modules.show');

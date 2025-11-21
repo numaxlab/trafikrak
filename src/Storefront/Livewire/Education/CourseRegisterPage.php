@@ -10,6 +10,8 @@ use Illuminate\Validation\Rules\Password;
 use Illuminate\View\View;
 use Lunar\Facades\StorefrontSession;
 use Lunar\Models\Cart;
+use Lunar\Models\CartAddress;
+use Lunar\Models\Country;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
 use Trafikrak\Models\Content\Banner;
 use Trafikrak\Models\Content\Location;
@@ -137,17 +139,33 @@ class CourseRegisterPage extends Page
             'currency_id' => StorefrontSession::getCurrency()->id,
             'channel_id' => StorefrontSession::getChannel()->id,
             'meta' => [
+                'Factura' => $this->invoice ? 'Si' : 'No',
                 'Tipo de pedido' => 'Curso',
                 'Método de pago' => __("trafikrak::global.payment_types.{$this->paymentType}.title"),
             ],
         ]);
 
         foreach ($this->course->purchasable->variants as $variant) {
-            if ($variant->id === $this->selectedVariant) {
+            if ($variant->id == $this->selectedVariant) {
                 $cart->add($variant);
                 break;
             }
         }
+
+        $billing = new CartAddress();
+
+        if ($this->invoice) {
+            $billing->fill($this->billing->all());
+        } else {
+            $billing->first_name = $user->latestCustomer()->first_name;
+            $billing->country_id = Country::where('iso2', config('trafikrak.default_billing_address.country_iso2'))
+                ->firstOrFail()->id;
+            $billing->city = config('trafikrak.default_billing_address.city');
+            $billing->postcode = config('trafikrak.default_billing_address.postcode');
+            $billing->line_one = config('trafikrak.default_billing_address.line_one');
+        }
+
+        $cart->setBillingAddress($billing);
 
         $cart->calculate();
 

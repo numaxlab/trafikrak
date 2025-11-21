@@ -22,4 +22,11 @@ return [
             'bizum',
         ],
     ],
+
+    'default_billing_address' => [
+        'country_iso2' => env('DEFAULT_BILLING_ADDRESS_COUNTRY', 'ES'),
+        'line_one' => env('DEFAULT_BILLING_ADDRESS_LINE_ONE'),
+        'city' => env('DEFAULT_BILLING_ADDRESS_CITY'),
+        'postcode' => env('DEFAULT_BILLING_ADDRESS_POSTCODE'),
+    ],
 ];

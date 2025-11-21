@@ -20,6 +20,7 @@ class CourseModules extends Component
     public function mount(): void
     {
         $queryBuilder = CourseModule::where('course_id', $this->course->id)
+            ->where('is_published', true)
             ->orderBy('starts_at')
             ->with(['defaultUrl', 'course', 'course.defaultUrl']);
 

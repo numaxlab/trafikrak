@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Lunar\Models\Contracts\Order as OrderContract;
 use Lunar\Models\Tag;
 use Trafikrak\Models\Membership\MembershipPlan;
+use Trafikrak\Observers\CourseObserver;
 use Trafikrak\Storefront\Livewire\Membership\DonatePage;
 
 class TagOrder
@@ -28,6 +29,12 @@ class TagOrder
                 if (Str::contains($line->purchasable->sku, DonatePage::DONATION_PRODUCT_SKU)) {
                     $tag = Tag::firstOrCreate([
                         'value' => 'Donación',
+                    ]);
+                }
+
+                if ($line->purchasable->product->product_type_id === CourseObserver::PRODUCT_TYPE_ID) {
+                    $tag = Tag::firstOrCreate([
+                        'value' => 'Inscripción cursos',
                     ]);
                 }
             }

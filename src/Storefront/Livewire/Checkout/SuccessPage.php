@@ -17,6 +17,7 @@ class SuccessPage extends Page
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.checkout.success');
+        return view('trafikrak::storefront.livewire.checkout.success')
+            ->title(__('Pedido finalizado'));
     }
 }

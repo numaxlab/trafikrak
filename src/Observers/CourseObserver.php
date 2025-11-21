@@ -13,7 +13,7 @@ use Trafikrak\Models\Education\Course;
 
 class CourseObserver
 {
-    private const int PRODUCT_TYPE_ID = 3;
+    public const int PRODUCT_TYPE_ID = 3;
 
     private const string DEFAULT_STATUS = 'published';
 

@@ -16,6 +16,7 @@ use Lunar\Models\Order;
 use NumaxLab\Lunar\Redsys\RedsysPayment;
 use NumaxLab\Lunar\Redsys\Responses\RedirectToPaymentGateway;
 use Trafikrak\Models\Membership\MembershipPlan;
+use Trafikrak\Observers\CourseObserver;
 use Trafikrak\Storefront\Livewire\Membership\DonatePage;
 
 class ProcessPaymentController
@@ -105,6 +106,10 @@ class ProcessPaymentController
             if ($line->purchasable_type === 'product_variant') {
                 if (Str::contains($line->purchasable->sku, DonatePage::DONATION_PRODUCT_SKU)) {
                     return 'trafikrak.storefront.membership.donate.success';
+                }
+
+                if ($line->purchasable->product->product_type_id === CourseObserver::PRODUCT_TYPE_ID) {
+                    return 'trafikrak.storefront.education.courses.register.success';
                 }
 
                 return 'trafikrak.storefront.checkout.success';

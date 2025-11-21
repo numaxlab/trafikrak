@@ -49,6 +49,11 @@
             "email": "carlos@numax.org"
         }
     ],
+    "scripts": {
+        "test": "vendor/bin/pest"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "config": {
         "allow-plugins": {
             "pestphp/pest-plugin": true,

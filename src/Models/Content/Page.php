@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Lunar\Base\Traits\HasUrls;
 use Lunar\Base\Traits\LogsActivity;
 use Spatie\Translatable\HasTranslations;
+use Trafikrak\Database\Factories\Content\PageFactory;
 
 class Page extends Model
 {
@@ -22,6 +23,11 @@ class Page extends Model
         'content',
     ];
     protected $guarded = [];
+
+    protected static function newFactory()
+    {
+        return PageFactory::new();
+    }
 
     public function getHasBreadcrumbAttribute(): bool
     {

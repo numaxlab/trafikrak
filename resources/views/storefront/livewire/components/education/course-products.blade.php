@@ -8,16 +8,18 @@
 
             </x-numaxlab-atomic::organisms.tier.header>
 
-            <ul class="grid gap-6 grid-cols-2 mb-9 md:grid-cols-4">
-                @foreach ($products as $product)
-                    <li>
-                        <x-trafikrak::products.summary
-                                :product="$product"
-                                :href="route('trafikrak.storefront.bookshop.products.show', $product->defaultUrl->slug)"
-                        />
-                    </li>
-                @endforeach
-            </ul>
+            <div class="overflow-x-auto">
+                <ul class="grid grid-flow-col auto-cols-[40%] md:auto-cols-[25%] gap-6">
+                    @foreach ($products as $product)
+                        <li>
+                            <x-trafikrak::products.summary
+                                    :product="$product"
+                                    :href="route('trafikrak.storefront.bookshop.products.show', $product->defaultUrl->slug)"
+                            />
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
         </x-numaxlab-atomic::organisms.tier>
     @endif
 </div>

@@ -1,8 +1,12 @@
 @props(['author', 'editorial' => false])
 
+@php
+    $hasProfilePage = ($author->defaultUrl?->slug && $author->translateAttribute('has-profile-page'));
+@endphp
+
 <article class="ml-summary">
     <a
-            @if ($author->defaultUrl?->slug)
+            @if ($hasProfilePage)
                 href="{{ route($editorial ? 'trafikrak.storefront.editorial.authors.show' : 'trafikrak.storefront.authors.show', $author->defaultUrl->slug) }}"
             @endif
             class="flex gap-4"
@@ -16,7 +20,7 @@
             >
         </div>
         <div class="summary-content">
-            <h2 class="at-heading">
+            <h2 class="at-heading {{ ! $hasProfilePage ? 'text-black' : '' }}">
                 {{ $author->name }}
             </h2>
 

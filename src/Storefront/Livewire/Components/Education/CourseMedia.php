@@ -3,6 +3,7 @@
 namespace Trafikrak\Storefront\Livewire\Components\Education;
 
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\View\View;
 use Livewire\Component;
 use Trafikrak\Models\Attachment;
@@ -29,7 +30,10 @@ class CourseMedia extends Component
             });
         })->whereHas('media', fn ($query) => $query->where('is_published', true))
             ->with('media')
-            ->get();
+            ->get()
+            ->filter(function ($attachment) {
+                return Gate::allows('view', $attachment->media);
+            });;
     }
 
     public function render(): View

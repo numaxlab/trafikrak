@@ -33,6 +33,26 @@ class ModuleProducts extends Component
                 'defaultUrl',
                 'authors',
             ])->get();
+
+        $this->products = $this->products->merge(
+            $this->module->course
+                ->products()->channel(StorefrontSession::getChannel())
+                ->customerGroup(StorefrontSession::getCustomerGroups())
+                ->status('published')
+                ->whereHas('productType', function ($query) {
+                    $query->where('id', config('lunar.geslib.product_type_id'));
+                })->with([
+                    'variant',
+                    'variant.prices',
+                    'variant.prices.priceable',
+                    'variant.prices.priceable.taxClass',
+                    'variant.prices.priceable.taxClass.taxRateAmounts',
+                    'variant.prices.currency',
+                    'media',
+                    'defaultUrl',
+                    'authors',
+                ])->get(),
+        );
     }
 
     public function render(): View

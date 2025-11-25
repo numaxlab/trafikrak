@@ -1,14 +1,11 @@
 <div>
     @if ($products->isNotEmpty())
-        <x-numaxlab-atomic::organisms.tier class="mt-10">
-            <x-numaxlab-atomic::organisms.tier.header>
-                <h2 class="at-heading is-2">
-                    {{ __('Libros relacionados') }}
-                </h2>
+        <x-trafikrak::tier.horizontal-scroll>
+            <x-slot name="title">
+                {{ __('Libros relacionados') }}
+            </x-slot>
 
-            </x-numaxlab-atomic::organisms.tier.header>
-
-            <ul class="grid gap-6 grid-cols-2 mb-9 md:grid-cols-4">
+            <ul class="grid grid-flow-col auto-cols-[40%] md:auto-cols-[25%] gap-6">
                 @foreach ($products as $product)
                     <li>
                         <x-trafikrak::products.summary
@@ -18,6 +15,6 @@
                     </li>
                 @endforeach
             </ul>
-        </x-numaxlab-atomic::organisms.tier>
+        </x-trafikrak::tier.horizontal-scroll>
     @endif
 </div>

@@ -8,6 +8,7 @@ use Livewire\Component;
 use NumaxLab\Lunar\Geslib\Models\Author;
 use Trafikrak\Models\Attachment;
 use Trafikrak\Models\Education\CourseModule;
+use Trafikrak\Models\Media\Visibility;
 
 class Media extends Component
 {
@@ -23,7 +24,10 @@ class Media extends Component
 
         $this->attachments = Attachment::where('attachable_type', (new CourseModule)->getMorphClass())
             ->whereIn('attachable_id', $authorCourseModules->pluck('id'))
-            ->whereHas('media', fn ($query) => $query->where('is_published', true))
+            ->whereHas(
+                'media',
+                fn ($query) => $query->where('is_published', true)->where('visibility', Visibility::PUBLIC->value),
+            )
             ->with('media')
             ->get();
     }

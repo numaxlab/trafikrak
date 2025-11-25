@@ -1,9 +1,7 @@
 <div class="container mx-auto px-4">
-    <x-numaxlab-atomic::organisms.tier class="mb-10">
-        <x-numaxlab-atomic::organisms.tier.header>
-            <h2 class="at-heading is-2">
-                {{ $tier->name }}
-            </h2>
+    <x-trafikrak::tier.horizontal-scroll>
+        <x-slot name="title">
+            {{ $tier->name }}
 
             @if ($tier->has_link)
                 <a href="{{ $tier->link }}"
@@ -13,14 +11,17 @@
                     {{ $tier->link_name }}
                 </a>
             @endif
-        </x-numaxlab-atomic::organisms.tier.header>
+        </x-slot>
 
-        <div class="overflow-x-auto">
         <ul class="grid grid-flow-col auto-cols-[35%] md:auto-cols-[20%] xl:auto-cols-[14%] gap-6">
-            <li>
-                Libros
-            </li>
+            @foreach ($products as $product)
+                <li>
+                    <x-trafikrak::products.summary
+                            :product="$product"
+                            :href="route('trafikrak.storefront.bookshop.products.show', $product->defaultUrl->slug)"
+                    />
+                </li>
+            @endforeach
         </ul>
-        </div>
-    </x-numaxlab-atomic::organisms.tier>
+    </x-trafikrak::tier.horizontal-scroll>
 </div>

@@ -90,6 +90,12 @@
                                         :key="'price-' . $variant->id"
                                         :purchasable="$variant"/>
                             </div>
+
+                            @if ($variant->translateAttribute('description'))
+                                <div class="mt-2 text-base opacity-90">
+                                    {!! $variant->translateAttribute('description') !!}
+                                </div>
+                            @endif
                         </label>
                     </li>
                 @endforeach

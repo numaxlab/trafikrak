@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use Lunar\FieldTypes\File;
 use Lunar\FieldTypes\Text;
 use Lunar\FieldTypes\Toggle;
+use Lunar\FieldTypes\TranslatedText;
 use Lunar\Models\Attribute;
 use Lunar\Models\AttributeGroup;
 use Lunar\Models\Brand;
@@ -56,7 +57,7 @@ class Install extends Command
 
         $this->components->info('Setting up education product.');
 
-        $this->setupEducationProductOption();
+        $this->setupEducationProduct();
     }
 
     private function setupBrandAttributes(): void
@@ -294,7 +295,7 @@ class Install extends Command
         }
     }
 
-    private function setupEducationProductOption(): void
+    private function setupEducationProduct(): void
     {
         $type = ProductType::create([
             'name' => 'Curso',
@@ -317,5 +318,38 @@ class Install extends Command
             ],
             'shared' => true,
         ]);
+
+        $group = AttributeGroup::create([
+            'attributable_type' => ProductVariant::morphName(),
+            'name' => collect([
+                'es' => 'Datos de variante de curso',
+            ]),
+            'handle' => 'course-variant-main',
+            'position' => 1,
+        ]);
+
+        $attribute = Attribute::create([
+            'attribute_type' => ProductVariant::morphName(),
+            'attribute_group_id' => $group->id,
+            'position' => 1,
+            'handle' => 'description',
+            'name' => [
+                'es' => 'Descripción',
+            ],
+            'description' => [
+                'es' => '',
+            ],
+            'section' => 'main',
+            'type' => TranslatedText::class,
+            'required' => false,
+            'default_value' => null,
+            'configuration' => [
+                'richtext' => true,
+            ],
+            'system' => false,
+            'searchable' => false,
+        ]);
+
+        $type->mappedAttributes()->attach($attribute->id);
     }
 }

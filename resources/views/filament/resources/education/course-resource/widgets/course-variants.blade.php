@@ -17,25 +17,18 @@
                             </x-filament-tables::header-cell>
                         @endif
                         <x-filament-tables::header-cell
-                                class="fi-ta-header-cell px-3 py-3.5 sm:first-of-type:ps-6 sm:last-of-type:pe-6">
-                      <span class="fi-ta-header-cell-label text-sm font-semibold text-gray-950 dark:text-white">
-                        {{ __('lunarpanel::productoption.widgets.product-options.variants-table.table.option.label') }}
-                      </span>
+                                class="fi-ta-header-cell px-3 py-3.5 sm:first-of-type:ps-6 sm:last-of-type:pe-6"
+                        >
+                            <span class="fi-ta-header-cell-label text-sm font-semibold text-gray-950 dark:text-white">{{ __('lunarpanel::productoption.widgets.product-options.variants-table.table.option.label') }}</span>
                         </x-filament-tables::header-cell>
                         <x-filament-tables::header-cell>
-                      <span class="fi-ta-header-cell-label text-sm font-semibold text-gray-950 dark:text-white">
-                        {{ __('lunarpanel::productoption.widgets.product-options.variants-table.table.sku.label') }}
-                      </span>
+                            <span class="fi-ta-header-cell-label text-sm font-semibold text-gray-950 dark:text-white">{{ __('lunarpanel::productoption.widgets.product-options.variants-table.table.sku.label') }}</span>
                         </x-filament-tables::header-cell>
                         <x-filament-tables::header-cell>
-                      <span class="fi-ta-header-cell-label text-sm font-semibold text-gray-950 dark:text-white">
-                        {{ __('lunarpanel::productoption.widgets.product-options.variants-table.table.price.label') }}
-                      </span>
+                            <span class="fi-ta-header-cell-label text-sm font-semibold text-gray-950 dark:text-white">{{ __('lunarpanel::productoption.widgets.product-options.variants-table.table.price.label') }}</span>
                         </x-filament-tables::header-cell>
                         <x-filament-tables::header-cell>
-                      <span class="fi-ta-header-cell-label text-sm font-semibold text-gray-950 dark:text-white">
-                        {{ __('lunarpanel::productvariant.form.tax_class_id.label') }}
-                      </span>
+                            <span class="fi-ta-header-cell-label text-sm font-semibold text-gray-950 dark:text-white">{{ __('lunarpanel::productvariant.form.tax_class_id.label') }}</span>
                         </x-filament-tables::header-cell>
                         <x-filament-tables::header-cell>
                         </x-filament-tables::header-cell>

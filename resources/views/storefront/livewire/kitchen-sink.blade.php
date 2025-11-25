@@ -31,16 +31,23 @@
                 <div class="mt-5">
                     <div class="at-lead mb-5">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra eros quis exenoration <a href="">pellentesque</a>. Suspendisse mauris mauris, ultricies id egestas. [at-lead] 
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra eros quis exenoration
+                            <a href="">pellentesque</a>. Suspendisse mauris mauris, ultricies id egestas. [at-lead]
                         </p>
                     </div>
 
                     <div class="mb-5">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra eros quis ex malesuada pellentesque. Suspendisse mauris mauris, ultricies id egestas. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius repellat necessitatibus est eveniet sunt adipisci explicabo iure? Consequuntur nulla error unde, dolores reprehenderit nobis minus nam eveniet esse aliquam repellat?
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra eros quis ex
+                            malesuada pellentesque. Suspendisse mauris mauris, ultricies id egestas. Lorem ipsum dolor,
+                            sit amet consectetur adipisicing elit. Eius repellat necessitatibus est eveniet sunt
+                            adipisci explicabo iure? Consequuntur nulla error unde, dolores reprehenderit nobis minus
+                            nam eveniet esse aliquam repellat?
                         </p>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra eros quis ex malesuada pellentesque. <a href="">Suspendisse mauris mauris</a>, ultricies id egestas. [body]
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra eros quis ex
+                            malesuada pellentesque. <a href="">Suspendisse mauris mauris</a>, ultricies id egestas.
+                            [body]
                         </p>
                     </div>
 
@@ -49,7 +56,8 @@
                     </blockquote>
 
                     <small class="at-small">
-                        <br> Lorem ipsum dolor sit amet, sectetur ipsum do amet, consectetur. Lorem ipsum dolor sit amet, consectetur amet ipsum.[at-small]
+                        <br> Lorem ipsum dolor sit amet, sectetur ipsum do amet, consectetur. Lorem ipsum dolor sit
+                        amet, consectetur amet ipsum.[at-small]
                     </small>
                 </div>
             </div>
@@ -69,28 +77,20 @@
             </div>
         </x-numaxlab-atomic::organisms.tier>
 
-        <x-numaxlab-atomic::organisms.tier class="mb-10">
-            <x-numaxlab-atomic::organisms.tier.header>
-                <h2 class="at-heading is-2">Libros</h2>
-                <a href="" class="at-small">
-                    
-                </a>
-            </x-numaxlab-atomic::organisms.tier.header>
+        <x-trafikrak::tier.horizontal-scroll>
+            <x-slot name="title">Libros</x-slot>
 
-            <div class="overflow-x-auto">
-                <ul class="grid grid-flow-col auto-cols-[50%] md:auto-cols-[25%] lg:auto-cols-[16.666%] gap-6">
+            <ul class="grid grid-flow-col auto-cols-[50%] md:auto-cols-[25%] lg:auto-cols-[16.666%] gap-6">
                 @foreach ($products as $product)
-                <li>
-                    <x-trafikrak::products.summary
-                    :product="$product"
-                    :href="route('trafikrak.storefront.bookshop.products.show', $product->defaultUrl->slug)"
-                />
-                </li>
+                    <li>
+                        <x-trafikrak::products.summary
+                                :product="$product"
+                                :href="route('trafikrak.storefront.bookshop.products.show', $product->defaultUrl->slug)"
+                        />
+                    </li>
                 @endforeach
             </ul>
-            </div>
-
-        </x-numaxlab-atomic::organisms.tier>
+        </x-trafikrak::tier.horizontal-scroll>
     </div>
 
     <div class="mb-10">
@@ -130,18 +130,21 @@
             <!-- Selectores de Mes y Año (REEMPLAZO DE BOTONES) -->
             <div class="flex items-center space-x-3">
                 <!-- Selector de Mes -->
-                <select id="monthSelector" onchange="updateDateAndRender()" class="p-3 border border-primary rounded-lg shadow-sm focus:ring-primary focus:border-primary transition duration-150 text-gray-700">
+                <select id="monthSelector" onchange="updateDateAndRender()"
+                        class="p-3 border border-primary rounded-lg shadow-sm focus:ring-primary focus:border-primary transition duration-150 text-gray-700">
                     <!-- Opciones inyectadas por JS -->
                 </select>
-                
+
                 <!-- Selector de Año -->
-                <select id="yearSelector" onchange="updateDateAndRender()" class="p-3 border border-primary rounded-lg shadow-sm focus:ring-primary focus:border-primary transition duration-150 text-gray-700">
+                <select id="yearSelector" onchange="updateDateAndRender()"
+                        class="p-3 border border-primary rounded-lg shadow-sm focus:ring-primary focus:border-primary transition duration-150 text-gray-700">
                     <!-- Opciones inyectadas por JS -->
                 </select>
             </div>
 
             <!-- Selector de Tipo de Actividad -->
-            <select id="activityTypeFilter" onchange="renderCalendar()" class="p-3 border border-primary rounded-lg shadow-sm focus:ring-primary focus:border-primary transition duration-150 text-gray-700">
+            <select id="activityTypeFilter" onchange="renderCalendar()"
+                    class="p-3 border border-primary rounded-lg shadow-sm focus:ring-primary focus:border-primary transition duration-150 text-gray-700">
                 <option value="todos">Todos los Tipos</option>
                 <option value="Trabajo">Trabajo</option>
                 <option value="Personal">Personal</option>
@@ -176,19 +179,22 @@
                 <div class="bg-primary text-white py-1 text-xs font-semibold">S</div>
                 <div class="bg-primary text-white py-1 text-xs font-semibold">D</div>
             </div>
-            
+
             <!-- Cuadrícula del Calendario Móvil (solo números y puntos) -->
-            <div id="mobileCalendarGrid" class="grid grid-cols-7 border-t border-l border-gray-200 bg-white shadow-xl rounded-b-xl overflow-hidden">
+            <div id="mobileCalendarGrid"
+                 class="grid grid-cols-7 border-t border-l border-gray-200 bg-white shadow-xl rounded-b-xl overflow-hidden">
                 <!-- Días inyectados por JS -->
             </div>
 
             <!-- Panel de Detalles de Día (Se muestra al hacer clic en un día con actividad) -->
             <div id="dayDetailPanel" class="mt-4 bg-white p-4 rounded-xl shadow-lg border-l-4 border-primary hidden">
-                <h3 class="text-xl font-bold text-gray-800 mb-3">Actividades del día <span id="detailDayNumber"></span></h3>
+                <h3 class="text-xl font-bold text-gray-800 mb-3">Actividades del día <span id="detailDayNumber"></span>
+                </h3>
                 <div id="detailActivityList" class="space-y-2">
                     <!-- Detalles de actividades inyectados por JS -->
                 </div>
-                <button onclick="closeDayDetails()" class="mt-4 w-full bg-primary hover:bg-primary-hover text-white font-semibold py-2 rounded-lg transition duration-150">
+                <button onclick="closeDayDetails()"
+                        class="mt-4 w-full bg-primary hover:bg-primary-hover text-white font-semibold py-2 rounded-lg transition duration-150">
                     Cerrar
                 </button>
             </div>
@@ -205,35 +211,91 @@
         // --- 1. DATOS Y CONFIGURACIÓN INICIAL ---
         // Inicializar con la fecha actual
         const today = new Date();
-        let currentYear = today.getFullYear(); 
+        let currentYear = today.getFullYear();
         let currentMonth = today.getMonth(); // 0 = Enero, 11 = Diciembre
 
-        const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+        const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 
         // Actividades de ejemplo para Diciembre de 2025 (31 días).
         // Adaptamos la fecha para que el ejemplo sea visible al iniciar. Usaremos la fecha actual para el ejemplo si es Diciembre, si no, usaremos Diciembre 2025
         if (currentYear !== 2025 || currentMonth !== 11) {
-             currentYear = 2025;
-             currentMonth = 11;
+            currentYear = 2025;
+            currentMonth = 11;
         }
 
         const allActivities = [
-            { day: 2, time: "10:00", location: "Oficina Central", title: "Reunión de Planificación Q1", type: "Trabajo", link: "https://www.google.com/search?q=planificacion+anual" },
-            { day: 5, time: "19:30", location: "Teatro Nacional", title: "Concierto de Jazz", type: "Personal", link: "https://www.google.com/search?q=concierto+de+jazz" },
-            { day: 10, time: "14:00", location: "Restaurante Italia", title: "Almuerzo con Cliente VIP", type: "Trabajo", link: "https://www.google.com/search?q=almuerzo+vip" },
-            { day: 15, time: "17:00", location: "Gimnasio", title: "Clase de Yoga", type: "Personal", link: "https://www.google.com/search?q=clase+de+yoga" },
-            { day: 15, time: "19:00", location: "Casa", title: "Cena con Amigos", type: "Personal", link: "https://www.google.com/search?q=cena+con+amigos" },
-            { day: 24, time: "20:00", location: "Casa Familiar", title: "Cena de Nochebuena", type: "Personal", link: "https://www.google.com/search?q=nochebuena" },
-            { day: 26, time: "09:00", location: "Remoto", title: "Revisión de Proyecto Final", type: "Trabajo", link: "https://www.google.com/search?q=revision+proyecto" },
-            { day: 31, time: "23:00", location: "Casa de Ana", title: "Fiesta de Nochevieja", type: "Personal", link: "https://www.google.com/search?q=fiesta+nochevieja" },
+            {
+                day: 2,
+                time: '10:00',
+                location: 'Oficina Central',
+                title: 'Reunión de Planificación Q1',
+                type: 'Trabajo',
+                link: 'https://www.google.com/search?q=planificacion+anual',
+            },
+            {
+                day: 5,
+                time: '19:30',
+                location: 'Teatro Nacional',
+                title: 'Concierto de Jazz',
+                type: 'Personal',
+                link: 'https://www.google.com/search?q=concierto+de+jazz',
+            },
+            {
+                day: 10,
+                time: '14:00',
+                location: 'Restaurante Italia',
+                title: 'Almuerzo con Cliente VIP',
+                type: 'Trabajo',
+                link: 'https://www.google.com/search?q=almuerzo+vip',
+            },
+            {
+                day: 15,
+                time: '17:00',
+                location: 'Gimnasio',
+                title: 'Clase de Yoga',
+                type: 'Personal',
+                link: 'https://www.google.com/search?q=clase+de+yoga',
+            },
+            {
+                day: 15,
+                time: '19:00',
+                location: 'Casa',
+                title: 'Cena con Amigos',
+                type: 'Personal',
+                link: 'https://www.google.com/search?q=cena+con+amigos',
+            },
+            {
+                day: 24,
+                time: '20:00',
+                location: 'Casa Familiar',
+                title: 'Cena de Nochebuena',
+                type: 'Personal',
+                link: 'https://www.google.com/search?q=nochebuena',
+            },
+            {
+                day: 26,
+                time: '09:00',
+                location: 'Remoto',
+                title: 'Revisión de Proyecto Final',
+                type: 'Trabajo',
+                link: 'https://www.google.com/search?q=revision+proyecto',
+            },
+            {
+                day: 31,
+                time: '23:00',
+                location: 'Casa de Ana',
+                title: 'Fiesta de Nochevieja',
+                type: 'Personal',
+                link: 'https://www.google.com/search?q=fiesta+nochevieja',
+            },
         ];
 
         // --- 2. FUNCIONES DE FECHA ---
-        function getDaysInMonth(year, month) {
+        function getDaysInMonth (year, month) {
             return new Date(year, month + 1, 0).getDate();
         }
 
-        function getFirstDayOfMonth(year, month) {
+        function getFirstDayOfMonth (year, month) {
             // Devuelve 0 para Domingo, 1 para Lunes, etc.
             const dayIndex = new Date(year, month, 1).getDay();
             // Ajuste para que Lunes sea 0 (según el calendario de cuadrícula)
@@ -241,13 +303,13 @@
         }
 
         // --- 3. MANEJO DE SELECTORES ---
-        function populateSelectors() {
+        function populateSelectors () {
             const monthSelector = document.getElementById('monthSelector');
             const yearSelector = document.getElementById('yearSelector');
-            
+
             // 3.1. Rellenar Meses
-            monthSelector.innerHTML = months.map((month, index) => 
-                `<option value="${index}" ${index === currentMonth ? 'selected' : ''}>${month}</option>`
+            monthSelector.innerHTML = months.map((month, index) =>
+                `<option value="${index}" ${index === currentMonth ? 'selected' : ''}>${month}</option>`,
             ).join('');
 
             // 3.2. Rellenar Años (rango de 2020 a 2030)
@@ -265,30 +327,30 @@
             }
         }
 
-        function updateDateAndRender() {
+        function updateDateAndRender () {
             const monthSelector = document.getElementById('monthSelector');
             const yearSelector = document.getElementById('yearSelector');
 
             currentMonth = parseInt(monthSelector.value);
             currentYear = parseInt(yearSelector.value);
-            
+
             renderCalendar();
         }
 
         // --- 4. RENDERIZADO DEL CALENDARIO (VISTA DE ESCRITORIO) ---
-        function renderCalendarGrid() {
+        function renderCalendarGrid () {
             const grid = document.getElementById('calendarGrid');
             grid.innerHTML = '';
-            closeDayDetails(); 
-            
+            closeDayDetails();
+
             const totalDays = getDaysInMonth(currentYear, currentMonth);
             const firstDayIndex = getFirstDayOfMonth(currentYear, currentMonth); // 0 = Lunes
 
             const filterType = document.getElementById('activityTypeFilter').value;
-            
+
             // Determinar los días del mes anterior para rellenar
             const prevMonthDays = getDaysInMonth(currentYear, currentMonth - 1);
-            
+
             // Días de relleno del mes anterior
             for (let i = firstDayIndex; i > 0; i--) {
                 const day = document.createElement('div');
@@ -303,9 +365,9 @@
             // Días del mes actual
             for (let dayNumber = 1; dayNumber <= totalDays; dayNumber++) {
                 const day = document.createElement('div');
-                
+
                 let dayClasses = `${DAY_CELL_CLASSES} bg-white text-right relative hover:bg-gray-50`;
-                
+
                 // Eliminar borde derecho si es Domingo (posición 7)
                 if ((firstDayIndex + dayNumber) % 7 === 0) {
                     dayClasses = dayClasses.replace('border-r', 'border-r-0');
@@ -314,18 +376,18 @@
                 // Manejo de bordes redondeados en la última fila
                 const isLastDay = dayNumber === totalDays;
                 const isLastCellInGrid = totalDays + firstDayIndex > 35 && (firstDayIndex + dayNumber) > (35);
-                
+
                 if (isLastDay && isLastCellInGrid) {
-                     dayClasses += ' rounded-br-xl'; 
+                    dayClasses += ' rounded-br-xl';
                 }
 
                 day.className = dayClasses;
-                
+
                 day.innerHTML = `<div class="text-lg font-bold text-gray-800">${dayNumber}</div>`;
 
                 // Actividades para este día
                 const dayActivities = allActivities.filter(
-                    act => act.day === dayNumber && (filterType === 'todos' || act.type === filterType)
+                    act => act.day === dayNumber && (filterType === 'todos' || act.type === filterType),
                 );
 
                 const activitiesHtml = dayActivities.map(act => `
@@ -343,28 +405,28 @@
             // Días de relleno del mes siguiente
             const totalCells = firstDayIndex + totalDays;
             const cellsToFill = (7 - (totalCells % 7)) % 7;
-            
+
             for (let i = 1; i <= cellsToFill; i++) {
                 const day = document.createElement('div');
                 day.className = `${DAY_CELL_CLASSES} ${OTHER_MONTH_DAY_CLASSES} text-right`;
-                
+
                 if ((totalCells + i) % 7 === 0) {
                     day.className = day.className.replace('border-r', 'border-r-0');
                 }
-                
+
                 day.innerHTML = `<div class="text-sm font-light">${i}</div>`;
                 grid.appendChild(day);
             }
         }
-        
+
         // --- 5. RENDERIZADO DE LA CUADRÍCULA MÓVIL (VISTA DE MÓVIL) ---
-        function renderMobileGrid() {
+        function renderMobileGrid () {
             const grid = document.getElementById('mobileCalendarGrid');
             grid.innerHTML = '';
-            closeDayDetails(); 
-            
+            closeDayDetails();
+
             const totalDays = getDaysInMonth(currentYear, currentMonth);
-            const firstDayIndex = getFirstDayOfMonth(currentYear, currentMonth); 
+            const firstDayIndex = getFirstDayOfMonth(currentYear, currentMonth);
 
             const filterType = document.getElementById('activityTypeFilter').value;
             // Mapa para contar actividades por día (usado para el punto indicador)
@@ -390,13 +452,13 @@
             // Días del mes actual
             for (let dayNumber = 1; dayNumber <= totalDays; dayNumber++) {
                 const day = document.createElement('div');
-                
+
                 let dayClasses = `${MOBILE_CELL_CLASSES} bg-white`;
-                
+
                 if ((firstDayIndex + dayNumber) % 7 === 0) {
                     dayClasses = dayClasses.replace('border-r', 'border-r-0');
                 }
-                
+
                 day.className = dayClasses;
                 day.setAttribute('data-day', dayNumber);
                 day.onclick = () => showDayDetails(dayNumber);
@@ -417,22 +479,22 @@
             // Días de relleno del mes siguiente
             const totalCells = firstDayIndex + totalDays;
             const cellsToFill = (7 - (totalCells % 7)) % 7;
-            
+
             for (let i = 1; i <= cellsToFill; i++) {
                 const day = document.createElement('div');
                 day.className = `${MOBILE_CELL_CLASSES} ${OTHER_MONTH_DAY_CLASSES} bg-gray-50 cursor-default hover:bg-gray-50`;
-                
+
                 if ((totalCells + i) % 7 === 0) {
                     day.className = day.className.replace('border-r', 'border-r-0');
                 }
-                
+
                 day.innerHTML = `<div class="text-xs font-light">${i}</div>`;
                 grid.appendChild(day);
             }
         }
-        
+
         // --- 6. PANEL DE DETALLES DE DÍA ---
-        function showDayDetails(dayNumber) {
+        function showDayDetails (dayNumber) {
             const panel = document.getElementById('dayDetailPanel');
             const list = document.getElementById('detailActivityList');
             const filterType = document.getElementById('activityTypeFilter').value;
@@ -446,7 +508,7 @@
             panel.classList.add('hidden');
 
             if (dayActivities.length === 0) {
-                 list.innerHTML = `<p class="text-gray-500 italic text-center">No hay actividades programadas para este día con el filtro actual.</p>`;
+                list.innerHTML = `<p class="text-gray-500 italic text-center">No hay actividades programadas para este día con el filtro actual.</p>`;
             } else {
                 // 2. Generar HTML para el listado
                 list.innerHTML = dayActivities.map(act => `
@@ -461,36 +523,32 @@
                     </a>
                 `).join('');
             }
-            
+
             // 3. Mostrar panel
             panel.classList.remove('hidden');
             panel.scrollIntoView({ behavior: 'smooth' });
         }
 
-        function closeDayDetails() {
+        function closeDayDetails () {
             document.getElementById('dayDetailPanel').classList.add('hidden');
         }
-        
+
         // --- 7. RENDERIZADO GLOBAL ---
-        function renderCalendar() {
+        function renderCalendar () {
             // Rellenar selectores si es la primera carga
             const monthSelector = document.getElementById('monthSelector');
             if (monthSelector.options.length === 0) {
-                 populateSelectors();
+                populateSelectors();
             }
-            
+
             // Renderiza ambas vistas.
             renderCalendarGrid();
-            renderMobileGrid(); 
+            renderMobileGrid();
         }
 
         // --- 8. INICIALIZACIÓN ---
         document.addEventListener('DOMContentLoaded', renderCalendar);
     </script>
-
-
-    
-    
 
 
 </article>

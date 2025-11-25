@@ -1,23 +1,19 @@
 <div>
     @if ($attachments->isNotEmpty())
-        <x-numaxlab-atomic::organisms.tier class="mb-10">
-            <x-numaxlab-atomic::organisms.tier.header>
-                <h2 class="at-heading is-2">
-                    {{ __('Audiovisual') }}
-                </h2>
-            </x-numaxlab-atomic::organisms.tier.header>
+        <x-trafikrak::tier.horizontal-scroll>
+            <x-slot name="title">
+                {{ __('Audiovisual') }}
+            </x-slot>
 
-            <div class="overflow-x-auto">
-                <ul class="grid grid-flow-col auto-cols-[55%] gap-6">
-                    @foreach ($attachments as $attachment)
-                        <li>
-                            <x-dynamic-component
-                                    :component="'trafikrak::'.$attachment->component_namespace.'.summary'"
-                                    :media="$attachment->media"/>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-        </x-numaxlab-atomic::organisms.tier>
+            <ul class="grid grid-flow-col auto-cols-[55%] gap-6">
+                @foreach ($attachments as $attachment)
+                    <li>
+                        <x-dynamic-component
+                                :component="'trafikrak::'.$attachment->component_namespace.'.summary'"
+                                :media="$attachment->media"/>
+                    </li>
+                @endforeach
+            </ul>
+        </x-trafikrak::tier.horizontal-scroll>
     @endif
 </div>

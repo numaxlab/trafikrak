@@ -76,7 +76,6 @@ class EventResource extends BaseResource
                     ->schema([
                         Forms\Components\Select::make('event_type_id')
                             ->relationship('eventType', 'name')
-                            ->searchable(['name'])
                             ->required()
                             ->label(__('trafikrak::event.form.event_type_id.label')),
                         Forms\Components\TextInput::make('name')
@@ -108,7 +107,6 @@ class EventResource extends BaseResource
                             ]),
                         Forms\Components\Select::make('venue_id')
                             ->relationship('venue', 'name')
-                            ->searchable(['name'])
                             ->required()
                             ->label(__('trafikrak::event.form.venue_id.label')),
                         Forms\Components\Textarea::make('alert')

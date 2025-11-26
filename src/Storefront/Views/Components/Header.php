@@ -53,7 +53,7 @@ class Header extends Component
             ->orderBy('_lft', 'ASC')
             ->get();
 
-        return view('trafikrak::storefront.components.header', compact(
+        return view('trafikrak::components.header', compact(
             'pages',
             'sections',
             'editorialCollections',

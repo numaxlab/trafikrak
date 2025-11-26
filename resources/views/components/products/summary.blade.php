@@ -13,7 +13,7 @@
     @if ($product->authors->isNotEmpty())
         <div class="mb-2">
             <ul>
-                @foreach ($product->authors as $author)
+                @foreach ($product->authors->take(2) as $author)
                     <li>
                         <p class="at-small leading-4 mb-1">{{ $author->name }}</p>
                     </li>

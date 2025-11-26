@@ -2,7 +2,7 @@
     <div class="lg:flex lg:flex-wrap lg:gap-10">
         <header class="lg:w-8/12">
             <x-numaxlab-atomic::molecules.breadcrumb :label="__('Miga de pan')">
-                @if ($product->brand->translateAttribute('in-house') === true)
+                @if ($product->brand && $product->brand->translateAttribute('in-house') === true)
                     <li>
                         <a href="{{ route('trafikrak.storefront.editorial.homepage') }}" wire:navigate>
                             {{ __('Editorial') }}

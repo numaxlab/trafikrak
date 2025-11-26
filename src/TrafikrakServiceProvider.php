@@ -45,7 +45,9 @@ class TrafikrakServiceProvider extends ServiceProvider
             ->group(fn () => $this->loadRoutesFrom(__DIR__.'/../routes/storefront.php'));
 
         Blade::componentNamespace('Trafikrak\\Storefront\\Views\\Components', 'trafikrak');
-        Blade::anonymousComponentPath(__DIR__.'/../resources/views/storefront/components', 'trafikrak');
+        Blade::anonymousComponentPath(__DIR__.'/../resources/views/components', 'trafikrak');
+
+        View::prependNamespace('numaxlab-atomic', __DIR__.'/../resources/views/vendor/numaxlab-atomic');
 
         $namespace = 'Trafikrak\Storefront\Livewire\\';
 
@@ -59,8 +61,6 @@ class TrafikrakServiceProvider extends ServiceProvider
                 Livewire::component($alias, $component);
             }
         }
-
-        View::prependNamespace('numaxlab-atomic', __DIR__.'/../resources/views/vendor/numaxlab-atomic');
 
         FilamentIcon::register([
             'trafikrak::course' => 'lucide-book-plus',

@@ -2,20 +2,20 @@
 
 namespace Trafikrak\Storefront\Livewire\Bookshop;
 
-use Illuminate\Support\Collection;
+use Illuminate\Support\Collection as SupportCollection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Lunar\Facades\StorefrontSession;
+use Lunar\Models\Contracts\Collection;
 use Lunar\Models\Price;
 use Lunar\Models\Product;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
 
 class ProductPage extends Page
 {
-    public \Lunar\Models\Contracts\Collection $section;
+    public Collection $section;
     public Product $product;
     public ?Price $pricing;
-    public Collection $itineraries;
     public bool $isUserFavourite;
 
     public function mount(string $slug): void
@@ -64,10 +64,11 @@ class ProductPage extends Page
         }
     }
 
-    public function addToFavorites(): null
+    public function addToFavorites(): void
     {
         if (! Auth::check()) {
-            return $this->redirect(route('login'), true);
+            $this->redirect(route('login'), true);
+            return;
         }
 
         $user = Auth::user();
@@ -79,13 +80,65 @@ class ProductPage extends Page
             $user->favourites()->attach($this->product->id);
             $this->isUserFavourite = true;
         }
-
-        return null;
     }
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.bookshop.product')
+        $taxonomies = $this->buildTaxonomies();
+
+        return view('trafikrak::storefront.livewire.bookshop.product', compact('taxonomies'))
             ->title($this->product->recordFullTitle);
+    }
+
+    protected function buildTaxonomies(): SupportCollection
+    {
+        $items = collect();
+
+        foreach ($this->product->taxonomies as $taxonomy) {
+            if ($taxonomy->isInSectionTree() && ! $taxonomy->isRoot()) {
+                $wrapper = $taxonomy->getAncestorWrapper();
+
+                if ($wrapper) {
+                    $name = $wrapper->translateAttribute('name');
+                    $href = $this->sectionHref($wrapper);
+                } else {
+                    $name = $taxonomy->translateAttribute('name');
+                    $href = $this->sectionHref($taxonomy);
+                }
+
+                $items->push(['name' => $name, 'href' => $href]);
+
+                continue;
+            }
+
+            if (! $taxonomy->isInSectionTree()) {
+                $href = $taxonomy->defaultUrl ? route(
+                    'trafikrak.storefront.bookshop.topics.show',
+                    $taxonomy->defaultUrl->slug,
+                ) : null;
+
+                $items->push([
+                    'name' => $taxonomy->translateAttribute('name'),
+                    'href' => $href,
+                ]);
+            }
+        }
+
+        return $items;
+    }
+
+    protected function sectionHref(Collection $taxonomy): ?string
+    {
+        if ($taxonomy->getAncestorSection() && $taxonomy->getAncestorSection()->defaultUrl) {
+            return route(
+                'trafikrak.storefront.bookshop.sections.show',
+                [
+                    'slug' => $taxonomy->getAncestorSection()->defaultUrl->slug,
+                    't' => $taxonomy->id,
+                ],
+            );
+        }
+
+        return null;
     }
 }

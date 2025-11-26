@@ -24,6 +24,7 @@ use Trafikrak\Storefront\Livewire\Bookshop\ItineraryPage;
 use Trafikrak\Storefront\Livewire\Bookshop\ProductPage;
 use Trafikrak\Storefront\Livewire\Bookshop\SearchPage as BookshopSearchPage;
 use Trafikrak\Storefront\Livewire\Bookshop\SectionPage;
+use Trafikrak\Storefront\Livewire\Bookshop\TopicPage as BookshopTopicPage;
 use Trafikrak\Storefront\Livewire\Checkout\ShippingAndPaymentPage;
 use Trafikrak\Storefront\Livewire\Checkout\SuccessPage;
 use Trafikrak\Storefront\Livewire\Checkout\SummaryPage;
@@ -38,7 +39,7 @@ use Trafikrak\Storefront\Livewire\Education\CourseRegisterSuccessPage;
 use Trafikrak\Storefront\Livewire\Education\CoursesListPage;
 use Trafikrak\Storefront\Livewire\Education\HomePage as EducationHomePage;
 use Trafikrak\Storefront\Livewire\Education\ModulePage;
-use Trafikrak\Storefront\Livewire\Education\TopicPage;
+use Trafikrak\Storefront\Livewire\Education\TopicPage as EducationTopicPage;
 use Trafikrak\Storefront\Livewire\Education\TopicsListPage;
 use Trafikrak\Storefront\Livewire\HomePage;
 use Trafikrak\Storefront\Livewire\KitchenSinkPage;
@@ -47,7 +48,6 @@ use Trafikrak\Storefront\Livewire\Media\DocumentsListPage;
 use Trafikrak\Storefront\Livewire\Media\HomePage as MediaHomePage;
 use Trafikrak\Storefront\Livewire\Media\SearchPage as MediaSearchPage;
 use Trafikrak\Storefront\Livewire\Media\VideoPage;
-use Trafikrak\Storefront\Livewire\Media\VideosListPage;
 use Trafikrak\Storefront\Livewire\Membership\DonatePage;
 use Trafikrak\Storefront\Livewire\Membership\DonateSuccessPage;
 use Trafikrak\Storefront\Livewire\Membership\SignupPage;
@@ -71,6 +71,9 @@ Route::prefix('/libreria')->group(function () {
 
     Route::get('/secciones/{slug}', SectionPage::class)
         ->name('trafikrak.storefront.bookshop.sections.show');
+
+    Route::get('/materias/{slug}', BookshopTopicPage::class)
+        ->name('trafikrak.storefront.bookshop.topics.show');
 
     Route::get('/itinerarios', ItinerariesListPage::class)
         ->name('trafikrak.storefront.bookshop.itineraries.index');
@@ -115,7 +118,7 @@ Route::prefix('/formacion')->group(function () {
     Route::get('/temas', TopicsListPage::class)
         ->name('trafikrak.storefront.education.topics.index');
 
-    Route::get('/temas/{slug}', TopicPage::class)
+    Route::get('/temas/{slug}', EducationTopicPage::class)
         ->name('trafikrak.storefront.education.topics.show');
 
     Route::get('/cursos', CoursesListPage::class)

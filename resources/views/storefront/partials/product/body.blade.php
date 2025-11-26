@@ -40,22 +40,20 @@
     </div>
 
     <div class="mt-10 lg:mt-0 lg:w-2/3">
-        @if ($product->taxonomies->isNotEmpty())
+        @if ($taxonomies->isNotEmpty())
             <ul class="flex flex-wrap gap-2">
-                @foreach ($product->taxonomies as $taxonomy)
-                    @if ($taxonomy->isInSectionTree() && ! $taxonomy->isRoot())
-                        <li>
-                            <a
-                                    @if ($taxonomy->getAncestorSection() && $taxonomy->getAncestorSection()->defaultUrl)
-                                        href="{{ route('trafikrak.storefront.bookshop.sections.show', ['slug' => $taxonomy->getAncestorSection()->defaultUrl->slug, 't' => $taxonomy->id]) }}"
-                                    @endif
-                                    wire:navigate
-                                    class="at-small at-tag"
-                            >
-                                {{ $taxonomy->translateAttribute('name') }}
-                            </a>
-                        </li>
-                    @endif
+                @foreach ($taxonomies as $taxonomy)
+                    <li>
+                        <a
+                                @if ($taxonomy['href'])
+                                    href="{{ $taxonomy['href'] }}"
+                                @endif
+                                wire:navigate
+                                class="at-small at-tag"
+                        >
+                            {{ $taxonomy['name'] }}
+                        </a>
+                    </li>
                 @endforeach
             </ul>
         @endif

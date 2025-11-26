@@ -10,17 +10,14 @@ use Lunar\Models\Collection;
 use Lunar\Models\Product;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
 
-class SectionPage extends Page
+class TopicPage extends Page
 {
     use WithPagination;
 
-    public Collection $section;
+    public Collection $topic;
 
     #[Url]
     public string $q = '';
-
-    #[Url]
-    public string $t = '';
 
     public function mount($slug): void
     {
@@ -33,7 +30,7 @@ class SectionPage extends Page
             ],
         );
 
-        $this->section = $this->url->element;
+        $this->topic = $this->url->element;
     }
 
     public function render(): View
@@ -43,6 +40,12 @@ class SectionPage extends Page
             ->status('published')
             ->whereHas('productType', function ($query) {
                 $query->where('id', config('lunar.geslib.product_type_id'));
+            })
+            ->whereHas('collections', function ($query) {
+                $query->where(
+                    (new Collection)->getTable().'.id',
+                    $this->topic->id,
+                );
             })
             ->with([
                 'variant',
@@ -64,35 +67,10 @@ class SectionPage extends Page
             $queryBuilder->whereIn('id', $productsByQuery->pluck('id'));
         }
 
-        if ($this->t) {
-            $queryBuilder->whereHas('collections', function ($query) {
-                $collection = Collection::findOrFail($this->t);
-
-                if ($collection->getDescendantCount() > 0) {
-                    $query->whereIn(
-                        (new Collection)->getTable().'.id',
-                        $collection->descendants->pluck('id'),
-                    );
-                } else {
-                    $query->where(
-                        (new Collection)->getTable().'.id',
-                        (int) $this->t,
-                    );
-                }
-            });
-        } else {
-            $queryBuilder->whereHas('collections', function ($query) {
-                $query->whereIn(
-                    (new Collection)->getTable().'.id',
-                    $this->section->descendants->pluck('id'),
-                );
-            });
-        }
-
         $products = $queryBuilder->paginate(18);
 
-        return view('trafikrak::storefront.livewire.bookshop.section', compact('products'))
-            ->title($this->section->translateAttribute('name'));
+        return view('trafikrak::storefront.livewire.bookshop.topic', compact('products'))
+            ->title($this->topic->translateAttribute('name'));
     }
 
     public function search(): void

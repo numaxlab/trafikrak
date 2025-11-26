@@ -17,7 +17,7 @@
             </h1>
 
             <form class="my-6 flex flex-col gap-3 md:flex-row md:gap-6" wire:submit.prevent="search">
-                <div class="relative w-1/2">
+                <div class="relative w-full">
                     <x-numaxlab-atomic::atoms.forms.input
                             type="search"
                             wire:model="q"

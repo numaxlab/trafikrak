@@ -2,6 +2,7 @@
 
 namespace Trafikrak\Storefront\Livewire\Bookshop;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\View\View;
 use Livewire\Attributes\Url;
 use Livewire\WithPagination;
@@ -38,7 +39,20 @@ class SectionPage extends Page
 
     public function render(): View
     {
-        $queryBuilder = Product::channel(StorefrontSession::getChannel())
+        $queryBuilder = $this->buildBaseQuery();
+
+        $this->applySearchFilter($queryBuilder);
+        $this->applyCollectionFilter($queryBuilder);
+
+        $products = $queryBuilder->paginate(18);
+
+        return view('trafikrak::storefront.livewire.bookshop.section', compact('products'))
+            ->title($this->section->translateAttribute('name'));
+    }
+
+    protected function buildBaseQuery(): Builder
+    {
+        return Product::channel(StorefrontSession::getChannel())
             ->customerGroup(StorefrontSession::getCustomerGroups())
             ->status('published')
             ->whereHas('productType', function ($query) {
@@ -57,46 +71,52 @@ class SectionPage extends Page
             ])
             ->withCount('media')
             ->orderByDesc('media_count');
+    }
 
-        if ($this->q) {
-            $productsByQuery = Product::search($this->q)->get();
-
-            $queryBuilder->whereIn('id', $productsByQuery->pluck('id'));
+    protected function applySearchFilter(Builder $query): void
+    {
+        if (! $this->q) {
+            return;
         }
 
-        if ($this->t) {
-            $queryBuilder->whereHas('collections', function ($query) {
-                $collection = Collection::findOrFail($this->t);
+        $productsByQuery = Product::search($this->q)->get();
 
-                if ($collection->getDescendantCount() > 0) {
-                    $query->whereIn(
-                        (new Collection)->getTable().'.id',
-                        $collection->descendants->pluck('id'),
-                    );
-                } else {
-                    $query->where(
-                        (new Collection)->getTable().'.id',
-                        (int) $this->t,
-                    );
-                }
-            });
-        } else {
-            $queryBuilder->whereHas('collections', function ($query) {
-                $query->whereIn(
-                    (new Collection)->getTable().'.id',
-                    $this->section->descendants->pluck('id'),
-                );
-            });
+        if ($productsByQuery->isEmpty()) {
+            $query->whereRaw('0 = 1');
+
+            return;
         }
 
-        $products = $queryBuilder->paginate(18);
-
-        return view('trafikrak::storefront.livewire.bookshop.section', compact('products'))
-            ->title($this->section->translateAttribute('name'));
+        $query->whereIn('id', $productsByQuery->pluck('id'));
     }
 
     public function search(): void
     {
         $this->resetPage();
+    }
+
+    protected function applyCollectionFilter(Builder $query): void
+    {
+        if ($this->t) {
+            $t = (int) $this->t;
+
+            $query->whereHas('collections', function (Builder $q) use ($t) {
+                $collection = Collection::findOrFail($t);
+
+                if ($collection->getDescendantCount() > 0) {
+                    $q->whereIn((new Collection)->getTable().'.id', $collection->descendants->pluck('id'));
+                } else {
+                    $q->where((new Collection)->getTable().'.id', $t);
+                }
+            });
+
+            return;
+        }
+
+        $descendantIds = $this->section->descendants->pluck('id');
+
+        $query->whereHas('collections', function (Builder $q) use ($descendantIds) {
+            $q->whereIn((new Collection)->getTable().'.id', $descendantIds);
+        });
     }
 }

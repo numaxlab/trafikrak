@@ -1,6 +1,8 @@
 <div
         class="relative"
         x-data="{ menuExpanded: false, searchExpanded: false }"
+        x-init="$watch('searchExpanded', value => value ? document.querySelector('#globalSearchInput').focus() : null)"
+        @click.outside="searchExpanded = false"
 >
     <div class="container mx-auto px-4">
         <header class="org-site-header border-b-0 lg:gap-10">

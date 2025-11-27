@@ -1,7 +1,9 @@
 <article class="relative w-full overflow-hidden bg-secondary mb-9">
-    <div class="w-full lg:absolute lg:top-0 lg:bottom-0 lg:right-0 lg:w-1/2">
-        <img src="https://picsum.photos/800/600" alt="" class="w-full h-full object-cover">
-    </div>
+    @if ($banner->image)
+        <div class="w-full lg:absolute lg:top-0 lg:bottom-0 lg:right-0 lg:w-1/2">
+            <img src="{{ Storage::url($banner->image) }}" alt="" class="w-full h-full object-cover">
+        </div>
+    @endif
 
     <div class="relative container mx-auto px-4">
         <div class="w-full p-8 lg:w-1/2 lg:py-8 lg:pr-20 lg:pl-0">

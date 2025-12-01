@@ -4,8 +4,8 @@ namespace Trafikrak\Storefront\Livewire\Media;
 
 use Illuminate\View\View;
 use Livewire\Attributes\Url;
-use Livewire\WithPagination;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
+use Trafikrak\Livewire\Features\WithPagination;
 use Trafikrak\Models\Media\Document;
 
 class DocumentsListPage extends Page

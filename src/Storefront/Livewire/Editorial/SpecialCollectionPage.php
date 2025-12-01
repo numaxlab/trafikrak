@@ -3,11 +3,11 @@
 namespace Trafikrak\Storefront\Livewire\Editorial;
 
 use Illuminate\View\View;
-use Livewire\WithPagination;
 use Lunar\Facades\StorefrontSession;
 use Lunar\Models\Collection;
 use Lunar\Models\Product;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
+use Trafikrak\Livewire\Features\WithPagination;
 
 class SpecialCollectionPage extends Page
 {

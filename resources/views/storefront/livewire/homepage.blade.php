@@ -50,13 +50,13 @@
                                 @endif
 
                                 @if ($slide->description)
-                                    <div class="mb-4">
+                                    <div class="prose-invert">
                                         {!! $slide->description !!}
                                     </div>
                                 @endif
 
                                 @if ($slide->button_text && $slide->link)
-                                    <a href="{{ $slide->link }}" class="at-button is-primary">
+                                    <a href="{{ $slide->link }}" class="at-button is-primary inline-block mt-5">
                                         {{ $slide->button_text }}
                                     </a>
                                 @endif
@@ -65,6 +65,23 @@
                     </article>
                 @endforeach
             </div>
+
+            <button
+                    type="button"
+                    class="absolute left-2 top-[50%] transform -translate-y-1/2 text-accent text-xl"
+                    @click="prev()"
+                    aria-label="{!! __('pagination.previous') !!}"
+            >
+                <i class="icon icon-arrow-left" aria-hidden="true"></i>
+            </button>
+            <button
+                    type="button"
+                    class="absolute right-2 top-[50%] transform -translate-y-1/2 text-accent text-xl"
+                    @click="next()"
+                    aria-label="{!! __('pagination.next') !!}"
+            >
+                <i class="icon icon-arrow-right" aria-hidden="true"></i>
+            </button>
         </div>
     @endif
 

@@ -1,5 +1,5 @@
 <div class="container mx-auto px-4 mb-9">
-    <article class="bg-secondary lg:flex">
+    <article class="bg-secondary min-h-90 lg:flex">
         @if ($banner->image)
             <div class="lg:w-1/2">
                 <img src="{{ Storage::url($banner->image) }}" alt="" class="w-full h-full object-cover">
@@ -9,13 +9,13 @@
             <h2 class="at-heading is-2 mb-2">{{ $banner->name }}</h2>
 
             @if ($banner->description)
-                <div class="mb-4">
+                <div class="prose">
                     {!! $banner->description !!}
                 </div>
             @endif
 
             @if ($banner->button_text && $banner->link)
-                <a href="{{ $banner->link }}" class="at-button is-primary">
+                <a href="{{ $banner->link }}" class="at-button is-primary inline-block mt-5">
                     {{ $banner->button_text }}
                 </a>
             @endif

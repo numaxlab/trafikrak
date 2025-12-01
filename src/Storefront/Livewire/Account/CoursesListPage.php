@@ -4,8 +4,8 @@ namespace Trafikrak\Storefront\Livewire\Account;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
-use Livewire\WithPagination;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
+use Trafikrak\Livewire\Features\WithPagination;
 
 class CoursesListPage extends Page
 {

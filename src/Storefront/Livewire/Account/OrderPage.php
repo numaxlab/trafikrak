@@ -4,9 +4,9 @@ namespace Trafikrak\Storefront\Livewire\Account;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
-use Livewire\WithPagination;
 use Lunar\Models\Order;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
+use Trafikrak\Livewire\Features\WithPagination;
 
 class OrderPage extends Page
 {

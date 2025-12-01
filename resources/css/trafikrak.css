@@ -8,7 +8,7 @@
     --text-xl: 1.125rem; /* baixado para manter a coherencia de tamaño descendente, con este tamaño queda igual ca o text-lg */
     --text-lg: 1rem;
     --text-sm: 0.95rem;
-    --text-xs: 0.9rem; 
+    --text-xs: 0.9rem;
     --text-base--line-height: 1.425rem;
     --text-2xl--line-height: calc(2.15 / 1.875);
     --tw-prose-body: var(--color-black);
@@ -32,7 +32,7 @@
     }
 
     a {
-        color: var(--color-primary);   
+        color: var(--color-primary);
     }
 
     a:hover {
@@ -47,11 +47,6 @@
 }
 
 @layer components {
-
-    .ml-breadcrumb {
-        color: var(--color-grey)!important;
-    }
-
     .at-lead {
         font-size: var(--text-3xl);
     }
@@ -74,13 +69,17 @@
         }
     }
 
-    .site-header-main-menu {
-        font-family: var(--font-sans);
-        font-size: var(--text-2xl);
+    .ml-breadcrumb {
+        color: var(--color-grey) !important;
     }
 
-    .site-header-main-menu li {
-        margin-bottom: var(--spacing);
+    .org-site-header .site-header-main-menu {
+        font-family: var(--font-sans);
+        font-size: var(--text-2xl);
+
+        @variant lg {
+            gap: calc(var(--spacing) * 6);
+        }
     }
 
     .tier-header {

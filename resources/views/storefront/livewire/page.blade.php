@@ -36,7 +36,7 @@
             @endif
 
             @if ($page->description)
-                <div class="mb-10">
+                <div class="mb-10 prose">
                     {!! $page->description !!}
                 </div>
             @endif
@@ -51,13 +51,13 @@
                         </x-numaxlab-atomic::organisms.tier.header>
 
                         @if ($block['description'])
-                            <div class="mt-5">
+                            <div class="mt-5 prose">
                                 {!! $block['description'] !!}
                             </div>
                         @endif
 
                         @if ($block['action'] && $block['action_tag'])
-                            <a href="{{ $block['action'] }}" class="at-button is-primary mt-5">
+                            <a href="{{ $block['action'] }}" class="at-button is-primary inline-block mt-5">
                                 {{ $block['action_tag'] }}
                             </a>
                         @endif

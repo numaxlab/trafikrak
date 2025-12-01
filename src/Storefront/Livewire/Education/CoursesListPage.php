@@ -4,8 +4,8 @@ namespace Trafikrak\Storefront\Livewire\Education;
 
 use Illuminate\View\View;
 use Livewire\Attributes\Url;
-use Livewire\WithPagination;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
+use Trafikrak\Livewire\Features\WithPagination;
 use Trafikrak\Models\Education\Course;
 use Trafikrak\Models\Education\Topic;
 

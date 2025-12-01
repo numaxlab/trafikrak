@@ -9,5 +9,11 @@
                 {!! $slide->description !!}
             </div>
         @endif
+
+        @if ($slide->button_text && $slide->link)
+            <a href="{{ $slide->link }}" class="at-button is-primary inline-block mt-5">
+                {{ $slide->button_text }}
+            </a>
+        @endif
     </div>
 </div>

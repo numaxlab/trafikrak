@@ -3,11 +3,11 @@
 namespace Trafikrak\Storefront\Livewire\Editorial;
 
 use Illuminate\View\View;
-use Livewire\WithPagination;
 use Lunar\Facades\StorefrontSession;
 use Lunar\Models\Collection;
 use Lunar\Models\Product;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
+use Trafikrak\Livewire\Features\WithPagination;
 
 class CollectionPage extends Page
 {
@@ -38,7 +38,7 @@ class CollectionPage extends Page
                 $query->where('id', config('lunar.geslib.product_type_id'));
             })
             ->whereHas('collections', function ($query) {
-                $query->where((new Collection)->getTable() . '.id', $this->collection->id);
+                $query->where((new Collection)->getTable().'.id', $this->collection->id);
             })
             ->with([
                 'variant',

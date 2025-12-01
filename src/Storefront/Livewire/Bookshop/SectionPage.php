@@ -5,11 +5,11 @@ namespace Trafikrak\Storefront\Livewire\Bookshop;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\View\View;
 use Livewire\Attributes\Url;
-use Livewire\WithPagination;
 use Lunar\Facades\StorefrontSession;
 use Lunar\Models\Collection;
 use Lunar\Models\Product;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
+use Trafikrak\Livewire\Features\WithPagination;
 
 class SectionPage extends Page
 {

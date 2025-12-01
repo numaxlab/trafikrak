@@ -3,11 +3,11 @@
 namespace Trafikrak\Storefront\Livewire;
 
 use Illuminate\View\View;
-use Livewire\WithPagination;
 use Lunar\Facades\StorefrontSession;
 use Lunar\Models\Product;
 use NumaxLab\Lunar\Geslib\Models\Author;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
+use Trafikrak\Livewire\Features\WithPagination;
 use Trafikrak\Models\Education\CourseModule;
 
 class AuthorPage extends Page

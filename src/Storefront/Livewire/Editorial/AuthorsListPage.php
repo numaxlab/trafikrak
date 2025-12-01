@@ -3,9 +3,9 @@
 namespace Trafikrak\Storefront\Livewire\Editorial;
 
 use Illuminate\View\View;
-use Livewire\WithPagination;
 use NumaxLab\Lunar\Geslib\Models\Author;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
+use Trafikrak\Livewire\Features\WithPagination;
 
 class AuthorsListPage extends Page
 {

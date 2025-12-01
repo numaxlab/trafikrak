@@ -11,10 +11,8 @@
     --text-xs: 0.9rem;
     --text-base--line-height: 1.425rem;
     --text-2xl--line-height: calc(2.15 / 1.875);
-    --tw-prose-body: var(--color-black);
     --color-grey: var(--color-stone-500);
     --color-secondary: var(--color-stone-200);
-
 }
 
 @layer base {
@@ -43,6 +41,19 @@
     input[type="checkbox"],
     input[type="radio"] {
         color: var(--color-primary);
+    }
+}
+
+@layer utilities {
+    .prose {
+        font-size: var(--text-base);
+        line-height: var(--text-base--line-height);
+        max-width: none;
+        color: var(--color-black);
+
+        & :where(strong):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+            font-weight: var(--font-weight-bold);
+        }
     }
 }
 

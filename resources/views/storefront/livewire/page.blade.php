@@ -10,7 +10,7 @@
             </x-numaxlab-atomic::molecules.breadcrumb>
         @endif
 
-        <h1 class="at-heading is-1">{{ $page->name }}</h1>
+        <h1 class="at-heading is-1" id="page-{{ $page->id }}">{{ $page->name }}</h1>
     </header>
 
     <div class="lg:flex lg:gap-10">
@@ -47,6 +47,11 @@
                         <x-numaxlab-atomic::organisms.tier.header>
                             <h2 class="at-heading is-2">
                                 {{ $block['name'] }}
+                                <a href="#page-{{ $page->id }}"
+                                   class="at-small"
+                                >
+                                    {{ __('Volver arriba') }}
+                                </a>
                             </h2>
                         </x-numaxlab-atomic::organisms.tier.header>
 

@@ -1,5 +1,7 @@
 <div class="container mx-auto px-4 mb-9">
-    <article class="bg-secondary min-h-90 lg:flex">
+    <article
+            class="min-h-90 lg:flex {{ $banner->style === 'positive' ? 'bg-secondary text-black' : 'bg-accent text-white' }}"
+    >
         @if ($banner->image)
             <div class="lg:w-1/2">
                 <img src="{{ Storage::url($banner->image) }}" alt="" class="w-full h-full object-cover">
@@ -9,7 +11,7 @@
             <h2 class="at-heading is-2 mb-2">{{ $banner->name }}</h2>
 
             @if ($banner->description)
-                <div class="prose">
+                <div class="{{ $banner->style === 'positive' ? 'prose' : 'prose-invert' }}">
                     {!! $banner->description !!}
                 </div>
             @endif

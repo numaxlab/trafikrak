@@ -86,6 +86,13 @@ class SlideResource extends BaseResource
                                 Section::EDUCATION->value => __('trafikrak::slide.form.section.options.education'),
                             ])
                             ->required(),
+                        Forms\Components\Select::make('style')
+                            ->label(__('trafikrak::slide.form.style.label'))
+                            ->options([
+                                'positive' => __('trafikrak::slide.form.style.options.positive'),
+                                'negative' => __('trafikrak::slide.form.style.options.negative'),
+                            ])
+                            ->required(),
                         Forms\Components\RichEditor::make('description')
                             ->label(__('trafikrak::slide.form.description.label')),
                         Forms\Components\Grid::make()

@@ -32,6 +32,13 @@ return [
                 'education' => 'Formación',
             ],
         ],
+        'style' => [
+            'label' => 'Estilo',
+            'options' => [
+                'positive' => 'Positivo',
+                'negative' => 'Negativo',
+            ],
+        ],
         'description' => [
             'label' => 'Descripción',
         ],

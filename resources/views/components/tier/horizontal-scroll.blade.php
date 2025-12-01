@@ -13,7 +13,7 @@
                         @touchstart.prevent="startScroll(-50)"
                         @touchend.prevent="stopScroll()"
                         aria-label="{{ __('Mover hacia la izquierda') }}"
-                        class="text-primary text-lg"
+                        class="text-accent text-lg"
                 >
                     <i class="icon icon-arrow-left" aria-hidden="true"></i>
                 </button>
@@ -26,7 +26,7 @@
                         @touchstart.prevent="startScroll(50)"
                         @touchend.prevent="stopScroll()"
                         aria-label="{{ __('Mover hacia la derecha') }}"
-                        class="text-primary text-lg"
+                        class="text-accent text-lg"
                 >
                     <i class="icon icon-arrow-right" aria-hidden="true"></i>
                 </button>

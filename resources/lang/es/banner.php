@@ -30,6 +30,13 @@ return [
                 'contained' => 'Contenido',
             ],
         ],
+        'style' => [
+            'label' => 'Estilo',
+            'options' => [
+                'positive' => 'Positivo',
+                'negative' => 'Negativo',
+            ],
+        ],
         'locations' => [
             'label' => 'Ubicaciones',
             'options' => [

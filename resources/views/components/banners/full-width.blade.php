@@ -1,4 +1,6 @@
-<article class="relative w-full overflow-hidden bg-secondary min-h-90 mb-9">
+<article
+        class="relative w-full overflow-hidden min-h-90 mb-9 {{ $banner->style === 'positive' ? 'bg-secondary text-black' : 'bg-accent text-white' }}"
+>
     @if ($banner->image)
         <div class="w-full lg:absolute lg:top-0 lg:bottom-0 lg:right-0 lg:w-1/2">
             <img src="{{ Storage::url($banner->image) }}" alt="" class="w-full h-full object-cover">
@@ -10,7 +12,7 @@
             <h2 class="at-heading is-2 mb-2">{{ $banner->name }}</h2>
 
             @if ($banner->description)
-                <div class="prose">
+                <div class="{{ $banner->style === 'positive' ? 'prose' : 'prose-invert' }}">
                     {!! $banner->description !!}
                 </div>
             @endif

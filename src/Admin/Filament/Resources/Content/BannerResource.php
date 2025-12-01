@@ -105,6 +105,13 @@ class BannerResource extends BaseResource
                                 BannerType::CONTAINED->value => __('trafikrak::banner.form.type.options.contained'),
                             ])
                             ->required(),
+                        Forms\Components\Select::make('style')
+                            ->label(__('trafikrak::banner.form.style.label'))
+                            ->options([
+                                'positive' => __('trafikrak::banner.form.style.options.positive'),
+                                'negative' => __('trafikrak::banner.form.style.options.negative'),
+                            ])
+                            ->required(),
                         Forms\Components\Select::make('locations')
                             ->label(__('trafikrak::banner.form.locations.label'))
                             ->options([

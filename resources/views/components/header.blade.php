@@ -6,8 +6,8 @@
 >
     <div class="container mx-auto px-4">
         <header class="org-site-header border-b-0 lg:gap-10">
-            <a class="text-xl font-bold" href="{{ route('trafikrak.storefront.homepage') }}" wire:navigate>
-                {{ config('app.name') }}
+            <a class="w-25 h-7.2 lg:w-40 lg:h-11" href="{{ route('trafikrak.storefront.homepage') }}" wire:navigate>
+                <x-trafikrak::logo/>
             </a>
 
             <div class="lg:hidden">

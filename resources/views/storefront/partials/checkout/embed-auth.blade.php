@@ -10,7 +10,7 @@
         <p>{{ __('¿No tienes cuenta de usuaria? Regístrate con tu inscripción') }}</p>
 
         <div class="mt-4 grid grid-cols-1 gap-6 md:grid-cols-2">
-            @include('trafikrak::storefront.partials.auth.register-form')
+            @include('testa::storefront.partials.auth.register-form')
         </div>
     </div>
 @endif

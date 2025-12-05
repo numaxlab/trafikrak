@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Components\Bookshop;
+namespace Testa\Storefront\Livewire\Components\Bookshop;
 
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\View\View;
@@ -37,7 +37,7 @@ class TaxonomySelect extends Component
                     ->customerGroup(StorefrontSession::getCustomerGroups());
             })->get();
 
-        return view('trafikrak::storefront.livewire.components.bookshop.taxonomy-select', [
+        return view('testa::storefront.livewire.components.bookshop.taxonomy-select', [
             'options' => $options,
         ]);
     }

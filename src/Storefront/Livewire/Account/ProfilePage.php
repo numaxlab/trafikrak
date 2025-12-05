@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Account;
+namespace Testa\Storefront\Livewire\Account;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
-use Trafikrak\Storefront\Livewire\Actions\Logout;
+use Testa\Storefront\Livewire\Actions\Logout;
 
 class ProfilePage extends Page
 {
@@ -26,7 +26,7 @@ class ProfilePage extends Page
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.account.profile');
+        return view('testa::storefront.livewire.account.profile');
     }
 
     public function mount(): void

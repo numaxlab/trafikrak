@@ -10,15 +10,15 @@
             @foreach ($media->attachments as $attachment)
                 @if ($attachment->attachable instanceof \Trafikrak\Models\Education\Course)
                     <li>
-                        <x-trafikrak::courses.summary :course="$attachment->attachable"/>
+                        <x-testa::courses.summary :course="$attachment->attachable"/>
                     </li>
                 @elseif ($attachment->attachable instanceof \Trafikrak\Models\Education\CourseModule)
                     <li>
-                        <x-trafikrak::course-modules.activity :module="$attachment->attachable"/>
+                        <x-testa::course-modules.activity :module="$attachment->attachable"/>
                     </li>
                 @elseif ($attachment->attachable instanceof \Trafikrak\Models\News\Event && ! $attachment->media->is_private)
                     <li>
-                        <x-trafikrak::events.summary :event="$attachment->attachable"/>
+                        <x-testa::events.summary :event="$attachment->attachable"/>
                     </li>
                 @endif
             @endforeach

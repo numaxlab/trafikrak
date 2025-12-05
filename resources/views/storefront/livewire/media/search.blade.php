@@ -2,7 +2,7 @@
     <header>
         <x-numaxlab-atomic::molecules.breadcrumb :label="__('Miga de pan')">
             <li>
-                <a href="{{ route('trafikrak.storefront.media.homepage') }}">
+                <a href="{{ route('testa.storefront.media.homepage') }}">
                     {{ __('Mediateca') }}
                 </a>
             </li>
@@ -12,7 +12,7 @@
             {{ __('Audios y vídeos') }}
         </h1>
 
-        @include('trafikrak::storefront.partials.media.search-form')
+        @include('testa::storefront.partials.media.search-form')
     </header>
 
     @if ($media->isNotEmpty())
@@ -20,7 +20,7 @@
             @foreach ($media as $item)
                 <li>
                     <x-dynamic-component
-                            :component="'trafikrak::'.$item->type.'.summary'"
+                            :component="'testa::'.$item->type.'.summary'"
                             :media="$item"/>
                 </li>
             @endforeach

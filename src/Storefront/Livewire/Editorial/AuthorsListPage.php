@@ -1,11 +1,11 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Editorial;
+namespace Testa\Storefront\Livewire\Editorial;
 
 use Illuminate\View\View;
 use NumaxLab\Lunar\Geslib\Models\Author;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
-use Trafikrak\Livewire\Features\WithPagination;
+use Testa\Livewire\Features\WithPagination;
 
 class AuthorsListPage extends Page
 {
@@ -25,7 +25,7 @@ class AuthorsListPage extends Page
             ])
             ->paginate(32);
 
-        return view('trafikrak::storefront.livewire.editorial.authors-list', compact('authors'))
+        return view('testa::storefront.livewire.editorial.authors-list', compact('authors'))
             ->title(__('Autoras'));
     }
 }

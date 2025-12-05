@@ -1,10 +1,10 @@
 <?php
 
-namespace Trafikrak\Database\Factories\Content;
+namespace Testa\Database\Factories\Content;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Trafikrak\Models\Content\Banner;
-use Trafikrak\Models\Content\BannerType;
+use Testa\Models\Content\Banner;
+use Testa\Models\Content\BannerType;
 
 class BannerFactory extends Factory
 {

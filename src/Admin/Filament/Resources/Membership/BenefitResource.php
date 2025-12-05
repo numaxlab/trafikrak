@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\Membership;
+namespace Testa\Admin\Filament\Resources\Membership;
 
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -11,7 +11,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Lunar\Admin\Support\Resources\BaseResource;
 use Lunar\Models\CustomerGroup;
-use Trafikrak\Models\Membership\Benefit;
+use Testa\Models\Membership\Benefit;
 
 class BenefitResource extends BaseResource
 {
@@ -25,17 +25,17 @@ class BenefitResource extends BaseResource
 
     public static function getNavigationGroup(): ?string
     {
-        return __('trafikrak::global.sections.membership');
+        return __('testa::global.sections.membership');
     }
 
     public static function getLabel(): string
     {
-        return __('trafikrak::benefit.label');
+        return __('testa::benefit.label');
     }
 
     public static function getPluralLabel(): string
     {
-        return __('trafikrak::benefit.plural_label');
+        return __('testa::benefit.plural_label');
     }
 
     public static function getNavigationIcon(): ?string
@@ -75,25 +75,25 @@ class BenefitResource extends BaseResource
                 Forms\Components\Section::make()
                     ->schema([
                         Forms\Components\TextInput::make('name')
-                            ->label(__('trafikrak::benefit.form.name.label'))
+                            ->label(__('testa::benefit.form.name.label'))
                             ->required()
                             ->maxLength(255)
                             ->autofocus(),
                         Forms\Components\Select::make('code')
-                            ->label(__('trafikrak::benefit.form.code.label'))
+                            ->label(__('testa::benefit.form.code.label'))
                             ->required()
                             ->options([
                                 Benefit::CREDIT_PAYMENT_TYPE => __(
-                                    'trafikrak::benefit.form.code.options.credit_payment_type',
+                                    'testa::benefit.form.code.options.credit_payment_type',
                                 ),
                                 Benefit::CUSTOMER_GROUP => __(
-                                    'trafikrak::benefit.form.code.options.customer_group',
+                                    'testa::benefit.form.code.options.customer_group',
                                 ),
                             ])
                             ->live(),
                         Forms\Components\Select::make('customer_group_id')
                             ->options(CustomerGroup::all()->pluck('name', 'id'))
-                            ->label(__('trafikrak::benefit.form.customer_group_id.label'))
+                            ->label(__('testa::benefit.form.customer_group_id.label'))
                             ->visible(fn (Get $get) => $get('code') === Benefit::CUSTOMER_GROUP),
                     ]),
             ])

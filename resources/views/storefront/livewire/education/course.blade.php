@@ -10,19 +10,19 @@
             <header class="mb-6">
                 <x-numaxlab-atomic::molecules.breadcrumb :label="__('Miga de pan')">
                     <li>
-                        <a href="{{ route('trafikrak.storefront.education.homepage') }}" wire:navigate>
+                        <a href="{{ route('testa.storefront.education.homepage') }}" wire:navigate>
                             {{ __('Formación') }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('trafikrak.storefront.education.courses.index') }}" wire:navigate>
+                        <a href="{{ route('testa.storefront.education.courses.index') }}" wire:navigate>
                             {{ __('Cursos') }}
                         </a>
                     </li>
                     @if ($course->topic)
                         <li>
                             <a
-                                    href="{{ route('trafikrak.storefront.education.topics.show', $course->topic->defaultUrl->slug) }}"
+                                    href="{{ route('testa.storefront.education.topics.show', $course->topic->defaultUrl->slug) }}"
                                     wire:navigate
                             >
                                 {{ $course->topic->name }}
@@ -56,7 +56,7 @@
                     @endif
                     @if (!$userRegistered && $course->purchasable)
                         <a
-                                href="{{ route('trafikrak.storefront.education.courses.register', $course->defaultUrl->slug) }}"
+                                href="{{ route('testa.storefront.education.courses.register', $course->defaultUrl->slug) }}"
                                 wire:navigate class="at-button is-primary mt-4"
                         >
                             {{ __('Inscríbete') }}
@@ -79,25 +79,25 @@
                 @endif
             </div>
 
-            <livewire:trafikrak.storefront.livewire.components.education.course-media
+            <livewire:testa.storefront.livewire.components.education.course-media
                     lazy
                     :course="$course"
             />
 
-            <livewire:trafikrak.storefront.livewire.components.education.course-modules
+            <livewire:testa.storefront.livewire.components.education.course-modules
                     lazy
                     :course="$course"
                     :title="__('Sesiones')"
             />
 
-            <livewire:trafikrak.storefront.livewire.components.education.course-products
+            <livewire:testa.storefront.livewire.components.education.course-products
                     lazy
                     :course="$course"
             />
 
             @if ($banner)
                 <div class="mt-10">
-                    <x-trafikrak::banners.mini :banner="$banner"/>
+                    <x-testa::banners.mini :banner="$banner"/>
                 </div>
             @endif
         </div>

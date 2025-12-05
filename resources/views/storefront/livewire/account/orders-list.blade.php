@@ -18,7 +18,7 @@
     <ul class="grid gap-10 mb-9 md:grid-cols-2">
         @foreach ($orders as $order)
             <li>
-                <x-trafikrak::orders.summary :order="$order"/>
+                <x-testa::orders.summary :order="$order"/>
             </li>
         @endforeach
     </ul>

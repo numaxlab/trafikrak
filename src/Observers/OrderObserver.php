@@ -1,14 +1,14 @@
 <?php
 
-namespace Trafikrak\Observers;
+namespace Testa\Observers;
 
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Lunar\Models\Customer;
 use Lunar\Models\Order;
-use Trafikrak\Models\Education\Course;
-use Trafikrak\Models\Membership\Benefit;
-use Trafikrak\Models\Membership\MembershipPlan;
-use Trafikrak\Models\Membership\Subscription;
+use Testa\Models\Education\Course;
+use Testa\Models\Membership\Benefit;
+use Testa\Models\Membership\MembershipPlan;
+use Testa\Models\Membership\Subscription;
 
 class OrderObserver
 {

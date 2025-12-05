@@ -1,11 +1,11 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\News\EventResource\Pages;
+namespace Testa\Admin\Filament\Resources\News\EventResource\Pages;
 
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord\Concerns\Translatable;
 use Lunar\Admin\Support\Pages\BaseEditRecord;
-use Trafikrak\Admin\Filament\Resources\News\EventResource;
+use Testa\Admin\Filament\Resources\News\EventResource;
 
 class EditEvent extends BaseEditRecord
 {
@@ -15,12 +15,12 @@ class EditEvent extends BaseEditRecord
 
     public static function getNavigationLabel(): string
     {
-        return __('trafikrak::event.pages.edit.title');
+        return __('testa::event.pages.edit.title');
     }
 
     public function getTitle(): string
     {
-        return __('trafikrak::event.pages.edit.title');
+        return __('testa::event.pages.edit.title');
     }
 
     protected function getDefaultHeaderActions(): array

@@ -1,12 +1,12 @@
 <?php
 
-namespace Trafikrak\Models;
+namespace Testa\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
-use Trafikrak\Models\Media\Audio;
-use Trafikrak\Models\Media\Document;
-use Trafikrak\Models\Media\Video;
+use Testa\Models\Media\Audio;
+use Testa\Models\Media\Document;
+use Testa\Models\Media\Video;
 
 class Attachment extends Model
 {

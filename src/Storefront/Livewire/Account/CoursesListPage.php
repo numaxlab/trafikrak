@@ -1,11 +1,11 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Account;
+namespace Testa\Storefront\Livewire\Account;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
-use Trafikrak\Livewire\Features\WithPagination;
+use Testa\Livewire\Features\WithPagination;
 
 class CoursesListPage extends Page
 {
@@ -20,6 +20,6 @@ class CoursesListPage extends Page
             ->with(['horizontalImage', 'verticalImage'])
             ->paginate(6);
 
-        return view('trafikrak::storefront.livewire.account.courses-list', compact('courses'));
+        return view('testa::storefront.livewire.account.courses-list', compact('courses'));
     }
 }

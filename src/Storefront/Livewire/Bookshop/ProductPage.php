@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Bookshop;
+namespace Testa\Storefront\Livewire\Bookshop;
 
 use Illuminate\Support\Collection as SupportCollection;
 use Illuminate\Support\Facades\Auth;
@@ -86,7 +86,7 @@ class ProductPage extends Page
     {
         $taxonomies = $this->buildTaxonomies();
 
-        return view('trafikrak::storefront.livewire.bookshop.product', compact('taxonomies'))
+        return view('testa::storefront.livewire.bookshop.product', compact('taxonomies'))
             ->title($this->product->recordFullTitle);
     }
 
@@ -113,7 +113,7 @@ class ProductPage extends Page
 
             if (! $taxonomy->isInSectionTree()) {
                 $href = $taxonomy->defaultUrl ? route(
-                    'trafikrak.storefront.bookshop.topics.show',
+                    'testa.storefront.bookshop.topics.show',
                     $taxonomy->defaultUrl->slug,
                 ) : null;
 
@@ -131,7 +131,7 @@ class ProductPage extends Page
     {
         if ($taxonomy->getAncestorSection() && $taxonomy->getAncestorSection()->defaultUrl) {
             return route(
-                'trafikrak.storefront.bookshop.sections.show',
+                'testa.storefront.bookshop.sections.show',
                 [
                     'slug' => $taxonomy->getAncestorSection()->defaultUrl->slug,
                     't' => $taxonomy->id,

@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Components;
+namespace Testa\Storefront\Livewire\Components;
 
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
@@ -85,6 +85,6 @@ class Cart extends Component
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.components.cart');
+        return view('testa::storefront.livewire.components.cart');
     }
 }

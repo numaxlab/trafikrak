@@ -4,7 +4,7 @@
             {{ $collection->translateAttribute('name') }}
         </h2>
 
-        <a href="{{ route('trafikrak.storefront.bookshop.sections.show', $collection->defaultUrl->slug) }}"
+        <a href="{{ route('testa.storefront.bookshop.sections.show', $collection->defaultUrl->slug) }}"
            wire:navigate
            class="at-small"
         >
@@ -15,9 +15,9 @@
     <ul class="grid gap-6 grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
         @foreach ($products as $product)
             <li>
-                <x-trafikrak::products.summary
+                <x-testa::products.summary
                         :product="$product"
-                        :href="route('trafikrak.storefront.bookshop.products.show', $product->defaultUrl->slug)"
+                        :href="route('testa.storefront.bookshop.products.show', $product->defaultUrl->slug)"
                 />
             </li>
         @endforeach

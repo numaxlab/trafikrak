@@ -1,6 +1,6 @@
 <div>
     @if ($attachments->isNotEmpty())
-        <x-trafikrak::tier.horizontal-scroll>
+        <x-testa::tier.horizontal-scroll>
             <x-slot name="title">
                 {{ __('Audiovisual') }}
             </x-slot>
@@ -14,6 +14,6 @@
                     </li>
                 @endforeach
             </ul>
-        </x-trafikrak::tier.horizontal-scroll>
+        </x-testa::tier.horizontal-scroll>
     @endif
 </div>

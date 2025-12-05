@@ -1,11 +1,11 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\Education\VenueResource\Pages;
+namespace Testa\Admin\Filament\Resources\Education\VenueResource\Pages;
 
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord\Concerns\Translatable;
 use Lunar\Admin\Support\Pages\BaseEditRecord;
-use Trafikrak\Admin\Filament\Resources\Education\VenueResource;
+use Testa\Admin\Filament\Resources\Education\VenueResource;
 
 class EditVenue extends BaseEditRecord
 {
@@ -15,12 +15,12 @@ class EditVenue extends BaseEditRecord
 
     public static function getNavigationLabel(): string
     {
-        return __('trafikrak::event-type.pages.edit.title');
+        return __('testa::event-type.pages.edit.title');
     }
 
     public function getTitle(): string
     {
-        return __('trafikrak::event-type.pages.edit.title');
+        return __('testa::event-type.pages.edit.title');
     }
 
     protected function getDefaultHeaderActions(): array

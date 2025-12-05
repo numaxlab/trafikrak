@@ -1,14 +1,14 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Media;
+namespace Testa\Storefront\Livewire\Media;
 
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
 use Livewire\Attributes\Url;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
-use Trafikrak\Models\Content\Section;
-use Trafikrak\Models\Content\Tier;
-use Trafikrak\Models\Education\Topic;
+use Testa\Models\Content\Section;
+use Testa\Models\Content\Tier;
+use Testa\Models\Education\Topic;
 
 class HomePage extends Page
 {
@@ -40,7 +40,7 @@ class HomePage extends Page
             ])
             ->get();
 
-        return view('trafikrak::storefront.livewire.media.homepage', compact('topics'))
+        return view('testa::storefront.livewire.media.homepage', compact('topics'))
             ->title(__('Mediateca'));
     }
 
@@ -48,7 +48,7 @@ class HomePage extends Page
     {
         $this->redirect(
             route(
-                'trafikrak.storefront.media.search',
+                'testa.storefront.media.search',
                 parameters: [
                     'q' => $this->q,
                     'c' => $this->c,

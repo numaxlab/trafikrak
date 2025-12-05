@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Console\Commands;
+namespace Testa\Console\Commands;
 
 use Illuminate\Console\Command;
 use Lunar\FieldTypes\File;
@@ -19,15 +19,15 @@ use Lunar\Models\ProductType;
 use Lunar\Models\ProductVariant;
 use Lunar\Models\Tag;
 use Lunar\Models\TaxClass;
-use Trafikrak\Handle;
-use Trafikrak\Observers\CourseObserver;
-use Trafikrak\Storefront\Livewire\Membership\DonatePage;
+use Testa\Handle;
+use Testa\Observers\CourseObserver;
+use Testa\Storefront\Livewire\Membership\DonatePage;
 
 class Install extends Command
 {
-    protected $signature = 'lunar:trafikrak:install';
+    protected $signature = 'lunar:testa:install';
 
-    protected $description = 'Install Trafikrak Lunar based features';
+    protected $description = 'Install Testa Lunar based features';
 
     public function handle(): void
     {

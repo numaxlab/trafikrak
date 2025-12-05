@@ -3,7 +3,7 @@
         <header>
             <x-numaxlab-atomic::molecules.breadcrumb :label="__('Miga de pan')">
                 <li>
-                    <a href="{{ route('trafikrak.storefront.education.homepage') }}">
+                    <a href="{{ route('testa.storefront.education.homepage') }}">
                         {{ __('Formación') }}
                     </a>
                 </li>
@@ -68,7 +68,7 @@
             <ul class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
                 @foreach ($courses as $course)
                     <li>
-                        <x-trafikrak::courses.summary :course="$course"/>
+                        <x-testa::courses.summary :course="$course"/>
                     </li>
                 @endforeach
             </ul>

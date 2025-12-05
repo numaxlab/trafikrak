@@ -74,7 +74,7 @@
                                         {{ $plan->name }}
 
                                         (
-                                        <livewire:trafikrak.storefront.livewire.components.price
+                                        <livewire:testa.storefront.livewire.components.price
                                                 :key="'price-' . $plan->id"
                                                 :purchasable="$plan"/>
                                         )
@@ -99,7 +99,7 @@
                 </legend>
 
                 <div class="mt-15 clear-both">
-                    @include('trafikrak::storefront.partials.signup.user')
+                    @include('testa::storefront.partials.signup.user')
                 </div>
             </fieldset>
 
@@ -109,12 +109,12 @@
                 </legend>
 
                 <div class="mt-15 clear-both">
-                    @include('trafikrak::storefront.partials.checkout.payment')
+                    @include('testa::storefront.partials.checkout.payment')
                 </div>
             </fieldset>
 
             <div class="mb-8">
-                @include('trafikrak::storefront.partials.privacy-policy')
+                @include('testa::storefront.partials.privacy-policy')
             </div>
 
             <button class="at-button is-primary w-full" type="submit">

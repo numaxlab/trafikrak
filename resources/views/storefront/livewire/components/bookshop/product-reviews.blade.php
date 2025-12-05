@@ -10,7 +10,7 @@
             <ul class="flex flex-col gap-4 md:flex-row md:gap-6">
                 @foreach ($reviews as $review)
                     <li class="pr-10 md:max-w-1/2">
-                        <x-trafikrak::reviews.summary :review="$review"/>
+                        <x-testa::reviews.summary :review="$review"/>
                     </li>
                 @endforeach
             </ul>

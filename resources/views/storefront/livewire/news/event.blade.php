@@ -8,19 +8,19 @@
             <header class="mb-6">
                 <x-numaxlab-atomic::molecules.breadcrumb :label="__('Miga de pan')">
                     <li>
-                        <a href="{{ route('trafikrak.storefront.news.homepage') }}" wire:navigate>
+                        <a href="{{ route('testa.storefront.news.homepage') }}" wire:navigate>
                             {{ __('Actualidad') }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('trafikrak.storefront.activities.index') }}" wire:navigate>
+                        <a href="{{ route('testa.storefront.activities.index') }}" wire:navigate>
                             {{ __('Actividades') }}
                         </a>
                     </li>
                     @if ($event->eventType)
                         <li>
                             <a
-                                    href="{{ route('trafikrak.storefront.activities.index', ['t' => $event->eventType->id]) }}"
+                                    href="{{ route('testa.storefront.activities.index', ['t' => $event->eventType->id]) }}"
                                     wire:navigate
                             >
                                 {{ $event->eventType->name }}
@@ -47,7 +47,7 @@
                     <div class="flex gap-2 border-b border-black py-2">
                         <i class="icon icon-info text-2xl w-5 text-center mr-2" aria-hidden="true"></i>
                         <p class="at-small">
-                            {{ __('trafikrak::coursemodule.form.delivery_method.options.'.$event->delivery_method->value) }}
+                            {{ __('testa::coursemodule.form.delivery_method.options.'.$event->delivery_method->value) }}
                             @if ($event->venue)
                                 <br>
                                 {{ $event->venue->name }}
@@ -89,19 +89,19 @@
                     <ul class="grid gap-6 mb-10 md:grid-cols-2">
                         @foreach ($event->speakers as $speaker)
                             <li>
-                                <x-trafikrak::authors.summary :author="$speaker"/>
+                                <x-testa::authors.summary :author="$speaker"/>
                             </li>
                         @endforeach
                     </ul>
                 </x-numaxlab-atomic::organisms.tier>
             @endif
 
-            <livewire:trafikrak.storefront.livewire.components.news.event-media
+            <livewire:testa.storefront.livewire.components.news.event-media
                     lazy
                     :event="$event"
             />
 
-            <livewire:trafikrak.storefront.livewire.components.news.event-products
+            <livewire:testa.storefront.livewire.components.news.event-products
                     lazy
                     :event="$event"
             />

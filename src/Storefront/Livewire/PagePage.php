@@ -1,10 +1,10 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire;
+namespace Testa\Storefront\Livewire;
 
 use Illuminate\View\View;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page as PageComponent;
-use Trafikrak\Models\Content\Page;
+use Testa\Models\Content\Page;
 
 class PagePage extends PageComponent
 {
@@ -30,7 +30,7 @@ class PagePage extends PageComponent
             $title .= ' | '.$this->page->human_section;
         }
 
-        return view('trafikrak::storefront.livewire.page')
+        return view('testa::storefront.livewire.page')
             ->title($title);
     }
 }

@@ -2,7 +2,7 @@
     <header>
         <x-numaxlab-atomic::molecules.breadcrumb :label="__('Miga de pan')">
             <li>
-                <a href="{{ route('trafikrak.storefront.news.homepage') }}">
+                <a href="{{ route('testa.storefront.news.homepage') }}">
                     {{ __('Actualidad') }}
                 </a>
             </li>
@@ -63,9 +63,9 @@
             @foreach ($activities as $activity)
                 <li>
                     @if ($activity instanceof \Trafikrak\Models\News\Event)
-                        <x-trafikrak::events.summary :event="$activity"/>
+                        <x-testa::events.summary :event="$activity"/>
                     @elseif ($activity instanceof \Trafikrak\Models\Education\CourseModule)
-                        <x-trafikrak::course-modules.activity :module="$activity"/>
+                        <x-testa::course-modules.activity :module="$activity"/>
                     @endif
                 </li>
             @endforeach

@@ -1,11 +1,11 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\Content\SlideResource\Pages;
+namespace Testa\Admin\Filament\Resources\Content\SlideResource\Pages;
 
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord\Concerns\Translatable;
 use Lunar\Admin\Support\Pages\BaseEditRecord;
-use Trafikrak\Admin\Filament\Resources\Content\SlideResource;
+use Testa\Admin\Filament\Resources\Content\SlideResource;
 
 class EditSlide extends BaseEditRecord
 {
@@ -15,12 +15,12 @@ class EditSlide extends BaseEditRecord
 
     public static function getNavigationLabel(): string
     {
-        return __('trafikrak::slide.pages.edit.title');
+        return __('testa::slide.pages.edit.title');
     }
 
     public function getTitle(): string
     {
-        return __('trafikrak::slide.pages.edit.title');
+        return __('testa::slide.pages.edit.title');
     }
 
     protected function getDefaultHeaderActions(): array

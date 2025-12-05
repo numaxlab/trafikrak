@@ -2,7 +2,7 @@
 
 <div class="flex flex-col gap-6 sm:w-sm sm:mx-auto">
     <!-- Session Status -->
-    <x-trafikrak::auth.session-status class="text-center" :status="session('status')"/>
+    <x-testa::auth.session-status class="text-center" :status="session('status')"/>
 
     <form wire:submit="resetPassword" class="flex flex-col gap-6">
         <x-numaxlab-atomic::atoms.input

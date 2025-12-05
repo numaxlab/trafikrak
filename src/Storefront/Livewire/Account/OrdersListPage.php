@@ -1,11 +1,11 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Account;
+namespace Testa\Storefront\Livewire\Account;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
-use Trafikrak\Livewire\Features\WithPagination;
+use Testa\Livewire\Features\WithPagination;
 
 class OrdersListPage extends Page
 {
@@ -19,6 +19,6 @@ class OrdersListPage extends Page
             ->latest()
             ->paginate(8);
 
-        return view('trafikrak::storefront.livewire.account.orders-list', compact('orders'));
+        return view('testa::storefront.livewire.account.orders-list', compact('orders'));
     }
 }

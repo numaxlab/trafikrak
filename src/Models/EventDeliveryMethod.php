@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Models;
+namespace Testa\Models;
 
 enum EventDeliveryMethod: string
 {

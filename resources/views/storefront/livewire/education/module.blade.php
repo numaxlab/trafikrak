@@ -10,12 +10,12 @@
             <header class="mb-6">
                 <x-numaxlab-atomic::molecules.breadcrumb :label="__('Miga de pan')">
                     <li>
-                        <a href="{{ route('trafikrak.storefront.education.homepage') }}" wire:navigate>
+                        <a href="{{ route('testa.storefront.education.homepage') }}" wire:navigate>
                             {{ __('Formación') }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('trafikrak.storefront.education.courses.index') }}" wire:navigate>
+                        <a href="{{ route('testa.storefront.education.courses.index') }}" wire:navigate>
                             {{ __('Cursos') }}
                         </a>
                     </li>
@@ -29,7 +29,7 @@
 
                 <div class="mt-6">
                     <a
-                            href="{{ route('trafikrak.storefront.education.courses.show', $module->course->defaultUrl->slug) }}"
+                            href="{{ route('testa.storefront.education.courses.show', $module->course->defaultUrl->slug) }}"
                             wire:navigate
                             class="at-tag is-primary"
                     >
@@ -49,7 +49,7 @@
                     <div class="flex gap-2 border-b border-black py-2">
                         <i class="icon icon-info text-2xl w-5 text-center mr-2" aria-hidden="true"></i>
                         <p class="at-small">
-                            {{ __('trafikrak::coursemodule.form.delivery_method.options.'.$module->delivery_method->value) }}
+                            {{ __('testa::coursemodule.form.delivery_method.options.'.$module->delivery_method->value) }}
                             @if ($module->venue)
                                 <br>
                                 {{ $module->venue->name }}
@@ -63,7 +63,7 @@
 
                     @if (!$userRegistered && $module->course->purchasable)
                         <a
-                                href="{{ route('trafikrak.storefront.education.courses.register', $module->course->defaultUrl->slug) }}"
+                                href="{{ route('testa.storefront.education.courses.register', $module->course->defaultUrl->slug) }}"
                                 wire:navigate class="at-button is-primary mt-4"
                         >
                             {{ __('Inscríbete') }}
@@ -97,24 +97,24 @@
                     <ul class="grid gap-6 mb-10 md:grid-cols-2">
                         @foreach ($module->instructors as $instructor)
                             <li>
-                                <x-trafikrak::authors.summary :author="$instructor"/>
+                                <x-testa::authors.summary :author="$instructor"/>
                             </li>
                         @endforeach
                     </ul>
                 </x-numaxlab-atomic::organisms.tier>
             @endif
 
-            <livewire:trafikrak.storefront.livewire.components.education.module-media
+            <livewire:testa.storefront.livewire.components.education.module-media
                     lazy
                     :module="$module"
             />
 
-            <livewire:trafikrak.storefront.livewire.components.education.module-products
+            <livewire:testa.storefront.livewire.components.education.module-products
                     lazy
                     :module="$module"
             />
 
-            <livewire:trafikrak.storefront.livewire.components.education.course-modules
+            <livewire:testa.storefront.livewire.components.education.course-modules
                     lazy
                     :course="$module->course"
                     :except="$module"

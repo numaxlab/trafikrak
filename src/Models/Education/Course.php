@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Models\Education;
+namespace Testa\Models\Education;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -16,8 +16,8 @@ use Lunar\Base\Traits\Searchable;
 use Lunar\Models\Product;
 use Spatie\MediaLibrary\HasMedia as SpatieHasMedia;
 use Spatie\Translatable\HasTranslations;
-use Trafikrak\Database\Factories\Education\CourseFactory;
-use Trafikrak\Models\Attachment;
+use Testa\Database\Factories\Education\CourseFactory;
+use Testa\Models\Attachment;
 
 class Course extends Model implements SpatieHasMedia
 {
@@ -94,6 +94,10 @@ class Course extends Model implements SpatieHasMedia
             return $this->horizontalImage;
         } else {
             $media = $this->verticalImage;
+        }
+
+        if (! $media) {
+            return null;
         }
 
         return $media('medium');

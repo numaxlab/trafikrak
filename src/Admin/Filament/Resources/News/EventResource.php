@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\News;
+namespace Testa\Admin\Filament\Resources\News;
 
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -10,8 +10,8 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use FilamentTiptapEditor\TiptapEditor;
 use Lunar\Admin\Support\Resources\BaseResource;
-use Trafikrak\Models\EventDeliveryMethod;
-use Trafikrak\Models\News\Event;
+use Testa\Models\EventDeliveryMethod;
+use Testa\Models\News\Event;
 
 class EventResource extends BaseResource
 {
@@ -25,17 +25,17 @@ class EventResource extends BaseResource
 
     public static function getNavigationGroup(): ?string
     {
-        return __('trafikrak::global.sections.news');
+        return __('testa::global.sections.news');
     }
 
     public static function getLabel(): string
     {
-        return __('trafikrak::event.label');
+        return __('testa::event.label');
     }
 
     public static function getPluralLabel(): string
     {
-        return __('trafikrak::event.plural_label');
+        return __('testa::event.plural_label');
     }
 
     public static function getNavigationIcon(): ?string
@@ -62,10 +62,10 @@ class EventResource extends BaseResource
             ])
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->label(__('trafikrak::event.table.name.label'))
+                    ->label(__('testa::event.table.name.label'))
                     ->searchable(),
                 Tables\Columns\ToggleColumn::make('is_published')
-                    ->label(__('trafikrak::event.table.is_published.label')),
+                    ->label(__('testa::event.table.is_published.label')),
             ]);
     }
 
@@ -78,50 +78,50 @@ class EventResource extends BaseResource
                         Forms\Components\Select::make('event_type_id')
                             ->relationship('eventType', 'name')
                             ->required()
-                            ->label(__('trafikrak::event.form.event_type_id.label')),
+                            ->label(__('testa::event.form.event_type_id.label')),
                         Forms\Components\TextInput::make('name')
-                            ->label(__('trafikrak::event.form.name.label'))
+                            ->label(__('testa::event.form.name.label'))
                             ->required()
                             ->maxLength(255)
                             ->autofocus(),
                         Forms\Components\TextInput::make('subtitle')
-                            ->label(__('trafikrak::event.form.subtitle.label'))
+                            ->label(__('testa::event.form.subtitle.label'))
                             ->maxLength(255),
                         TiptapEditor::make('description')
-                            ->label(__('trafikrak::event.form.description.label'))
+                            ->label(__('testa::event.form.description.label'))
                             ->profile('default'),
                         Forms\Components\DateTimePicker::make('starts_at')
-                            ->label(__('trafikrak::event.form.starts_at.label'))
+                            ->label(__('testa::event.form.starts_at.label'))
                             ->required(),
                         Forms\Components\Select::make('delivery_method')
-                            ->label(__('trafikrak::event.form.delivery_method.label'))
+                            ->label(__('testa::event.form.delivery_method.label'))
                             ->required()
                             ->options([
                                 EventDeliveryMethod::IN_PERSON->value => __(
-                                    'trafikrak::coursemodule.form.delivery_method.options.in_person',
+                                    'testa::coursemodule.form.delivery_method.options.in_person',
                                 ),
                                 EventDeliveryMethod::ONLINE->value => __(
-                                    'trafikrak::coursemodule.form.delivery_method.options.online',
+                                    'testa::coursemodule.form.delivery_method.options.online',
                                 ),
                                 EventDeliveryMethod::HYBRID->value => __(
-                                    'trafikrak::coursemodule.form.delivery_method.options.hybrid',
+                                    'testa::coursemodule.form.delivery_method.options.hybrid',
                                 ),
                             ]),
                         Forms\Components\Select::make('venue_id')
                             ->relationship('venue', 'name')
                             ->required()
-                            ->label(__('trafikrak::event.form.venue_id.label')),
+                            ->label(__('testa::event.form.venue_id.label')),
                         Forms\Components\Textarea::make('alert')
-                            ->label(__('trafikrak::event.form.alert.label')),
+                            ->label(__('testa::event.form.alert.label')),
                         Forms\Components\TextInput::make('register_url')
-                            ->label(__('trafikrak::event.form.register_url.label'))
+                            ->label(__('testa::event.form.register_url.label'))
                             ->maxLength(255),
                         Forms\Components\FileUpload::make('image')
-                            ->label(__('trafikrak::event.form.image.label'))
+                            ->label(__('testa::event.form.image.label'))
                             ->image()
                             ->imageEditor(),
                         Forms\Components\Toggle::make('is_published')
-                            ->label(__('trafikrak::event.form.is_published.label')),
+                            ->label(__('testa::event.form.is_published.label')),
                     ]),
             ])
             ->columns(1);

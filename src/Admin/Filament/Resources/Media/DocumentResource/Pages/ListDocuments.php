@@ -1,11 +1,11 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\Media\DocumentResource\Pages;
+namespace Testa\Admin\Filament\Resources\Media\DocumentResource\Pages;
 
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords\Concerns\Translatable;
 use Lunar\Admin\Support\Pages\BaseListRecords;
-use Trafikrak\Admin\Filament\Resources\Media\DocumentResource;
+use Testa\Admin\Filament\Resources\Media\DocumentResource;
 
 class ListDocuments extends BaseListRecords
 {

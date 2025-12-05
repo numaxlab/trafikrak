@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\Media;
+namespace Testa\Admin\Filament\Resources\Media;
 
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -9,8 +9,8 @@ use Filament\Resources\Concerns\Translatable;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Lunar\Admin\Support\Resources\BaseResource;
-use Trafikrak\Models\Media\Audio;
-use Trafikrak\Models\Media\Visibility;
+use Testa\Models\Media\Audio;
+use Testa\Models\Media\Visibility;
 
 class AudioResource extends BaseResource
 {
@@ -24,17 +24,17 @@ class AudioResource extends BaseResource
 
     public static function getNavigationGroup(): ?string
     {
-        return __('trafikrak::global.sections.media');
+        return __('testa::global.sections.media');
     }
 
     public static function getLabel(): string
     {
-        return __('trafikrak::audio.label');
+        return __('testa::audio.label');
     }
 
     public static function getPluralLabel(): string
     {
-        return __('trafikrak::audio.plural_label');
+        return __('testa::audio.plural_label');
     }
 
     public static function getNavigationIcon(): ?string
@@ -56,9 +56,9 @@ class AudioResource extends BaseResource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->label(__('trafikrak::audio.table.name.label')),
+                    ->label(__('testa::audio.table.name.label')),
                 Tables\Columns\ToggleColumn::make('is_published')
-                    ->label(__('trafikrak::audio.table.is_published.label')),
+                    ->label(__('testa::audio.table.is_published.label')),
             ])
             ->filters([])
             ->actions([
@@ -79,12 +79,12 @@ class AudioResource extends BaseResource
                 Forms\Components\Section::make()
                     ->schema([
                         Forms\Components\TextInput::make('name')
-                            ->label(__('trafikrak::audio.form.name.label'))
+                            ->label(__('testa::audio.form.name.label'))
                             ->required()
                             ->maxLength(255)
                             ->autofocus(),
                         Forms\Components\RichEditor::make('description')
-                            ->label(__('trafikrak::audio.form.description.label')),
+                            ->label(__('testa::audio.form.description.label')),
                         Forms\Components\Grid::make()
                             ->columns([
                                 'sm' => 1,
@@ -92,28 +92,28 @@ class AudioResource extends BaseResource
                             ])
                             ->schema([
                                 Forms\Components\Select::make('source')
-                                    ->label(__('trafikrak::audio.form.source.label'))
+                                    ->label(__('testa::audio.form.source.label'))
                                     ->options([
-                                        'soundcloud' => __('trafikrak::audio.form.source.options.soundcloud'),
+                                        'soundcloud' => __('testa::audio.form.source.options.soundcloud'),
                                     ])
                                     ->required(),
                                 Forms\Components\Textarea::make('source_id')
-                                    ->label(__('trafikrak::audio.form.source_id.label'))
+                                    ->label(__('testa::audio.form.source_id.label'))
                                     ->required(),
                             ]),
                         Forms\Components\Select::make('visibility')
-                            ->label(__('trafikrak::audio.form.visibility.label'))
+                            ->label(__('testa::audio.form.visibility.label'))
                             ->required()
                             ->options([
                                 Visibility::PUBLIC->value => __(
-                                    'trafikrak::audio.form.visibility.options.public',
+                                    'testa::audio.form.visibility.options.public',
                                 ),
                                 Visibility::PRIVATE->value => __(
-                                    'trafikrak::audio.form.visibility.options.private',
+                                    'testa::audio.form.visibility.options.private',
                                 ),
                             ]),
                         Forms\Components\Toggle::make('is_published')
-                            ->label(__('trafikrak::audio.form.is_published.label')),
+                            ->label(__('testa::audio.form.is_published.label')),
                     ]),
             ])
             ->columns(1);

@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Storefront\Views\Components;
+namespace Testa\Storefront\Views\Components;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -8,8 +8,8 @@ use Lunar\Facades\StorefrontSession;
 use Lunar\Models\Collection;
 use NumaxLab\Lunar\Geslib\Handle;
 use NumaxLab\Lunar\Geslib\InterCommands\CollectionCommand;
-use Trafikrak\Models\Content\Page;
-use Trafikrak\Models\Content\Section;
+use Testa\Models\Content\Page;
+use Testa\Models\Content\Section;
 
 class Header extends Component
 {
@@ -53,7 +53,7 @@ class Header extends Component
             ->orderBy('_lft', 'ASC')
             ->get();
 
-        return view('trafikrak::components.header', compact(
+        return view('testa::components.header', compact(
             'pages',
             'sections',
             'editorialCollections',

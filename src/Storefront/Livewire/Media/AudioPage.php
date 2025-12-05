@@ -1,11 +1,11 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Media;
+namespace Testa\Storefront\Livewire\Media;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\View\View;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
-use Trafikrak\Models\Media\Audio;
+use Testa\Models\Media\Audio;
 
 class AudioPage extends Page
 {
@@ -32,7 +32,7 @@ class AudioPage extends Page
             abort(403);
         }
 
-        return view('trafikrak::storefront.livewire.media.audio')
+        return view('testa::storefront.livewire.media.audio')
             ->title($this->audio->name);
     }
 }

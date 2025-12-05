@@ -1,9 +1,9 @@
 <?php
 
-namespace Trafikrak\Database\Factories\Education;
+namespace Testa\Database\Factories\Education;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Trafikrak\Models\Education\Course;
+use Testa\Models\Education\Course;
 
 class CourseFactory extends Factory
 {

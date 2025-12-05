@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Components\Bookshop;
+namespace Testa\Storefront\Livewire\Components\Bookshop;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Collection;
@@ -21,11 +21,11 @@ class TaxonomySummary extends Component
             ->customerGroup(StorefrontSession::getCustomerGroups())
             ->status('published')
             ->whereHas('productType', function ($query) {
-                $query->where((new ProductType)->getTable() . '.id', config('lunar.geslib.product_type_id'));
+                $query->where((new ProductType)->getTable().'.id', config('lunar.geslib.product_type_id'));
             })
             ->whereHas('collections', function ($query) {
                 $query->whereIn(
-                    (new LunarCollection)->getTable() . '.id',
+                    (new LunarCollection)->getTable().'.id',
                     array_merge([$this->collection->id], $this->collection->descendants->pluck('id')->toArray()),
                 );
             })
@@ -46,11 +46,11 @@ class TaxonomySummary extends Component
 
     public function placeholder(): View
     {
-        return view('trafikrak::storefront.livewire.components.placeholder.products-tier');
+        return view('testa::storefront.livewire.components.placeholder.products-tier');
     }
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.components.bookshop.taxonomy-summary');
+        return view('testa::storefront.livewire.components.bookshop.taxonomy-summary');
     }
 }

@@ -1,11 +1,11 @@
 <?php
 
-namespace Trafikrak\Models;
+namespace Testa\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Trafikrak\Models\Editorial\Review;
-use Trafikrak\Models\Education\Course;
+use Testa\Models\Editorial\Review;
+use Testa\Models\Education\Course;
 
 class Product extends \NumaxLab\Lunar\Geslib\Models\Product
 {

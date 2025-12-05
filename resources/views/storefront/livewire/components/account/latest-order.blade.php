@@ -12,7 +12,7 @@
         @if (!$order)
             <p>{{ __('Todavía no has realizado ningún pedido.') }}</p>
         @else
-            <x-trafikrak::orders.summary :order="$order"/>
+            <x-testa::orders.summary :order="$order"/>
         @endif
     </x-numaxlab-atomic::organisms.tier>
 </div>

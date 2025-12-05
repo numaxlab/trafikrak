@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\News\ArticleResource\Pages;
+namespace Testa\Admin\Filament\Resources\News\ArticleResource\Pages;
 
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -15,7 +15,7 @@ use Lunar\Admin\Filament\Resources\ProductResource;
 use Lunar\Admin\Support\Pages\BaseManageRelatedRecords;
 use Lunar\Models\Contracts\Product as ProductContract;
 use Lunar\Models\Product;
-use Trafikrak\Admin\Filament\Resources\News\ArticleResource;
+use Testa\Admin\Filament\Resources\News\ArticleResource;
 
 class ManageArticleProducts extends BaseManageRelatedRecords
 {
@@ -30,12 +30,12 @@ class ManageArticleProducts extends BaseManageRelatedRecords
 
     public static function getNavigationLabel(): string
     {
-        return __('trafikrak::course.pages.products.label');
+        return __('testa::course.pages.products.label');
     }
 
     public function getTitle(): string
     {
-        return __('trafikrak::course.pages.products.label');
+        return __('testa::course.pages.products.label');
     }
 
     public function table(Table $table): Table
@@ -60,18 +60,18 @@ class ManageArticleProducts extends BaseManageRelatedRecords
 
                         Notification::make()
                             ->success()
-                            ->body(__('trafikrak::course.pages.products.actions.detach.notification.success'))
+                            ->body(__('testa::course.pages.products.actions.detach.notification.success'))
                             ->send();
                     }),
             ])->headerActions([
                 AttachAction::make()
                     ->label(
-                        __('trafikrak::course.pages.products.actions.attach.label'),
+                        __('testa::course.pages.products.actions.attach.label'),
                     )
                     ->form([
                         Forms\Components\Select::make('recordId')
                             ->label(
-                                __('trafikrak::course.pages.products.actions.attach.form.record_id.label'),
+                                __('testa::course.pages.products.actions.attach.form.record_id.label'),
                             )
                             ->required()
                             ->searchable()
@@ -100,7 +100,7 @@ class ManageArticleProducts extends BaseManageRelatedRecords
 
                         Notification::make()
                             ->success()
-                            ->body(__('trafikrak::course.pages.products.actions.attach.notification.success'))
+                            ->body(__('testa::course.pages.products.actions.attach.notification.success'))
                             ->send();
                     }),
             ]);

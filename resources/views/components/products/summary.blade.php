@@ -22,7 +22,7 @@
         </div>
     @endif
 
-    <livewire:trafikrak.storefront.livewire.components.bookshop.add-to-cart
+    <livewire:testa.storefront.livewire.components.bookshop.add-to-cart
             :key="'add-to-cart-' . $product->id"
             :purchasable="$product->variant"
             :display-price="true"/>

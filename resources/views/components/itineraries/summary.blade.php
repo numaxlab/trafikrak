@@ -1,7 +1,7 @@
 <x-numaxlab-atomic::molecules.banner
         :class="$collection->getFirstMedia(config('lunar.media.collection')) ? 'has-media' : ''"
         :image-src="$collection->getFirstMedia(config('lunar.media.collection'))?->getUrl('medium')"
-        :href="route('trafikrak.storefront.bookshop.itineraries.show', $collection->defaultUrl->slug)">
+        :href="route('testa.storefront.bookshop.itineraries.show', $collection->defaultUrl->slug)">
     {{ $collection->translateAttribute('name') }}
 
     @if ($collection->translateAttribute('description'))

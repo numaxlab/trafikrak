@@ -1,11 +1,11 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\Membership\BenefitResource\Pages;
+namespace Testa\Admin\Filament\Resources\Membership\BenefitResource\Pages;
 
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord\Concerns\Translatable;
 use Lunar\Admin\Support\Pages\BaseEditRecord;
-use Trafikrak\Admin\Filament\Resources\Membership\BenefitResource;
+use Testa\Admin\Filament\Resources\Membership\BenefitResource;
 
 class EditBenefit extends BaseEditRecord
 {
@@ -15,12 +15,12 @@ class EditBenefit extends BaseEditRecord
 
     public static function getNavigationLabel(): string
     {
-        return __('trafikrak::membership-plan.pages.edit.title');
+        return __('testa::membership-plan.pages.edit.title');
     }
 
     public function getTitle(): string
     {
-        return __('trafikrak::membership-plan.pages.edit.title');
+        return __('testa::membership-plan.pages.edit.title');
     }
 
     protected function getDefaultHeaderActions(): array

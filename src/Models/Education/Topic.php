@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Models\Education;
+namespace Testa\Models\Education;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -10,8 +10,8 @@ use Lunar\Base\Traits\HasUrls;
 use Lunar\Base\Traits\LogsActivity;
 use Spatie\MediaLibrary\HasMedia as SpatieHasMedia;
 use Spatie\Translatable\HasTranslations;
-use Trafikrak\Database\Factories\Education\TopicFactory;
-use Trafikrak\Media\StandardMediaDefinitions;
+use Testa\Database\Factories\Education\TopicFactory;
+use Testa\Media\StandardMediaDefinitions;
 
 class Topic extends Model implements SpatieHasMedia
 {

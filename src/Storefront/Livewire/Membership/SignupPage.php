@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Membership;
+namespace Testa\Storefront\Livewire\Membership;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
@@ -13,9 +13,9 @@ use Lunar\Facades\StorefrontSession;
 use Lunar\Models\Cart;
 use Lunar\Models\CartAddress;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
-use Trafikrak\Models\Membership\MembershipPlan;
-use Trafikrak\Models\Membership\MembershipTier;
-use Trafikrak\Storefront\Livewire\Checkout\Forms\AddressForm;
+use Testa\Models\Membership\MembershipPlan;
+use Testa\Models\Membership\MembershipTier;
+use Testa\Storefront\Livewire\Checkout\Forms\AddressForm;
 
 class SignupPage extends Page
 {
@@ -52,7 +52,7 @@ class SignupPage extends Page
             $this->billing->contact_email = Auth::user()->email;
         }
 
-        $this->paymentTypes = config('trafikrak.payment_types.membership');
+        $this->paymentTypes = config('testa.payment_types.membership');
     }
 
     private function retrieveTierPlans(): void
@@ -116,7 +116,7 @@ class SignupPage extends Page
 
         $meta = [
             'Tipo de pedido' => 'Subscripción socias',
-            'Método de pago' => __("trafikrak::global.payment_types.{$this->paymentType}.title"),
+            'Método de pago' => __("testa::global.payment_types.{$this->paymentType}.title"),
         ];
 
         if ($this->paymentType === 'direct-debit') {
@@ -143,21 +143,21 @@ class SignupPage extends Page
 
         return redirect()
             ->route(
-                'trafikrak.storefront.checkout.process-payment',
+                'testa.storefront.checkout.process-payment',
                 ['id' => $cart->id, 'fingerprint' => $cart->fingerprint(), 'payment' => $this->paymentType],
             );
     }
 
     public function redirectToLogin(): Redirector|RedirectResponse
     {
-        session()->put('url.intended', route('trafikrak.storefront.membership.signup'));
+        session()->put('url.intended', route('testa.storefront.membership.signup'));
 
         return redirect()->route('login');
     }
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.membership.signup')
+        return view('testa::storefront.livewire.membership.signup')
             ->title(__('Asóciate'));
     }
 }

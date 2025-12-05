@@ -1,11 +1,11 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\Education\CourseModuleResource\Pages;
+namespace Testa\Admin\Filament\Resources\Education\CourseModuleResource\Pages;
 
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord\Concerns\Translatable;
 use Lunar\Admin\Support\Pages\BaseEditRecord;
-use Trafikrak\Admin\Filament\Resources\Education\CourseModuleResource;
+use Testa\Admin\Filament\Resources\Education\CourseModuleResource;
 
 class EditCourseModule extends BaseEditRecord
 {
@@ -15,12 +15,12 @@ class EditCourseModule extends BaseEditRecord
 
     public static function getNavigationLabel(): string
     {
-        return __('trafikrak::coursemodule.pages.edit.title');
+        return __('testa::coursemodule.pages.edit.title');
     }
 
     public function getTitle(): string
     {
-        return __('trafikrak::coursemodule.pages.edit.title');
+        return __('testa::coursemodule.pages.edit.title');
     }
 
     protected function getDefaultHeaderActions(): array

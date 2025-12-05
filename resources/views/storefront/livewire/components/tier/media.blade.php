@@ -18,7 +18,7 @@
             @foreach ($attachments as $attachment)
                 <li>
                     <x-dynamic-component
-                            :component="'trafikrak::'.$attachment->component_namespace.'.summary'"
+                            :component="'testa::'.$attachment->component_namespace.'.summary'"
                             :media="$attachment->media"/>
                 </li>
             @endforeach

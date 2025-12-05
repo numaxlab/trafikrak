@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Components\Account;
+namespace Testa\Storefront\Livewire\Components\Account;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
@@ -17,6 +17,6 @@ class LatestCourse extends Component
             ->latest()
             ->first();
 
-        return view('trafikrak::storefront.livewire.components.account.latest-course', compact('course'));
+        return view('testa::storefront.livewire.components.account.latest-course', compact('course'));
     }
 }

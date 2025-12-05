@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\Content;
+namespace Testa\Admin\Filament\Resources\Content;
 
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -10,8 +10,8 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use FilamentTiptapEditor\TiptapEditor;
 use Lunar\Admin\Support\Resources\BaseResource;
-use Trafikrak\Models\Content\Page;
-use Trafikrak\Models\Content\Section;
+use Testa\Models\Content\Page;
+use Testa\Models\Content\Section;
 
 class PageResource extends BaseResource
 {
@@ -25,17 +25,17 @@ class PageResource extends BaseResource
 
     public static function getNavigationGroup(): ?string
     {
-        return __('trafikrak::global.sections.content');
+        return __('testa::global.sections.content');
     }
 
     public static function getLabel(): string
     {
-        return __('trafikrak::page.label');
+        return __('testa::page.label');
     }
 
     public static function getPluralLabel(): string
     {
-        return __('trafikrak::page.plural_label');
+        return __('testa::page.plural_label');
     }
 
     public static function getNavigationIcon(): ?string
@@ -59,20 +59,20 @@ class PageResource extends BaseResource
             ])
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->label(__('trafikrak::page.table.name.label'))
+                    ->label(__('testa::page.table.name.label'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('section')
-                    ->label(__('trafikrak::page.table.section.label'))
+                    ->label(__('testa::page.table.section.label'))
                     ->badge()
                     ->formatStateUsing(fn (Section $state): string => match ($state) {
-                        Section::BOOKSHOP => __('trafikrak::page.form.section.options.bookshop'),
-                        Section::EDITORIAL => __('trafikrak::page.form.section.options.editorial'),
-                        Section::EDUCATION => __('trafikrak::page.form.section.options.education'),
-                        Section::GENERIC => __('trafikrak::page.form.section.options.generic'),
+                        Section::BOOKSHOP => __('testa::page.form.section.options.bookshop'),
+                        Section::EDITORIAL => __('testa::page.form.section.options.editorial'),
+                        Section::EDUCATION => __('testa::page.form.section.options.education'),
+                        Section::GENERIC => __('testa::page.form.section.options.generic'),
                         default => $state->value,
                     }),
                 Tables\Columns\ToggleColumn::make('is_published')
-                    ->label(__('trafikrak::page.table.is_published.label')),
+                    ->label(__('testa::page.table.is_published.label')),
             ]);
     }
 
@@ -83,33 +83,33 @@ class PageResource extends BaseResource
                 Forms\Components\Section::make()
                     ->schema([
                         Forms\Components\TextInput::make('name')
-                            ->label(__('trafikrak::page.form.name.label'))
+                            ->label(__('testa::page.form.name.label'))
                             ->required()
                             ->maxLength(255)
                             ->autofocus(),
                         Forms\Components\Select::make('section')
-                            ->label(__('trafikrak::page.form.section.label'))
+                            ->label(__('testa::page.form.section.label'))
                             ->options([
-                                Section::BOOKSHOP->value => __('trafikrak::page.form.section.options.bookshop'),
-                                Section::EDITORIAL->value => __('trafikrak::page.form.section.options.editorial'),
-                                Section::EDUCATION->value => __('trafikrak::page.form.section.options.education'),
-                                Section::GENERIC->value => __('trafikrak::page.form.section.options.generic'),
+                                Section::BOOKSHOP->value => __('testa::page.form.section.options.bookshop'),
+                                Section::EDITORIAL->value => __('testa::page.form.section.options.editorial'),
+                                Section::EDUCATION->value => __('testa::page.form.section.options.education'),
+                                Section::GENERIC->value => __('testa::page.form.section.options.generic'),
                             ])
                             ->required(),
                         Forms\Components\RichEditor::make('intro')
-                            ->label(__('trafikrak::page.form.intro.label')),
+                            ->label(__('testa::page.form.intro.label')),
                         TiptapEditor::make('description')
-                            ->label(__('trafikrak::page.form.description.label'))
+                            ->label(__('testa::page.form.description.label'))
                             ->profile('default'),
                         Forms\Components\Repeater::make('content')
-                            ->label(__('trafikrak::page.form.content.label'))
+                            ->label(__('testa::page.form.content.label'))
                             ->schema([
                                 Forms\Components\TextInput::make('name')
-                                    ->label(__('trafikrak::page.form.name.label'))
+                                    ->label(__('testa::page.form.name.label'))
                                     ->required()
                                     ->maxLength(255),
                                 TiptapEditor::make('description')
-                                    ->label(__('trafikrak::page.form.description.label'))
+                                    ->label(__('testa::page.form.description.label'))
                                     ->profile('default'),
                                 Forms\Components\Grid::make()
                                     ->columns([
@@ -118,16 +118,16 @@ class PageResource extends BaseResource
                                     ])
                                     ->schema([
                                         Forms\Components\TextInput::make('action')
-                                            ->label(__('trafikrak::page.form.content.fields.action.label'))
+                                            ->label(__('testa::page.form.content.fields.action.label'))
                                             ->maxLength(255),
                                         Forms\Components\TextInput::make('action_tag')
-                                            ->label(__('trafikrak::page.form.content.fields.action_tag.label'))
+                                            ->label(__('testa::page.form.content.fields.action_tag.label'))
                                             ->maxLength(255),
                                     ]),
                             ])
                             ->defaultItems(0),
                         Forms\Components\Toggle::make('is_published')
-                            ->label(__('trafikrak::page.form.is_published.label')),
+                            ->label(__('testa::page.form.is_published.label')),
                     ]),
             ])
             ->columns(1);

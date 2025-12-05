@@ -4,7 +4,7 @@
     <header class="mb-10">
         <x-numaxlab-atomic::molecules.breadcrumb :label="__('Miga de pan')">
             <li>
-                <a href="{{ route('trafikrak.storefront.checkout.summary') }}">
+                <a href="{{ route('testa.storefront.checkout.summary') }}">
                     {{ __('Volver al carrito') }}
                 </a>
             </li>
@@ -15,18 +15,18 @@
         </h1>
     </header>
 
-    @include('trafikrak::storefront.partials.checkout.shipping-methods')
+    @include('testa::storefront.partials.checkout.shipping-methods')
 
     @if ($this->shippingMethod === 'send')
         <div class="lg:flex lg:gap-6">
             <div class="lg:w-1/2">
-                @include('trafikrak::storefront.partials.checkout.address', [
+                @include('testa::storefront.partials.checkout.address', [
                     'type' => 'shipping',
                     'step' => $steps['shipping_address'],
                 ])
             </div>
             <div class="lg:w-1/2">
-                @include('trafikrak::storefront.partials.checkout.shipping-options', [
+                @include('testa::storefront.partials.checkout.shipping-options', [
                     'step' => $steps['shipping_option'],
                 ])
             </div>
@@ -35,18 +35,18 @@
 
     <div class="lg:flex lg:gap-6">
         <div class="lg:w-1/2">
-            @include('trafikrak::storefront.partials.checkout.address', [
+            @include('testa::storefront.partials.checkout.address', [
                'type' => 'billing',
                'step' => $steps['billing_address'],
            ])
         </div>
         <div class="lg:w-1/2">
-            @include('trafikrak::storefront.partials.checkout.discounts')
+            @include('testa::storefront.partials.checkout.discounts')
         </div>
     </div>
 
     <form wire:submit="finish">
-        @include('trafikrak::storefront.partials.checkout.cart-payment', [
+        @include('testa::storefront.partials.checkout.cart-payment', [
             'step' => $steps['payment'],
         ])
 
@@ -101,9 +101,9 @@
             </dl>
         </div>
 
-        <x-trafikrak::action-message class="text-2xl text-danger mb-4" on="uncompleted-steps">
+        <x-testa::action-message class="text-2xl text-danger mb-4" on="uncompleted-steps">
             {{ __('Completa todos los datos antes de proceder al pago') }}
-        </x-trafikrak::action-message>
+        </x-testa::action-message>
 
         <x-numaxlab-atomic::atoms.button type="submit" class="is-primary w-full">
             {{ __('Pagar') }}

@@ -1,5 +1,5 @@
 <x-numaxlab-atomic::molecules.summary
-        href="{{ route('trafikrak.storefront.events.show', $event->defaultUrl->slug) }}">
+        href="{{ route('testa.storefront.events.show', $event->defaultUrl->slug) }}">
     <h2 class="at-heading is-3">
         {{ $event->name }}
     </h2>

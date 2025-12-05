@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Livewire\Features;
+namespace Testa\Livewire\Features;
 
 trait WithPagination
 {
@@ -8,6 +8,6 @@ trait WithPagination
 
     public function paginationView(): string
     {
-        return 'trafikrak::storefront.partials.paginator';
+        return 'testa::storefront.partials.paginator';
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Admin\Actions;
+namespace Testa\Admin\Actions;
 
 use Illuminate\Support\Str;
 use Lunar\Admin\Actions\Products\MapVariantsToProductOptions;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Support\RelationManagers;
+namespace Testa\Admin\Filament\Support\RelationManagers;
 
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -39,10 +39,10 @@ class CourseMediaRelationManager extends MediaRelationManager
                         '1:1',
                     ]),
                 Forms\Components\Radio::make('custom_properties.orientation')
-                    ->label(__('trafikrak::relationmanagers.medias.form.orientation.label'))
+                    ->label(__('testa::relationmanagers.medias.form.orientation.label'))
                     ->options([
-                        'horizontal' => __('trafikrak::relationmanagers.medias.form.orientation.options.horizontal'),
-                        'vertical' => __('trafikrak::relationmanagers.medias.form.orientation.options.vertical'),
+                        'horizontal' => __('testa::relationmanagers.medias.form.orientation.options.horizontal'),
+                        'vertical' => __('testa::relationmanagers.medias.form.orientation.options.vertical'),
                     ])
                     ->required(),
             ]);
@@ -75,10 +75,10 @@ class CourseMediaRelationManager extends MediaRelationManager
                     ->label(__('lunarpanel::relationmanagers.medias.table.primary.label'))
                     ->boolean(),
                 Tables\Columns\TextColumn::make('custom_properties.orientation')
-                    ->label(__('trafikrak::relationmanagers.medias.form.orientation.label'))
+                    ->label(__('testa::relationmanagers.medias.form.orientation.label'))
                     ->formatStateUsing(
                         fn ($state): string
-                            => __('trafikrak::relationmanagers.medias.form.orientation.options.'.$state),
+                            => __('testa::relationmanagers.medias.form.orientation.options.'.$state),
                     ),
             ])
             ->filters([

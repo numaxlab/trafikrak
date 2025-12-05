@@ -1,10 +1,10 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\Education\CourseModuleResource\Pages;
+namespace Testa\Admin\Filament\Resources\Education\CourseModuleResource\Pages;
 
 use Lunar\Admin\Support\Resources\Pages\ManageUrlsRelatedRecords;
-use Trafikrak\Admin\Filament\Resources\Education\CourseModuleResource;
-use Trafikrak\Models\Education\CourseModule;
+use Testa\Admin\Filament\Resources\Education\CourseModuleResource;
+use Testa\Models\Education\CourseModule;
 
 class ManageCourseModuleUrls extends ManageUrlsRelatedRecords
 {

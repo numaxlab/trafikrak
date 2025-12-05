@@ -21,6 +21,6 @@
             @endforeach
         </ul>
     @elseif ($banner)
-        <x-trafikrak::banners.mini :banner="$banner"/>
+        <x-testa::banners.mini :banner="$banner"/>
     @endif
 </div>

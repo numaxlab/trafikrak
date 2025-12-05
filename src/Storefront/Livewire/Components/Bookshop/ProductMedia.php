@@ -1,14 +1,14 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Components\Bookshop;
+namespace Testa\Storefront\Livewire\Components\Bookshop;
 
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
 use Livewire\Component;
 use Lunar\Models\Contracts\Product;
-use Trafikrak\Models\Attachment;
-use Trafikrak\Models\Education\CourseModule;
-use Trafikrak\Models\News\Event;
+use Testa\Models\Attachment;
+use Testa\Models\Education\CourseModule;
+use Testa\Models\News\Event;
 
 class ProductMedia extends Component
 {
@@ -52,6 +52,6 @@ class ProductMedia extends Component
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.components.bookshop.product-media');
+        return view('testa::storefront.livewire.components.bookshop.product-media');
     }
 }

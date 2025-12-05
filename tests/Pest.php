@@ -1,5 +1,5 @@
 <?php
 
-use Trafikrak\Tests\TestCase;
+use Testa\Tests\TestCase;
 
 uses(TestCase::class)->in(__DIR__);

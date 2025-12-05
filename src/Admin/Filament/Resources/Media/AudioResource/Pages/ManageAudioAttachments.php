@@ -1,11 +1,11 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\Media\AudioResource\Pages;
+namespace Testa\Admin\Filament\Resources\Media\AudioResource\Pages;
 
 use Filament\Support\Facades\FilamentIcon;
 use Filament\Tables\Table;
 use Lunar\Admin\Support\Pages\BaseManageRelatedRecords;
-use Trafikrak\Admin\Filament\Resources\Media\AudioResource;
+use Testa\Admin\Filament\Resources\Media\AudioResource;
 
 class ManageAudioAttachments extends BaseManageRelatedRecords
 {
@@ -20,12 +20,12 @@ class ManageAudioAttachments extends BaseManageRelatedRecords
 
     public static function getNavigationLabel(): string
     {
-        return __('trafikrak::audio.pages.attachments.label');
+        return __('testa::audio.pages.attachments.label');
     }
 
     public function getTitle(): string
     {
-        return __('trafikrak::audio.pages.attachments.label');
+        return __('testa::audio.pages.attachments.label');
     }
 
     public function table(Table $table): Table

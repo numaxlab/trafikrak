@@ -1,11 +1,11 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Education;
+namespace Testa\Storefront\Livewire\Education;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
-use Trafikrak\Models\Education\CourseModule;
+use Testa\Models\Education\CourseModule;
 
 class ModulePage extends Page
 {
@@ -41,6 +41,6 @@ class ModulePage extends Page
 
         $media = $this->module->course->verticalImage;
 
-        return view('trafikrak::storefront.livewire.education.module', compact('userRegistered', 'media'));
+        return view('testa::storefront.livewire.education.module', compact('userRegistered', 'media'));
     }
 }

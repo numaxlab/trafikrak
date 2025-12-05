@@ -11,9 +11,9 @@
             <ul class="grid gap-6 grid-cols-2 mb-9 md:grid-cols-4">
                 @foreach ($products as $product)
                     <li>
-                        <x-trafikrak::products.summary
+                        <x-testa::products.summary
                                 :product="$product"
-                                :href="route('trafikrak.storefront.bookshop.products.show', $product->defaultUrl->slug)"
+                                :href="route('testa.storefront.bookshop.products.show', $product->defaultUrl->slug)"
                         />
                     </li>
                 @endforeach

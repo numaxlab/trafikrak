@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Auth;
+namespace Testa\Storefront\Livewire\Auth;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
@@ -13,7 +13,7 @@ class ConfirmPasswordPage extends Page
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.auth.confirm-password');
+        return view('testa::storefront.livewire.auth.confirm-password');
     }
 
     public function confirmPassword(): void
@@ -22,7 +22,7 @@ class ConfirmPasswordPage extends Page
             'password' => ['required', 'string'],
         ]);
 
-        if (!Auth::guard('web')->validate([
+        if (! Auth::guard('web')->validate([
             'email' => Auth::user()->email,
             'password' => $this->password,
         ])) {

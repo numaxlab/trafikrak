@@ -4,12 +4,12 @@
             <div class="md:w-1/2 lg:pr-20">
                 <x-numaxlab-atomic::molecules.breadcrumb :label="__('Miga de pan')">
                     <li>
-                        <a href="{{ route('trafikrak.storefront.bookshop.homepage') }}" wire:navigate>
+                        <a href="{{ route('testa.storefront.bookshop.homepage') }}" wire:navigate>
                             {{ __('Librería') }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('trafikrak.storefront.bookshop.itineraries.index') }}" wire:navigate>
+                        <a href="{{ route('testa.storefront.bookshop.itineraries.index') }}" wire:navigate>
                             {{ __('Itinerarios') }}
                         </a>
                     </li>
@@ -46,9 +46,9 @@
             <ul class="grid gap-6 grid-cols-2 mb-9 md:grid-cols-4 lg:grid-cols-6">
                 @foreach ($itinerary->products as $product)
                     <li>
-                        <x-trafikrak::products.summary
+                        <x-testa::products.summary
                                 :product="$product"
-                                :href="route('trafikrak.storefront.bookshop.products.show', $product->defaultUrl->slug)"
+                                :href="route('testa.storefront.bookshop.products.show', $product->defaultUrl->slug)"
                         />
                     </li>
                 @endforeach

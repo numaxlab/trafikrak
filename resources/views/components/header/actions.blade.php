@@ -14,7 +14,7 @@
         @endauth
     </li>
     <li>
-        <livewire:trafikrak.storefront.livewire.components.cart lazy/>
+        <livewire:testa.storefront.livewire.components.cart lazy/>
     </li>
     <li>
         <button class="text-primary" @click="searchExpanded = !searchExpanded">

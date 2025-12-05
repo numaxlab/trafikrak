@@ -1,12 +1,12 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Components\News;
+namespace Testa\Storefront\Livewire\Components\News;
 
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
 use Livewire\Component;
 use Lunar\Facades\StorefrontSession;
-use Trafikrak\Models\News\Event;
+use Testa\Models\News\Event;
 
 class EventProducts extends Component
 {
@@ -37,6 +37,6 @@ class EventProducts extends Component
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.components.news.event-products');
+        return view('testa::storefront.livewire.components.news.event-products');
     }
 }

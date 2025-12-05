@@ -1,12 +1,12 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Components\Author;
+namespace Testa\Storefront\Livewire\Components\Author;
 
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
 use Livewire\Component;
 use NumaxLab\Lunar\Geslib\Models\Author;
-use Trafikrak\Models\Education\CourseModule;
+use Testa\Models\Education\CourseModule;
 
 class Events extends Component
 {
@@ -27,6 +27,6 @@ class Events extends Component
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.components.author.events');
+        return view('testa::storefront.livewire.components.author.events');
     }
 }

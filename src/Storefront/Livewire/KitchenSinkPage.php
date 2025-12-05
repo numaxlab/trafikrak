@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire;
+namespace Testa\Storefront\Livewire;
 
 use Faker\Factory as FakerFactory;
 use Illuminate\Support\Collection;
@@ -11,9 +11,9 @@ use Lunar\Models\Product;
 use Lunar\Models\ProductType;
 use Lunar\Models\ProductVariant;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
-use Trafikrak\Models\Content\Banner;
-use Trafikrak\Models\Education\Course;
-use Trafikrak\Models\Education\Topic;
+use Testa\Models\Content\Banner;
+use Testa\Models\Education\Course;
+use Testa\Models\Education\Topic;
 
 class KitchenSinkPage extends Page
 {
@@ -70,7 +70,7 @@ class KitchenSinkPage extends Page
             ->inRandomOrder()
             ->first();
 
-        if (!$banner) {
+        if (! $banner) {
             $banner = Banner::factory()->create();
         }
 
@@ -100,6 +100,6 @@ class KitchenSinkPage extends Page
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.kitchen-sink');
+        return view('testa::storefront.livewire.kitchen-sink');
     }
 }

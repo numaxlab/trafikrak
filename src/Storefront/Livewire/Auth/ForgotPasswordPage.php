@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Auth;
+namespace Testa\Storefront\Livewire\Auth;
 
 use Illuminate\Support\Facades\Password;
 use Illuminate\View\View;
@@ -12,7 +12,7 @@ class ForgotPasswordPage extends Page
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.auth.forgot-password')
+        return view('testa::storefront.livewire.auth.forgot-password')
             ->title(__('Recuperar contraseña'));
     }
 

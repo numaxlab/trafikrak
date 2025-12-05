@@ -1,11 +1,11 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\Media\VideoResource\Pages;
+namespace Testa\Admin\Filament\Resources\Media\VideoResource\Pages;
 
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord\Concerns\Translatable;
 use Lunar\Admin\Support\Pages\BaseEditRecord;
-use Trafikrak\Admin\Filament\Resources\Media\VideoResource;
+use Testa\Admin\Filament\Resources\Media\VideoResource;
 
 class EditVideo extends BaseEditRecord
 {
@@ -15,12 +15,12 @@ class EditVideo extends BaseEditRecord
 
     public static function getNavigationLabel(): string
     {
-        return __('trafikrak::video.pages.edit.title');
+        return __('testa::video.pages.edit.title');
     }
 
     public function getTitle(): string
     {
-        return __('trafikrak::video.pages.edit.title');
+        return __('testa::video.pages.edit.title');
     }
 
     protected function getDefaultHeaderActions(): array

@@ -1,12 +1,12 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Components\Tier;
+namespace Testa\Storefront\Livewire\Components\Tier;
 
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
 use Livewire\Component;
-use Trafikrak\Models\Content\Tier;
-use Trafikrak\Models\Media\Visibility;
+use Testa\Models\Content\Tier;
+use Testa\Models\Media\Visibility;
 
 class Media extends Component
 {
@@ -31,6 +31,6 @@ class Media extends Component
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.components.tier.media');
+        return view('testa::storefront.livewire.components.tier.media');
     }
 }

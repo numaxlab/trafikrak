@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\Membership;
+namespace Testa\Admin\Filament\Resources\Membership;
 
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -9,8 +9,8 @@ use Filament\Resources\Concerns\Translatable;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Lunar\Admin\Support\Resources\BaseResource;
-use Trafikrak\Models\Membership\MembershipPlan;
-use Trafikrak\Models\Membership\MembershipTier;
+use Testa\Models\Membership\MembershipPlan;
+use Testa\Models\Membership\MembershipTier;
 
 class MembershipPlanResource extends BaseResource
 {
@@ -24,17 +24,17 @@ class MembershipPlanResource extends BaseResource
 
     public static function getNavigationGroup(): ?string
     {
-        return __('trafikrak::global.sections.membership');
+        return __('testa::global.sections.membership');
     }
 
     public static function getLabel(): string
     {
-        return __('trafikrak::membership-plan.label');
+        return __('testa::membership-plan.label');
     }
 
     public static function getPluralLabel(): string
     {
-        return __('trafikrak::membership-plan.plural_label');
+        return __('testa::membership-plan.plural_label');
     }
 
     public static function getNavigationIcon(): ?string
@@ -56,11 +56,11 @@ class MembershipPlanResource extends BaseResource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('tier.name')
-                    ->label(__('trafikrak::membership-plan.table.tier_name.label')),
+                    ->label(__('testa::membership-plan.table.tier_name.label')),
                 Tables\Columns\TextColumn::make('name')
-                    ->label(__('trafikrak::membership-plan.table.name.label')),
+                    ->label(__('testa::membership-plan.table.name.label')),
                 Tables\Columns\ToggleColumn::make('is_published')
-                    ->label(__('trafikrak::membership-plan.table.is_published.label')),
+                    ->label(__('testa::membership-plan.table.is_published.label')),
             ])
             ->filters([])
             ->actions([
@@ -83,21 +83,21 @@ class MembershipPlanResource extends BaseResource
                         Forms\Components\Select::make('membership_tier_id')
                             ->options(MembershipTier::all()->pluck('name', 'id'))
                             ->required()
-                            ->label(__('trafikrak::membership-plan.form.tier_id.label')),
+                            ->label(__('testa::membership-plan.form.tier_id.label')),
                         Forms\Components\TextInput::make('name')
-                            ->label(__('trafikrak::membership-plan.form.name.label'))
+                            ->label(__('testa::membership-plan.form.name.label'))
                             ->required()
                             ->maxLength(255)
                             ->autofocus(),
                         Forms\Components\RichEditor::make('description')
-                            ->label(__('trafikrak::membership-plan.form.description.label')),
+                            ->label(__('testa::membership-plan.form.description.label')),
                         Forms\Components\Select::make('benefits')
                             ->relationship(titleAttribute: 'name')
                             ->multiple()
                             ->preload()
-                            ->label(__('trafikrak::membership-plan.form.benefits.label')),
+                            ->label(__('testa::membership-plan.form.benefits.label')),
                         Forms\Components\Toggle::make('is_published')
-                            ->label(__('trafikrak::membership-plan.form.is_published.label')),
+                            ->label(__('testa::membership-plan.form.is_published.label')),
                     ]),
             ])
             ->columns(1);

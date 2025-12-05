@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Auth;
+namespace Testa\Storefront\Livewire\Auth;
 
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\User;
@@ -29,7 +29,7 @@ class RegisterPage extends Page
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.auth.register')
+        return view('testa::storefront.livewire.auth.register')
             ->title(__('Regístrate'));
     }
 

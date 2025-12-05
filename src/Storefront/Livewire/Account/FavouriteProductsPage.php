@@ -1,11 +1,11 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Account;
+namespace Testa\Storefront\Livewire\Account;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
-use Trafikrak\Livewire\Features\WithPagination;
+use Testa\Livewire\Features\WithPagination;
 
 class FavouriteProductsPage extends Page
 {
@@ -22,6 +22,6 @@ class FavouriteProductsPage extends Page
     {
         $favouriteProducts = Auth::user()->favourites()->paginate(12);
 
-        return view('trafikrak::storefront.livewire.account.favourite-products', compact('favouriteProducts'));
+        return view('testa::storefront.livewire.account.favourite-products', compact('favouriteProducts'));
     }
 }

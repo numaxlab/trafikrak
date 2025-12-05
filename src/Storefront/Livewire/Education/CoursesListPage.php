@@ -1,13 +1,13 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Education;
+namespace Testa\Storefront\Livewire\Education;
 
 use Illuminate\View\View;
 use Livewire\Attributes\Url;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
-use Trafikrak\Livewire\Features\WithPagination;
-use Trafikrak\Models\Education\Course;
-use Trafikrak\Models\Education\Topic;
+use Testa\Livewire\Features\WithPagination;
+use Testa\Models\Education\Course;
+use Testa\Models\Education\Topic;
 
 class CoursesListPage extends Page
 {
@@ -51,7 +51,7 @@ class CoursesListPage extends Page
 
         $courses = $queryBuilder->paginate(12);
 
-        return view('trafikrak::storefront.livewire.education.courses-list', compact('topics', 'courses'))
+        return view('testa::storefront.livewire.education.courses-list', compact('topics', 'courses'))
             ->title(__('Cursos'));
     }
 

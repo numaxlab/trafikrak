@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak;
+namespace Testa;
 
 class Handle
 {

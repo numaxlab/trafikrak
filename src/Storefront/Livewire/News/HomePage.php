@@ -1,13 +1,13 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\News;
+namespace Testa\Storefront\Livewire\News;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
-use Trafikrak\Models\Education\CourseModule;
-use Trafikrak\Models\News\Article;
-use Trafikrak\Models\News\Event;
+use Testa\Models\Education\CourseModule;
+use Testa\Models\News\Article;
+use Testa\Models\News\Event;
 
 class HomePage extends Page
 {
@@ -40,7 +40,7 @@ class HomePage extends Page
             ->take(4)
             ->get();
 
-        return view('trafikrak::storefront.livewire.news.homepage', compact('activities', 'articles'))
+        return view('testa::storefront.livewire.news.homepage', compact('activities', 'articles'))
             ->title(__('Actualidad'));
     }
 }

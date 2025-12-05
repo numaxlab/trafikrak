@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Checkout;
+namespace Testa\Storefront\Livewire\Checkout;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
@@ -15,7 +15,7 @@ use Lunar\Models\Contracts\Cart;
 use Lunar\Models\Country;
 use Lunar\Shipping\Models\ShippingMethod;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
-use Trafikrak\Storefront\Livewire\Checkout\Forms\AddressForm;
+use Testa\Storefront\Livewire\Checkout\Forms\AddressForm;
 
 class ShippingAndPaymentPage extends Page
 {
@@ -66,7 +66,7 @@ class ShippingAndPaymentPage extends Page
             return;
         }
 
-        $this->paymentTypes = config('trafikrak.payment_types.store');
+        $this->paymentTypes = config('testa.payment_types.store');
 
         if (! Auth::user()?->latestCustomer()?->canBuyOnCredit()) {
             $this->paymentTypes = array_values(array_filter(
@@ -167,7 +167,7 @@ class ShippingAndPaymentPage extends Page
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.checkout.shipping-and-payment');
+        return view('testa::storefront.livewire.checkout.shipping-and-payment');
     }
 
     public function saveAddress(string $type): void
@@ -286,7 +286,7 @@ class ShippingAndPaymentPage extends Page
 
         $this->cart->meta = [
             'Tipo de pedido' => 'Pedido librería',
-            'Método de pago' => __("trafikrak::global.payment_types.{$this->paymentType}.title"),
+            'Método de pago' => __("testa::global.payment_types.{$this->paymentType}.title"),
         ];
 
         $this->cart->save();
@@ -297,7 +297,7 @@ class ShippingAndPaymentPage extends Page
 
         return redirect()
             ->route(
-                'trafikrak.storefront.checkout.process-payment',
+                'testa.storefront.checkout.process-payment',
                 ['id' => $this->cart->id, 'fingerprint' => $fingerprint, 'payment' => $this->paymentType],
             );
     }

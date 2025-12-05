@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Models\News;
+namespace Testa\Models\News;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -14,9 +14,9 @@ use Lunar\Models\Product;
 use NumaxLab\Lunar\Geslib\Models\Author;
 use Spatie\MediaLibrary\HasMedia as SpatieHasMedia;
 use Spatie\Translatable\HasTranslations;
-use Trafikrak\Models\Attachment;
-use Trafikrak\Models\EventDeliveryMethod;
-use Trafikrak\Models\Venue;
+use Testa\Models\Attachment;
+use Testa\Models\EventDeliveryMethod;
+use Testa\Models\Venue;
 
 class Event extends Model implements SpatieHasMedia
 {

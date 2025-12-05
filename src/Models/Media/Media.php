@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Models\Media;
+namespace Testa\Models\Media;
 
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 

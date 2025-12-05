@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Storefront\Http\Controllers;
+namespace Testa\Storefront\Http\Controllers;
 
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Http\Request;
@@ -15,9 +15,9 @@ use Lunar\Models\Cart;
 use Lunar\Models\Order;
 use NumaxLab\Lunar\Redsys\RedsysPayment;
 use NumaxLab\Lunar\Redsys\Responses\RedirectToPaymentGateway;
-use Trafikrak\Models\Membership\MembershipPlan;
-use Trafikrak\Observers\CourseObserver;
-use Trafikrak\Storefront\Livewire\Membership\DonatePage;
+use Testa\Models\Membership\MembershipPlan;
+use Testa\Observers\CourseObserver;
+use Testa\Storefront\Livewire\Membership\DonatePage;
 
 class ProcessPaymentController
 {
@@ -105,22 +105,22 @@ class ProcessPaymentController
         foreach ($order->lines as $line) {
             if ($line->purchasable_type === 'product_variant') {
                 if (Str::contains($line->purchasable->sku, DonatePage::DONATION_PRODUCT_SKU)) {
-                    return 'trafikrak.storefront.membership.donate.success';
+                    return 'testa.storefront.membership.donate.success';
                 }
 
                 if ($line->purchasable->product->product_type_id === CourseObserver::PRODUCT_TYPE_ID) {
-                    return 'trafikrak.storefront.education.courses.register.success';
+                    return 'testa.storefront.education.courses.register.success';
                 }
 
-                return 'trafikrak.storefront.checkout.success';
+                return 'testa.storefront.checkout.success';
             }
 
             if ($line->purchasable_type === Relation::getMorphAlias(MembershipPlan::class)) {
-                return 'trafikrak.storefront.membership.signup.success';
+                return 'testa.storefront.membership.signup.success';
             }
         }
 
-        return 'trafikrak.storefront.checkout.success';
+        return 'testa.storefront.checkout.success';
     }
 
     private function prepareOfflineData(mixed $paymentType, Order $order): array

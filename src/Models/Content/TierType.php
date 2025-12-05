@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Models\Content;
+namespace Testa\Models\Content;
 
 enum TierType: string
 {

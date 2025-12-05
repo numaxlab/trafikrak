@@ -3,13 +3,13 @@
 <section class="flex flex-col gap-6 lg:w-4xl lg:mx-auto">
     <h1 class="at-heading is-1">{{ __('Regístrate') }}</h1>
 
-    <x-trafikrak::auth.session-status class="text-center" :status="session('status')"/>
+    <x-testa::auth.session-status class="text-center" :status="session('status')"/>
 
     <form wire:submit="register" class="grid grid-cols-1 gap-6 md:grid-cols-2">
-        @include('trafikrak::storefront.partials.auth.register-form')
+        @include('testa::storefront.partials.auth.register-form')
 
         <div class="md:col-span-2">
-            @include('trafikrak::storefront.partials.privacy-policy')
+            @include('testa::storefront.partials.privacy-policy')
         </div>
 
         <x-numaxlab-atomic::atoms.button type="submit" class="is-primary w-full md:col-span-2">

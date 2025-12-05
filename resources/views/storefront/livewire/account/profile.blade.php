@@ -92,9 +92,9 @@
             {{ __('Guardar') }}
         </x-numaxlab-atomic::atoms.button>
 
-        <x-trafikrak::action-message class="me-3" on="profile-updated">
+        <x-testa::action-message class="me-3" on="profile-updated">
             {{ __('Guardado correctamente') }}
-        </x-trafikrak::action-message>
+        </x-testa::action-message>
     </form>
 
     <form wire:submit="deleteUser" class="space-y-6 mt-10">

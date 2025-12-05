@@ -2,7 +2,7 @@
     <header class="mb-10">
         <x-numaxlab-atomic::molecules.breadcrumb :label="__('Miga de pan')">
             <li>
-                <a href="{{ route('trafikrak.storefront.media.homepage') }}">
+                <a href="{{ route('testa.storefront.media.homepage') }}">
                     {{ __('Mediateca') }}
                 </a>
             </li>
@@ -25,6 +25,6 @@
             </div>
         @endif
 
-        @include('trafikrak::storefront.partials.media.attachables', ['media' => $audio])
+        @include('testa::storefront.partials.media.attachables', ['media' => $audio])
     </div>
 </article>

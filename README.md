@@ -1,19 +1,24 @@
-# Trafikrak
+# Testa
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/numaxlab/trafikrak.svg?style=flat-square)](https://packagist.org/packages/numaxlab/trafikrak)
-[![Total Downloads](https://img.shields.io/packagist/dt/numaxlab/trafikrak.svg?style=flat-square)](https://packagist.org/packages/numaxlab/trafikrak)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/numaxlab/testa.svg?style=flat-square)](https://packagist.org/packages/numaxlab/testa)
+[![Total Downloads](https://img.shields.io/packagist/dt/numaxlab/testa.svg?style=flat-square)](https://packagist.org/packages/numaxlab/testa)
 
-Trafikrak is a comprehensive Laravel package that extends the [Lunar](https://lunarphp.io/) e-commerce platform. It
-provides an opinionated, feature-rich set of functionalities specifically designed for building advanced content-driven
-online stores for bookshops. Trafikrak is built for bookshops that
-utilize [Geslib](https://editorial.trevenque.es/productos/geslib/) as their
-primary management system.
+Testa is a Galician term used in printing and binding referring to the top edge of a book.
 
-This package relies on [numaxlab/lunar-geslib](https://github.com/numaxlab/lunar-geslib) for the core Geslib
-integration, and complements it by providing a ready-to-use storefront implementation.
+It is also a comprehensive Laravel package that extends the [Lunar](https://lunarphp.io/) e-commerce platform. Testa
+offers an opinionated, feature-rich solution specifically designed for building advanced, content-driven online stores
+for bookshops.
 
-Furthermore, Trafikrak expands Lunar's capabilities by including a full-featured educational platform, a
+This package is tailored for bookshops that utilize [Geslib](https://editorial.trevenque.es/productos/geslib/) as their
+primary management system. It relies on the [numaxlab/lunar-geslib](https://github.com/numaxlab/lunar-geslib) package
+for the core Geslib integration and complements it by providing a ready-to-use storefront implementation.
+
+Furthermore, Testa expands Lunar's capabilities by integrating a full-featured educational platform, a
 membership system, news and events management, and other key tools.
+
+Testa was designed in a collaboration
+between [Traficantes de Sueños](https://traficantes.net), [Katakrak](https://katakrak.net)
+and [NUMAX](https://numax.org).
 
 ## Features
 
@@ -49,7 +54,7 @@ membership system, news and events management, and other key tools.
 You can install the package via composer:
 
 ```bash
-composer require numaxlab/trafikrak
+composer require numaxlab/testa
 ```
 
 The package service provider will be auto-discovered by Laravel.
@@ -60,7 +65,7 @@ The package service provider will be auto-discovered by Laravel.
         return $panel
             ->plugins([
                 GeslibPlugin::make(),
-                TrafikrakPlugin::make(),
+                TestaPlugin::make(),
                 ShippingPlugin::make(),
                 SpatieLaravelTranslatablePlugin::make()
                     ->defaultLocales(['es', 'en']), // Setup the languages you want to use
@@ -76,7 +81,7 @@ The package service provider will be auto-discovered by Laravel.
 
    ```bash
    php artisan lunar:geslib:install
-   php artisan lunar:trafikrak:install
+   php artisan lunar:testa:install
    ```
 
 ## Testing

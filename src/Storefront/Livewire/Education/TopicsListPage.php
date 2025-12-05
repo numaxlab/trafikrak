@@ -1,11 +1,11 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Education;
+namespace Testa\Storefront\Livewire\Education;
 
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
-use Trafikrak\Models\Education\Topic;
+use Testa\Models\Education\Topic;
 
 class TopicsListPage extends Page
 {
@@ -23,6 +23,6 @@ class TopicsListPage extends Page
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.education.topics-list');
+        return view('testa::storefront.livewire.education.topics-list');
     }
 }

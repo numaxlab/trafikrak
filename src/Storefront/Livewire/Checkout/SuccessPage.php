@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Checkout;
+namespace Testa\Storefront\Livewire\Checkout;
 
 use Illuminate\View\View;
 use Lunar\Models\Order;
@@ -17,7 +17,7 @@ class SuccessPage extends Page
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.checkout.success')
+        return view('testa::storefront.livewire.checkout.success')
             ->title(__('Pedido finalizado'));
     }
 }

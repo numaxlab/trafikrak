@@ -1,13 +1,13 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Components\Education;
+namespace Testa\Storefront\Livewire\Components\Education;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\View\View;
 use Livewire\Component;
-use Trafikrak\Models\Attachment;
-use Trafikrak\Models\Education\CourseModule;
+use Testa\Models\Attachment;
+use Testa\Models\Education\CourseModule;
 
 class ModuleMedia extends Component
 {
@@ -29,6 +29,6 @@ class ModuleMedia extends Component
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.components.education.module-media');
+        return view('testa::storefront.livewire.components.education.module-media');
     }
 }

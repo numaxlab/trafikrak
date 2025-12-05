@@ -1,10 +1,10 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\News;
+namespace Testa\Storefront\Livewire\News;
 
 use Illuminate\View\View;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
-use Trafikrak\Models\News\Event;
+use Testa\Models\News\Event;
 
 class EventPage extends Page
 {
@@ -27,7 +27,7 @@ class EventPage extends Page
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.news.event')
+        return view('testa::storefront.livewire.news.event')
             ->title($this->event->name);
     }
 }

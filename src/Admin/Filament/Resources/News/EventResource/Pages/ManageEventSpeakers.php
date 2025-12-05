@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\News\EventResource\Pages;
+namespace Testa\Admin\Filament\Resources\News\EventResource\Pages;
 
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Relations\Relation;
 use Lunar\Admin\Support\Pages\BaseManageRelatedRecords;
 use NumaxLab\Lunar\Geslib\Admin\Filament\Resources\AuthorResource;
 use NumaxLab\Lunar\Geslib\Models\Author;
-use Trafikrak\Admin\Filament\Resources\News\EventResource;
+use Testa\Admin\Filament\Resources\News\EventResource;
 
 class ManageEventSpeakers extends BaseManageRelatedRecords
 {
@@ -29,12 +29,12 @@ class ManageEventSpeakers extends BaseManageRelatedRecords
 
     public static function getNavigationLabel(): string
     {
-        return __('trafikrak::event.pages.speakers.label');
+        return __('testa::event.pages.speakers.label');
     }
 
     public function getTitle(): string
     {
-        return __('trafikrak::event.pages.speakers.label');
+        return __('testa::event.pages.speakers.label');
     }
 
     public function table(Table $table): Table
@@ -58,18 +58,18 @@ class ManageEventSpeakers extends BaseManageRelatedRecords
 
                         Notification::make()
                             ->success()
-                            ->body(__('trafikrak::coursemodule.pages.instructors.actions.detach.notification.success'))
+                            ->body(__('testa::coursemodule.pages.instructors.actions.detach.notification.success'))
                             ->send();
                     }),
             ])->headerActions([
                 AttachAction::make()
                     ->label(
-                        __('trafikrak::course.pages.products.actions.attach.label'),
+                        __('testa::course.pages.products.actions.attach.label'),
                     )
                     ->form([
                         Forms\Components\Select::make('recordId')
                             ->label(
-                                __('trafikrak::coursemodule.pages.instructors.actions.attach.form.record_id.label'),
+                                __('testa::coursemodule.pages.instructors.actions.attach.form.record_id.label'),
                             )
                             ->required()
                             ->searchable()
@@ -98,7 +98,7 @@ class ManageEventSpeakers extends BaseManageRelatedRecords
 
                         Notification::make()
                             ->success()
-                            ->body(__('trafikrak::coursemodule.pages.instructors.actions.attach.notification.success'))
+                            ->body(__('testa::coursemodule.pages.instructors.actions.attach.notification.success'))
                             ->send();
                     }),
             ]);

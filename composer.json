@@ -1,5 +1,5 @@
 {
-    "name": "numaxlab/trafikrak",
+    "name": "numaxlab/testa",
     "type": "library",
     "version": "1.0.0-beta.1",
     "license": "MIT",
@@ -23,19 +23,19 @@
     },
     "autoload": {
         "psr-4": {
-            "Trafikrak\\": "src/",
-            "Trafikrak\\Database\\Factories\\": "database/factories/"
+            "Testa\\": "src/",
+            "Testa\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Trafikrak\\Tests\\": "tests/"
+            "Testa\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Trafikrak\\TrafikrakServiceProvider"
+                "Testa\\TestaServiceProvider"
             ]
         }
     },

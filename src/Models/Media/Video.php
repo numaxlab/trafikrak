@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Models\Media;
+namespace Testa\Models\Media;
 
 use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Model;
@@ -9,8 +9,8 @@ use Lunar\Base\Traits\HasUrls;
 use Lunar\Base\Traits\LogsActivity;
 use Lunar\Base\Traits\Searchable;
 use Spatie\Translatable\HasTranslations;
-use Trafikrak\Models\Attachment;
-use Trafikrak\Policies\MediaPolicy;
+use Testa\Models\Attachment;
+use Testa\Policies\MediaPolicy;
 
 #[UsePolicy(MediaPolicy::class)]
 class Video extends Model implements Media

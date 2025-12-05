@@ -55,14 +55,14 @@
             @endif
         </header>
 
-        <livewire:trafikrak.storefront.livewire.components.account.subscription lazy/>
+        <livewire:testa.storefront.livewire.components.account.subscription lazy/>
 
-        <livewire:trafikrak.storefront.livewire.components.account.addresses lazy/>
+        <livewire:testa.storefront.livewire.components.account.addresses lazy/>
 
-        <livewire:trafikrak.storefront.livewire.components.account.latest-order lazy/>
+        <livewire:testa.storefront.livewire.components.account.latest-order lazy/>
 
-        <livewire:trafikrak.storefront.livewire.components.account.favourite-products lazy/>
+        <livewire:testa.storefront.livewire.components.account.favourite-products lazy/>
 
-        <livewire:trafikrak.storefront.livewire.components.account.latest-course lazy/>
+        <livewire:testa.storefront.livewire.components.account.latest-course lazy/>
     </div>
 </article>

@@ -1,5 +1,5 @@
 <x-numaxlab-atomic::molecules.summary
-        href="{{ route('trafikrak.storefront.education.courses.modules.show', [$module->course->defaultUrl->slug, $module->defaultUrl->slug]) }}"
+        href="{{ route('testa.storefront.education.courses.modules.show', [$module->course->defaultUrl->slug, $module->defaultUrl->slug]) }}"
 >
     @if ($module->course->thumbnailImage())
         <x-slot name="thumbnail">
@@ -34,7 +34,7 @@
         </ul>
 
         <a
-                href="{{ route('trafikrak.storefront.education.courses.modules.show', [$module->course->defaultUrl->slug, $module->defaultUrl->slug]) }}"
+                href="{{ route('testa.storefront.education.courses.modules.show', [$module->course->defaultUrl->slug, $module->defaultUrl->slug]) }}"
                 wire:navigate
                 class="at-button text-primary font-bold border-primary w-full mt-4"
         >
@@ -43,7 +43,7 @@
 
         @if ($module->course->purchasable)
             <a
-                    href="{{ route('trafikrak.storefront.education.courses.register', $module->course->defaultUrl->slug) }}"
+                    href="{{ route('testa.storefront.education.courses.register', $module->course->defaultUrl->slug) }}"
                     wire:navigate
                     class="at-button is-primary mt-2 w-full"
             >

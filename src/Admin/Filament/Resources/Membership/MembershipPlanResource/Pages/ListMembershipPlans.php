@@ -1,11 +1,11 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\Membership\MembershipPlanResource\Pages;
+namespace Testa\Admin\Filament\Resources\Membership\MembershipPlanResource\Pages;
 
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords\Concerns\Translatable;
 use Lunar\Admin\Support\Pages\BaseListRecords;
-use Trafikrak\Admin\Filament\Resources\Membership\MembershipPlanResource;
+use Testa\Admin\Filament\Resources\Membership\MembershipPlanResource;
 
 class ListMembershipPlans extends BaseListRecords
 {

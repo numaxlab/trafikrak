@@ -1,12 +1,12 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\News;
+namespace Testa\Storefront\Livewire\News;
 
 use Illuminate\View\View;
 use Livewire\Attributes\Url;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
-use Trafikrak\Livewire\Features\WithPagination;
-use Trafikrak\Models\News\Article;
+use Testa\Livewire\Features\WithPagination;
+use Testa\Models\News\Article;
 
 class ArticlesListPage extends Page
 {
@@ -23,7 +23,7 @@ class ArticlesListPage extends Page
             ->with(['defaultUrl'])
             ->paginate(12);
 
-        return view('trafikrak::storefront.livewire.news.articles-list', compact('articles'))
+        return view('testa::storefront.livewire.news.articles-list', compact('articles'))
             ->title(__('Noticias'));
     }
 

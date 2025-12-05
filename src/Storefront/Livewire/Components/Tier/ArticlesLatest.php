@@ -1,10 +1,10 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Components\Tier;
+namespace Testa\Storefront\Livewire\Components\Tier;
 
 use Illuminate\View\View;
 use Livewire\Component;
-use Trafikrak\Models\Content\Tier;
+use Testa\Models\Content\Tier;
 
 class ArticlesLatest extends Component
 {
@@ -12,6 +12,6 @@ class ArticlesLatest extends Component
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.components.tier.articles-latest');
+        return view('testa::storefront.livewire.components.tier.articles-latest');
     }
 }

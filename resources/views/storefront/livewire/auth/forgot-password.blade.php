@@ -8,7 +8,7 @@
         <a href="">contacta con la tienda</a>.
     </p>
 
-    <x-trafikrak::auth.session-status class="text-center" :status="session('status')"/>
+    <x-testa::auth.session-status class="text-center" :status="session('status')"/>
 
     <form wire:submit="sendPasswordResetLink" class="flex flex-col gap-6">
         <x-numaxlab-atomic::atoms.input

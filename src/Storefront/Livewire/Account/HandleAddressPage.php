@@ -1,11 +1,11 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Account;
+namespace Testa\Storefront\Livewire\Account;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
-use Trafikrak\Storefront\Livewire\Account\Forms\AddressForm;
+use Testa\Storefront\Livewire\Account\Forms\AddressForm;
 
 class HandleAddressPage extends Page
 {
@@ -13,7 +13,7 @@ class HandleAddressPage extends Page
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.account.handle-address');
+        return view('testa::storefront.livewire.account.handle-address');
     }
 
     public function mount($id = null): void

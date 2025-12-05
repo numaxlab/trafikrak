@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Education;
+namespace Testa\Storefront\Livewire\Education;
 
 use Illuminate\View\View;
 use Lunar\Models\Order;
@@ -19,7 +19,7 @@ class CourseRegisterSuccessPage extends Page
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.education.course-register-success')
+        return view('testa::storefront.livewire.education.course-register-success')
             ->title(__('Inscripción completada'));
     }
 }

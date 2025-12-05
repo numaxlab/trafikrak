@@ -1,5 +1,5 @@
 <x-numaxlab-atomic::molecules.summary
-        href="{{ route('trafikrak.storefront.events.show', $event->defaultUrl->slug) }}">
+        href="{{ route('testa.storefront.events.show', $event->defaultUrl->slug) }}">
     <x-slot name="thumbnail">
         <img src="{{ Storage::url($event->image) }}" alt="">
 
@@ -40,7 +40,7 @@
         @endif
 
         <a
-                href="{{ route('trafikrak.storefront.events.show', $event->defaultUrl->slug) }}"
+                href="{{ route('testa.storefront.events.show', $event->defaultUrl->slug) }}"
                 wire:navigate
                 class="at-button text-primary font-bold border-primary w-full mt-4"
         >

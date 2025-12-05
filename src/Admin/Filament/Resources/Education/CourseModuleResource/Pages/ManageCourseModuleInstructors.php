@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\Education\CourseModuleResource\Pages;
+namespace Testa\Admin\Filament\Resources\Education\CourseModuleResource\Pages;
 
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Relations\Relation;
 use Lunar\Admin\Support\Pages\BaseManageRelatedRecords;
 use NumaxLab\Lunar\Geslib\Admin\Filament\Resources\AuthorResource;
 use NumaxLab\Lunar\Geslib\Models\Author;
-use Trafikrak\Admin\Filament\Resources\Education\CourseModuleResource;
+use Testa\Admin\Filament\Resources\Education\CourseModuleResource;
 
 class ManageCourseModuleInstructors extends BaseManageRelatedRecords
 {
@@ -29,12 +29,12 @@ class ManageCourseModuleInstructors extends BaseManageRelatedRecords
 
     public static function getNavigationLabel(): string
     {
-        return __('trafikrak::coursemodule.pages.instructors.label');
+        return __('testa::coursemodule.pages.instructors.label');
     }
 
     public function getTitle(): string
     {
-        return __('trafikrak::coursemodule.pages.instructors.label');
+        return __('testa::coursemodule.pages.instructors.label');
     }
 
     public function table(Table $table): Table
@@ -52,24 +52,24 @@ class ManageCourseModuleInstructors extends BaseManageRelatedRecords
             ])->actions([
                 DetachAction::make()
                     ->action(function (Model $record, Table $table) {
-                        $relationship = Relation::noConstraints(fn() => $table->getRelationship());
+                        $relationship = Relation::noConstraints(fn () => $table->getRelationship());
 
                         $relationship->detach($record);
 
                         Notification::make()
                             ->success()
-                            ->body(__('trafikrak::coursemodule.pages.instructors.actions.detach.notification.success'))
+                            ->body(__('testa::coursemodule.pages.instructors.actions.detach.notification.success'))
                             ->send();
                     }),
             ])->headerActions([
                 AttachAction::make()
                     ->label(
-                        __('trafikrak::course.pages.products.actions.attach.label'),
+                        __('testa::course.pages.products.actions.attach.label'),
                     )
                     ->form([
                         Forms\Components\Select::make('recordId')
                             ->label(
-                                __('trafikrak::coursemodule.pages.instructors.actions.attach.form.record_id.label'),
+                                __('testa::coursemodule.pages.instructors.actions.attach.form.record_id.label'),
                             )
                             ->required()
                             ->searchable()
@@ -78,7 +78,7 @@ class ManageCourseModuleInstructors extends BaseManageRelatedRecords
                                     return Author::search($search)
                                         ->get()
                                         ->mapWithKeys(
-                                            fn(Author $record): array
+                                            fn (Author $record): array
                                                 => [
                                                 $record->getKey() => $record->name,
                                             ],
@@ -88,7 +88,7 @@ class ManageCourseModuleInstructors extends BaseManageRelatedRecords
                             ),
                     ])
                     ->action(function (array $arguments, array $data, Form $form, Table $table) {
-                        $relationship = Relation::noConstraints(fn() => $table->getRelationship());
+                        $relationship = Relation::noConstraints(fn () => $table->getRelationship());
 
                         $instructor = Author::find($data['recordId']);
 
@@ -98,7 +98,7 @@ class ManageCourseModuleInstructors extends BaseManageRelatedRecords
 
                         Notification::make()
                             ->success()
-                            ->body(__('trafikrak::coursemodule.pages.instructors.actions.attach.notification.success'))
+                            ->body(__('testa::coursemodule.pages.instructors.actions.attach.notification.success'))
                             ->send();
                     }),
             ]);

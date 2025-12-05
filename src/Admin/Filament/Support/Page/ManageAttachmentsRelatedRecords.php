@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Support\Page;
+namespace Testa\Admin\Filament\Support\Page;
 
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -12,10 +12,10 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Lunar\Admin\Support\Pages\BaseManageRelatedRecords;
-use Trafikrak\Models\Attachment;
-use Trafikrak\Models\Media\Audio;
-use Trafikrak\Models\Media\Document;
-use Trafikrak\Models\Media\Video;
+use Testa\Models\Attachment;
+use Testa\Models\Media\Audio;
+use Testa\Models\Media\Document;
+use Testa\Models\Media\Video;
 
 class ManageAttachmentsRelatedRecords extends BaseManageRelatedRecords
 {
@@ -26,12 +26,12 @@ class ManageAttachmentsRelatedRecords extends BaseManageRelatedRecords
 
     public static function getNavigationLabel(): string
     {
-        return __('trafikrak::attachment.label');
+        return __('testa::attachment.label');
     }
 
     public function getTitle(): string
     {
-        return __('trafikrak::attachment.label');
+        return __('testa::attachment.label');
     }
 
     public function table(Table $table): Table
@@ -41,23 +41,23 @@ class ManageAttachmentsRelatedRecords extends BaseManageRelatedRecords
             ->reorderable('position')
             ->columns([
                 Tables\Columns\TextColumn::make('media.name')
-                    ->label(__('trafikrak::attachment.table.name.label')),
+                    ->label(__('testa::attachment.table.name.label')),
                 Tables\Columns\TextColumn::make('media_type')
-                    ->label(__('trafikrak::attachment.table.type.label'))
+                    ->label(__('testa::attachment.table.type.label'))
                     ->formatStateUsing(fn (string $state): string => match ($state) {
-                        (new Audio)->getMorphClass() => __('trafikrak::attachment.table.type.options.audio'),
-                        (new Video)->getMorphClass() => __('trafikrak::attachment.table.type.options.video'),
-                        (new Document)->getMorphClass() => __('trafikrak::attachment.table.type.options.document'),
-                        default => __('trafikrak::attachment.table.type.options.unknown'),
+                        (new Audio)->getMorphClass() => __('testa::attachment.table.type.options.audio'),
+                        (new Video)->getMorphClass() => __('testa::attachment.table.type.options.video'),
+                        (new Document)->getMorphClass() => __('testa::attachment.table.type.options.document'),
+                        default => __('testa::attachment.table.type.options.unknown'),
                     })
                     ->badge(),
             ])
             ->headerActions([
                 AttachAction::make()
-                    ->label(__('trafikrak::attachment.actions.attach.label'))
+                    ->label(__('testa::attachment.actions.attach.label'))
                     ->form([
                         Forms\Components\MorphToSelect::make('media')
-                            ->label(__('trafikrak::attachment.actions.attach.form.media.label'))
+                            ->label(__('testa::attachment.actions.attach.form.media.label'))
                             ->searchable()
                             ->required()
                             ->types([
@@ -77,7 +77,7 @@ class ManageAttachmentsRelatedRecords extends BaseManageRelatedRecords
 
                         Notification::make()
                             ->success()
-                            ->body(__('trafikrak::attachment.actions.attach.notification.success'))
+                            ->body(__('testa::attachment.actions.attach.notification.success'))
                             ->send();
                     }),
             ])
@@ -88,7 +88,7 @@ class ManageAttachmentsRelatedRecords extends BaseManageRelatedRecords
 
                         Notification::make()
                             ->success()
-                            ->body(__('trafikrak::attachment.actions.detach.notification.success'))
+                            ->body(__('testa::attachment.actions.detach.notification.success'))
                             ->send();
                     }),
             ]);

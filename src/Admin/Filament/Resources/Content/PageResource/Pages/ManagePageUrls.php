@@ -1,10 +1,10 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\Content\PageResource\Pages;
+namespace Testa\Admin\Filament\Resources\Content\PageResource\Pages;
 
 use Lunar\Admin\Support\Resources\Pages\ManageUrlsRelatedRecords;
-use Trafikrak\Admin\Filament\Resources\Content\PageResource;
-use Trafikrak\Models\Content\Page;
+use Testa\Admin\Filament\Resources\Content\PageResource;
+use Testa\Models\Content\Page;
 
 class ManagePageUrls extends ManageUrlsRelatedRecords
 {

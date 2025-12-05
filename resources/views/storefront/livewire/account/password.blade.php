@@ -52,8 +52,8 @@
             {{ __('Guardar') }}
         </x-numaxlab-atomic::atoms.button>
 
-        <x-trafikrak::action-message class="me-3" on="password-updated">
+        <x-testa::action-message class="me-3" on="password-updated">
             {{ __('Contraseña modificada correctamente.') }}
-        </x-trafikrak::action-message>
+        </x-testa::action-message>
     </form>
 </article>

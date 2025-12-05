@@ -1,11 +1,11 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Media;
+namespace Testa\Storefront\Livewire\Media;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\View\View;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
-use Trafikrak\Models\Media\Video;
+use Testa\Models\Media\Video;
 
 class VideoPage extends Page
 {
@@ -32,7 +32,7 @@ class VideoPage extends Page
             abort(403);
         }
 
-        return view('trafikrak::storefront.livewire.media.video')
+        return view('testa::storefront.livewire.media.video')
             ->title($this->video->name);
     }
 }

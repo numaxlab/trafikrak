@@ -1,5 +1,5 @@
 <x-numaxlab-atomic::molecules.banner
-        :href="route('trafikrak.storefront.education.topics.show', $topic->defaultUrl->slug)"
+        :href="route('testa.storefront.education.topics.show', $topic->defaultUrl->slug)"
         :class="$topic->getFirstMedia(config('lunar.media.collection')) ? 'has-media' : ''"
         :image-src="$topic->getFirstMedia(config('lunar.media.collection'))?->getUrl('medium')"
 >

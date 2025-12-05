@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Storefront\GlobalSearch;
+namespace Testa\Storefront\GlobalSearch;
 
 use Livewire\Wireable;
 

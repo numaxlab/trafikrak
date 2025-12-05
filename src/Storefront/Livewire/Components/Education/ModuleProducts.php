@@ -1,12 +1,12 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Components\Education;
+namespace Testa\Storefront\Livewire\Components\Education;
 
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
 use Livewire\Component;
 use Lunar\Facades\StorefrontSession;
-use Trafikrak\Models\Education\CourseModule;
+use Testa\Models\Education\CourseModule;
 
 class ModuleProducts extends Component
 {
@@ -57,6 +57,6 @@ class ModuleProducts extends Component
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.components.education.module-products');
+        return view('testa::storefront.livewire.components.education.module-products');
     }
 }

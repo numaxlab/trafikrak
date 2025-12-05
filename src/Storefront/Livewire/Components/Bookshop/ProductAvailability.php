@@ -1,11 +1,11 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Components\Bookshop;
+namespace Testa\Storefront\Livewire\Components\Bookshop;
 
 use Illuminate\View\View;
 use Livewire\Component;
 use Lunar\Base\Purchasable;
-use NumaxLab\Lunar\Geslib\Services\CegalAvailabilityService;
+use NumaxLab\Lunar\Geslib\Services\CegalAvailability;
 
 class ProductAvailability extends Component
 {
@@ -15,7 +15,7 @@ class ProductAvailability extends Component
 
     public string $moreInfo = '';
 
-    public function mount(CegalAvailabilityService $cegalAvailabilityService): void
+    public function mount(CegalAvailability $cegalAvailability): void
     {
         if (! $this->purchasable) {
             return;
@@ -34,7 +34,7 @@ class ProductAvailability extends Component
                 $this->moreInfo = $this->buildStockByCenterInfo($byCenter);
             }
         } else {
-            $trustedStockProvider = $cegalAvailabilityService->getAvailability($this->purchasable);
+            $trustedStockProvider = $cegalAvailability->getAvailability($this->purchasable);
 
             if ($trustedStockProvider) {
                 $this->moreInfo = $trustedStockProvider->delivery_period;
@@ -76,6 +76,6 @@ class ProductAvailability extends Component
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.components.bookshop.product-availability');
+        return view('testa::storefront.livewire.components.bookshop.product-availability');
     }
 }

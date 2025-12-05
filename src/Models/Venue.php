@@ -1,14 +1,14 @@
 <?php
 
-namespace Trafikrak\Models;
+namespace Testa\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Lunar\Base\Traits\LogsActivity;
 use Spatie\Translatable\HasTranslations;
-use Trafikrak\Models\Education\CourseModule;
-use Trafikrak\Models\News\Event;
+use Testa\Models\Education\CourseModule;
+use Testa\Models\News\Event;
 
 class Venue extends Model
 {

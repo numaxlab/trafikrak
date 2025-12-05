@@ -10,7 +10,7 @@
             <ul class="grid gap-6 md:grid-cols-2">
                 @foreach($modules as $module)
                     <li>
-                        <x-trafikrak::course-modules.summary :module="$module"/>
+                        <x-testa::course-modules.summary :module="$module"/>
                     </li>
                 @endforeach
             </ul>

@@ -9,12 +9,12 @@
                         name="payment_type"
                         value="{{ $type }}">
                         <span class="text-2xl">
-                            {{ __("trafikrak::global.payment_types.{$type}.title") }}
+                            {{ __("testa::global.payment_types.{$type}.title") }}
                         </span>
                 </x-numaxlab-atomic::atoms.forms.radio>
 
                 <p class="at-small mt-2">
-                    {{ __("trafikrak::global.payment_types.{$type}.description") }}
+                    {{ __("testa::global.payment_types.{$type}.description") }}
                 </p>
 
                 @if ($type === 'direct-debit')

@@ -12,7 +12,7 @@
         </x-numaxlab-atomic::organisms.tier.header>
 
         @if ($course)
-            <x-trafikrak::courses.summary :course="$course"/>
+            <x-testa::courses.summary :course="$course"/>
         @else
             <p>{{ __('Todavía no te has inscrito en ningún curso.') }}</p>
         @endif

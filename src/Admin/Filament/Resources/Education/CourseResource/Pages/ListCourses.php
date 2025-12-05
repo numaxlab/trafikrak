@@ -1,11 +1,11 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\Education\CourseResource\Pages;
+namespace Testa\Admin\Filament\Resources\Education\CourseResource\Pages;
 
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords\Concerns\Translatable;
 use Lunar\Admin\Support\Pages\BaseListRecords;
-use Trafikrak\Admin\Filament\Resources\Education\CourseResource;
+use Testa\Admin\Filament\Resources\Education\CourseResource;
 
 class ListCourses extends BaseListRecords
 {

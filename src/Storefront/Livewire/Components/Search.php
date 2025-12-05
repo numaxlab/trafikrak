@@ -1,15 +1,15 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Components;
+namespace Testa\Storefront\Livewire\Components;
 
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
 use Livewire\Component;
 use Lunar\Models\Product;
-use Trafikrak\Models\Education\Course;
-use Trafikrak\Models\Media\Audio;
-use Trafikrak\Models\Media\Video;
-use Trafikrak\Storefront\GlobalSearch\GlobalSearch;
+use Testa\Models\Education\Course;
+use Testa\Models\Media\Audio;
+use Testa\Models\Media\Video;
+use Testa\Storefront\GlobalSearch\GlobalSearch;
 
 class Search extends Component
 {
@@ -39,7 +39,7 @@ class Search extends Component
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.components.search');
+        return view('testa::storefront.livewire.components.search');
     }
 
     public function setContentTypeFilter(GlobalSearch $globalSearch, $contentType): void
@@ -66,9 +66,9 @@ class Search extends Component
     public function search(): void
     {
         $redirectRoute = match ($this->contentTypeFilter) {
-            'products' => 'trafikrak.storefront.bookshop.search',
-            'courses' => 'trafikrak.storefront.education.courses.index',
-            'audios', 'videos' => 'trafikrak.storefront.media.search',
+            'products' => 'testa.storefront.bookshop.search',
+            'courses' => 'testa.storefront.education.courses.index',
+            'audios', 'videos' => 'testa.storefront.media.search',
             default => null,
         };
 

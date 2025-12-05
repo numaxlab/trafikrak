@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Models\Editorial;
+namespace Testa\Models\Editorial;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

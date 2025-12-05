@@ -4,19 +4,19 @@
     <header class="mb-8">
         <x-numaxlab-atomic::molecules.breadcrumb :label="__('Miga de pan')">
             <li>
-                <a href="{{ route('trafikrak.storefront.education.homepage') }}">
+                <a href="{{ route('testa.storefront.education.homepage') }}">
                     {{ __('Formación') }}
                 </a>
             </li>
             <li>
-                <a href="{{ route('trafikrak.storefront.education.courses.index') }}">
+                <a href="{{ route('testa.storefront.education.courses.index') }}">
                     {{ __('Cursos') }}
                 </a>
             </li>
             @if ($course->topic)
                 <li>
                     <a
-                            href="{{ route('trafikrak.storefront.education.topics.show', $course->topic->defaultUrl->slug) }}"
+                            href="{{ route('testa.storefront.education.topics.show', $course->topic->defaultUrl->slug) }}"
                             wire:navigate
                     >
                         {{ $course->topic->name }}
@@ -25,7 +25,7 @@
             @endif
             <li>
                 <a
-                        href="{{ route('trafikrak.storefront.education.courses.show', $course->defaultUrl->slug) }}"
+                        href="{{ route('testa.storefront.education.courses.show', $course->defaultUrl->slug) }}"
                         wire:navigate
                 >
                     {{ $course->name }}
@@ -57,7 +57,7 @@
 
     @if ($banner)
         <div class="mb-10">
-            <x-trafikrak::banners.mini :banner="$banner"/>
+            <x-testa::banners.mini :banner="$banner"/>
         </div>
     @endif
 
@@ -86,7 +86,7 @@
                             <div class="text-2xl font-semibold not-prose">
                                 {{ $variant->values->pluck('name.'.app()->getLocale())->join(' - ') }}:
 
-                                <livewire:trafikrak.storefront.livewire.components.price
+                                <livewire:testa.storefront.livewire.components.price
                                         :key="'price-' . $variant->id"
                                         :purchasable="$variant"/>
                             </div>
@@ -111,7 +111,7 @@
                 </legend>
 
                 <div class="mt-15 clear-both">
-                    @include('trafikrak::storefront.partials.checkout.embed-auth')
+                    @include('testa::storefront.partials.checkout.embed-auth')
                 </div>
             </fieldset>
         @endif
@@ -151,7 +151,7 @@
 
                 @if ($this->invoice)
                     <div class="mt-6">
-                        @include('trafikrak::storefront.partials.checkout.billing-address')
+                        @include('testa::storefront.partials.checkout.billing-address')
                     </div>
                 @endif
             </div>
@@ -163,12 +163,12 @@
             </legend>
 
             <div class="mt-15 clear-both">
-                @include('trafikrak::storefront.partials.checkout.payment')
+                @include('testa::storefront.partials.checkout.payment')
             </div>
         </fieldset>
 
         <div class="mb-8">
-            @include('trafikrak::storefront.partials.privacy-policy')
+            @include('testa::storefront.partials.privacy-policy')
         </div>
 
         <button class="at-button is-primary w-full" type="submit">

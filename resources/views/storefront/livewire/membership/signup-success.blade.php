@@ -15,7 +15,7 @@
             </a>
         </li>
         <li>
-            <a href="{{ route('trafikrak.storefront.homepage') }}" wire:navigate class="at-button is-primary">
+            <a href="{{ route('testa.storefront.homepage') }}" wire:navigate class="at-button is-primary">
                 {{ __('Ir a la portada') }}
             </a>
         </li>

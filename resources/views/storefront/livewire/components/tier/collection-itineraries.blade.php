@@ -18,7 +18,7 @@
         <ul class="grid gap-6 md:grid-cols-2">
             @foreach($itineraries as $collection)
                 <li>
-                    <x-trafikrak::itineraries.summary :collection="$collection"/>
+                    <x-testa::itineraries.summary :collection="$collection"/>
                 </li>
             @endforeach
         </ul>

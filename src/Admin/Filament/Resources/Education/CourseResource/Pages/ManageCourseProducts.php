@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\Education\CourseResource\Pages;
+namespace Testa\Admin\Filament\Resources\Education\CourseResource\Pages;
 
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -15,7 +15,7 @@ use Lunar\Admin\Filament\Resources\ProductResource;
 use Lunar\Admin\Support\Pages\BaseManageRelatedRecords;
 use Lunar\Models\Contracts\Product as ProductContract;
 use Lunar\Models\Product;
-use Trafikrak\Admin\Filament\Resources\Education\CourseResource;
+use Testa\Admin\Filament\Resources\Education\CourseResource;
 
 class ManageCourseProducts extends BaseManageRelatedRecords
 {
@@ -30,12 +30,12 @@ class ManageCourseProducts extends BaseManageRelatedRecords
 
     public static function getNavigationLabel(): string
     {
-        return __('trafikrak::course.pages.products.label');
+        return __('testa::course.pages.products.label');
     }
 
     public function getTitle(): string
     {
-        return __('trafikrak::course.pages.products.label');
+        return __('testa::course.pages.products.label');
     }
 
     public function table(Table $table): Table
@@ -54,24 +54,24 @@ class ManageCourseProducts extends BaseManageRelatedRecords
             ])->actions([
                 DetachAction::make()
                     ->action(function (Model $record, Table $table) {
-                        $relationship = Relation::noConstraints(fn() => $table->getRelationship());
+                        $relationship = Relation::noConstraints(fn () => $table->getRelationship());
 
                         $relationship->detach($record);
 
                         Notification::make()
                             ->success()
-                            ->body(__('trafikrak::course.pages.products.actions.detach.notification.success'))
+                            ->body(__('testa::course.pages.products.actions.detach.notification.success'))
                             ->send();
                     }),
             ])->headerActions([
                 AttachAction::make()
                     ->label(
-                        __('trafikrak::course.pages.products.actions.attach.label'),
+                        __('testa::course.pages.products.actions.attach.label'),
                     )
                     ->form([
                         Forms\Components\Select::make('recordId')
                             ->label(
-                                __('trafikrak::course.pages.products.actions.attach.form.record_id.label'),
+                                __('testa::course.pages.products.actions.attach.form.record_id.label'),
                             )
                             ->required()
                             ->searchable()
@@ -80,7 +80,7 @@ class ManageCourseProducts extends BaseManageRelatedRecords
                                     return Product::search($search)
                                         ->get()
                                         ->mapWithKeys(
-                                            fn(ProductContract $record): array
+                                            fn (ProductContract $record): array
                                                 => [
                                                 $record->getKey() => $record->translateAttribute('name'),
                                             ],
@@ -90,7 +90,7 @@ class ManageCourseProducts extends BaseManageRelatedRecords
                             ),
                     ])
                     ->action(function (array $arguments, array $data, Form $form, Table $table) {
-                        $relationship = Relation::noConstraints(fn() => $table->getRelationship());
+                        $relationship = Relation::noConstraints(fn () => $table->getRelationship());
 
                         $product = Product::find($data['recordId']);
 
@@ -100,7 +100,7 @@ class ManageCourseProducts extends BaseManageRelatedRecords
 
                         Notification::make()
                             ->success()
-                            ->body(__('trafikrak::course.pages.products.actions.attach.notification.success'))
+                            ->body(__('testa::course.pages.products.actions.attach.notification.success'))
                             ->send();
                     }),
             ]);

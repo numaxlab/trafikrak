@@ -1,10 +1,10 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\Media\VideoResource\Pages;
+namespace Testa\Admin\Filament\Resources\Media\VideoResource\Pages;
 
 use Lunar\Admin\Support\Resources\Pages\ManageUrlsRelatedRecords;
-use Trafikrak\Admin\Filament\Resources\Media\VideoResource;
-use Trafikrak\Models\Media\Video;
+use Testa\Admin\Filament\Resources\Media\VideoResource;
+use Testa\Models\Media\Video;
 
 class ManageVideoUrls extends ManageUrlsRelatedRecords
 {

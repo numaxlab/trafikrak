@@ -7,7 +7,7 @@
 <article class="ml-summary">
     <a
             @if ($hasProfilePage)
-                href="{{ route($editorial ? 'trafikrak.storefront.editorial.authors.show' : 'trafikrak.storefront.authors.show', $author->defaultUrl->slug) }}"
+                href="{{ route($editorial ? 'testa.storefront.editorial.authors.show' : 'testa.storefront.authors.show', $author->defaultUrl->slug) }}"
             @endif
             class="flex gap-4"
     >

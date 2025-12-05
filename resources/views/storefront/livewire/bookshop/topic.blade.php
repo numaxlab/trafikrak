@@ -3,7 +3,7 @@
         <header>
             <x-numaxlab-atomic::molecules.breadcrumb :label="__('Miga de pan')">
                 <li>
-                    <a href="{{ route('trafikrak.storefront.bookshop.homepage') }}">
+                    <a href="{{ route('testa.storefront.bookshop.homepage') }}">
                         {{ __('Librería') }}
                     </a>
                 </li>
@@ -39,9 +39,9 @@
             <ul class="grid gap-6 grid-cols-2 mb-9 md:grid-cols-4 lg:grid-cols-6">
                 @foreach ($products as $product)
                     <li wire:key="product-{{ $product->id }}">
-                        <x-trafikrak::products.summary
+                        <x-testa::products.summary
                                 :product="$product"
-                                :href="route('trafikrak.storefront.bookshop.products.show', $product->defaultUrl->slug)"
+                                :href="route('testa.storefront.bookshop.products.show', $product->defaultUrl->slug)"
                         />
                     </li>
                 @endforeach

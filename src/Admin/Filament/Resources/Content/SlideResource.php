@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\Content;
+namespace Testa\Admin\Filament\Resources\Content;
 
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -9,8 +9,8 @@ use Filament\Resources\Concerns\Translatable;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Lunar\Admin\Support\Resources\BaseResource;
-use Trafikrak\Models\Content\Section;
-use Trafikrak\Models\Content\Slide;
+use Testa\Models\Content\Section;
+use Testa\Models\Content\Slide;
 
 class SlideResource extends BaseResource
 {
@@ -24,17 +24,17 @@ class SlideResource extends BaseResource
 
     public static function getNavigationGroup(): ?string
     {
-        return __('trafikrak::global.sections.content');
+        return __('testa::global.sections.content');
     }
 
     public static function getLabel(): string
     {
-        return __('trafikrak::slide.label');
+        return __('testa::slide.label');
     }
 
     public static function getPluralLabel(): string
     {
-        return __('trafikrak::slide.plural_label');
+        return __('testa::slide.plural_label');
     }
 
     public static function getNavigationIcon(): ?string
@@ -57,10 +57,10 @@ class SlideResource extends BaseResource
             ])
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->label(__('trafikrak::slide.table.name.label'))
+                    ->label(__('testa::slide.table.name.label'))
                     ->searchable(),
                 Tables\Columns\ToggleColumn::make('is_published')
-                    ->label(__('trafikrak::slide.table.is_published.label')),
+                    ->label(__('testa::slide.table.is_published.label')),
             ])
             ->defaultSort('sort_position')
             ->reorderable('sort_position');
@@ -73,28 +73,28 @@ class SlideResource extends BaseResource
                 Forms\Components\Section::make()
                     ->schema([
                         Forms\Components\TextInput::make('name')
-                            ->label(__('trafikrak::slide.form.name.label'))
+                            ->label(__('testa::slide.form.name.label'))
                             ->required()
                             ->maxLength(255)
                             ->autofocus(),
                         Forms\Components\Select::make('section')
-                            ->label(__('trafikrak::slide.form.section.label'))
+                            ->label(__('testa::slide.form.section.label'))
                             ->options([
-                                Section::HOMEPAGE->value => __('trafikrak::slide.form.section.options.homepage'),
-                                Section::BOOKSHOP->value => __('trafikrak::slide.form.section.options.bookshop'),
-                                Section::EDITORIAL->value => __('trafikrak::slide.form.section.options.editorial'),
-                                Section::EDUCATION->value => __('trafikrak::slide.form.section.options.education'),
+                                Section::HOMEPAGE->value => __('testa::slide.form.section.options.homepage'),
+                                Section::BOOKSHOP->value => __('testa::slide.form.section.options.bookshop'),
+                                Section::EDITORIAL->value => __('testa::slide.form.section.options.editorial'),
+                                Section::EDUCATION->value => __('testa::slide.form.section.options.education'),
                             ])
                             ->required(),
                         Forms\Components\Select::make('style')
-                            ->label(__('trafikrak::slide.form.style.label'))
+                            ->label(__('testa::slide.form.style.label'))
                             ->options([
-                                'positive' => __('trafikrak::slide.form.style.options.positive'),
-                                'negative' => __('trafikrak::slide.form.style.options.negative'),
+                                'positive' => __('testa::slide.form.style.options.positive'),
+                                'negative' => __('testa::slide.form.style.options.negative'),
                             ])
                             ->required(),
                         Forms\Components\RichEditor::make('description')
-                            ->label(__('trafikrak::slide.form.description.label')),
+                            ->label(__('testa::slide.form.description.label')),
                         Forms\Components\Grid::make()
                             ->columns([
                                 'sm' => 1,
@@ -102,18 +102,18 @@ class SlideResource extends BaseResource
                             ])
                             ->schema([
                                 Forms\Components\TextInput::make('link')
-                                    ->label(__('trafikrak::banner.form.link.label'))
+                                    ->label(__('testa::banner.form.link.label'))
                                     ->maxLength(255),
                                 Forms\Components\TextInput::make('button_text')
-                                    ->label(__('trafikrak::banner.form.button_text.label'))
+                                    ->label(__('testa::banner.form.button_text.label'))
                                     ->maxLength(255),
                             ]),
                         Forms\Components\FileUpload::make('image')
-                            ->label(__('trafikrak::slide.form.image.label'))
+                            ->label(__('testa::slide.form.image.label'))
                             ->image()
                             ->imageEditor(),
                         Forms\Components\Toggle::make('is_published')
-                            ->label(__('trafikrak::slide.form.is_published.label')),
+                            ->label(__('testa::slide.form.is_published.label')),
                     ]),
             ])
             ->columns(1);

@@ -1,11 +1,11 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\Membership\MembershipTierResource\Pages;
+namespace Testa\Admin\Filament\Resources\Membership\MembershipTierResource\Pages;
 
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords\Concerns\Translatable;
 use Lunar\Admin\Support\Pages\BaseListRecords;
-use Trafikrak\Admin\Filament\Resources\Membership\MembershipTierResource;
+use Testa\Admin\Filament\Resources\Membership\MembershipTierResource;
 
 class ListMembershipTiers extends BaseListRecords
 {

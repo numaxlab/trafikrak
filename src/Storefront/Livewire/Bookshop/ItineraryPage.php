@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Bookshop;
+namespace Testa\Storefront\Livewire\Bookshop;
 
 use Illuminate\View\View;
 use Lunar\Models\Collection;
@@ -35,7 +35,7 @@ class ItineraryPage extends Page
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.bookshop.itinerary')
+        return view('testa::storefront.livewire.bookshop.itinerary')
             ->title($this->itinerary->translateAttribute('name'));
     }
 }

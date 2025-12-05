@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Auth;
+namespace Testa\Storefront\Livewire\Auth;
 
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Hash;
@@ -31,7 +31,7 @@ class ResetPasswordPage extends Page
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.auth.reset-password');
+        return view('testa::storefront.livewire.auth.reset-password');
     }
 
     public function resetPassword(): void

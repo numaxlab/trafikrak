@@ -1,9 +1,9 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\News\EventResource\Pages;
+namespace Testa\Admin\Filament\Resources\News\EventResource\Pages;
 
-use Trafikrak\Admin\Filament\Resources\News\EventResource;
-use Trafikrak\Admin\Filament\Support\Page\ManageAttachmentsRelatedRecords;
+use Testa\Admin\Filament\Resources\News\EventResource;
+use Testa\Admin\Filament\Support\Page\ManageAttachmentsRelatedRecords;
 
 class ManageEventAttachments extends ManageAttachmentsRelatedRecords
 {

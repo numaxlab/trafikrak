@@ -1,16 +1,16 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Media;
+namespace Testa\Storefront\Livewire\Media;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Livewire\Attributes\Url;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
-use Trafikrak\Livewire\Features\WithPagination;
-use Trafikrak\Models\Education\Topic;
-use Trafikrak\Models\Media\Audio;
-use Trafikrak\Models\Media\Video;
-use Trafikrak\Models\Media\Visibility;
+use Testa\Livewire\Features\WithPagination;
+use Testa\Models\Education\Topic;
+use Testa\Models\Media\Audio;
+use Testa\Models\Media\Video;
+use Testa\Models\Media\Visibility;
 
 class SearchPage extends Page
 {
@@ -59,7 +59,7 @@ class SearchPage extends Page
             ->orderBy('created_at', 'desc')
             ->paginate(12);
 
-        return view('trafikrak::storefront.livewire.media.search', compact('topics', 'media'))
+        return view('testa::storefront.livewire.media.search', compact('topics', 'media'))
             ->title(__('Audios y vídeos'));
     }
 

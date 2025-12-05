@@ -1,8 +1,8 @@
 <?php
 
-namespace Trafikrak\Storefront\GlobalSearch\Mappers;
+namespace Testa\Storefront\GlobalSearch\Mappers;
 
-use Trafikrak\Storefront\GlobalSearch\SearchResult;
+use Testa\Storefront\GlobalSearch\SearchResult;
 
 class ProductMapper extends AbstractMapper
 {
@@ -18,7 +18,7 @@ class ProductMapper extends AbstractMapper
             $this->model->searchableAs(),
             $this->model->id,
             $title,
-            route('trafikrak.storefront.bookshop.products.show', $this->model->defaultUrl->slug),
+            route('testa.storefront.bookshop.products.show', $this->model->defaultUrl->slug),
             $this->score,
         );
     }

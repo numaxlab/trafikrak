@@ -1,8 +1,8 @@
 <?php
 
-namespace Trafikrak\Storefront\GlobalSearch\Mappers;
+namespace Testa\Storefront\GlobalSearch\Mappers;
 
-use Trafikrak\Storefront\GlobalSearch\SearchResult;
+use Testa\Storefront\GlobalSearch\SearchResult;
 
 class AudioMapper extends AbstractMapper
 {
@@ -12,7 +12,7 @@ class AudioMapper extends AbstractMapper
             $this->model->searchableAs(),
             $this->model->id,
             $this->model->name,
-            route('trafikrak.storefront.media.audios.show', $this->model->defaultUrl->slug),
+            route('testa.storefront.media.audios.show', $this->model->defaultUrl->slug),
             $this->score,
         );
     }

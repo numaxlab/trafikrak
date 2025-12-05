@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\Editorial\ProductResource\Pages;
+namespace Testa\Admin\Filament\Resources\Editorial\ProductResource\Pages;
 
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -10,7 +10,7 @@ use Filament\Tables\Table;
 use Illuminate\Contracts\Support\Htmlable;
 use Lunar\Admin\Filament\Resources\ProductResource;
 use Lunar\Admin\Support\Pages\BaseManageRelatedRecords;
-use Trafikrak\Models\Product;
+use Testa\Models\Product;
 
 class ManageProductReviews extends BaseManageRelatedRecords
 {
@@ -29,12 +29,12 @@ class ManageProductReviews extends BaseManageRelatedRecords
 
     public static function getNavigationLabel(): string
     {
-        return __('trafikrak::global.relation_managers.reviews');
+        return __('testa::global.relation_managers.reviews');
     }
 
     public function getTitle(): string|Htmlable
     {
-        return __('trafikrak::global.relation_managers.reviews');
+        return __('testa::global.relation_managers.reviews');
     }
 
     public function form(Form $form): Form
@@ -44,22 +44,22 @@ class ManageProductReviews extends BaseManageRelatedRecords
                 Forms\Components\Group::make([
                     Forms\Components\Textarea::make('quote')
                         ->label(
-                            __('trafikrak::review.form.quote.label'),
+                            __('testa::review.form.quote.label'),
                         )
                         ->required(),
                     Forms\Components\TextInput::make('media_name')
                         ->label(
-                            __('trafikrak::review.form.media_name.label'),
+                            __('testa::review.form.media_name.label'),
                         )
                         ->maxLength(255),
                     Forms\Components\TextInput::make('author')
                         ->label(
-                            __('trafikrak::review.form.author.label'),
+                            __('testa::review.form.author.label'),
                         )
                         ->maxLength(255),
                     Forms\Components\TextInput::make('link')
                         ->label(
-                            __('trafikrak::review.form.link.label'),
+                            __('testa::review.form.link.label'),
                         )
                         ->maxLength(255),
                 ])->columns(1)->columnSpan(2),
@@ -72,16 +72,16 @@ class ManageProductReviews extends BaseManageRelatedRecords
             ->recordTitleAttribute('quote')
             ->columns([
                 Tables\Columns\TextColumn::make('quote')
-                    ->label(__('trafikrak::review.form.quote.label'))
+                    ->label(__('testa::review.form.quote.label'))
                     ->limit(30),
                 Tables\Columns\TextColumn::make('media_name')->label(
-                    __('trafikrak::review.form.media_name.label'),
+                    __('testa::review.form.media_name.label'),
                 ),
             ])
             ->headerActions([
                 Tables\Actions\LocaleSwitcher::make(),
                 Tables\Actions\CreateAction::make()->label(
-                    __('trafikrak::review.actions.create.label'),
+                    __('testa::review.actions.create.label'),
                 ),
             ])
             ->actions([

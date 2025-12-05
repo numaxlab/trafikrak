@@ -1,12 +1,12 @@
 <?php
 
-namespace Trafikrak\Policies;
+namespace Testa\Policies;
 
 use Illuminate\Foundation\Auth\User;
-use Trafikrak\Models\Education\Course;
-use Trafikrak\Models\Education\CourseModule;
-use Trafikrak\Models\Media\Media;
-use Trafikrak\Models\Media\Visibility;
+use Testa\Models\Education\Course;
+use Testa\Models\Education\CourseModule;
+use Testa\Models\Media\Media;
+use Testa\Models\Media\Visibility;
 
 class MediaPolicy
 {

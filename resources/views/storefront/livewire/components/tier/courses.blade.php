@@ -23,7 +23,7 @@
             <ul class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
                 @foreach($courses as $course)
                     <li>
-                        <x-trafikrak::courses.summary :course="$course"/>
+                        <x-testa::courses.summary :course="$course"/>
                     </li>
                 @endforeach
             </ul>

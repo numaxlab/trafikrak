@@ -14,13 +14,13 @@
     @endif
 </head>
 <body class="{{ !empty($bodyClass) ? $bodyClass : '' }}">
-<x-trafikrak::header/>
+<x-testa::header/>
 
 <main>
     {{ $slot }}
 </main>
 
-<x-trafikrak::footer/>
+<x-testa::footer/>
 
 @vite('resources/js/app.js')
 @if (isset($scripts))

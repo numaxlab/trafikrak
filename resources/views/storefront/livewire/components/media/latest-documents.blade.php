@@ -6,7 +6,7 @@
                     {{ __('Últimos documentos') }}
                 </h2>
 
-                <a class="at-small" href="{{ route('trafikrak.storefront.media.documents.index') }}">
+                <a class="at-small" href="{{ route('testa.storefront.media.documents.index') }}">
                     {{ __('Ver más') }}
                 </a>
             </x-numaxlab-atomic::organisms.tier.header>
@@ -14,7 +14,7 @@
             <ul class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 @foreach ($documents as $document)
                     <li>
-                        <x-trafikrak::documents.summary :media="$document" :href="Storage::url($document->path)"/>
+                        <x-testa::documents.summary :media="$document" :href="Storage::url($document->path)"/>
                     </li>
                 @endforeach
             </ul>

@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\News;
+namespace Testa\Admin\Filament\Resources\News;
 
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -9,7 +9,7 @@ use Filament\Resources\Concerns\Translatable;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Lunar\Admin\Support\Resources\BaseResource;
-use Trafikrak\Models\News\EventType;
+use Testa\Models\News\EventType;
 
 class EventTypeResource extends BaseResource
 {
@@ -23,17 +23,17 @@ class EventTypeResource extends BaseResource
 
     public static function getNavigationGroup(): ?string
     {
-        return __('trafikrak::global.sections.news');
+        return __('testa::global.sections.news');
     }
 
     public static function getLabel(): string
     {
-        return __('trafikrak::event-type.label');
+        return __('testa::event-type.label');
     }
 
     public static function getPluralLabel(): string
     {
-        return __('trafikrak::event-type.plural_label');
+        return __('testa::event-type.plural_label');
     }
 
     public static function getNavigationIcon(): ?string
@@ -56,7 +56,7 @@ class EventTypeResource extends BaseResource
             ])
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->label(__('trafikrak::event.table.name.label'))
+                    ->label(__('testa::event.table.name.label'))
                     ->searchable(),
             ]);
     }
@@ -68,7 +68,7 @@ class EventTypeResource extends BaseResource
                 Forms\Components\Section::make()
                     ->schema([
                         Forms\Components\TextInput::make('name')
-                            ->label(__('trafikrak::event.form.name.label'))
+                            ->label(__('testa::event.form.name.label'))
                             ->required()
                             ->maxLength(255)
                             ->autofocus(),

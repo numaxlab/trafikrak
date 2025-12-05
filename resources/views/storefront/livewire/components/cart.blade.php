@@ -32,7 +32,7 @@
                         <li wire:key="line_{{ $line['id'] }}">
                             <article class="flex gap-4 pb-4">
                                 <a
-                                        href="{{ route('trafikrak.storefront.bookshop.products.show', $line['slug']) }}"
+                                        href="{{ route('testa.storefront.bookshop.products.show', $line['slug']) }}"
                                         wire:navigate class="block w-1/4"
                                 >
                                     <img
@@ -44,7 +44,7 @@
                                 <div class="w-3/4">
                                     <h3 class="at-heading is-4 mb-2 line-clamp-1">
                                         <a
-                                                href="{{ route('trafikrak.storefront.bookshop.products.show', $line['slug']) }}"
+                                                href="{{ route('testa.storefront.bookshop.products.show', $line['slug']) }}"
                                                 wire:navigate
                                         >
                                             {{ $line['description'] }}
@@ -100,7 +100,7 @@
         </div>
 
         @if ($this->cart && count($lines) > 0)
-            <a class="at-button is-primary mt-4" href="{{ route('trafikrak.storefront.checkout.summary') }}"
+            <a class="at-button is-primary mt-4" href="{{ route('testa.storefront.checkout.summary') }}"
                wire:navigate>
                 {{ __('Tramitar pedido') }}
             </a>

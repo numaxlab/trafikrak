@@ -1,11 +1,11 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\Education\CourseModuleResource\Pages;
+namespace Testa\Admin\Filament\Resources\Education\CourseModuleResource\Pages;
 
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord\Concerns\Translatable;
 use Lunar\Admin\Support\Pages\BaseCreateRecord;
-use Trafikrak\Admin\Filament\Resources\Education\CourseModuleResource;
+use Testa\Admin\Filament\Resources\Education\CourseModuleResource;
 
 class CreateCourseModule extends BaseCreateRecord
 {

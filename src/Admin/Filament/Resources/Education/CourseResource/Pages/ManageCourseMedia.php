@@ -1,11 +1,11 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\Education\CourseResource\Pages;
+namespace Testa\Admin\Filament\Resources\Education\CourseResource\Pages;
 
 use Filament\Resources\RelationManagers\RelationGroup;
 use Lunar\Admin\Support\Resources\Pages\ManageMediasRelatedRecords;
-use Trafikrak\Admin\Filament\Resources\Education\CourseResource;
-use Trafikrak\Admin\Filament\Support\RelationManagers\CourseMediaRelationManager;
+use Testa\Admin\Filament\Resources\Education\CourseResource;
+use Testa\Admin\Filament\Support\RelationManagers\CourseMediaRelationManager;
 
 class ManageCourseMedia extends ManageMediasRelatedRecords
 {

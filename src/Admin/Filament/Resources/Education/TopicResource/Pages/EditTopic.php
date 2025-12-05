@@ -1,12 +1,12 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\Education\TopicResource\Pages;
+namespace Testa\Admin\Filament\Resources\Education\TopicResource\Pages;
 
 use Filament\Actions;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord\Concerns\Translatable;
 use Lunar\Admin\Support\Pages\BaseEditRecord;
-use Trafikrak\Admin\Filament\Resources\Education\TopicResource;
+use Testa\Admin\Filament\Resources\Education\TopicResource;
 
 class EditTopic extends BaseEditRecord
 {
@@ -16,12 +16,12 @@ class EditTopic extends BaseEditRecord
 
     public static function getNavigationLabel(): string
     {
-        return __('trafikrak::topic.pages.edit.title');
+        return __('testa::topic.pages.edit.title');
     }
 
     public function getTitle(): string
     {
-        return __('trafikrak::topic.pages.edit.title');
+        return __('testa::topic.pages.edit.title');
     }
 
     protected function getDefaultHeaderActions(): array
@@ -33,7 +33,7 @@ class EditTopic extends BaseEditRecord
                     if ($record->products->count() > 0) {
                         Notification::make()
                             ->warning()
-                            ->body(__('trafikrak::topic.action.delete.notification.error_protected'))
+                            ->body(__('testa::topic.action.delete.notification.error_protected'))
                             ->send();
                         $action->cancel();
                     }

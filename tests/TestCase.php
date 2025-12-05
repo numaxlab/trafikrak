@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Tests;
+namespace Testa\Tests;
 
 use Cartalyst\Converter\Laravel\ConverterServiceProvider;
 use Filament\FilamentServiceProvider;
@@ -14,7 +14,7 @@ use Spatie\Activitylog\ActivitylogServiceProvider;
 use Spatie\LaravelBlink\BlinkServiceProvider;
 use Spatie\MediaLibrary\MediaLibraryServiceProvider;
 use Spatie\Permission\PermissionServiceProvider;
-use Trafikrak\TrafikrakServiceProvider;
+use Testa\TestaServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -28,7 +28,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Trafikrak\\Database\\Factories\\'.class_basename($modelName).'Factory',
+            fn (string $modelName) => 'Testa\\Database\\Factories\\'.class_basename($modelName).'Factory',
         );
     }
 
@@ -45,7 +45,7 @@ class TestCase extends Orchestra
             ActivitylogServiceProvider::class,
             BlinkServiceProvider::class,
             FilamentServiceProvider::class,
-            TrafikrakServiceProvider::class,
+            TestaServiceProvider::class,
         ];
     }
 }

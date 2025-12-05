@@ -1,11 +1,11 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Components;
+namespace Testa\Storefront\Livewire\Components;
 
 use Livewire\Component;
 use Lunar\Base\Purchasable;
 use Lunar\Facades\StorefrontSession;
-use Trafikrak\Models\Membership\MembershipPlan;
+use Testa\Models\Membership\MembershipPlan;
 
 class Price extends Component
 {

@@ -12,7 +12,7 @@
                     {{ __('Actividades') }}
                 </h2>
 
-                <a href="{{ route('trafikrak.storefront.activities.index') }}"
+                <a href="{{ route('testa.storefront.activities.index') }}"
                    wire:navigate
                    class="at-small"
                 >
@@ -24,9 +24,9 @@
                 @foreach ($activities as $activity)
                     <li>
                         @if ($activity instanceof \Trafikrak\Models\News\Event)
-                            <x-trafikrak::events.summary :event="$activity"/>
+                            <x-testa::events.summary :event="$activity"/>
                         @elseif ($activity instanceof \Trafikrak\Models\Education\CourseModule)
-                            <x-trafikrak::course-modules.activity :module="$activity"/>
+                            <x-testa::course-modules.activity :module="$activity"/>
                         @endif
                     </li>
                 @endforeach
@@ -41,7 +41,7 @@
                     {{ __('Noticias') }}
                 </h2>
 
-                <a href="{{ route('trafikrak.storefront.articles.index') }}"
+                <a href="{{ route('testa.storefront.articles.index') }}"
                    wire:navigate
                    class="at-small"
                 >
@@ -52,7 +52,7 @@
             <ul class="grid gap-6 grid-cols-2 md:grid-cols-4">
                 @foreach ($articles as $article)
                     <li>
-                        <x-trafikrak::articles.summary :article="$article"/>
+                        <x-testa::articles.summary :article="$article"/>
                     </li>
                 @endforeach
             </ul>

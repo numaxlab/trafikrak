@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\Media;
+namespace Testa\Admin\Filament\Resources\Media;
 
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -9,8 +9,8 @@ use Filament\Resources\Concerns\Translatable;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Lunar\Admin\Support\Resources\BaseResource;
-use Trafikrak\Models\Media\Document;
-use Trafikrak\Models\Media\Visibility;
+use Testa\Models\Media\Document;
+use Testa\Models\Media\Visibility;
 
 class DocumentResource extends BaseResource
 {
@@ -24,17 +24,17 @@ class DocumentResource extends BaseResource
 
     public static function getNavigationGroup(): ?string
     {
-        return __('trafikrak::global.sections.media');
+        return __('testa::global.sections.media');
     }
 
     public static function getLabel(): string
     {
-        return __('trafikrak::document.label');
+        return __('testa::document.label');
     }
 
     public static function getPluralLabel(): string
     {
-        return __('trafikrak::document.plural_label');
+        return __('testa::document.plural_label');
     }
 
     public static function getNavigationIcon(): ?string
@@ -55,9 +55,9 @@ class DocumentResource extends BaseResource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->label(__('trafikrak::document.table.name.label')),
+                    ->label(__('testa::document.table.name.label')),
                 Tables\Columns\ToggleColumn::make('is_published')
-                    ->label(__('trafikrak::document.table.is_published.label')),
+                    ->label(__('testa::document.table.is_published.label')),
             ])
             ->filters([])
             ->actions([
@@ -78,29 +78,29 @@ class DocumentResource extends BaseResource
                 Forms\Components\Section::make()
                     ->schema([
                         Forms\Components\TextInput::make('name')
-                            ->label(__('trafikrak::document.form.name.label'))
+                            ->label(__('testa::document.form.name.label'))
                             ->required()
                             ->maxLength(255)
                             ->autofocus(),
                         Forms\Components\RichEditor::make('description')
-                            ->label(__('trafikrak::document.form.description.label')),
+                            ->label(__('testa::document.form.description.label')),
                         Forms\Components\FileUpload::make('path')
-                            ->label(__('trafikrak::document.form.path.label'))
+                            ->label(__('testa::document.form.path.label'))
                             ->directory('docs')
                             ->required(),
                         Forms\Components\Select::make('visibility')
-                            ->label(__('trafikrak::document.form.visibility.label'))
+                            ->label(__('testa::document.form.visibility.label'))
                             ->required()
                             ->options([
                                 Visibility::PUBLIC->value => __(
-                                    'trafikrak::document.form.visibility.options.public',
+                                    'testa::document.form.visibility.options.public',
                                 ),
                                 Visibility::PRIVATE->value => __(
-                                    'trafikrak::document.form.visibility.options.private',
+                                    'testa::document.form.visibility.options.private',
                                 ),
                             ]),
                         Forms\Components\Toggle::make('is_published')
-                            ->label(__('trafikrak::document.form.is_published.label')),
+                            ->label(__('testa::document.form.is_published.label')),
                     ]),
             ])
             ->columns(1);

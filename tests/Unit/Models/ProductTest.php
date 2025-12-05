@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Trafikrak\Models\Product;
+use Testa\Models\Product;
 
 it('has reviews', function () {
     $product = new Product();

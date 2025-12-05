@@ -4,7 +4,7 @@
     </div>
 
     <h2 class="at-heading is-3">
-        <a href="{{ route('trafikrak.storefront.media.videos.show', $media->defaultUrl->slug) }}" wire:navigate>
+        <a href="{{ route('testa.storefront.media.videos.show', $media->defaultUrl->slug) }}" wire:navigate>
             {{ $media->name }}
         </a>
     </h2>

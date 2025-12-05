@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Checkout\Forms;
+namespace Testa\Storefront\Livewire\Checkout\Forms;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;

@@ -1,19 +1,19 @@
 <?php
 
-namespace Trafikrak\Storefront\GlobalSearch;
+namespace Testa\Storefront\GlobalSearch;
 
 use Illuminate\Support\Collection;
 use Lunar\Models\Product;
 use Meilisearch\Client;
 use Meilisearch\Contracts\MultiSearchFederation;
 use Meilisearch\Contracts\SearchQuery;
-use Trafikrak\Models\Education\Course;
-use Trafikrak\Models\Media\Audio;
-use Trafikrak\Models\Media\Video;
-use Trafikrak\Storefront\GlobalSearch\Mappers\AudioMapper;
-use Trafikrak\Storefront\GlobalSearch\Mappers\CourseMapper;
-use Trafikrak\Storefront\GlobalSearch\Mappers\ProductMapper;
-use Trafikrak\Storefront\GlobalSearch\Mappers\VideoMapper;
+use Testa\Models\Education\Course;
+use Testa\Models\Media\Audio;
+use Testa\Models\Media\Video;
+use Testa\Storefront\GlobalSearch\Mappers\AudioMapper;
+use Testa\Storefront\GlobalSearch\Mappers\CourseMapper;
+use Testa\Storefront\GlobalSearch\Mappers\ProductMapper;
+use Testa\Storefront\GlobalSearch\Mappers\VideoMapper;
 
 class GlobalSearch
 {

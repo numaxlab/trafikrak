@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Checkout;
+namespace Testa\Storefront\Livewire\Checkout;
 
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
@@ -78,6 +78,6 @@ class SummaryPage extends Page
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.checkout.summary');
+        return view('testa::storefront.livewire.checkout.summary');
     }
 }

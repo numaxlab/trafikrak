@@ -3,7 +3,7 @@
         <header>
             <x-numaxlab-atomic::molecules.breadcrumb :label="__('Miga de pan')">
                 <li>
-                    <a href="{{ route('trafikrak.storefront.bookshop.homepage') }}">
+                    <a href="{{ route('testa.storefront.bookshop.homepage') }}">
                         {{ __('Librería') }}
                     </a>
                 </li>
@@ -31,7 +31,7 @@
 
                 <fieldset class="flex flex-col gap-3 md:flex-row mt-3">
                     <div class="md:w-4/12 relative">
-                        <livewire:trafikrak.storefront.livewire.components.bookshop.taxonomy-select/>
+                        <livewire:testa.storefront.livewire.components.bookshop.taxonomy-select/>
                     </div>
 
                     <div class="md:w-3/12">
@@ -91,9 +91,9 @@
             <ul class="mt-10 grid gap-6 grid-cols-2 mb-9 md:grid-cols-4 lg:grid-cols-6">
                 @foreach ($results as $product)
                     <li wire:key="result-{{ $product->id }}">
-                        <x-trafikrak::products.summary
+                        <x-testa::products.summary
                                 :product="$product"
-                                :href="route('trafikrak.storefront.bookshop.products.show', $product->defaultUrl->slug)"
+                                :href="route('testa.storefront.bookshop.products.show', $product->defaultUrl->slug)"
                         />
                     </li>
                 @endforeach

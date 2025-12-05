@@ -1,9 +1,9 @@
 <?php
 
-namespace Trafikrak\Database\Factories\Content;
+namespace Testa\Database\Factories\Content;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Trafikrak\Models\Content\Page;
+use Testa\Models\Content\Page;
 
 class PageFactory extends Factory
 {

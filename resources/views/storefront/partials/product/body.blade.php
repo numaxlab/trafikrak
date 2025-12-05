@@ -5,7 +5,7 @@
                 {{ $pricing->priceIncTax()->formatted() }}
             </div>
 
-            <livewire:trafikrak.storefront.livewire.components.bookshop.product-availability
+            <livewire:testa.storefront.livewire.components.bookshop.product-availability
                     lazy
                     :key="$prefix . 'availability-' . $product->id"
                     :purchasable="$product->variant"/>
@@ -17,7 +17,7 @@
             </span>
         @endforeach
 
-        <livewire:trafikrak.storefront.livewire.components.bookshop.add-to-cart
+        <livewire:testa.storefront.livewire.components.bookshop.add-to-cart
                 :key="$prefix . 'add-to-cart-' . $product->id"
                 :purchasable="$product->variant"/>
 
@@ -68,7 +68,7 @@
             @foreach ($product->editorialCollections as $collection)
                 <li>
                     <a
-                            href="{{ route('trafikrak.storefront.editorial.collections.show', $collection->defaultUrl->slug) }}"
+                            href="{{ route('testa.storefront.editorial.collections.show', $collection->defaultUrl->slug) }}"
                             wire:navigate
                     >
                         {{ $collection->translateAttribute('name') }}

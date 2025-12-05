@@ -1,11 +1,11 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Components\Media;
+namespace Testa\Storefront\Livewire\Components\Media;
 
 use Illuminate\View\View;
 use Livewire\Component;
-use Trafikrak\Models\Media\Document;
-use Trafikrak\Models\Media\Visibility;
+use Testa\Models\Media\Document;
+use Testa\Models\Media\Visibility;
 
 class LatestDocuments extends Component
 {
@@ -17,6 +17,6 @@ class LatestDocuments extends Component
             ->take(6)
             ->get();
 
-        return view('trafikrak::storefront.livewire.components.media.latest-documents', compact('documents'));
+        return view('testa::storefront.livewire.components.media.latest-documents', compact('documents'));
     }
 }

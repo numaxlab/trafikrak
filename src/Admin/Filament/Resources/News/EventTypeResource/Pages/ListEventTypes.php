@@ -1,11 +1,11 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\News\EventTypeResource\Pages;
+namespace Testa\Admin\Filament\Resources\News\EventTypeResource\Pages;
 
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords\Concerns\Translatable;
 use Lunar\Admin\Support\Pages\BaseListRecords;
-use Trafikrak\Admin\Filament\Resources\News\EventTypeResource;
+use Testa\Admin\Filament\Resources\News\EventTypeResource;
 
 class ListEventTypes extends BaseListRecords
 {

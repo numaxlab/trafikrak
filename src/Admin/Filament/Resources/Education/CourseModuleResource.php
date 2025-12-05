@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\Education;
+namespace Testa\Admin\Filament\Resources\Education;
 
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -12,8 +12,8 @@ use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use FilamentTiptapEditor\TiptapEditor;
 use Lunar\Admin\Support\Resources\BaseResource;
-use Trafikrak\Models\Education\CourseModule;
-use Trafikrak\Models\EventDeliveryMethod;
+use Testa\Models\Education\CourseModule;
+use Testa\Models\EventDeliveryMethod;
 
 class CourseModuleResource extends BaseResource
 {
@@ -27,22 +27,22 @@ class CourseModuleResource extends BaseResource
 
     public static function getLabel(): string
     {
-        return __('trafikrak::coursemodule.label');
+        return __('testa::coursemodule.label');
     }
 
     public static function getPluralLabel(): string
     {
-        return __('trafikrak::coursemodule.plural_label');
+        return __('testa::coursemodule.plural_label');
     }
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('trafikrak::course-module');
+        return FilamentIcon::resolve('testa::course-module');
     }
 
     public static function getNavigationGroup(): ?string
     {
-        return __('trafikrak::global.sections.education');
+        return __('testa::global.sections.education');
     }
 
     public static function getDefaultSubNavigation(): array
@@ -61,20 +61,20 @@ class CourseModuleResource extends BaseResource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('course.name')
-                    ->label(__('trafikrak::coursemodule.table.course_name.label')),
+                    ->label(__('testa::coursemodule.table.course_name.label')),
                 Tables\Columns\TextColumn::make('name')
-                    ->label(__('trafikrak::coursemodule.table.name.label')),
+                    ->label(__('testa::coursemodule.table.name.label')),
                 Tables\Columns\TextColumn::make('starts_at')
                     ->dateTime()
-                    ->label(__('trafikrak::coursemodule.table.starts_at.label')),
+                    ->label(__('testa::coursemodule.table.starts_at.label')),
                 Tables\Columns\ToggleColumn::make('is_published')
-                    ->label(__('trafikrak::coursemodule.table.is_published.label')),
+                    ->label(__('testa::coursemodule.table.is_published.label')),
             ])
             ->filters([
                 SelectFilter::make('course')
                     ->relationship('course', 'name')
                     ->searchable(['name', 'subtitle'])
-                    ->label(__('trafikrak::coursemodule.table.course_name.label')),
+                    ->label(__('testa::coursemodule.table.course_name.label')),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -96,43 +96,43 @@ class CourseModuleResource extends BaseResource
                             ->relationship('course', 'name')
                             ->searchable(['name', 'subtitle'])
                             ->required()
-                            ->label(__('trafikrak::coursemodule.form.course_id.label')),
+                            ->label(__('testa::coursemodule.form.course_id.label')),
                         Forms\Components\TextInput::make('name')
-                            ->label(__('trafikrak::coursemodule.form.name.label'))
+                            ->label(__('testa::coursemodule.form.name.label'))
                             ->required()
                             ->maxLength(255)
                             ->autofocus(),
                         Forms\Components\TextInput::make('subtitle')
-                            ->label(__('trafikrak::coursemodule.form.subtitle.label'))
+                            ->label(__('testa::coursemodule.form.subtitle.label'))
                             ->maxLength(255),
                         TiptapEditor::make('description')
-                            ->label(__('trafikrak::coursemodule.form.description.label'))
+                            ->label(__('testa::coursemodule.form.description.label'))
                             ->profile('default'),
                         Forms\Components\DateTimePicker::make('starts_at')
-                            ->label(__('trafikrak::coursemodule.form.starts_at.label'))
+                            ->label(__('testa::coursemodule.form.starts_at.label'))
                             ->required(),
                         Forms\Components\Select::make('delivery_method')
-                            ->label(__('trafikrak::coursemodule.form.delivery_method.label'))
+                            ->label(__('testa::coursemodule.form.delivery_method.label'))
                             ->required()
                             ->options([
                                 EventDeliveryMethod::IN_PERSON->value => __(
-                                    'trafikrak::coursemodule.form.delivery_method.options.in_person',
+                                    'testa::coursemodule.form.delivery_method.options.in_person',
                                 ),
                                 EventDeliveryMethod::ONLINE->value => __(
-                                    'trafikrak::coursemodule.form.delivery_method.options.online',
+                                    'testa::coursemodule.form.delivery_method.options.online',
                                 ),
                                 EventDeliveryMethod::HYBRID->value => __(
-                                    'trafikrak::coursemodule.form.delivery_method.options.hybrid',
+                                    'testa::coursemodule.form.delivery_method.options.hybrid',
                                 ),
                             ]),
                         Forms\Components\Select::make('venue_id')
                             ->relationship('venue', 'name')
                             ->searchable(['name'])
-                            ->label(__('trafikrak::coursemodule.form.venue_id.label')),
+                            ->label(__('testa::coursemodule.form.venue_id.label')),
                         Forms\Components\Textarea::make('alert')
-                            ->label(__('trafikrak::event.form.alert.label')),
+                            ->label(__('testa::event.form.alert.label')),
                         Forms\Components\Toggle::make('is_published')
-                            ->label(__('trafikrak::coursemodule.form.is_published.label')),
+                            ->label(__('testa::coursemodule.form.is_published.label')),
                     ]),
             ])
             ->columns(1);

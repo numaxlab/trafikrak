@@ -1,13 +1,13 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\Education\CourseResource\Pages;
+namespace Testa\Admin\Filament\Resources\Education\CourseResource\Pages;
 
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Support\Facades\FilamentIcon;
 use Filament\Tables\Table;
 use Lunar\Admin\Support\Pages\BaseManageRelatedRecords;
-use Trafikrak\Admin\Filament\Resources\Education\CourseResource;
+use Testa\Admin\Filament\Resources\Education\CourseResource;
 
 class ManageCourseVariants extends BaseManageRelatedRecords
 {

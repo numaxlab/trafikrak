@@ -1,6 +1,6 @@
 <div>
     @if ($attachments->isNotEmpty())
-        <x-trafikrak::tier.horizontal-scroll>
+        <x-testa::tier.horizontal-scroll>
             <x-slot name="title">
                 {{ __('Audiovisual') }}
             </x-slot>
@@ -9,11 +9,11 @@
                 @foreach ($attachments as $attachment)
                     <li>
                         <x-dynamic-component
-                                :component="'trafikrak::'.$attachment->component_namespace.'.summary'"
+                                :component="'testa::'.$attachment->component_namespace.'.summary'"
                                 :media="$attachment->media"/>
                     </li>
                 @endforeach
             </ul>
-        </x-trafikrak::tier.horizontal-scroll>
+        </x-testa::tier.horizontal-scroll>
     @endif
 </div>

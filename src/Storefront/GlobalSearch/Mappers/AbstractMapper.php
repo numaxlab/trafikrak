@@ -1,9 +1,9 @@
 <?php
 
-namespace Trafikrak\Storefront\GlobalSearch\Mappers;
+namespace Testa\Storefront\GlobalSearch\Mappers;
 
 use Illuminate\Database\Eloquent\Model;
-use Trafikrak\Storefront\GlobalSearch\SearchResult;
+use Testa\Storefront\GlobalSearch\SearchResult;
 
 abstract class AbstractMapper
 {

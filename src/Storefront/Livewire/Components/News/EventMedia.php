@@ -1,13 +1,13 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Components\News;
+namespace Testa\Storefront\Livewire\Components\News;
 
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
 use Livewire\Component;
-use Trafikrak\Models\Attachment;
-use Trafikrak\Models\Media\Visibility;
-use Trafikrak\Models\News\Event;
+use Testa\Models\Attachment;
+use Testa\Models\Media\Visibility;
+use Testa\Models\News\Event;
 
 class EventMedia extends Component
 {
@@ -29,6 +29,6 @@ class EventMedia extends Component
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.components.news.event-media');
+        return view('testa::storefront.livewire.components.news.event-media');
     }
 }

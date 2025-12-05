@@ -1,9 +1,9 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\Education\CourseResource\Pages;
+namespace Testa\Admin\Filament\Resources\Education\CourseResource\Pages;
 
-use Trafikrak\Admin\Filament\Resources\Education\CourseResource;
-use Trafikrak\Admin\Filament\Support\Page\ManageAttachmentsRelatedRecords;
+use Testa\Admin\Filament\Resources\Education\CourseResource;
+use Testa\Admin\Filament\Support\Page\ManageAttachmentsRelatedRecords;
 
 class ManageCourseAttachments extends ManageAttachmentsRelatedRecords
 {

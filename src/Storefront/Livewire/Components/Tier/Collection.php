@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Components\Tier;
+namespace Testa\Storefront\Livewire\Components\Tier;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
@@ -9,7 +9,7 @@ use Lunar\Facades\StorefrontSession;
 use Lunar\Models\Collection as LunarCollection;
 use Lunar\Models\Product;
 use NumaxLab\Lunar\Geslib\Handle;
-use Trafikrak\Models\Content\Tier;
+use Testa\Models\Content\Tier;
 
 class Collection extends Component
 {
@@ -61,15 +61,15 @@ class Collection extends Component
 
     public function placeholder(): View
     {
-        return view('trafikrak::storefront.livewire.components.placeholder.products-tier');
+        return view('testa::storefront.livewire.components.placeholder.products-tier');
     }
 
     public function render(): View
     {
         if ($this->isItineraries) {
-            return view('trafikrak::storefront.livewire.components.tier.collection-itineraries');
+            return view('testa::storefront.livewire.components.tier.collection-itineraries');
         }
 
-        return view('trafikrak::storefront.livewire.components.tier.collection-products');
+        return view('testa::storefront.livewire.components.tier.collection-products');
     }
 }

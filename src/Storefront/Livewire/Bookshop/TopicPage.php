@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Bookshop;
+namespace Testa\Storefront\Livewire\Bookshop;
 
 use Illuminate\View\View;
 use Livewire\Attributes\Url;
@@ -8,7 +8,7 @@ use Lunar\Facades\StorefrontSession;
 use Lunar\Models\Collection;
 use Lunar\Models\Product;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
-use Trafikrak\Livewire\Features\WithPagination;
+use Testa\Livewire\Features\WithPagination;
 
 class TopicPage extends Page
 {
@@ -69,7 +69,7 @@ class TopicPage extends Page
 
         $products = $queryBuilder->paginate(18);
 
-        return view('trafikrak::storefront.livewire.bookshop.topic', compact('products'))
+        return view('testa::storefront.livewire.bookshop.topic', compact('products'))
             ->title($this->topic->translateAttribute('name'));
     }
 

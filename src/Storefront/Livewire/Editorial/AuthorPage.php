@@ -1,13 +1,13 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Editorial;
+namespace Testa\Storefront\Livewire\Editorial;
 
 use Illuminate\View\View;
 use Lunar\Facades\StorefrontSession;
 use Lunar\Models\Product;
 use NumaxLab\Lunar\Geslib\Models\Author;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
-use Trafikrak\Livewire\Features\WithPagination;
+use Testa\Livewire\Features\WithPagination;
 
 class AuthorPage extends Page
 {
@@ -50,7 +50,7 @@ class AuthorPage extends Page
             ])
             ->paginate(18);
 
-        return view('trafikrak::storefront.livewire.editorial.author', compact('products'))
+        return view('testa::storefront.livewire.editorial.author', compact('products'))
             ->title($this->author->name);
     }
 }

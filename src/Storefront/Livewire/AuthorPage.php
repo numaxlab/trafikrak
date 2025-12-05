@@ -1,14 +1,14 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire;
+namespace Testa\Storefront\Livewire;
 
 use Illuminate\View\View;
 use Lunar\Facades\StorefrontSession;
 use Lunar\Models\Product;
 use NumaxLab\Lunar\Geslib\Models\Author;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
-use Trafikrak\Livewire\Features\WithPagination;
-use Trafikrak\Models\Education\CourseModule;
+use Testa\Livewire\Features\WithPagination;
+use Testa\Models\Education\CourseModule;
 
 class AuthorPage extends Page
 {
@@ -55,7 +55,7 @@ class AuthorPage extends Page
             $query->where((new Author)->getTable().'.id', $this->author->id);
         })->where('is_published', true)->exists();
 
-        return view('trafikrak::storefront.livewire.author', compact('products', 'hasMedia'))
+        return view('testa::storefront.livewire.author', compact('products', 'hasMedia'))
             ->title($this->author->name);
     }
 }

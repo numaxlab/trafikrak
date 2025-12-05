@@ -1,6 +1,6 @@
 <div>
     @if ($activities->isNotEmpty())
-        <x-trafikrak::tier.horizontal-scroll>
+        <x-testa::tier.horizontal-scroll>
             <x-slot name="title">
                 {{ __('Actividades relacionados') }}
             </x-slot>
@@ -9,13 +9,13 @@
                 @foreach ($activities as $activity)
                     <li>
                         @if ($activity instanceof \Trafikrak\Models\News\Event)
-                            <x-trafikrak::events.mini :event="$activity"/>
+                            <x-testa::events.mini :event="$activity"/>
                         @elseif ($activity instanceof \Trafikrak\Models\Education\CourseModule)
-                            <x-trafikrak::course-modules.mini :module="$activity"/>
+                            <x-testa::course-modules.mini :module="$activity"/>
                         @endif
                     </li>
                 @endforeach
             </ul>
-        </x-trafikrak::tier.horizontal-scroll>
+        </x-testa::tier.horizontal-scroll>
     @endif
 </div>

@@ -48,15 +48,15 @@
         <ul class="divide-y divide-black space-y-4">
             @foreach ($order->productLines as $line)
                 <li class="pb-4">
-                    <x-trafikrak::products.horizontal
+                    <x-testa::products.horizontal
                             :product="$line->purchasable->product"
-                            :href="route('trafikrak.storefront.bookshop.products.show', $line->purchasable->product->defaultUrl->slug)"
+                            :href="route('testa.storefront.bookshop.products.show', $line->purchasable->product->defaultUrl->slug)"
                     >
                         <x-slot name="actions">
                             {{ $line->quantity }} {{ $line->quantity > 1 ? __('unidades') : __('unidad') }}<br>
                             {{ $line->total->formatted() }}
                         </x-slot>
-                    </x-trafikrak::products.horizontal>
+                    </x-testa::products.horizontal>
                 </li>
             @endforeach
         </ul>

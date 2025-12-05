@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Account;
+namespace Testa\Storefront\Livewire\Account;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -19,7 +19,7 @@ class PasswordPage extends Page
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.account.password');
+        return view('testa::storefront.livewire.account.password');
     }
 
     public function updatePassword(): void

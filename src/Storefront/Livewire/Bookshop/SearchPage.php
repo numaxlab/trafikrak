@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Bookshop;
+namespace Testa\Storefront\Livewire\Bookshop;
 
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
@@ -48,7 +48,7 @@ class SearchPage extends Page
         $search = trim($this->q);
 
         if (blank($search)) {
-            $this->redirect(route('trafikrak.storefront.bookshop.homepage'));
+            $this->redirect(route('testa.storefront.bookshop.homepage'));
             return;
         }
 
@@ -73,13 +73,13 @@ class SearchPage extends Page
         $this->results = Product::search(
             trim($this->q),
             function (Indexes $search, string $query, array $options) use ($filters) {
-                if (!empty($filters)) {
+                if (! empty($filters)) {
                     $options['filter'] = $filters;
                 }
 
                 return $search->search($query, $options);
             })
-            ->query(fn(Builder $query) => $query->with([
+            ->query(fn (Builder $query) => $query->with([
                 'variant',
                 'variant.taxClass',
                 'defaultUrl',
@@ -132,6 +132,6 @@ class SearchPage extends Page
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.bookshop.search');
+        return view('testa::storefront.livewire.bookshop.search');
     }
 }

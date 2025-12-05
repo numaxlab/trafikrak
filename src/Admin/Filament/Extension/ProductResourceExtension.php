@@ -1,9 +1,9 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Extension;
+namespace Testa\Admin\Filament\Extension;
 
 use Lunar\Admin\Support\Extending\ResourceExtension;
-use Trafikrak\Admin\Filament\Resources\Editorial\ProductResource\Pages\ManageProductReviews;
+use Testa\Admin\Filament\Resources\Editorial\ProductResource\Pages\ManageProductReviews;
 
 class ProductResourceExtension extends ResourceExtension
 {

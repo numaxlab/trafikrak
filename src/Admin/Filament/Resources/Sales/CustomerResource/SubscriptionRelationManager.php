@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\Sales\CustomerResource;
+namespace Testa\Admin\Filament\Resources\Sales\CustomerResource;
 
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -25,18 +25,18 @@ class SubscriptionRelationManager extends BaseRelationManager
     {
         return $table->columns([
             Tables\Columns\TextColumn::make('plan.full_name')
-                ->label(__('trafikrak::subscription.table.plan.label')),
+                ->label(__('testa::subscription.table.plan.label')),
             Tables\Columns\TextColumn::make('status')
-                ->formatStateUsing(fn(string $state,
+                ->formatStateUsing(fn (string $state,
                 ): string
-                    => __("trafikrak::subscription.table.status.options.{$state}"))
-                ->label(__('trafikrak::subscription.table.status.label')),
+                    => __("testa::subscription.table.status.options.{$state}"))
+                ->label(__('testa::subscription.table.status.label')),
             Tables\Columns\TextColumn::make('started_at')
                 ->date()
-                ->label(__('trafikrak::subscription.table.started_at.label')),
+                ->label(__('testa::subscription.table.started_at.label')),
             Tables\Columns\TextColumn::make('expires_at')
                 ->date()
-                ->label(__('trafikrak::subscription.table.expires_at.label')),
+                ->label(__('testa::subscription.table.expires_at.label')),
         ]);
     }
 }

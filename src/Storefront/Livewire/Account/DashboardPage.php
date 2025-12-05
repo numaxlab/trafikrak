@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Account;
+namespace Testa\Storefront\Livewire\Account;
 
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\Auth;
@@ -24,6 +24,6 @@ class DashboardPage extends Page
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.account.dashboard');
+        return view('testa::storefront.livewire.account.dashboard');
     }
 }

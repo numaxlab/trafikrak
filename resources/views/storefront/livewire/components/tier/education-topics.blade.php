@@ -18,7 +18,7 @@
         <ul class="grid gap-6 md:grid-cols-2">
             @foreach($topics as $topic)
                 <li>
-                    <x-trafikrak::education-topics.summary :topic="$topic"/>
+                    <x-testa::education-topics.summary :topic="$topic"/>
                 </li>
             @endforeach
         </ul>

@@ -2,12 +2,12 @@
     <header class="mb-10">
         <x-numaxlab-atomic::molecules.breadcrumb :label="__('Miga de pan')">
             <li>
-                <a href="{{ route('trafikrak.storefront.news.homepage') }}" wire:navigate>
+                <a href="{{ route('testa.storefront.news.homepage') }}" wire:navigate>
                     {{ __('Actualidad') }}
                 </a>
             </li>
             <li>
-                <a href="{{ route('trafikrak.storefront.articles.index') }}" wire:navigate>
+                <a href="{{ route('testa.storefront.articles.index') }}" wire:navigate>
                     {{ __('Noticias') }}
                 </a>
             </li>
@@ -23,7 +23,7 @@
             {!! $article->content !!}
         </div>
 
-        <livewire:trafikrak.storefront.livewire.components.news.article-products
+        <livewire:testa.storefront.livewire.components.news.article-products
                 lazy
                 :article="$article"
         />

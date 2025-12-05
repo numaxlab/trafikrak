@@ -30,9 +30,9 @@
                 <ul class="grid gap-6 grid-cols-2 mb-9 md:grid-cols-4 lg:grid-cols-6">
                     @foreach ($products as $product)
                         <li>
-                            <x-trafikrak::products.summary
+                            <x-testa::products.summary
                                     :product="$product"
-                                    :href="route('trafikrak.storefront.bookshop.products.show', $product->defaultUrl->slug)"
+                                    :href="route('testa.storefront.bookshop.products.show', $product->defaultUrl->slug)"
                             />
                         </li>
                     @endforeach
@@ -46,12 +46,12 @@
     @if ($hasMedia)
         <div class="bg-secondary">
             <div class="container mx-auto px-4 py-6">
-                <livewire:trafikrak.storefront.livewire.components.author.media
+                <livewire:testa.storefront.livewire.components.author.media
                         lazy
                         :author="$author"
                 />
 
-                <livewire:trafikrak.storefront.livewire.components.author.events
+                <livewire:testa.storefront.livewire.components.author.events
                         lazy
                         :author="$author"
                 />

@@ -1,11 +1,11 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\News\EventResource\Pages;
+namespace Testa\Admin\Filament\Resources\News\EventResource\Pages;
 
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord\Concerns\Translatable;
 use Lunar\Admin\Support\Pages\BaseCreateRecord;
-use Trafikrak\Admin\Filament\Resources\News\EventResource;
+use Testa\Admin\Filament\Resources\News\EventResource;
 
 class CreateEvent extends BaseCreateRecord
 {

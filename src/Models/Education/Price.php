@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Models\Education;
+namespace Testa\Models\Education;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;

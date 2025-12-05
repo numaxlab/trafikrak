@@ -3,180 +3,180 @@
 use Illuminate\Support\Facades\Route;
 use NumaxLab\Lunar\Geslib\Storefront\Http\Controllers\Auth\VerifyEmailController;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Actions\Logout;
-use Trafikrak\Storefront\Http\Controllers\ProcessPaymentController;
-use Trafikrak\Storefront\Livewire\Account\CoursesListPage as AccountCoursesListPage;
-use Trafikrak\Storefront\Livewire\Account\DashboardPage;
-use Trafikrak\Storefront\Livewire\Account\FavouriteProductsPage;
-use Trafikrak\Storefront\Livewire\Account\HandleAddressPage;
-use Trafikrak\Storefront\Livewire\Account\OrderPage;
-use Trafikrak\Storefront\Livewire\Account\OrdersListPage;
-use Trafikrak\Storefront\Livewire\Account\PasswordPage;
-use Trafikrak\Storefront\Livewire\Account\ProfilePage;
-use Trafikrak\Storefront\Livewire\Auth\ConfirmPasswordPage;
-use Trafikrak\Storefront\Livewire\Auth\ForgotPasswordPage;
-use Trafikrak\Storefront\Livewire\Auth\LoginPage;
-use Trafikrak\Storefront\Livewire\Auth\RegisterPage;
-use Trafikrak\Storefront\Livewire\Auth\ResetPasswordPage;
-use Trafikrak\Storefront\Livewire\Auth\VerifyEmailPage;
-use Trafikrak\Storefront\Livewire\Bookshop\HomePage as BookshopHomePage;
-use Trafikrak\Storefront\Livewire\Bookshop\ItinerariesListPage;
-use Trafikrak\Storefront\Livewire\Bookshop\ItineraryPage;
-use Trafikrak\Storefront\Livewire\Bookshop\ProductPage;
-use Trafikrak\Storefront\Livewire\Bookshop\SearchPage as BookshopSearchPage;
-use Trafikrak\Storefront\Livewire\Bookshop\SectionPage;
-use Trafikrak\Storefront\Livewire\Bookshop\TopicPage as BookshopTopicPage;
-use Trafikrak\Storefront\Livewire\Checkout\ShippingAndPaymentPage;
-use Trafikrak\Storefront\Livewire\Checkout\SuccessPage;
-use Trafikrak\Storefront\Livewire\Checkout\SummaryPage;
-use Trafikrak\Storefront\Livewire\Editorial\AuthorPage;
-use Trafikrak\Storefront\Livewire\Editorial\AuthorsListPage;
-use Trafikrak\Storefront\Livewire\Editorial\CollectionPage;
-use Trafikrak\Storefront\Livewire\Editorial\HomePage as EditorialHomePage;
-use Trafikrak\Storefront\Livewire\Editorial\SpecialCollectionPage;
-use Trafikrak\Storefront\Livewire\Education\CoursePage;
-use Trafikrak\Storefront\Livewire\Education\CourseRegisterPage;
-use Trafikrak\Storefront\Livewire\Education\CourseRegisterSuccessPage;
-use Trafikrak\Storefront\Livewire\Education\CoursesListPage;
-use Trafikrak\Storefront\Livewire\Education\HomePage as EducationHomePage;
-use Trafikrak\Storefront\Livewire\Education\ModulePage;
-use Trafikrak\Storefront\Livewire\Education\TopicPage as EducationTopicPage;
-use Trafikrak\Storefront\Livewire\Education\TopicsListPage;
-use Trafikrak\Storefront\Livewire\HomePage;
-use Trafikrak\Storefront\Livewire\KitchenSinkPage;
-use Trafikrak\Storefront\Livewire\Media\AudioPage;
-use Trafikrak\Storefront\Livewire\Media\DocumentsListPage;
-use Trafikrak\Storefront\Livewire\Media\HomePage as MediaHomePage;
-use Trafikrak\Storefront\Livewire\Media\SearchPage as MediaSearchPage;
-use Trafikrak\Storefront\Livewire\Media\VideoPage;
-use Trafikrak\Storefront\Livewire\Membership\DonatePage;
-use Trafikrak\Storefront\Livewire\Membership\DonateSuccessPage;
-use Trafikrak\Storefront\Livewire\Membership\SignupPage;
-use Trafikrak\Storefront\Livewire\Membership\SignupSuccessPage;
-use Trafikrak\Storefront\Livewire\News\ActivitiesListPage;
-use Trafikrak\Storefront\Livewire\News\ArticlePage;
-use Trafikrak\Storefront\Livewire\News\ArticlesListPage;
-use Trafikrak\Storefront\Livewire\News\EventPage;
-use Trafikrak\Storefront\Livewire\News\HomePage as NewsHomePage;
-use Trafikrak\Storefront\Livewire\PagePage;
+use Testa\Storefront\Http\Controllers\ProcessPaymentController;
+use Testa\Storefront\Livewire\Account\CoursesListPage as AccountCoursesListPage;
+use Testa\Storefront\Livewire\Account\DashboardPage;
+use Testa\Storefront\Livewire\Account\FavouriteProductsPage;
+use Testa\Storefront\Livewire\Account\HandleAddressPage;
+use Testa\Storefront\Livewire\Account\OrderPage;
+use Testa\Storefront\Livewire\Account\OrdersListPage;
+use Testa\Storefront\Livewire\Account\PasswordPage;
+use Testa\Storefront\Livewire\Account\ProfilePage;
+use Testa\Storefront\Livewire\Auth\ConfirmPasswordPage;
+use Testa\Storefront\Livewire\Auth\ForgotPasswordPage;
+use Testa\Storefront\Livewire\Auth\LoginPage;
+use Testa\Storefront\Livewire\Auth\RegisterPage;
+use Testa\Storefront\Livewire\Auth\ResetPasswordPage;
+use Testa\Storefront\Livewire\Auth\VerifyEmailPage;
+use Testa\Storefront\Livewire\Bookshop\HomePage as BookshopHomePage;
+use Testa\Storefront\Livewire\Bookshop\ItinerariesListPage;
+use Testa\Storefront\Livewire\Bookshop\ItineraryPage;
+use Testa\Storefront\Livewire\Bookshop\ProductPage;
+use Testa\Storefront\Livewire\Bookshop\SearchPage as BookshopSearchPage;
+use Testa\Storefront\Livewire\Bookshop\SectionPage;
+use Testa\Storefront\Livewire\Bookshop\TopicPage as BookshopTopicPage;
+use Testa\Storefront\Livewire\Checkout\ShippingAndPaymentPage;
+use Testa\Storefront\Livewire\Checkout\SuccessPage;
+use Testa\Storefront\Livewire\Checkout\SummaryPage;
+use Testa\Storefront\Livewire\Editorial\AuthorPage;
+use Testa\Storefront\Livewire\Editorial\AuthorsListPage;
+use Testa\Storefront\Livewire\Editorial\CollectionPage;
+use Testa\Storefront\Livewire\Editorial\HomePage as EditorialHomePage;
+use Testa\Storefront\Livewire\Editorial\SpecialCollectionPage;
+use Testa\Storefront\Livewire\Education\CoursePage;
+use Testa\Storefront\Livewire\Education\CourseRegisterPage;
+use Testa\Storefront\Livewire\Education\CourseRegisterSuccessPage;
+use Testa\Storefront\Livewire\Education\CoursesListPage;
+use Testa\Storefront\Livewire\Education\HomePage as EducationHomePage;
+use Testa\Storefront\Livewire\Education\ModulePage;
+use Testa\Storefront\Livewire\Education\TopicPage as EducationTopicPage;
+use Testa\Storefront\Livewire\Education\TopicsListPage;
+use Testa\Storefront\Livewire\HomePage;
+use Testa\Storefront\Livewire\KitchenSinkPage;
+use Testa\Storefront\Livewire\Media\AudioPage;
+use Testa\Storefront\Livewire\Media\DocumentsListPage;
+use Testa\Storefront\Livewire\Media\HomePage as MediaHomePage;
+use Testa\Storefront\Livewire\Media\SearchPage as MediaSearchPage;
+use Testa\Storefront\Livewire\Media\VideoPage;
+use Testa\Storefront\Livewire\Membership\DonatePage;
+use Testa\Storefront\Livewire\Membership\DonateSuccessPage;
+use Testa\Storefront\Livewire\Membership\SignupPage;
+use Testa\Storefront\Livewire\Membership\SignupSuccessPage;
+use Testa\Storefront\Livewire\News\ActivitiesListPage;
+use Testa\Storefront\Livewire\News\ArticlePage;
+use Testa\Storefront\Livewire\News\ArticlesListPage;
+use Testa\Storefront\Livewire\News\EventPage;
+use Testa\Storefront\Livewire\News\HomePage as NewsHomePage;
+use Testa\Storefront\Livewire\PagePage;
 
 Route::get('/', HomePage::class)
-    ->name('trafikrak.storefront.homepage');
+    ->name('testa.storefront.homepage');
 
-Route::get('/persona/{slug}', \Trafikrak\Storefront\Livewire\AuthorPage::class)
-    ->name('trafikrak.storefront.authors.show');
+Route::get('/persona/{slug}', \Testa\Storefront\Livewire\AuthorPage::class)
+    ->name('testa.storefront.authors.show');
 
 Route::prefix('/libreria')->group(function () {
     Route::get('/', BookshopHomePage::class)
-        ->name('trafikrak.storefront.bookshop.homepage');
+        ->name('testa.storefront.bookshop.homepage');
 
     Route::get('/secciones/{slug}', SectionPage::class)
-        ->name('trafikrak.storefront.bookshop.sections.show');
+        ->name('testa.storefront.bookshop.sections.show');
 
     Route::get('/materias/{slug}', BookshopTopicPage::class)
-        ->name('trafikrak.storefront.bookshop.topics.show');
+        ->name('testa.storefront.bookshop.topics.show');
 
     Route::get('/itinerarios', ItinerariesListPage::class)
-        ->name('trafikrak.storefront.bookshop.itineraries.index');
+        ->name('testa.storefront.bookshop.itineraries.index');
 
     Route::get('/itinerarios/{slug}', ItineraryPage::class)
-        ->name('trafikrak.storefront.bookshop.itineraries.show');
+        ->name('testa.storefront.bookshop.itineraries.show');
 
     Route::get('/productos/{slug}', ProductPage::class)
-        ->name('trafikrak.storefront.bookshop.products.show');
+        ->name('testa.storefront.bookshop.products.show');
 
     Route::get('/buscar', BookshopSearchPage::class)
-        ->name('trafikrak.storefront.bookshop.search');
+        ->name('testa.storefront.bookshop.search');
 
     Route::get('/{slug}', PagePage::class)
-        ->name('trafikrak.storefront.bookshop.page');
+        ->name('testa.storefront.bookshop.page');
 });
 
 Route::prefix('/editorial')->group(function () {
     Route::get('/', EditorialHomePage::class)
-        ->name('trafikrak.storefront.editorial.homepage');
+        ->name('testa.storefront.editorial.homepage');
 
     Route::get('/autoras', AuthorsListPage::class)
-        ->name('trafikrak.storefront.editorial.authors.index');
+        ->name('testa.storefront.editorial.authors.index');
 
     Route::get('/autoras/{slug}', AuthorPage::class)
-        ->name('trafikrak.storefront.editorial.authors.show');
+        ->name('testa.storefront.editorial.authors.show');
 
     Route::get('/colecciones/{slug}', CollectionPage::class)
-        ->name('trafikrak.storefront.editorial.collections.show');
+        ->name('testa.storefront.editorial.collections.show');
 
     Route::get('/especiales/{slug}', SpecialCollectionPage::class)
-        ->name('trafikrak.storefront.editorial.collections.special.show');
+        ->name('testa.storefront.editorial.collections.special.show');
 
     Route::get('/{slug}', PagePage::class)
-        ->name('trafikrak.storefront.editorial.page');
+        ->name('testa.storefront.editorial.page');
 });
 
 Route::prefix('/formacion')->group(function () {
     Route::get('/', EducationHomePage::class)
-        ->name('trafikrak.storefront.education.homepage');
+        ->name('testa.storefront.education.homepage');
 
     Route::get('/temas', TopicsListPage::class)
-        ->name('trafikrak.storefront.education.topics.index');
+        ->name('testa.storefront.education.topics.index');
 
     Route::get('/temas/{slug}', EducationTopicPage::class)
-        ->name('trafikrak.storefront.education.topics.show');
+        ->name('testa.storefront.education.topics.show');
 
     Route::get('/cursos', CoursesListPage::class)
-        ->name('trafikrak.storefront.education.courses.index');
+        ->name('testa.storefront.education.courses.index');
 
     Route::get('/cursos/{slug}', CoursePage::class)
-        ->name('trafikrak.storefront.education.courses.show');
+        ->name('testa.storefront.education.courses.show');
 
     Route::get('/cursos/{slug}/inscripcion', CourseRegisterPage::class)
-        ->name('trafikrak.storefront.education.courses.register');
+        ->name('testa.storefront.education.courses.register');
 
     Route::get('/cursos/inscripcion/finalizada/{fingerprint}', CourseRegisterSuccessPage::class)
-        ->name('trafikrak.storefront.education.courses.register.success');
+        ->name('testa.storefront.education.courses.register.success');
 
     Route::get('/cursos/{courseSlug}/sesiones/{moduleSlug}', ModulePage::class)
-        ->name('trafikrak.storefront.education.courses.modules.show');
+        ->name('testa.storefront.education.courses.modules.show');
 
     Route::get('/{slug}', PagePage::class)
-        ->name('trafikrak.storefront.education.page');
+        ->name('testa.storefront.education.page');
 });
 
 Route::prefix('/mediateca')->group(function () {
     Route::get('/', MediaHomePage::class)
-        ->name('trafikrak.storefront.media.homepage');
+        ->name('testa.storefront.media.homepage');
 
     Route::get('/audiovisual/buscar', MediaSearchPage::class)
-        ->name('trafikrak.storefront.media.search');
+        ->name('testa.storefront.media.search');
 
     Route::get('/videos/{slug}', VideoPage::class)
-        ->name('trafikrak.storefront.media.videos.show');
+        ->name('testa.storefront.media.videos.show');
 
     Route::get('/audios/{slug}', AudioPage::class)
-        ->name('trafikrak.storefront.media.audios.show');
+        ->name('testa.storefront.media.audios.show');
 
     Route::get('/documentos', DocumentsListPage::class)
-        ->name('trafikrak.storefront.media.documents.index');
+        ->name('testa.storefront.media.documents.index');
 });
 
 Route::prefix('/actualidad')->group(function () {
     Route::get('/', NewsHomePage::class)
-        ->name('trafikrak.storefront.news.homepage');
+        ->name('testa.storefront.news.homepage');
 
     Route::get('/actividades', ActivitiesListPage::class)
-        ->name('trafikrak.storefront.activities.index');
+        ->name('testa.storefront.activities.index');
 
     Route::get('/actividades/eventos/{slug}', EventPage::class)
-        ->name('trafikrak.storefront.events.show');
+        ->name('testa.storefront.events.show');
 
     Route::get('/noticias', ArticlesListPage::class)
-        ->name('trafikrak.storefront.articles.index');
+        ->name('testa.storefront.articles.index');
 
     Route::get('/noticias/{slug}', ArticlePage::class)
-        ->name('trafikrak.storefront.articles.show');
+        ->name('testa.storefront.articles.show');
 });
 
 Route::prefix('/info')->group(function () {
     Route::get('/{slug}', PagePage::class)
-        ->name('trafikrak.storefront.info.page');
+        ->name('testa.storefront.info.page');
 });
 
 Route::middleware('guest')->group(function () {
@@ -219,37 +219,37 @@ Route::post('logout', Logout::class)->name('logout');
 
 Route::prefix('/pedido')->group(function () {
     Route::get('/', SummaryPage::class)
-        ->name('trafikrak.storefront.checkout.summary');
+        ->name('testa.storefront.checkout.summary');
 
     Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/completar', ShippingAndPaymentPage::class)
-            ->name('trafikrak.storefront.checkout.shipping-and-payment');
+            ->name('testa.storefront.checkout.shipping-and-payment');
 
         Route::get('/finalizado/{fingerprint}', SuccessPage::class)
-            ->name('trafikrak.storefront.checkout.success');
+            ->name('testa.storefront.checkout.success');
     });
 });
 
 Route::prefix('/apoya-el-proyecto')->group(function () {
     Route::get('/hazte-socix', SignupPage::class)
-        ->name('trafikrak.storefront.membership.signup');
+        ->name('testa.storefront.membership.signup');
 
     Route::get('/hazte-socix/finalizado/{fingerprint}', SignupSuccessPage::class)
-        ->name('trafikrak.storefront.membership.signup.success');
+        ->name('testa.storefront.membership.signup.success');
 
     Route::get('/dona', DonatePage::class)
-        ->name('trafikrak.storefront.membership.donate');
+        ->name('testa.storefront.membership.donate');
 
     Route::get('/dona/gracias/{fingerprint}', DonateSuccessPage::class)
-        ->name('trafikrak.storefront.membership.donate.success');
+        ->name('testa.storefront.membership.donate.success');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/checkout/procesar-pago/{id}', ProcessPaymentController::class)
-        ->name('trafikrak.storefront.checkout.process-payment');
+        ->name('testa.storefront.checkout.process-payment');
 });
 
 if (app()->environment('local')) {
     Route::get('/kitchen-sink', KitchenSinkPage::class)
-        ->name('trafikrak.storefront.kitchen-sink');
+        ->name('testa.storefront.kitchen-sink');
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Media;
+namespace Testa\Media;
 
 use Lunar\Base\MediaDefinitionsInterface;
 use Spatie\Image\Enums\Fit;

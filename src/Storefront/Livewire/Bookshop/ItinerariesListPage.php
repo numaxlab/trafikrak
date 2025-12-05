@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Bookshop;
+namespace Testa\Storefront\Livewire\Bookshop;
 
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
@@ -25,7 +25,7 @@ class ItinerariesListPage extends Page
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.bookshop.itineraries-list')
+        return view('testa::storefront.livewire.bookshop.itineraries-list')
             ->title(__('Itinerarios'));
     }
 }

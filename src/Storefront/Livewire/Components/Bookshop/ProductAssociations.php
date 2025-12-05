@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Components\Bookshop;
+namespace Testa\Storefront\Livewire\Components\Bookshop;
 
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
@@ -89,6 +89,6 @@ class ProductAssociations extends Component
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.components.bookshop.product-associations');
+        return view('testa::storefront.livewire.components.bookshop.product-associations');
     }
 }

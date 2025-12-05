@@ -2,14 +2,14 @@
     @if ($slides->isNotEmpty())
         <div class="-mt-10 mb-5">
             @foreach ($slides as $slide)
-                <x-trafikrak::slides.full-width :slide="$slide"/>
+                <x-testa::slides.full-width :slide="$slide"/>
             @endforeach
         </div>
     @endif
 
     @foreach ($tiers as $tier)
         <livewire:dynamic-component
-                :component="'trafikrak.storefront.livewire.components.tier.' . $tier->livewire_component"
+                :component="'testa.storefront.livewire.components.tier.' . $tier->livewire_component"
                 :lazy="!$loop->first"
                 :tier="$tier"
                 :key="$tier->id"

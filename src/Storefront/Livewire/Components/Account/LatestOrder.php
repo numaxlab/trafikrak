@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Components\Account;
+namespace Testa\Storefront\Livewire\Components\Account;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
@@ -36,6 +36,6 @@ class LatestOrder extends Component
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.components.account.latest-order');
+        return view('testa::storefront.livewire.components.account.latest-order');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\Media;
+namespace Testa\Admin\Filament\Resources\Media;
 
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -9,8 +9,8 @@ use Filament\Resources\Concerns\Translatable;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Lunar\Admin\Support\Resources\BaseResource;
-use Trafikrak\Models\Media\Video;
-use Trafikrak\Models\Media\Visibility;
+use Testa\Models\Media\Video;
+use Testa\Models\Media\Visibility;
 
 class VideoResource extends BaseResource
 {
@@ -24,17 +24,17 @@ class VideoResource extends BaseResource
 
     public static function getNavigationGroup(): ?string
     {
-        return __('trafikrak::global.sections.media');
+        return __('testa::global.sections.media');
     }
 
     public static function getLabel(): string
     {
-        return __('trafikrak::video.label');
+        return __('testa::video.label');
     }
 
     public static function getPluralLabel(): string
     {
-        return __('trafikrak::video.plural_label');
+        return __('testa::video.plural_label');
     }
 
     public static function getNavigationIcon(): ?string
@@ -55,9 +55,9 @@ class VideoResource extends BaseResource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->label(__('trafikrak::video.table.name.label')),
+                    ->label(__('testa::video.table.name.label')),
                 Tables\Columns\ToggleColumn::make('is_published')
-                    ->label(__('trafikrak::video.table.is_published.label')),
+                    ->label(__('testa::video.table.is_published.label')),
             ])
             ->filters([])
             ->actions([
@@ -78,12 +78,12 @@ class VideoResource extends BaseResource
                 Forms\Components\Section::make()
                     ->schema([
                         Forms\Components\TextInput::make('name')
-                            ->label(__('trafikrak::video.form.name.label'))
+                            ->label(__('testa::video.form.name.label'))
                             ->required()
                             ->maxLength(255)
                             ->autofocus(),
                         Forms\Components\RichEditor::make('description')
-                            ->label(__('trafikrak::video.form.description.label')),
+                            ->label(__('testa::video.form.description.label')),
                         Forms\Components\Grid::make()
                             ->columns([
                                 'sm' => 1,
@@ -91,29 +91,29 @@ class VideoResource extends BaseResource
                             ])
                             ->schema([
                                 Forms\Components\Select::make('source')
-                                    ->label(__('trafikrak::video.form.source.label'))
+                                    ->label(__('testa::video.form.source.label'))
                                     ->options([
-                                        'youtube' => __('trafikrak::video.form.source.options.youtube'),
-                                        'vimeo' => __('trafikrak::video.form.source.options.vimeo'),
+                                        'youtube' => __('testa::video.form.source.options.youtube'),
+                                        'vimeo' => __('testa::video.form.source.options.vimeo'),
                                     ])
                                     ->required(),
                                 Forms\Components\Textarea::make('source_id')
-                                    ->label(__('trafikrak::video.form.source_id.label'))
+                                    ->label(__('testa::video.form.source_id.label'))
                                     ->required(),
                             ]),
                         Forms\Components\Select::make('visibility')
-                            ->label(__('trafikrak::video.form.visibility.label'))
+                            ->label(__('testa::video.form.visibility.label'))
                             ->required()
                             ->options([
                                 Visibility::PUBLIC->value => __(
-                                    'trafikrak::video.form.visibility.options.public',
+                                    'testa::video.form.visibility.options.public',
                                 ),
                                 Visibility::PRIVATE->value => __(
-                                    'trafikrak::video.form.visibility.options.private',
+                                    'testa::video.form.visibility.options.private',
                                 ),
                             ]),
                         Forms\Components\Toggle::make('is_published')
-                            ->label(__('trafikrak::video.form.is_published.label')),
+                            ->label(__('testa::video.form.is_published.label')),
                     ]),
             ])
             ->columns(1);

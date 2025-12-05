@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Trafikrak\Models\Content\Page;
-use Trafikrak\Models\Content\Section;
+use Testa\Models\Content\Page;
+use Testa\Models\Content\Section;
 
 uses(RefreshDatabase::class);
 
@@ -33,9 +33,9 @@ it('returns correct breadcrumb_route_name attribute', function (?Section $sectio
     $page->section = $section;
     expect($page->breadcrumb_route_name)->toBe($expected);
 })->with([
-    [Section::BOOKSHOP, 'trafikrak.storefront.bookshop.homepage'],
-    [Section::EDITORIAL, 'trafikrak.storefront.editorial.homepage'],
-    [Section::EDUCATION, 'trafikrak.storefront.education.homepage'],
+    [Section::BOOKSHOP, 'testa.storefront.bookshop.homepage'],
+    [Section::EDITORIAL, 'testa.storefront.editorial.homepage'],
+    [Section::EDUCATION, 'testa.storefront.education.homepage'],
     [Section::HOMEPAGE, null],
     [null, null],
 ]);

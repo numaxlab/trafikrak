@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Eloquent\Casts\AsEnumCollection;
-use Trafikrak\Models\Content\Banner;
-use Trafikrak\Models\Content\BannerType;
-use Trafikrak\Models\Content\Location;
+use Testa\Models\Content\Banner;
+use Testa\Models\Content\BannerType;
+use Testa\Models\Content\Location;
 
 it('casts type to BannerType enum', function () {
     $banner = new Banner(['type' => 'full-width']);

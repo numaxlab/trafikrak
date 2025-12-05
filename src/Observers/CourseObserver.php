@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Observers;
+namespace Testa\Observers;
 
 use Illuminate\Support\Facades\DB;
 use Lunar\FieldTypes\Text;
@@ -9,7 +9,7 @@ use Lunar\Models\Product;
 use Lunar\Models\ProductOption;
 use Lunar\Models\ProductVariant;
 use Lunar\Models\TaxClass;
-use Trafikrak\Models\Education\Course;
+use Testa\Models\Education\Course;
 
 class CourseObserver
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\Extension;
+namespace Testa\Admin\Filament\Resources\Extension;
 
 use Lunar\Admin\Support\Extending\ResourceExtension;
-use Trafikrak\Admin\Filament\Resources\Sales\CustomerResource\SubscriptionRelationManager;
+use Testa\Admin\Filament\Resources\Sales\CustomerResource\SubscriptionRelationManager;
 
 class CustomerResourceExtension extends ResourceExtension
 {

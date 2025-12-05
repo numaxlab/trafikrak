@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Auth;
+namespace Testa\Storefront\Livewire\Auth;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -12,7 +12,7 @@ class VerifyEmailPage extends Component
 {
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.auth.verify-email');
+        return view('testa::storefront.livewire.auth.verify-email');
     }
 
     public function sendVerification(): void

@@ -11,14 +11,14 @@
 
         @if ($latestFavouriteProducts->isEmpty())
             <p>{{ __('Todavía no tienes ningún favorito.') }}</p>
-            <a href="{{ route('trafikrak.storefront.bookshop.homepage') }}" wire:navigate>
+            <a href="{{ route('testa.storefront.bookshop.homepage') }}" wire:navigate>
                 {{ __('Consulta nuestro catálogo') }}
             </a>
         @else
             <ul class="flex flex-col gap-4 divide-y divide-black">
                 @foreach ($latestFavouriteProducts as $product)
                     <li wire:key="favourite-{{ $product->id }}">
-                        <a href="{{ route('trafikrak.storefront.bookshop.products.show', $product->defaultUrl->slug) }}">
+                        <a href="{{ route('testa.storefront.bookshop.products.show', $product->defaultUrl->slug) }}">
                             {{ $product->recordTitle }}
                         </a>
 

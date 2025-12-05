@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\Membership;
+namespace Testa\Admin\Filament\Resources\Membership;
 
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -9,7 +9,7 @@ use Filament\Resources\Concerns\Translatable;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Lunar\Admin\Support\Resources\BaseResource;
-use Trafikrak\Models\Membership\MembershipTier;
+use Testa\Models\Membership\MembershipTier;
 
 class MembershipTierResource extends BaseResource
 {
@@ -23,17 +23,17 @@ class MembershipTierResource extends BaseResource
 
     public static function getNavigationGroup(): ?string
     {
-        return __('trafikrak::global.sections.membership');
+        return __('testa::global.sections.membership');
     }
 
     public static function getLabel(): string
     {
-        return __('trafikrak::membership-tier.label');
+        return __('testa::membership-tier.label');
     }
 
     public static function getPluralLabel(): string
     {
-        return __('trafikrak::membership-tier.plural_label');
+        return __('testa::membership-tier.plural_label');
     }
 
     public static function getNavigationIcon(): ?string
@@ -46,9 +46,9 @@ class MembershipTierResource extends BaseResource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->label(__('trafikrak::membership-tier.table.name.label')),
+                    ->label(__('testa::membership-tier.table.name.label')),
                 Tables\Columns\ToggleColumn::make('is_published')
-                    ->label(__('trafikrak::membership-tier.table.is_published.label')),
+                    ->label(__('testa::membership-tier.table.is_published.label')),
             ])
             ->filters([])
             ->actions([
@@ -69,14 +69,14 @@ class MembershipTierResource extends BaseResource
                 Forms\Components\Section::make()
                     ->schema([
                         Forms\Components\TextInput::make('name')
-                            ->label(__('trafikrak::membership-tier.form.name.label'))
+                            ->label(__('testa::membership-tier.form.name.label'))
                             ->required()
                             ->maxLength(255)
                             ->autofocus(),
                         Forms\Components\RichEditor::make('description')
-                            ->label(__('trafikrak::membership-tier.form.description.label')),
+                            ->label(__('testa::membership-tier.form.description.label')),
                         Forms\Components\Toggle::make('is_published')
-                            ->label(__('trafikrak::membership-tier.form.is_published.label')),
+                            ->label(__('testa::membership-tier.form.is_published.label')),
                     ]),
             ])
             ->columns(1);

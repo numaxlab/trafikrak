@@ -1,10 +1,10 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\News;
+namespace Testa\Storefront\Livewire\News;
 
 use Illuminate\View\View;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
-use Trafikrak\Models\News\Article;
+use Testa\Models\News\Article;
 
 class ArticlePage extends Page
 {
@@ -23,7 +23,7 @@ class ArticlePage extends Page
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.news.article')
+        return view('testa::storefront.livewire.news.article')
             ->title($this->article->name);
     }
 }

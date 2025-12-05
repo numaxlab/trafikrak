@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\Education;
+namespace Testa\Admin\Filament\Resources\Education;
 
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -12,7 +12,7 @@ use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Table;
 use FilamentTiptapEditor\TiptapEditor;
 use Lunar\Admin\Support\Resources\BaseResource;
-use Trafikrak\Models\Education\Topic;
+use Testa\Models\Education\Topic;
 
 class TopicResource extends BaseResource
 {
@@ -26,12 +26,12 @@ class TopicResource extends BaseResource
 
     public static function getLabel(): string
     {
-        return __('trafikrak::topic.label');
+        return __('testa::topic.label');
     }
 
     public static function getPluralLabel(): string
     {
-        return __('trafikrak::topic.plural_label');
+        return __('testa::topic.plural_label');
     }
 
     public static function getNavigationIcon(): ?string
@@ -41,7 +41,7 @@ class TopicResource extends BaseResource
 
     public static function getNavigationGroup(): ?string
     {
-        return __('trafikrak::global.sections.education');
+        return __('testa::global.sections.education');
     }
 
     public static function getDefaultSubNavigation(): array
@@ -64,9 +64,9 @@ class TopicResource extends BaseResource
                     ->square()
                     ->label(''),
                 Tables\Columns\TextColumn::make('name')
-                    ->label(__('trafikrak::topic.table.name.label')),
+                    ->label(__('testa::topic.table.name.label')),
                 Tables\Columns\ToggleColumn::make('is_published')
-                    ->label(__('trafikrak::topic.table.is_published.label')),
+                    ->label(__('testa::topic.table.is_published.label')),
             ])
             ->filters([])
             ->actions([
@@ -86,18 +86,18 @@ class TopicResource extends BaseResource
                 Forms\Components\Section::make()
                     ->schema([
                         Forms\Components\TextInput::make('name')
-                            ->label(__('trafikrak::course.form.name.label'))
+                            ->label(__('testa::course.form.name.label'))
                             ->required()
                             ->maxLength(255)
                             ->autofocus(),
                         Forms\Components\TextInput::make('subtitle')
-                            ->label(__('trafikrak::course.form.subtitle.label'))
+                            ->label(__('testa::course.form.subtitle.label'))
                             ->maxLength(255),
                         TiptapEditor::make('description')
-                            ->label(__('trafikrak::course.form.description.label'))
+                            ->label(__('testa::course.form.description.label'))
                             ->profile('default'),
                         Forms\Components\Toggle::make('is_published')
-                            ->label(__('trafikrak::course.form.is_published.label')),
+                            ->label(__('testa::course.form.is_published.label')),
                     ]),
             ])
             ->columns(1);

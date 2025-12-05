@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Models\Membership;
+namespace Testa\Models\Membership;
 
 use Illuminate\Database\Eloquent\Model;
 use Lunar\Base\Traits\LogsActivity;

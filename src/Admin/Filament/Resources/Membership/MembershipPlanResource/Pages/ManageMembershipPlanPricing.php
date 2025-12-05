@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\Membership\MembershipPlanResource\Pages;
+namespace Testa\Admin\Filament\Resources\Membership\MembershipPlanResource\Pages;
 
 use Filament\Forms;
 use Filament\Forms\Components\Section;
@@ -12,8 +12,8 @@ use Lunar\Admin\Support\Pages\BaseEditRecord;
 use Lunar\Models\Currency;
 use Lunar\Models\Price;
 use Lunar\Models\TaxClass;
-use Trafikrak\Admin\Filament\Resources\Membership\MembershipPlanResource;
-use Trafikrak\Models\Membership\MembershipPlan;
+use Testa\Admin\Filament\Resources\Membership\MembershipPlanResource;
+use Testa\Models\Membership\MembershipPlan;
 
 class ManageMembershipPlanPricing extends BaseEditRecord
 {
@@ -42,7 +42,7 @@ class ManageMembershipPlanPricing extends BaseEditRecord
 
     public function form(Form $form): Form
     {
-        if (!count($this->basePrices)) {
+        if (! count($this->basePrices)) {
             $this->basePrices = $this->getBasePrices();
         }
 
@@ -87,7 +87,7 @@ class ManageMembershipPlanPricing extends BaseEditRecord
             ->basePrices()
             ->with('currency')
             ->get()
-            ->sortByDesc(fn($p) => (int) $p->currency->default)
+            ->sortByDesc(fn ($p) => (int) $p->currency->default)
             ->values();
 
         foreach ($basePrices as $price) {
@@ -110,11 +110,11 @@ class ManageMembershipPlanPricing extends BaseEditRecord
         }
 
         $defaultCurrencyPrice = $prices->first(
-            fn($price) => $price['default_currency'],
+            fn ($price) => $price['default_currency'],
         );
 
         foreach ($currencies as $currency) {
-            if (!$prices->get($currency->code)) {
+            if (! $prices->get($currency->code)) {
                 $value = round(
                     ($defaultCurrencyPrice['value'] ?? 0) * $currency->exchange_rate,
                     $currency->decimal_places,
@@ -167,7 +167,7 @@ class ManageMembershipPlanPricing extends BaseEditRecord
                                 $index,
                                 $price,
                             ) {
-                                if (!($price['sync_prices'] ?? false) && $get('basePrices.'.$index.'.id', true)) {
+                                if (! ($price['sync_prices'] ?? false) && $get('basePrices.'.$index.'.id', true)) {
                                     return null;
                                 }
 
@@ -186,7 +186,7 @@ class ManageMembershipPlanPricing extends BaseEditRecord
 
                                 return __('lunarpanel::relationmanagers.pricing.form.basePrices.tooltip');
                             })
-                            ->disabled(fn() => $price['sync_prices'] ?? false)
+                            ->disabled(fn () => $price['sync_prices'] ?? false)
                             ->live(),
                         Forms\Components\TextInput::make('compare_price')
                             ->label('')
@@ -206,7 +206,7 @@ class ManageMembershipPlanPricing extends BaseEditRecord
                                 $index,
                                 $price,
                             ) {
-                                if (!($price['sync_prices'] ?? false) && $get('basePrices.'.$index.'.id', true)) {
+                                if (! ($price['sync_prices'] ?? false) && $get('basePrices.'.$index.'.id', true)) {
                                     return null;
                                 }
 
@@ -225,7 +225,7 @@ class ManageMembershipPlanPricing extends BaseEditRecord
 
                                 return __('lunarpanel::relationmanagers.pricing.form.basePrices.tooltip');
                             })
-                            ->disabled(fn() => $price['sync_prices'] ?? false)
+                            ->disabled(fn () => $price['sync_prices'] ?? false)
                             ->live(),
                     ])->columns(2);
                 })->toArray(),
@@ -243,8 +243,8 @@ class ManageMembershipPlanPricing extends BaseEditRecord
         $membershipPlan->update($data);
 
         $prices->filter(
-            fn($price) => !$price['id'] && isset($price['value']),
-        )->each(fn($price) => $membershipPlan->prices()->create([
+            fn ($price) => ! $price['id'] && isset($price['value']),
+        )->each(fn ($price) => $membershipPlan->prices()->create([
             'currency_id' => $price['currency_id'],
             'price' => (int) round((float) ($price['value'] * $price['factor'])),
             'compare_price' => (int) round((float) ($price['compare_price'] * $price['factor'])),
@@ -254,7 +254,7 @@ class ManageMembershipPlanPricing extends BaseEditRecord
 
         $prices->filter(function ($price) {
             return $price['id'] && isset($price['value']) && ($price['value'] != $price['original_value'] || $price['compare_price'] != $price['original_compare_price']);
-        })->each(fn($price) => Price::find($price['id'])->update([
+        })->each(fn ($price) => Price::find($price['id'])->update([
             'price' => (int) round((float) ($price['value'] * $price['factor'])),
             'compare_price' => (int) round((float) ($price['compare_price'] * $price['factor'])),
         ]));

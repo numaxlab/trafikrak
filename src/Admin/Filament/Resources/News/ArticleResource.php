@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\News;
+namespace Testa\Admin\Filament\Resources\News;
 
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -10,7 +10,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use FilamentTiptapEditor\TiptapEditor;
 use Lunar\Admin\Support\Resources\BaseResource;
-use Trafikrak\Models\News\Article;
+use Testa\Models\News\Article;
 
 class ArticleResource extends BaseResource
 {
@@ -24,17 +24,17 @@ class ArticleResource extends BaseResource
 
     public static function getNavigationGroup(): ?string
     {
-        return __('trafikrak::global.sections.news');
+        return __('testa::global.sections.news');
     }
 
     public static function getLabel(): string
     {
-        return __('trafikrak::article.label');
+        return __('testa::article.label');
     }
 
     public static function getPluralLabel(): string
     {
-        return __('trafikrak::article.plural_label');
+        return __('testa::article.plural_label');
     }
 
     public static function getNavigationIcon(): ?string
@@ -59,10 +59,10 @@ class ArticleResource extends BaseResource
             ])
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->label(__('trafikrak::article.table.name.label'))
+                    ->label(__('testa::article.table.name.label'))
                     ->searchable(),
                 Tables\Columns\ToggleColumn::make('is_published')
-                    ->label(__('trafikrak::article.table.is_published.label')),
+                    ->label(__('testa::article.table.is_published.label')),
             ])
             ->defaultSort('published_at', 'desc');
     }
@@ -74,24 +74,24 @@ class ArticleResource extends BaseResource
                 Forms\Components\Section::make()
                     ->schema([
                         Forms\Components\TextInput::make('name')
-                            ->label(__('trafikrak::article.form.name.label'))
+                            ->label(__('testa::article.form.name.label'))
                             ->required()
                             ->maxLength(255)
                             ->autofocus(),
                         Forms\Components\Textarea::make('summary')
-                            ->label(__('trafikrak::article.form.summary.label')),
+                            ->label(__('testa::article.form.summary.label')),
                         TiptapEditor::make('content')
-                            ->label(__('trafikrak::article.form.content.label'))
+                            ->label(__('testa::article.form.content.label'))
                             ->profile('default'),
                         Forms\Components\FileUpload::make('image')
-                            ->label(__('trafikrak::article.form.image.label'))
+                            ->label(__('testa::article.form.image.label'))
                             ->image()
                             ->imageEditor(),
                         Forms\Components\DateTimePicker::make('published_at')
-                            ->label(__('trafikrak::article.form.published_at.label'))
+                            ->label(__('testa::article.form.published_at.label'))
                             ->required(),
                         Forms\Components\Toggle::make('is_published')
-                            ->label(__('trafikrak::article.form.is_published.label')),
+                            ->label(__('testa::article.form.is_published.label')),
                     ]),
             ])
             ->columns(1);

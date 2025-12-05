@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Components\Account;
+namespace Testa\Storefront\Livewire\Components\Account;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
@@ -30,6 +30,6 @@ class FavouriteProducts extends Component
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.components.account.favourite-products');
+        return view('testa::storefront.livewire.components.account.favourite-products');
     }
 }

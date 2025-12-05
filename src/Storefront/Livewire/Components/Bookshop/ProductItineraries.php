@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Components\Bookshop;
+namespace Testa\Storefront\Livewire\Components\Bookshop;
 
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
@@ -32,6 +32,6 @@ class ProductItineraries extends Component
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.components.bookshop.product-itineraries');
+        return view('testa::storefront.livewire.components.bookshop.product-itineraries');
     }
 }

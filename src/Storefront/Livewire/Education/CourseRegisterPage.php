@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Education;
+namespace Testa\Storefront\Livewire\Education;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
@@ -13,11 +13,11 @@ use Lunar\Models\Cart;
 use Lunar\Models\CartAddress;
 use Lunar\Models\Country;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
-use Trafikrak\Models\Content\Banner;
-use Trafikrak\Models\Content\Location;
-use Trafikrak\Models\Education\Course;
-use Trafikrak\Storefront\Livewire\Auth\RegisterPage;
-use Trafikrak\Storefront\Livewire\Checkout\Forms\AddressForm;
+use Testa\Models\Content\Banner;
+use Testa\Models\Content\Location;
+use Testa\Models\Education\Course;
+use Testa\Storefront\Livewire\Auth\RegisterPage;
+use Testa\Storefront\Livewire\Checkout\Forms\AddressForm;
 
 class CourseRegisterPage extends Page
 {
@@ -55,7 +55,7 @@ class CourseRegisterPage extends Page
             $customer = Auth::user()->latestCustomer();
 
             if ($customer->courses->contains($this->course)) {
-                redirect()->route('trafikrak.storefront.education.courses.show', $slug);
+                redirect()->route('testa.storefront.education.courses.show', $slug);
                 return;
             }
         }
@@ -66,7 +66,7 @@ class CourseRegisterPage extends Page
             $this->billing->contact_email = Auth::user()->email;
         }
 
-        $this->paymentTypes = config('trafikrak.payment_types.education');
+        $this->paymentTypes = config('testa.payment_types.education');
     }
 
     public function updated($field, $value): void
@@ -85,14 +85,14 @@ class CourseRegisterPage extends Page
             ->where('is_published', true)
             ->first();
 
-        return view('trafikrak::storefront.livewire.education.course-register', compact('banner'));
+        return view('testa::storefront.livewire.education.course-register', compact('banner'));
     }
 
     public function redirectToLogin(): Redirector|RedirectResponse
     {
         session()->put(
             'url.intended',
-            route('trafikrak.storefront.education.courses.register', $this->course->defaultUrl->slug),
+            route('testa.storefront.education.courses.register', $this->course->defaultUrl->slug),
         );
 
         return redirect()->route('login');
@@ -151,7 +151,7 @@ class CourseRegisterPage extends Page
             'meta' => [
                 'Factura' => $this->invoice ? 'Si' : 'No',
                 'Tipo de pedido' => 'Curso',
-                'Método de pago' => __("trafikrak::global.payment_types.{$this->paymentType}.title"),
+                'Método de pago' => __("testa::global.payment_types.{$this->paymentType}.title"),
             ],
         ]);
 
@@ -168,11 +168,11 @@ class CourseRegisterPage extends Page
             $billing->fill($this->billing->all());
         } else {
             $billing->first_name = $user->latestCustomer()->first_name;
-            $billing->country_id = Country::where('iso2', config('trafikrak.default_billing_address.country_iso2'))
+            $billing->country_id = Country::where('iso2', config('testa.default_billing_address.country_iso2'))
                 ->firstOrFail()->id;
-            $billing->city = config('trafikrak.default_billing_address.city');
-            $billing->postcode = config('trafikrak.default_billing_address.postcode');
-            $billing->line_one = config('trafikrak.default_billing_address.line_one');
+            $billing->city = config('testa.default_billing_address.city');
+            $billing->postcode = config('testa.default_billing_address.postcode');
+            $billing->line_one = config('testa.default_billing_address.line_one');
         }
 
         $cart->setBillingAddress($billing);
@@ -181,7 +181,7 @@ class CourseRegisterPage extends Page
 
         return redirect()
             ->route(
-                'trafikrak.storefront.checkout.process-payment',
+                'testa.storefront.checkout.process-payment',
                 ['id' => $cart->id, 'fingerprint' => $cart->fingerprint(), 'payment' => $this->paymentType],
             );
     }

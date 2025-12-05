@@ -1,13 +1,13 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire;
+namespace Testa\Storefront\Livewire;
 
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
-use Trafikrak\Models\Content\Section;
-use Trafikrak\Models\Content\Slide;
-use Trafikrak\Models\Content\Tier;
+use Testa\Models\Content\Section;
+use Testa\Models\Content\Slide;
+use Testa\Models\Content\Tier;
 
 class HomePage extends Page
 {
@@ -30,6 +30,6 @@ class HomePage extends Page
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.homepage');
+        return view('testa::storefront.livewire.homepage');
     }
 }

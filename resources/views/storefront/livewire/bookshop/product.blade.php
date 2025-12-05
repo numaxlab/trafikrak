@@ -4,13 +4,13 @@
             <x-numaxlab-atomic::molecules.breadcrumb :label="__('Miga de pan')">
                 @if ($product->brand && $product->brand->translateAttribute('in-house') === true)
                     <li>
-                        <a href="{{ route('trafikrak.storefront.editorial.homepage') }}" wire:navigate>
+                        <a href="{{ route('testa.storefront.editorial.homepage') }}" wire:navigate>
                             {{ __('Editorial') }}
                         </a>
                     </li>
                 @else
                     <li>
-                        <a href="{{ route('trafikrak.storefront.bookshop.homepage') }}" wire:navigate>
+                        <a href="{{ route('testa.storefront.bookshop.homepage') }}" wire:navigate>
                             {{ __('Librería') }}
                         </a>
                     </li>
@@ -19,7 +19,7 @@
                         <li>
                             <a
                                     @if ($section->defaultUrl)
-                                        href="{{ route('trafikrak.storefront.bookshop.sections.show', ['slug' => $section->defaultUrl->slug]) }}"
+                                        href="{{ route('testa.storefront.bookshop.sections.show', ['slug' => $section->defaultUrl->slug]) }}"
                                     @endif
                                     wire:navigate
                             >
@@ -47,7 +47,7 @@
                     @endif
 
                     <div wire:loading>
-                        @include('trafikrak::storefront.partials.spinner')
+                        @include('testa::storefront.partials.spinner')
                     </div>
                 </button>
             </h1>
@@ -59,13 +59,13 @@
             @if ($product->authors->isNotEmpty())
                 <p class="at-heading is-4 font-normal normal-case mt-3 text-primary">
                     @foreach ($product->authors as $author)
-                        <a href="{{ route('trafikrak.storefront.authors.show', $author->defaultUrl->slug) }}">{{ $author->name }}</a>{{ $loop->last ? '' : '; ' }}
+                        <a href="{{ route('testa.storefront.authors.show', $author->defaultUrl->slug) }}">{{ $author->name }}</a>{{ $loop->last ? '' : '; ' }}
                     @endforeach
                 </p>
             @endif
 
             <div class="hidden lg:block mt-8">
-                @include('trafikrak::storefront.partials.product.body', ['prefix' => 'desktop'])
+                @include('testa::storefront.partials.product.body', ['prefix' => 'desktop'])
             </div>
         </header>
 
@@ -79,33 +79,33 @@
 
         <div class="mt-1 lg:w-8/12 lg:ml-[25%] lg:pl-10">
             <div class="lg:hidden mb-10">
-                @include('trafikrak::storefront.partials.product.body', ['prefix' => 'mobile'])
+                @include('testa::storefront.partials.product.body', ['prefix' => 'mobile'])
             </div>
 
-            <livewire:trafikrak.storefront.livewire.components.bookshop.product-reviews
+            <livewire:testa.storefront.livewire.components.bookshop.product-reviews
                     :key="$product->id . '-reviews'"
                     :product="$product"
                     lazy="true"
             />
 
-            <livewire:trafikrak.storefront.livewire.components.bookshop.product-associations
+            <livewire:testa.storefront.livewire.components.bookshop.product-associations
                     :key="$product->id . '-associations'"
                     :product="$product"
                     lazy="true"
             />
 
-            <livewire:trafikrak.storefront.livewire.components.bookshop.product-media
+            <livewire:testa.storefront.livewire.components.bookshop.product-media
                     :product="$product"
                     lazy="true"
             />
 
-            <livewire:trafikrak.storefront.livewire.components.bookshop.product-itineraries
+            <livewire:testa.storefront.livewire.components.bookshop.product-itineraries
                     :key="$product->id . '-itineraries'"
                     :product="$product"
                     lazy="true"
             />
 
-            <livewire:trafikrak.storefront.livewire.components.bookshop.product-activities
+            <livewire:testa.storefront.livewire.components.bookshop.product-activities
                     :product="$product"
                     lazy="true"
             />

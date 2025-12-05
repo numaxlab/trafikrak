@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\News;
+namespace Testa\Storefront\Livewire\News;
 
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Support\Collection;
@@ -8,10 +8,10 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Livewire\Attributes\Url;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
-use Trafikrak\Livewire\Features\WithPagination;
-use Trafikrak\Models\Education\CourseModule;
-use Trafikrak\Models\News\Event;
-use Trafikrak\Models\News\EventType;
+use Testa\Livewire\Features\WithPagination;
+use Testa\Models\Education\CourseModule;
+use Testa\Models\News\Event;
+use Testa\Models\News\EventType;
 
 class ActivitiesListPage extends Page
 {
@@ -71,7 +71,7 @@ class ActivitiesListPage extends Page
 
         $activities = self::eagerLoadResults($activities);
 
-        return view('trafikrak::storefront.livewire.news.activities-list', compact('eventTypes', 'activities'))
+        return view('testa::storefront.livewire.news.activities-list', compact('eventTypes', 'activities'))
             ->title(__('Actividades'));
     }
 

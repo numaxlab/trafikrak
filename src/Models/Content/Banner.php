@@ -1,13 +1,13 @@
 <?php
 
-namespace Trafikrak\Models\Content;
+namespace Testa\Models\Content;
 
 use Illuminate\Database\Eloquent\Casts\AsEnumCollection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Lunar\Base\Traits\LogsActivity;
 use Spatie\Translatable\HasTranslations;
-use Trafikrak\Database\Factories\Content\BannerFactory;
+use Testa\Database\Factories\Content\BannerFactory;
 
 class Banner extends Model
 {

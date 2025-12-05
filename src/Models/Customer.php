@@ -1,12 +1,12 @@
 <?php
 
-namespace Trafikrak\Models;
+namespace Testa\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Trafikrak\Models\Education\Course;
-use Trafikrak\Models\Membership\Benefit;
-use Trafikrak\Models\Membership\Subscription;
+use Testa\Models\Education\Course;
+use Testa\Models\Membership\Benefit;
+use Testa\Models\Membership\Subscription;
 
 class Customer extends \Lunar\Models\Customer
 {

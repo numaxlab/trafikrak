@@ -1,14 +1,14 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Components\Author;
+namespace Testa\Storefront\Livewire\Components\Author;
 
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
 use Livewire\Component;
 use NumaxLab\Lunar\Geslib\Models\Author;
-use Trafikrak\Models\Attachment;
-use Trafikrak\Models\Education\CourseModule;
-use Trafikrak\Models\Media\Visibility;
+use Testa\Models\Attachment;
+use Testa\Models\Education\CourseModule;
+use Testa\Models\Media\Visibility;
 
 class Media extends Component
 {
@@ -34,6 +34,6 @@ class Media extends Component
 
     public function render(): View
     {
-        return view('trafikrak::storefront.livewire.components.author.media');
+        return view('testa::storefront.livewire.components.author.media');
     }
 }

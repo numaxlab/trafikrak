@@ -1,13 +1,13 @@
 <?php
 
-namespace Trafikrak\Models\Content;
+namespace Testa\Models\Content;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Lunar\Base\Traits\HasUrls;
 use Lunar\Base\Traits\LogsActivity;
 use Spatie\Translatable\HasTranslations;
-use Trafikrak\Database\Factories\Content\PageFactory;
+use Testa\Database\Factories\Content\PageFactory;
 
 class Page extends Model
 {
@@ -40,9 +40,9 @@ class Page extends Model
     public function getBreadcrumbRouteNameAttribute(): ?string
     {
         return match ($this->section) {
-            Section::BOOKSHOP => 'trafikrak.storefront.bookshop.homepage',
-            Section::EDITORIAL => 'trafikrak.storefront.editorial.homepage',
-            Section::EDUCATION => 'trafikrak.storefront.education.homepage',
+            Section::BOOKSHOP => 'testa.storefront.bookshop.homepage',
+            Section::EDITORIAL => 'testa.storefront.editorial.homepage',
+            Section::EDUCATION => 'testa.storefront.education.homepage',
             default => null,
         };
     }

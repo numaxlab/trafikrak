@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Models\Content;
+namespace Testa\Models\Content;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Lunar\Base\Traits\LogsActivity;
 use Lunar\Models\Collection;
 use Spatie\Translatable\HasTranslations;
-use Trafikrak\Models\Attachment;
-use Trafikrak\Models\Education\Course;
-use Trafikrak\Models\Education\Topic;
+use Testa\Models\Attachment;
+use Testa\Models\Education\Course;
+use Testa\Models\Education\Topic;
 
 class Tier extends Model
 {

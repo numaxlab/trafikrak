@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\Content;
+namespace Testa\Admin\Filament\Resources\Content;
 
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -9,9 +9,9 @@ use Filament\Resources\Concerns\Translatable;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Lunar\Admin\Support\Resources\BaseResource;
-use Trafikrak\Models\Content\Banner;
-use Trafikrak\Models\Content\BannerType;
-use Trafikrak\Models\Content\Location;
+use Testa\Models\Content\Banner;
+use Testa\Models\Content\BannerType;
+use Testa\Models\Content\Location;
 
 class BannerResource extends BaseResource
 {
@@ -25,17 +25,17 @@ class BannerResource extends BaseResource
 
     public static function getNavigationGroup(): ?string
     {
-        return __('trafikrak::global.sections.content');
+        return __('testa::global.sections.content');
     }
 
     public static function getLabel(): string
     {
-        return __('trafikrak::banner.label');
+        return __('testa::banner.label');
     }
 
     public static function getPluralLabel(): string
     {
-        return __('trafikrak::banner.plural_label');
+        return __('testa::banner.plural_label');
     }
 
     public static function getNavigationIcon(): ?string
@@ -58,13 +58,13 @@ class BannerResource extends BaseResource
             ])
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->label(__('trafikrak::banner.table.name.label'))
+                    ->label(__('testa::banner.table.name.label'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('type')
-                    ->label(__('trafikrak::banner.table.type.label'))
+                    ->label(__('testa::banner.table.type.label'))
                     ->badge(),
                 Tables\Columns\ToggleColumn::make('is_published')
-                    ->label(__('trafikrak::banner.table.is_published.label')),
+                    ->label(__('testa::banner.table.is_published.label')),
             ]);
     }
 
@@ -75,12 +75,12 @@ class BannerResource extends BaseResource
                 Forms\Components\Section::make()
                     ->schema([
                         Forms\Components\TextInput::make('name')
-                            ->label(__('trafikrak::banner.form.name.label'))
+                            ->label(__('testa::banner.form.name.label'))
                             ->required()
                             ->maxLength(255)
                             ->autofocus(),
                         Forms\Components\RichEditor::make('description')
-                            ->label(__('trafikrak::banner.form.description.label')),
+                            ->label(__('testa::banner.form.description.label')),
                         Forms\Components\Grid::make()
                             ->columns([
                                 'sm' => 1,
@@ -88,40 +88,40 @@ class BannerResource extends BaseResource
                             ])
                             ->schema([
                                 Forms\Components\TextInput::make('link')
-                                    ->label(__('trafikrak::banner.form.link.label'))
+                                    ->label(__('testa::banner.form.link.label'))
                                     ->maxLength(255),
                                 Forms\Components\TextInput::make('button_text')
-                                    ->label(__('trafikrak::banner.form.button_text.label'))
+                                    ->label(__('testa::banner.form.button_text.label'))
                                     ->maxLength(255),
                             ]),
                         Forms\Components\FileUpload::make('image')
-                            ->label(__('trafikrak::slide.form.image.label'))
+                            ->label(__('testa::slide.form.image.label'))
                             ->image()
                             ->imageEditor(),
                         Forms\Components\Select::make('type')
-                            ->label(__('trafikrak::banner.form.type.label'))
+                            ->label(__('testa::banner.form.type.label'))
                             ->options([
-                                BannerType::FULL_WIDTH->value => __('trafikrak::banner.form.type.options.full_width'),
-                                BannerType::CONTAINED->value => __('trafikrak::banner.form.type.options.contained'),
+                                BannerType::FULL_WIDTH->value => __('testa::banner.form.type.options.full_width'),
+                                BannerType::CONTAINED->value => __('testa::banner.form.type.options.contained'),
                             ])
                             ->required(),
                         Forms\Components\Select::make('style')
-                            ->label(__('trafikrak::banner.form.style.label'))
+                            ->label(__('testa::banner.form.style.label'))
                             ->options([
-                                'positive' => __('trafikrak::banner.form.style.options.positive'),
-                                'negative' => __('trafikrak::banner.form.style.options.negative'),
+                                'positive' => __('testa::banner.form.style.options.positive'),
+                                'negative' => __('testa::banner.form.style.options.negative'),
                             ])
                             ->required(),
                         Forms\Components\Select::make('locations')
-                            ->label(__('trafikrak::banner.form.locations.label'))
+                            ->label(__('testa::banner.form.locations.label'))
                             ->options([
-                                Location::USER_DASHBOARD_SUBSCRIPTIONS->value => __('trafikrak::banner.form.locations.options.user_dashboard_subscriptions'),
-                                Location::COURSE->value => __('trafikrak::banner.form.locations.options.course'),
-                                Location::COURSE_REGISTER->value => __('trafikrak::banner.form.locations.options.course_register'),
+                                Location::USER_DASHBOARD_SUBSCRIPTIONS->value => __('testa::banner.form.locations.options.user_dashboard_subscriptions'),
+                                Location::COURSE->value => __('testa::banner.form.locations.options.course'),
+                                Location::COURSE_REGISTER->value => __('testa::banner.form.locations.options.course_register'),
                             ])
                             ->multiple(),
                         Forms\Components\Toggle::make('is_published')
-                            ->label(__('trafikrak::banner.form.is_published.label')),
+                            ->label(__('testa::banner.form.is_published.label')),
                     ]),
             ])
             ->columns(1);

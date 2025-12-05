@@ -2,7 +2,7 @@
     <header>
         <x-numaxlab-atomic::molecules.breadcrumb :label="__('Miga de pan')">
             <li>
-                <a href="{{ route('trafikrak.storefront.news.homepage') }}">
+                <a href="{{ route('testa.storefront.news.homepage') }}">
                     {{ __('Actualidad') }}
                 </a>
             </li>
@@ -34,7 +34,7 @@
         <ul class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             @foreach ($articles as $article)
                 <li>
-                    <x-trafikrak::articles.summary :article="$article"/>
+                    <x-testa::articles.summary :article="$article"/>
                 </li>
             @endforeach
         </ul>

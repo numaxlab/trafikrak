@@ -6,12 +6,12 @@
 >
     <div class="container mx-auto px-4">
         <header class="org-site-header border-b-0 lg:gap-10">
-            <a class="w-25 h-7.2 lg:w-40 lg:h-11" href="{{ route('trafikrak.storefront.homepage') }}" wire:navigate>
-                <x-trafikrak::logo/>
+            <a class="w-25 h-7.2 lg:w-40 lg:h-11" href="{{ route('testa.storefront.homepage') }}" wire:navigate>
+                <x-testa::logo/>
             </a>
 
             <div class="lg:hidden">
-                <x-trafikrak::header.actions/>
+                <x-testa::header.actions/>
             </div>
 
             <nav
@@ -30,7 +30,7 @@
                                 class="relative"
                         >
                             <a
-                                    href="{{ route('trafikrak.storefront.bookshop.homepage') }}"
+                                    href="{{ route('testa.storefront.bookshop.homepage') }}"
                                     wire:navigate
                             >
                                 {{ __('Librería') }}
@@ -43,7 +43,7 @@
                                         @foreach($sections as $collection)
                                             <li>
                                                 <a
-                                                        href="{{ route('trafikrak.storefront.bookshop.sections.show', $collection->defaultUrl->slug) }}"
+                                                        href="{{ route('testa.storefront.bookshop.sections.show', $collection->defaultUrl->slug) }}"
                                                         wire:navigate
                                                 >
                                                     {{ $collection->translateAttribute('name') }}
@@ -56,17 +56,17 @@
                                 <ul>
                                     <li>
                                         <a
-                                                href="{{ route('trafikrak.storefront.bookshop.itineraries.index') }}"
+                                                href="{{ route('testa.storefront.bookshop.itineraries.index') }}"
                                                 wire:navigate
                                         >
                                             {{ __('Itinerarios') }}
                                         </a>
                                     </li>
-                                    @if ($pages->has(\Trafikrak\Models\Content\Section::BOOKSHOP->value))
-                                        @foreach ($pages->get(\Trafikrak\Models\Content\Section::BOOKSHOP->value) as $page)
+                                    @if ($pages->has(\Testa\Models\Content\Section::BOOKSHOP->value))
+                                        @foreach ($pages->get(\Testa\Models\Content\Section::BOOKSHOP->value) as $page)
                                             <li>
                                                 <a
-                                                        href="{{ route('trafikrak.storefront.bookshop.page', $page->defaultUrl->slug) }}"
+                                                        href="{{ route('testa.storefront.bookshop.page', $page->defaultUrl->slug) }}"
                                                         wire:navigate
                                                 >
                                                     {{ $page->name }}
@@ -84,7 +84,7 @@
                                 class="relative"
                         >
                             <a
-                                    href="{{ route('trafikrak.storefront.editorial.homepage') }}"
+                                    href="{{ route('testa.storefront.editorial.homepage') }}"
                                     wire:navigate
                             >
                                 {{ __('Editorial') }}
@@ -97,7 +97,7 @@
                                         @foreach($editorialCollections as $collection)
                                             <li>
                                                 <a
-                                                        href="{{ route('trafikrak.storefront.editorial.collections.show', $collection->defaultUrl->slug) }}"
+                                                        href="{{ route('testa.storefront.editorial.collections.show', $collection->defaultUrl->slug) }}"
                                                         wire:navigate
                                                 >
                                                     {{ $collection->translateAttribute('name') }}
@@ -110,7 +110,7 @@
                                 <ul>
                                     <li>
                                         <a
-                                                href="{{ route('trafikrak.storefront.editorial.authors.index') }}"
+                                                href="{{ route('testa.storefront.editorial.authors.index') }}"
                                                 wire:navigate
                                         >
                                             {{ __('Autoras') }}
@@ -120,7 +120,7 @@
                                         @foreach($editorialSpecialCollections as $collection)
                                             <li>
                                                 <a
-                                                        href="{{ route('trafikrak.storefront.editorial.collections.special.show', $collection->defaultUrl->slug) }}"
+                                                        href="{{ route('testa.storefront.editorial.collections.special.show', $collection->defaultUrl->slug) }}"
                                                         wire:navigate
                                                 >
                                                     {{ $collection->translateAttribute('name') }}
@@ -128,11 +128,11 @@
                                             </li>
                                         @endforeach
                                     @endif
-                                    @if ($pages->has(\Trafikrak\Models\Content\Section::EDITORIAL->value))
-                                        @foreach ($pages->get(\Trafikrak\Models\Content\Section::EDITORIAL->value) as $page)
+                                    @if ($pages->has(\Testa\Models\Content\Section::EDITORIAL->value))
+                                        @foreach ($pages->get(\Testa\Models\Content\Section::EDITORIAL->value) as $page)
                                             <li>
                                                 <a
-                                                        href="{{ route('trafikrak.storefront.editorial.page', $page->defaultUrl->slug) }}"
+                                                        href="{{ route('testa.storefront.editorial.page', $page->defaultUrl->slug) }}"
                                                         wire:navigate
                                                 >
                                                     {{ $page->name }}
@@ -149,27 +149,27 @@
                                 @mouseleave="educationExpanded = false"
                                 class="relative"
                         >
-                            <a href="{{ route('trafikrak.storefront.education.homepage') }}" wire:navigate>
+                            <a href="{{ route('testa.storefront.education.homepage') }}" wire:navigate>
                                 {{ __('Formación') }}
                             </a>
 
                             <ul x-cloak x-show="educationExpanded"
                                 class="absolute bg-white top-full -left-3 z-10 pl-3 pt-3 pb-8 pr-40 border-l border-b border-primary min-w-max h-40 shadow-lg">
                                 <li>
-                                    <a href="{{ route('trafikrak.storefront.education.topics.index') }}" wire:navigate>
+                                    <a href="{{ route('testa.storefront.education.topics.index') }}" wire:navigate>
                                         {{ __('Temas') }}
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('trafikrak.storefront.education.courses.index') }}" wire:navigate>
+                                    <a href="{{ route('testa.storefront.education.courses.index') }}" wire:navigate>
                                         {{ __('Cursos') }}
                                     </a>
                                 </li>
-                                @if ($pages->has(\Trafikrak\Models\Content\Section::EDUCATION->value))
-                                    @foreach ($pages->get(\Trafikrak\Models\Content\Section::EDUCATION->value) as $page)
+                                @if ($pages->has(\Testa\Models\Content\Section::EDUCATION->value))
+                                    @foreach ($pages->get(\Testa\Models\Content\Section::EDUCATION->value) as $page)
                                         <li>
                                             <a
-                                                    href="{{ route('trafikrak.storefront.education.page', $page->defaultUrl->slug) }}"
+                                                    href="{{ route('testa.storefront.education.page', $page->defaultUrl->slug) }}"
                                                     wire:navigate
                                             >
                                                 {{ $page->name }}
@@ -186,20 +186,20 @@
                         </li>
 
                         <li>
-                            <a href="{{ route('trafikrak.storefront.media.homepage') }}" wire:navigate>
+                            <a href="{{ route('testa.storefront.media.homepage') }}" wire:navigate>
                                 {{ __('Mediateca') }}
                             </a>
                         </li>
 
                         <li>
-                            <a href="{{ route('trafikrak.storefront.activities.index') }}" wire:navigate>
+                            <a href="{{ route('testa.storefront.activities.index') }}" wire:navigate>
                                 {{ __('Actividades') }}
                             </a>
                         </li>
                     </ul>
 
                     <div class="hidden lg:block lg:relative">
-                        <x-trafikrak::header.actions/>
+                        <x-testa::header.actions/>
                     </div>
                 </div>
 
@@ -214,6 +214,6 @@
             class="absolute inset-0 hidden"
             :class="{ 'hidden': !searchExpanded, 'block': searchExpanded }"
     >
-        <livewire:trafikrak.storefront.livewire.components.search/>
+        <livewire:testa.storefront.livewire.components.search/>
     </div>
 </div>

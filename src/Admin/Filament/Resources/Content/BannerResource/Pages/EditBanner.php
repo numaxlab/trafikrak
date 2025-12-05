@@ -1,11 +1,11 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\Content\BannerResource\Pages;
+namespace Testa\Admin\Filament\Resources\Content\BannerResource\Pages;
 
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord\Concerns\Translatable;
 use Lunar\Admin\Support\Pages\BaseEditRecord;
-use Trafikrak\Admin\Filament\Resources\Content\BannerResource;
+use Testa\Admin\Filament\Resources\Content\BannerResource;
 
 class EditBanner extends BaseEditRecord
 {
@@ -15,12 +15,12 @@ class EditBanner extends BaseEditRecord
 
     public static function getNavigationLabel(): string
     {
-        return __('trafikrak::banner.pages.edit.title');
+        return __('testa::banner.pages.edit.title');
     }
 
     public function getTitle(): string
     {
-        return __('trafikrak::banner.pages.edit.title');
+        return __('testa::banner.pages.edit.title');
     }
 
     protected function getDefaultHeaderActions(): array

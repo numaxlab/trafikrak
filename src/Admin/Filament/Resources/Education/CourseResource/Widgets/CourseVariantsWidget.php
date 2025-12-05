@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak\Admin\Filament\Resources\Education\CourseResource\Widgets;
+namespace Testa\Admin\Filament\Resources\Education\CourseResource\Widgets;
 
 use Filament\Actions\Action;
 use Filament\Notifications\Notification;
@@ -14,12 +14,12 @@ use Lunar\Models\ProductOption;
 use Lunar\Models\ProductOptionValue;
 use Lunar\Models\ProductVariant;
 use Lunar\Models\TaxClass;
-use Trafikrak\Admin\Actions\MapVariantsToProductOptionsWithTaxClass;
-use Trafikrak\Observers\CourseObserver;
+use Testa\Admin\Actions\MapVariantsToProductOptionsWithTaxClass;
+use Testa\Observers\CourseObserver;
 
 class CourseVariantsWidget extends ProductOptionsWidget
 {
-    protected static string $view = 'trafikrak::filament.resources.education.course-resource.widgets.course-variants';
+    protected static string $view = 'testa::filament.resources.education.course-resource.widgets.course-variants';
     public Collection $taxClasses;
 
     public function mount(): void
@@ -123,7 +123,7 @@ class CourseVariantsWidget extends ProductOptionsWidget
     public function saveVariantsAction()
     {
         return Action::make('saveVariants')
-            ->label(__('trafikrak::course.widgets.course-variants.save-variants'))
+            ->label(__('testa::course.widgets.course-variants.save-variants'))
             ->action(function () {
                 DB::beginTransaction();
 

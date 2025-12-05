@@ -1,6 +1,6 @@
 <?php
 
-namespace Trafikrak;
+namespace Testa;
 
 use Filament\Support\Facades\FilamentIcon;
 use Illuminate\Database\Eloquent\Model;
@@ -20,36 +20,36 @@ use Lunar\Facades\ModelManifest;
 use Lunar\Models\Order;
 use Spatie\StructureDiscoverer\Discover;
 use Symfony\Component\Finder\Finder;
-use Trafikrak\Admin\Filament\Extension\ProductResourceExtension;
-use Trafikrak\Admin\Filament\Resources\Extension\CustomerResourceExtension;
-use Trafikrak\Admin\Filament\Support\RelationManagers\CourseMediaRelationManager;
-use Trafikrak\Console\Commands\Install;
-use Trafikrak\Models\Education\Course;
-use Trafikrak\Observers\CourseObserver;
-use Trafikrak\Observers\OrderObserver;
+use Testa\Admin\Filament\Extension\ProductResourceExtension;
+use Testa\Admin\Filament\Resources\Extension\CustomerResourceExtension;
+use Testa\Admin\Filament\Support\RelationManagers\CourseMediaRelationManager;
+use Testa\Console\Commands\Install;
+use Testa\Models\Education\Course;
+use Testa\Observers\CourseObserver;
+use Testa\Observers\OrderObserver;
 
-class TrafikrakServiceProvider extends ServiceProvider
+class TestaServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'trafikrak');
-        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'trafikrak');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'testa');
+        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'testa');
 
         $this->publishes([
-            __DIR__.'/../config/trafikrak.php' => config_path('trafikrak.php'),
-            __DIR__.'/../resources/views' => resource_path('views/vendor/trafikrak'),
-        ], ['trafikrak']);
+            __DIR__.'/../config/testa.php' => config_path('testa.php'),
+            __DIR__.'/../resources/views' => resource_path('views/vendor/testa'),
+        ], ['testa']);
 
         Route::middleware('web')
             ->group(fn () => $this->loadRoutesFrom(__DIR__.'/../routes/storefront.php'));
 
-        Blade::componentNamespace('Trafikrak\\Storefront\\Views\\Components', 'trafikrak');
-        Blade::anonymousComponentPath(__DIR__.'/../resources/views/components', 'trafikrak');
+        Blade::componentNamespace('Testa\\Storefront\\Views\\Components', 'testa');
+        Blade::anonymousComponentPath(__DIR__.'/../resources/views/components', 'testa');
 
         View::prependNamespace('numaxlab-atomic', __DIR__.'/../resources/views/vendor/numaxlab-atomic');
 
-        $namespace = 'Trafikrak\Storefront\Livewire\\';
+        $namespace = 'Testa\Storefront\Livewire\\';
 
         $path = __DIR__.'/Storefront/Livewire';
 
@@ -63,8 +63,8 @@ class TrafikrakServiceProvider extends ServiceProvider
         }
 
         FilamentIcon::register([
-            'trafikrak::course' => 'lucide-book-plus',
-            'trafikrak::course-module' => 'lucide-calendar-range',
+            'testa::course' => 'lucide-book-plus',
+            'testa::course-module' => 'lucide-calendar-range',
         ]);
 
         $componentName = app(ComponentRegistry::class)->getName(CourseMediaRelationManager::class);
@@ -78,7 +78,7 @@ class TrafikrakServiceProvider extends ServiceProvider
         )->mapWithKeys(
             fn ($class)
                 => [
-                Str::snake(str_replace('\\', '_', Str::after($class, 'Trafikrak\\Models\\'))) => $class,
+                Str::snake(str_replace('\\', '_', Str::after($class, 'Testa\\Models\\'))) => $class,
             ],
         );
 
@@ -96,16 +96,16 @@ class TrafikrakServiceProvider extends ServiceProvider
 
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/trafikrak.php', 'trafikrak');
+        $this->mergeConfigFrom(__DIR__.'/../config/testa.php', 'testa');
 
         ModelManifest::replace(
             \Lunar\Models\Contracts\Product::class,
-            \Trafikrak\Models\Product::class,
+            \Testa\Models\Product::class,
         );
 
         ModelManifest::replace(
             \Lunar\Models\Contracts\Customer::class,
-            \Trafikrak\Models\Customer::class,
+            \Testa\Models\Customer::class,
         );
 
         LunarPanel::extensions([

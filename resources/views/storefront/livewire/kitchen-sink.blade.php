@@ -77,20 +77,20 @@
             </div>
         </x-numaxlab-atomic::organisms.tier>
 
-        <x-trafikrak::tier.horizontal-scroll>
+        <x-testa::tier.horizontal-scroll>
             <x-slot name="title">Libros</x-slot>
 
             <ul class="grid grid-flow-col auto-cols-[50%] md:auto-cols-[25%] lg:auto-cols-[16.666%] gap-6">
                 @foreach ($products as $product)
                     <li>
-                        <x-trafikrak::products.summary
+                        <x-testa::products.summary
                                 :product="$product"
-                                :href="route('trafikrak.storefront.bookshop.products.show', $product->defaultUrl->slug)"
+                                :href="route('testa.storefront.bookshop.products.show', $product->defaultUrl->slug)"
                         />
                     </li>
                 @endforeach
             </ul>
-        </x-trafikrak::tier.horizontal-scroll>
+        </x-testa::tier.horizontal-scroll>
     </div>
 
     <div class="mb-10">
@@ -100,9 +100,9 @@
             </h2>
         </div>
 
-        <x-trafikrak::banners.contained :banner="$banner"/>
+        <x-testa::banners.contained :banner="$banner"/>
 
-        <x-trafikrak::banners.full-width :banner="$banner"/>
+        <x-testa::banners.full-width :banner="$banner"/>
     </div>
 
     <div class="container mx-auto px-4">
@@ -114,7 +114,7 @@
             <ul class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
                 @foreach($courses as $course)
                     <li>
-                        <x-trafikrak::courses.summary :course="$course"/>
+                        <x-testa::courses.summary :course="$course"/>
                     </li>
                 @endforeach
             </ul>

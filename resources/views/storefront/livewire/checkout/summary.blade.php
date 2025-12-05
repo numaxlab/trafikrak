@@ -6,8 +6,8 @@
     <ul class="border-y border-black divide-y divide-black mt-10">
         @foreach ($lines as $key => $line)
             <li>
-                <x-trafikrak::products.in-cart
-                        :href="route('trafikrak.storefront.bookshop.products.show', $line['slug'])"
+                <x-testa::products.in-cart
+                        :href="route('testa.storefront.bookshop.products.show', $line['slug'])"
                         :image="$line['thumbnail']"
                         :price="$line['unit_price']"
                         wire:key="line_{{ $line['id'] }}"
@@ -31,7 +31,7 @@
                             Eliminar
                         </button>
                     </x-slot:actions>
-                </x-trafikrak::products.in-cart>
+                </x-testa::products.in-cart>
 
                 @if ($errors->get('lines.' . $key . '.quantity'))
                     <div
@@ -58,7 +58,7 @@
 
         <div class="flex gap-10 mt-10">
             <a
-                    href="{{ route('trafikrak.storefront.bookshop.homepage') }}"
+                    href="{{ route('testa.storefront.bookshop.homepage') }}"
                     class="at-button is-secondary md:w-1/2"
                     wire:navigate
             >
@@ -67,7 +67,7 @@
 
             <a
                     class="at-button is-primary md:w-1/2"
-                    href="{{ route('trafikrak.storefront.checkout.shipping-and-payment') }}"
+                    href="{{ route('testa.storefront.checkout.shipping-and-payment') }}"
                     wire:navigate
             >
                 {{ __('Finalizar pedido') }}

@@ -1,5 +1,5 @@
 <x-numaxlab-atomic::molecules.summary
-        href="{{ route('trafikrak.storefront.education.courses.show', $course->defaultUrl->slug) }}"
+        href="{{ route('testa.storefront.education.courses.show', $course->defaultUrl->slug) }}"
 >
     @if ($course->thumbnailImage())
         <x-slot name="thumbnail">

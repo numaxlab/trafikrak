@@ -1,13 +1,13 @@
 <?php
 
-namespace Trafikrak\Storefront\Livewire\Education;
+namespace Testa\Storefront\Livewire\Education;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use NumaxLab\Lunar\Geslib\Storefront\Livewire\Page;
-use Trafikrak\Models\Content\Banner;
-use Trafikrak\Models\Content\Location;
-use Trafikrak\Models\Education\Course;
+use Testa\Models\Content\Banner;
+use Testa\Models\Content\Location;
+use Testa\Models\Education\Course;
 
 class CoursePage extends Page
 {
@@ -37,7 +37,7 @@ class CoursePage extends Page
 
         if ($banner) {
             $banner->link = $this->course->purchasable ?
-                route('trafikrak.storefront.education.courses.register', $this->course->defaultUrl->slug)
+                route('testa.storefront.education.courses.register', $this->course->defaultUrl->slug)
                 : null;
         }
 
@@ -53,6 +53,6 @@ class CoursePage extends Page
 
         $media = $this->course->verticalImage;
 
-        return view('trafikrak::storefront.livewire.education.course', compact('banner', 'userRegistered', 'media'));
+        return view('testa::storefront.livewire.education.course', compact('banner', 'userRegistered', 'media'));
     }
 }

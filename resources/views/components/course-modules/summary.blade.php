@@ -1,5 +1,5 @@
 <x-numaxlab-atomic::molecules.summary
-        href="{{ route('trafikrak.storefront.education.courses.modules.show', [$module->course->defaultUrl->slug, $module->defaultUrl->slug]) }}">
+        href="{{ route('testa.storefront.education.courses.modules.show', [$module->course->defaultUrl->slug, $module->defaultUrl->slug]) }}">
     <h2 class="at-heading is-3">
         {{ $module->name }}
     </h2>

@@ -289,7 +289,7 @@ class Install extends Command
             $variant->values()->attach($value);
 
             $variant->prices()->create([
-                'price' => $value->name->get('es') * 100,
+                'price' => $value->translateAttribute('name') * 100,
                 'currency_id' => $currency->id,
             ]);
         }

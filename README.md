@@ -45,13 +45,14 @@ and [NUMAX](https://numax.org).
 ## Requirements
 
 - PHP ^8.4
-- Laravel
+- Laravel 12
 - [LunarPHP](https://lunarphp.io/docs/core/index.html)
 - [Lunar Geslib](https://github.com/numaxlab/lunar-geslib)
 
 ## Installation
 
-You can install the package via composer:
+After following the official Laravel [installation instructions](https://laravel.com/docs/installation) to create a
+new project, you can install this package via Composer:
 
 ```bash
 composer require numaxlab/testa
@@ -84,13 +85,39 @@ The package service provider will be auto-discovered by Laravel.
    php artisan lunar:testa:install
    ```
 
-3. **Install the npm required packages**
+3. **Setup the User model**
+
+    ```php
+    use Lunar\Base\Traits\LunarUser;
+    use Lunar\Base\LunarUser as LunarUserInterface;
+    use NumaxLab\Lunar\Geslib\Traits\LunarGeslibUser;
+    // ...
+    
+    class User extends Authenticatable implements LunarUserInterface
+    {
+        use LunarUser;
+        use LunarGeslibUser;
+        // ...
+    }
+    ```
+
+4. **Setup the testa livewire layout**
+
+    ```php
+    // config/livewire.php
+    // ...
+    'layout' => 'testa::components.layouts.app',
+    // ...
+    ```
+
+5. **Install the npm required packages**
 
    ```bash
    npm i @numaxlab/atomic@^1.0.0
    npm i @tailwindcss/typography
    ```
-4. **Setup your app.css and app.(ts|js) files**
+
+6. **Setup your app.css and app.(ts|js) files**
 
    `app.css`:
    ```css
@@ -118,6 +145,8 @@ The package service provider will be auto-discovered by Laravel.
     Alpine.data('lineClamp', lineClamp);
     Alpine.data('horizontalScroll', horizontalScroll);
    ```
+
+## Configuration
 
 ## Testing
 

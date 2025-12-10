@@ -59,7 +59,7 @@
                     {{ $product->brand->name }}
                 </li>
             @endif
-            @foreach ($product->editorialCollections as $collection)
+            @foreach ($editorialCollections as $collection)
                 <li>
                     <a
                             href="{{ route('testa.storefront.editorial.collections.show', $collection->defaultUrl->slug) }}"

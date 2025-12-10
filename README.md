@@ -110,14 +110,57 @@ The package service provider will be auto-discovered by Laravel.
     // ...
     ```
 
-5. **Install the npm required packages**
+5. **Setup the searchable models**
+
+    ```php
+    // config/lunar/search.php
+    // ...
+    'models' => [
+        // ...
+        \NumaxLab\Testa\Models\Page::class,
+        \NumaxLab\Testa\Models\Course::class,
+        \NumaxLab\Testa\Models\Article::class,
+    ]
+    // ...
+    'indexers' => [
+        // ...
+        // Lunar\Models\Product::class => Lunar\Search\ProductIndexer::class, Replace the default Lunar product indexer
+        Lunar\Models\Product::class => NumaxLab\Lunar\Geslib\Search\ProductIndexer::class,
+        NumaxLab\Lunar\Geslib\Models\Author::class => NumaxLab\Lunar\Geslib\Search\AuthorIndexer::class,
+    ]
+    ```
+
+6. **Setup media definitions**
+
+   ```php
+    // config/lunar/media.php
+    // use Lunar\Base\StandardMediaDefinitions; Replace the default media definitions
+    use NumaxLab\Lunar\Geslib\Media\ProductMediaDefinitions;
+    use Testa\Media\StandardMediaDefinitions;
+
+    return [
+        'definitions' => [
+            // ...
+            // 'product' => StandardMediaDefinitions::class, Replace the default media definitions for products
+            'product' => ProductMediaDefinitions::class,
+            // ...
+            'author' => StandardMediaDefinitions::class,
+            'education-topic' => StandardMediaDefinitions::class,
+            'course' => StandardMediaDefinitions::class,
+        ],
+   
+        // ...
+    ];
+   ```
+
+7. **Install the npm required packages**
 
    ```bash
    npm i @numaxlab/atomic@^1.0.0
    npm i @tailwindcss/typography
    ```
 
-6. **Setup your app.css and app.(ts|js) files**
+8. **Setup your app.css and app.(ts|js) files**
 
    `app.css`:
    ```css

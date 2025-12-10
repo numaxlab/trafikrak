@@ -85,8 +85,9 @@ class ProductPage extends Page
     public function render(): View
     {
         $taxonomies = $this->buildTaxonomies();
+        $editorialCollections = $this->filterEditorialCollections($this->product->editorialCollections);
 
-        return view('testa::storefront.livewire.bookshop.product', compact('taxonomies'))
+        return view('testa::storefront.livewire.bookshop.product', compact('taxonomies', 'editorialCollections'))
             ->title($this->product->recordFullTitle);
     }
 
@@ -141,4 +142,12 @@ class ProductPage extends Page
 
         return null;
     }
+
+    private function filterEditorialCollections(SupportCollection $editorialCollections): SupportCollection
+    {
+        return $editorialCollections->filter(function ($collection) {
+            return $collection->translateAttribute('is-section');
+        });
+    }
+
 }

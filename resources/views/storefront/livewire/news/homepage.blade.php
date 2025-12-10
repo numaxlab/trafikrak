@@ -23,9 +23,9 @@
             <ul class="grid gap-6 grid-cols-2 md:grid-cols-4">
                 @foreach ($activities as $activity)
                     <li>
-                        @if ($activity instanceof \Trafikrak\Models\News\Event)
+                        @if ($activity instanceof \Testa\Models\News\Event)
                             <x-testa::events.summary :event="$activity"/>
-                        @elseif ($activity instanceof \Trafikrak\Models\Education\CourseModule)
+                        @elseif ($activity instanceof \Testa\Models\Education\CourseModule)
                             <x-testa::course-modules.activity :module="$activity"/>
                         @endif
                     </li>

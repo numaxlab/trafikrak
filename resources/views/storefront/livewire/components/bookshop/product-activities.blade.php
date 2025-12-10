@@ -8,9 +8,9 @@
             <ul class="grid grid-flow-col auto-cols-[40%] md:auto-cols-[30%] gap-6">
                 @foreach ($activities as $activity)
                     <li>
-                        @if ($activity instanceof \Trafikrak\Models\News\Event)
+                        @if ($activity instanceof \Testa\Models\News\Event)
                             <x-testa::events.mini :event="$activity"/>
-                        @elseif ($activity instanceof \Trafikrak\Models\Education\CourseModule)
+                        @elseif ($activity instanceof \Testa\Models\Education\CourseModule)
                             <x-testa::course-modules.mini :module="$activity"/>
                         @endif
                     </li>

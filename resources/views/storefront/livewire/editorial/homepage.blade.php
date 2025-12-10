@@ -1,6 +1,6 @@
 <div>
     @if ($slides->isNotEmpty())
-        <div class="-mt-10">
+        <div class="-mt-10 mb-5">
             @foreach ($slides as $slide)
                 <x-testa::slides.full-width :slide="$slide"/>
             @endforeach

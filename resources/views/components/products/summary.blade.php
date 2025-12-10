@@ -3,7 +3,9 @@
         <img
                 src="{{ $product->getFirstMediaUrl(config('lunar.media.collection'), 'medium') }}"
                 loading="lazy"
-                alt=""/>
+                alt=""
+                class="w-full"
+        />
 
         <h3 class="at-heading is-4 mt-3 text-black group-hover:text-black/70">
             {{ $product->recordTitle }}

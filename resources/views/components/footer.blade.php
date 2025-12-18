@@ -17,8 +17,8 @@
                 </a>
             </li>
             <li>
-                <a href="https://www.mites.gob.es/" target="_blank" class="text-white block h-10 lg:h-14">
-                    @include('testa::logos.perte')
+                <a href="https://planderecuperacion.gob.es/" target="_blank" class="text-white block h-10 lg:h-14">
+                    @include('testa::logos.prtr')
                 </a>
             </li>
         </ul>
